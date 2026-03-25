@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="720.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esuproject.PetController">
+    <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="123.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="95.0" prefWidth="470.0" text="Pet Selection" AnchorPane.topAnchor="48.0">
+            <font>
+                <Font name="System Bold Italic" size="64.0" />
+            </font>
+        </Label>
+        <Button layoutX="160.0" layoutY="282.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="51.0" prefWidth="196.0" text="Load Pet">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Button>
+        <Button layoutX="365.0" layoutY="282.0" mnemonicParsing="false" onAction="#switchToPickScene" text="Create New Pet">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>

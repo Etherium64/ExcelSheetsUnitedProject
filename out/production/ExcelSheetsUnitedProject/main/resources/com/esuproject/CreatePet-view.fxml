@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="720.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esuproject.PetController">
+    <children>
+        <CheckBox layoutX="228.0" layoutY="330.0" mnemonicParsing="false" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ceddeb" height="75.0" layoutX="198.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+        <CheckBox layoutX="353.0" layoutY="330.0" mnemonicParsing="false" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ceddeb" height="75.0" layoutX="323.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+        <CheckBox layoutX="478.0" layoutY="330.0" mnemonicParsing="false" prefWidth="0.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ceddebd1" height="75.0" layoutX="448.0" layoutY="245.0" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+        <TextField layoutX="287.0" layoutY="450.0" promptText="Pet Name:" />
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="123.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="95.0" prefWidth="470.0" text="Create Your Pet" textAlignment="JUSTIFY">
+            <font>
+                <Font name="System Bold Italic" size="64.0" />
+            </font></Label>
+    </children>
+</AnchorPane>

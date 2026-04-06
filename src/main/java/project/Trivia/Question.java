@@ -1,4 +1,4 @@
-package project.petdog;
+package project.Trivia;
 
 public class Question {
     String question = null;

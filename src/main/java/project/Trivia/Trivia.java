@@ -1,4 +1,4 @@
-package project.petdog;
+package project.Trivia;
 
 import java.io.File;
 import java.io.FileNotFoundException;

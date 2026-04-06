@@ -1,8 +1,8 @@
-module project.petdog {
+module project.Trivia {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
-
-    opens project.petdog to javafx.fxml;
-    exports project.petdog;
+    opens project.Trivia.view to javafx.fxml;
+    exports project.Trivia;
 }

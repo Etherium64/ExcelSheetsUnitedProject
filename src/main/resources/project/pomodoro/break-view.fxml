@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="project.pomodoro.PomodoroController">
+    <VBox alignment="CENTER" spacing="30.0" fillWidth="false">
+        <HBox spacing="40.00" alignment="CENTER">
+            <Button fx:id="pomoBtn"
+                    text="Pomodoro"
+                    onAction="#pomoBtnClick"
+                    disable="false"
+            />
+            <Button fx:id="scoreBtn" text="Score"/>
+        </HBox>
+
+        <HBox spacing="20.00" alignment="CENTER">
+            <Label fx:id="breakTimer" text="05:00"/>
+        </HBox>
+
+        <HBox spacing="20.0" alignment="CENTER">
+            <Button fx:id="startBtn" text="Start"/>
+            <Button fx:id="pauseBtn" text="Pause"/>
+            <Button fx:id="resetBtn" text="Reset"/>
+        </HBox>
+    </VBox>
+</StackPane>

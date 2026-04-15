@@ -1,20 +1,27 @@
 package project.pomodoro;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-
-import java.io.IOException;
-
-
-
 public class ButtonController {
+
+    MainApplication pomodoroScene = new MainApplication();
+    MainApplication breakScene = new MainApplication();
+
     @FXML
     public void startBtnClick() {
         TimeController.getTimer().startTimer();
+    }
+
+    @FXML
+    public void pauseBtnClick() {
+        TimeController.getTimer().pauseTimer();
+    }
+
+    @FXML
+    public void resetBtnClick() {
+        TimeController.getTimer().resetTimer();
     }
 
     @FXML
@@ -24,28 +31,18 @@ public class ButtonController {
     private Button pomoBtn;
 
     @FXML
-    protected void pomoBtnClick() throws IOException {
-        Stage stage = (Stage) pomoBtn.getScene().getWindow();
-
-        FXMLLoader fxmlLoader = new FXMLLoader(SceneController.class.getResource("break-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), SceneController.WIDTH, SceneController.HEIGHT);
-        String stylesheet = SceneController.class.getResource("stylesheet.css").toExternalForm();
-        scene.getStylesheets().add(stylesheet);
-        stage.setScene(scene);
-
+    protected void pomoBtnClick() throws Exception {
+        Stage pomoStage = (Stage) pomoBtn.getScene().getWindow();
+        pomodoroScene.launchScene(pomoStage, "pomodoro-view.fxml", "25:00", 1500);
     }
 
     @FXML
-    protected void breakBtnClick() throws IOException {
-        Stage stage = (Stage) breakBtn.getScene().getWindow();
-
-        FXMLLoader fxmlLoader = new FXMLLoader(SceneController.class.getResource("break-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), SceneController.WIDTH, SceneController.HEIGHT);
-        String stylesheet = SceneController.class.getResource("stylesheet.css").toExternalForm();
-        scene.getStylesheets().add(stylesheet);
-        stage.setScene(scene);
+    protected void breakBtnClick() throws Exception {
+        Stage breakStage = (Stage) breakBtn.getScene().getWindow();
+        breakScene.launchScene(breakStage, "break-view.fxml", "05:00", 300);
     }
 }
+
 
 
 

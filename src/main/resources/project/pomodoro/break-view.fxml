@@ -27,8 +27,14 @@
                     text="Start"
                     onAction="#startBtnClick"
             />
-            <Button fx:id="pauseBtn" text="Pause"/>
-            <Button fx:id="resetBtn" text="Reset"/>
+            <Button fx:id="pauseBtn"
+                    text="Pause"
+                    onAction="#pauseBtnClick"
+            />
+            <Button fx:id="resetBtn"
+                    text="Reset"
+                    onAction ="#resetBtnClick"
+            />
         </HBox>
     </VBox>
 </StackPane>

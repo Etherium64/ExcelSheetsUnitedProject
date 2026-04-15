@@ -10,16 +10,18 @@ import java.util.TimerTask;
 public class TimeController {
 
     static private TimeController thisTimeController;
+    private volatile boolean isPaused = false;
+    private boolean firstCount = true;
 
     private Timer pomodoroTimer;
     private Label timerLabel;
-    private static int timeElapsed = 1500;
+    private static int timeElapsed;
+    private static int timeBegins;
 
     private String formatTimer() {
         int minutes = timeElapsed / 60;
         int seconds = timeElapsed % 60;
         return String.format("%02d:%02d", minutes, seconds);
-
     }
 
     static public TimeController getTimer() {
@@ -29,23 +31,57 @@ public class TimeController {
         return thisTimeController;
     }
 
-    public void setLabel(Label thisLabel) {
+    public void setupTimer(Label thisLabel, int thisTime) {
         timerLabel = thisLabel;
+        timeElapsed = thisTime;
+        timeBegins = thisTime+1;
+
     }
 
     public void startTimer() {
-        if (pomodoroTimer == null) {
+        isPaused = false;
+
+        if (firstCount)
+        {
+            firstCount = false;
             pomodoroTimer = new Timer();
             pomodoroTimer.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    timeElapsed--;
-                    Platform.runLater(() -> timerLabel.setText(formatTimer()));
+                    if (!isPaused) {
+                        timeElapsed--;
+                        Platform.runLater(() -> timerLabel.setText(formatTimer()));
+                    }
                 }
             }, 1000, 1000);
         }
+        else
+        {
+            pomodoroTimer = new Timer();
+            pomodoroTimer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    if (!isPaused) {
+                        Platform.runLater(() -> timerLabel.setText(formatTimer()));
+                    }
+                }
+            }, 1000, 1000);
+        }
+
+
     }
 
+    public void pauseTimer() {
+        isPaused = true;
+    }
+
+    public void resetTimer() {
+        timeElapsed = timeBegins;
+
+    }
 
 }
+
+
+
 

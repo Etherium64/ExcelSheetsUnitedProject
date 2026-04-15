@@ -7,7 +7,7 @@
 
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="project.pomodoro.PomodoroController">
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="project.pomodoro.ButtonController">
     <VBox alignment="CENTER" spacing="30.0" fillWidth="false">
         <HBox spacing="40.00" alignment="CENTER">
             <Button fx:id="breakBtn"
@@ -18,14 +18,19 @@
             <Button fx:id="scoreBtn" text="Score"/>
         </HBox>
 
-        <HBox spacing="20.00" alignment="CENTER">
-            <Label fx:id="pomoTimer" text="25:00"/>
+        <HBox spacing="20.0" alignment="CENTER">
+            <Label fx:id="timerLabel"/>
         </HBox>
 
         <HBox spacing="20.0" alignment="CENTER">
-            <Button fx:id="startBtn" text="Start"/>
+            <Button fx:id="startBtn"
+                    text="Start"
+                    onAction="#startBtnClick"
+            />
             <Button fx:id="pauseBtn" text="Pause"/>
             <Button fx:id="resetBtn" text="Reset"/>
         </HBox>
     </VBox>
 </StackPane>
+
+

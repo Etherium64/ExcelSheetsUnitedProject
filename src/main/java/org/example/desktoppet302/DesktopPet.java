@@ -33,6 +33,7 @@ public class DesktopPet extends Application {
         URL imageFile = getClass().getResource("/pet.png");
 
         // Create and load image into JavaFx
+        assert imageFile != null;
         Image image = new Image(imageFile.toExternalForm());
         ImageView petImage = new ImageView(image);
 

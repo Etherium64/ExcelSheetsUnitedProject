@@ -19,13 +19,13 @@ import java.util.List;
 
 public class MainController {
     @FXML private TextField usernameField;
-    @FXML private Label scoreLabel;
+    @FXML public Label scoreLabel;
     @FXML private Label statusLabel;
     @FXML private Label questionLabel;
-    @FXML private Button buttonA, buttonB, buttonC, buttonD;
+    @FXML public Button buttonA, buttonB, buttonC, buttonD;
 
     private int score = 0;
-    private String correctAnswer;
+    public String correctAnswer;
     private int questionCount = 0;
     private static final int MAX_QUESTIONS = 5;
     private final ScoreDAO dao = new ScoreDAO();

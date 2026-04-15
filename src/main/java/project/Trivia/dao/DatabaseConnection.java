@@ -7,11 +7,11 @@ import java.sql.SQLException;
 public class DatabaseConnection {
     // Create database in user's home directory
     private static final String DB_DIR = System.getProperty("user.home") + "/.trivia";
-    private static final String URL = "jdbc:sqlite:" + DB_DIR + "/trivia.db";
+    private static String URL = "JDBC:sqlite:" + System.getProperty("user.home") + "/.trivia/trivia.db";
 
     static {
         try {
-            // Ensure the directory exists
+            // Ensures the directory exists
             java.nio.file.Files.createDirectories(java.nio.file.Paths.get(DB_DIR));
             // Load SQLite JDBC driver
             Class.forName("org.sqlite.JDBC");
@@ -28,5 +28,9 @@ public class DatabaseConnection {
             System.out.println("Connection failed: " + e.getMessage());
             return null;
         }
+    }
+
+    public static void setUrlForTest(String testUrl) {
+        URL = testUrl;
     }
 }

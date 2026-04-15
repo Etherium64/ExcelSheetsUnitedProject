@@ -6,23 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Excel Sheets United CAB302 Project Brief.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/Excel Sheets United CAB302 Project Brief.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IntelliJ Set up.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/IntelliJ Set up.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Meeting Minutes .xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/Meeting Minutes .xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Meeting Minutes Post Checkpoint 1.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/Meeting Minutes Post Checkpoint 1.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User Sories 1-12.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/User Sories 1-12.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User Stories 20.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/User Stories 20.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User Story Template.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/User Story Template.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserStories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/UserStories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idleSpritesheet-sad.png" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/idleSpritesheet-sad.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idleSpritesheet@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/idleSpritesheet@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jumpSpritesheet.png" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/jumpSpritesheet.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/desktoppet302/DesktopPet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/desktoppet302/DesktopPet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/walkLeftSpritesheet.png" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/walkLeftSpritesheet.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/walkRightSpritesheet.png" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/walkRightSpritesheet.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,14 +13,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="oldmaster" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Etherium64/ExcelSheetsUnitedProject.git",
-    "accountId": "37cf2976-10f4-4878-bbb5-c96407d7ebad"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Etherium64/ExcelSheetsUnitedProject.git&quot;,
+    &quot;accountId&quot;: &quot;37cf2976-10f4-4878-bbb5-c96407d7ebad&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -53,31 +41,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.DesktopPet.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.DesktopPet.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kilro\IdeaProjects\DesktopPet302\src\main\java\org\example\desktoppet302" />
       <recent name="C:\Users\kilro\IdeaProjects\DesktopPet302\Documents" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="DesktopPet" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="corretto-21" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="org.example.desktoppet302.DesktopPet" />
+    <configuration default="true" type="JetRunConfigurationType">
       <module name="DesktopPet302" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="DesktopPet302" />
+      <option name="filePath" />
+      <method v="2" />
     </configuration>
   </component>
   <component name="SharedIndexes">
@@ -96,5 +87,16 @@
       <updated>1774700450780</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

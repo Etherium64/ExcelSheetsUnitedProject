@@ -14,7 +14,7 @@ public class Main extends Application {
         // Initialize database tables
         DatabaseInitialiser.init();
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/main.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/project.trivia/main.fxml")));
         Scene scene = new Scene(root, 600, 400);
         scene.getStylesheets().add("/styles.css");
         stage.setTitle("Trivia Game");

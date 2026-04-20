@@ -1,4 +1,4 @@
-package org.example.desktoppet302;
+package project.desktoppet;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

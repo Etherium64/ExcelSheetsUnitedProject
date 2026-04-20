@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/ButtonController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/TimeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/project/pomodoro/break-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/project/pomodoro/pomodoro-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/project/pomodoro/stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/desktoppet302/DesktopPet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/DesktopPet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/DesktopPet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/DesktopPet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,18 +23,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Etherium64"
-  }
-}]]></component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Etherium64/ExcelSheetsUnitedProject.git&quot;,
-    &quot;accountId&quot;: &quot;37cf2976-10f4-4878-bbb5-c96407d7ebad&quot;
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Etherium64&quot;
   }
 }</component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Etherium64/ExcelSheetsUnitedProject.git",
+    "accountId": "80ff2d5a-7e8f-4772-a30e-3552355cb4f9"
+  }
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" root0="SKIP_INSPECTION" />
   </component>
@@ -54,6 +44,9 @@
         <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -66,16 +59,22 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.DesktopPet.executor": "Run",
+    "Application.MainApplication.executor": "Run",
     "Application.Unnamed.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "git-widget-placeholder": "Merging master",
-    "kotlin-language-version-configured": "true"
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\4hunt\IdeaProjects\ESU_Project\src\main\java\project\desktoppet302" />
       <recent name="C:\Users\kilro\IdeaProjects\DesktopPet302\src\main\java\org\example\desktoppet302" />
       <recent name="C:\Users\kilro\IdeaProjects\DesktopPet302\Documents" />
     </key>
@@ -108,6 +107,15 @@
       <option name="presentableId" value="Default" />
       <updated>1774700450780</updated>
     </task>
+    <task id="LOCAL-00001">
+      <option name="closed" value="true" />
+      <created>1776656235767</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1776656235767</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -122,6 +130,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Why is this not working" />
+    <MESSAGE value="Merge branch 'pomodoro'&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;Documents/Excel Sheets United CAB302 Project Brief.docx&#10;#&#9;Documents/IntelliJ Set up.pdf&#10;#&#9;Documents/Meeting Minutes .xlsx&#10;#&#9;Documents/Meeting Minutes Post Checkpoint 1.xlsx&#10;#&#9;Documents/README.md&#10;#&#9;Documents/User Sories 1-12.docx&#10;#&#9;Documents/User Stories 20.docx&#10;#&#9;Documents/User Story Template.docx&#10;#&#9;Documents/UserStories.txt&#10;#&#9;Documents/idleSpritesheet-sad.png&#10;#&#9;Documents/idleSpritesheet@2x.png&#10;#&#9;Documents/jumpSpritesheet.png&#10;#&#9;Documents/walkLeftSpritesheet.png&#10;#&#9;Documents/walkRightSpritesheet.png&#10;#&#9;pom.xml&#10;#&#9;src/main/java/module-info.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'pomodoro'&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;Documents/Excel Sheets United CAB302 Project Brief.docx&#10;#&#9;Documents/IntelliJ Set up.pdf&#10;#&#9;Documents/Meeting Minutes .xlsx&#10;#&#9;Documents/Meeting Minutes Post Checkpoint 1.xlsx&#10;#&#9;Documents/README.md&#10;#&#9;Documents/User Sories 1-12.docx&#10;#&#9;Documents/User Stories 20.docx&#10;#&#9;Documents/User Story Template.docx&#10;#&#9;Documents/UserStories.txt&#10;#&#9;Documents/idleSpritesheet-sad.png&#10;#&#9;Documents/idleSpritesheet@2x.png&#10;#&#9;Documents/jumpSpritesheet.png&#10;#&#9;Documents/walkLeftSpritesheet.png&#10;#&#9;Documents/walkRightSpritesheet.png&#10;#&#9;pom.xml&#10;#&#9;src/main/java/module-info.java" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
 </project>

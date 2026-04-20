@@ -1,6 +1,7 @@
 package org.example.desktoppet302;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -25,7 +26,7 @@ public class DesktopPet extends Application {
 
     // Sets size of pet image
     double petSize = 115;
-
+    double petSizeSmall = 80;
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -41,17 +42,35 @@ public class DesktopPet extends Application {
         petImage.setFitWidth(petSize);
         petImage.setPreserveRatio(true);
 
+        // Load smaller image of pet
+        URL imageFileSmall = getClass().getResource("/pet.png");
+
+        assert imageFileSmall != null;
+        Image imageSmall = new Image(imageFileSmall.toExternalForm());
+        ImageView petImageSmall = new ImageView(imageSmall);
+
+        petImageSmall.setFitWidth(petSizeSmall);
+        petImageSmall.setPreserveRatio(true);
+
+
+        ImageView pet = petImage;
+
         // Create canvas to hold the image
-        HBox canvas = new HBox(petImage);
+        HBox canvas = new HBox(pet);
         canvas.setStyle("-fx-background-color: transparent;");
 
+        FXMLLoader fxmlLoader = new FXMLLoader(DesktopPet.class.getResource("pet-view.fxml"));
+
+
         // Create transparent window to hold canvas
-        Scene scene = new Scene(canvas, sceneSizeX, sceneSizeY, Color.TRANSPARENT);
+        Scene scene = new Scene(fxmlLoader.load(), sceneSizeX, sceneSizeY, Color.TRANSPARENT);
         stage.setScene(scene);
 
         // Remove top bar/borders and keep window in front
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setAlwaysOnTop(true);
+
+
 
         // Show window so stage height is properly known
         stage.show();
@@ -61,12 +80,12 @@ public class DesktopPet extends Application {
         stage.setY(bounds.getMaxY() - stage.getHeight());
 
         // store where on the pet the mouse was pressed
-        petImage.setOnMousePressed(mousePress -> {
+        pet.setOnMousePressed(mousePress -> {
             dragOffsetX = mousePress.getSceneX();
         });
 
         // Only move on x-axis
-        petImage.setOnMouseDragged(mouseDrag -> {
+        pet.setOnMouseDragged(mouseDrag -> {
 
             // Get the X position based on mouse movement
             double mouseX = mouseDrag.getScreenX() - dragOffsetX;
@@ -88,6 +107,8 @@ public class DesktopPet extends Application {
             // Apply clamped X position to image
             stage.setX(mouseX);
         });
+
+
     }
 
     public static void main(String[] args) {

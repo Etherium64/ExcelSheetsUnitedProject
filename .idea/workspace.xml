@@ -4,11 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Branch merger with triviaModule.">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/sqlite-jdbc-3.36.0.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/questions.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/Question.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/Trivia.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/dao/DatabaseConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/dao/DatabaseInitialiser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/dao/QuestionsSeeder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/dao/ScoreDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/view/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/main.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/test/DatabaseConnectionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/test/DatabaseInitialiserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/test/QuestionSeederTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/test/ScoreDAOTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/trivia.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/DesktopPet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/DesktopPet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,12 +49,12 @@
     &quot;assignee&quot;: &quot;Etherium64&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Etherium64/ExcelSheetsUnitedProject.git",
-    "accountId": "80ff2d5a-7e8f-4772-a30e-3552355cb4f9"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Etherium64/ExcelSheetsUnitedProject.git&quot;,
+    &quot;accountId&quot;: &quot;80ff2d5a-7e8f-4772-a30e-3552355cb4f9&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" root0="SKIP_INSPECTION" />
   </component>
@@ -59,13 +79,14 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.DesktopPet.executor": "Run",
+    "Application.Main.executor": "Run",
     "Application.MainApplication.executor": "Run",
     "Application.Unnamed.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Merging master",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -132,7 +153,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Why is this not working" />
     <MESSAGE value="Merge branch 'pomodoro'&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;Documents/Excel Sheets United CAB302 Project Brief.docx&#10;#&#9;Documents/IntelliJ Set up.pdf&#10;#&#9;Documents/Meeting Minutes .xlsx&#10;#&#9;Documents/Meeting Minutes Post Checkpoint 1.xlsx&#10;#&#9;Documents/README.md&#10;#&#9;Documents/User Sories 1-12.docx&#10;#&#9;Documents/User Stories 20.docx&#10;#&#9;Documents/User Story Template.docx&#10;#&#9;Documents/UserStories.txt&#10;#&#9;Documents/idleSpritesheet-sad.png&#10;#&#9;Documents/idleSpritesheet@2x.png&#10;#&#9;Documents/jumpSpritesheet.png&#10;#&#9;Documents/walkLeftSpritesheet.png&#10;#&#9;Documents/walkRightSpritesheet.png&#10;#&#9;pom.xml&#10;#&#9;src/main/java/module-info.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'pomodoro'&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;Documents/Excel Sheets United CAB302 Project Brief.docx&#10;#&#9;Documents/IntelliJ Set up.pdf&#10;#&#9;Documents/Meeting Minutes .xlsx&#10;#&#9;Documents/Meeting Minutes Post Checkpoint 1.xlsx&#10;#&#9;Documents/README.md&#10;#&#9;Documents/User Sories 1-12.docx&#10;#&#9;Documents/User Stories 20.docx&#10;#&#9;Documents/User Story Template.docx&#10;#&#9;Documents/UserStories.txt&#10;#&#9;Documents/idleSpritesheet-sad.png&#10;#&#9;Documents/idleSpritesheet@2x.png&#10;#&#9;Documents/jumpSpritesheet.png&#10;#&#9;Documents/walkLeftSpritesheet.png&#10;#&#9;Documents/walkRightSpritesheet.png&#10;#&#9;pom.xml&#10;#&#9;src/main/java/module-info.java" />
+    <MESSAGE value="Branch merger with triviaModule." />
+    <option name="LAST_COMMIT_MESSAGE" value="Branch merger with triviaModule." />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
 </project>

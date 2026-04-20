@@ -1,6 +1,8 @@
 module project {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
+    requires org.xerial.sqlitejdbc;
 
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
@@ -11,4 +13,7 @@ module project {
 
     opens project.pomodoro to javafx.fxml;
     exports project.pomodoro;
+    opens project.Trivia.view to javafx.fxml;
+    exports project.Trivia;
+    exports project.Trivia.dao;
 }

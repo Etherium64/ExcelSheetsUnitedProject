@@ -10,11 +10,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <HBox fx:id="canvas" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.desktoppet302.PetController">
-    <ImageView fitHeight="150.0" fitWidth="200.0">
-        <image>
-            <Image url="@/pet.png"/>
-        </image>
+      fx:controller="org.example.desktoppet302.PetController"
+      style="-fx-background-color: transparent;">
+    <ImageView fx:id="petImage" preserveRatio="true" fitWidth="100"
+               onMouseClicked="#onImageClick" onMouseDragged="#onImageDrag">
+        <Image fx:id="pet" url="@/pet.png"/>
     </ImageView>
-
 </HBox>

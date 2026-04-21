@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/desktoppet302/PetController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/desktoppet302/DesktopPet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/desktoppet302/DesktopPet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/desktoppet302/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/desktoppet302/pet-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/desktoppet302/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/desktoppet302/PetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/desktoppet302/pet-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/desktoppet302/pet-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,18 +31,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "jakefarrell57"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;jakefarrell57&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Etherium64/ExcelSheetsUnitedProject.git",
-    "accountId": "f3a6a29a-c208-4546-913f-07c8c7ec351e"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Etherium64/ExcelSheetsUnitedProject.git&quot;,
+    &quot;accountId&quot;: &quot;f3a6a29a-c208-4546-913f-07c8c7ec351e&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -65,7 +66,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "SCA",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Gemma Morgan/Desktop/UNI/CAB302/DesktopPetCAB302/src/main/resources"
   }

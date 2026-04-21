@@ -11,7 +11,6 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.geometry.Rectangle2D;
-
 import java.io.IOException;
 import java.net.URL;
 
@@ -30,37 +29,34 @@ public class DesktopPet extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
+        //OBSOLETE!!!!!
+
         // Find image URL inside resources folder
         URL imageFile = getClass().getResource("/pet.png");
-
         // Create and load image into JavaFx
         assert imageFile != null;
         Image image = new Image(imageFile.toExternalForm());
         ImageView petImage = new ImageView(image);
-
         // Set image size and keep aspect ratio
         petImage.setFitWidth(petSize);
         petImage.setPreserveRatio(true);
-
         // Load smaller image of pet
         URL imageFileSmall = getClass().getResource("/pet.png");
-
         assert imageFileSmall != null;
         Image imageSmall = new Image(imageFileSmall.toExternalForm());
         ImageView petImageSmall = new ImageView(imageSmall);
-
         petImageSmall.setFitWidth(petSizeSmall);
         petImageSmall.setPreserveRatio(true);
-
-
         ImageView pet = petImage;
-
         // Create canvas to hold the image
         HBox canvas = new HBox(pet);
         canvas.setStyle("-fx-background-color: transparent;");
 
-        FXMLLoader fxmlLoader = new FXMLLoader(DesktopPet.class.getResource("pet-view.fxml"));
+        //OBSOLETE!!!!!
 
+
+        //Load FXML page for desktop pet.
+        FXMLLoader fxmlLoader = new FXMLLoader(DesktopPet.class.getResource("pet-view.fxml"));
 
         // Create transparent window to hold canvas
         Scene scene = new Scene(fxmlLoader.load(), sceneSizeX, sceneSizeY, Color.TRANSPARENT);
@@ -70,10 +66,13 @@ public class DesktopPet extends Application {
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setAlwaysOnTop(true);
 
-
-
         // Show window so stage height is properly known
         stage.show();
+
+
+
+
+
 
         // get screen bounds and lock pet to bottom of screen
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
@@ -95,7 +94,6 @@ public class DesktopPet extends Application {
 
             // Find right edge of screen minus the pets width
             double rightScreenEdge = bounds.getMaxX() - stage.getWidth();
-
             // Clamp X-axis so pet cannot go off sides of screen
             if (mouseX < leftScreenEdge) {
                 mouseX = leftScreenEdge;
@@ -103,7 +101,6 @@ public class DesktopPet extends Application {
             if (mouseX > rightScreenEdge) {
                 mouseX = rightScreenEdge;
             }
-
             // Apply clamped X position to image
             stage.setX(mouseX);
         });

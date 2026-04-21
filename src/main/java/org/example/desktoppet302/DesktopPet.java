@@ -20,40 +20,14 @@ public class DesktopPet extends Application {
     double dragOffsetX;
 
     // Sets size of window which holds the pet
-    double sceneSizeX = 125;
+    Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+    double sceneSizeX = bounds.getWidth();
     double sceneSizeY = 125;
 
     // Sets size of pet image
     double petSize = 115;
-    double petSizeSmall = 80;
     @Override
     public void start(Stage stage) throws IOException {
-
-        //OBSOLETE!!!!!
-
-        // Find image URL inside resources folder
-        URL imageFile = getClass().getResource("/pet.png");
-        // Create and load image into JavaFx
-        assert imageFile != null;
-        Image image = new Image(imageFile.toExternalForm());
-        ImageView petImage = new ImageView(image);
-        // Set image size and keep aspect ratio
-        petImage.setFitWidth(petSize);
-        petImage.setPreserveRatio(true);
-        // Load smaller image of pet
-        URL imageFileSmall = getClass().getResource("/pet.png");
-        assert imageFileSmall != null;
-        Image imageSmall = new Image(imageFileSmall.toExternalForm());
-        ImageView petImageSmall = new ImageView(imageSmall);
-        petImageSmall.setFitWidth(petSizeSmall);
-        petImageSmall.setPreserveRatio(true);
-        ImageView pet = petImage;
-        // Create canvas to hold the image
-        HBox canvas = new HBox(pet);
-        canvas.setStyle("-fx-background-color: transparent;");
-
-        //OBSOLETE!!!!!
-
 
         //Load FXML page for desktop pet.
         FXMLLoader fxmlLoader = new FXMLLoader(DesktopPet.class.getResource("pet-view.fxml"));
@@ -69,42 +43,8 @@ public class DesktopPet extends Application {
         // Show window so stage height is properly known
         stage.show();
 
-
-
-
-
-
-        // get screen bounds and lock pet to bottom of screen
-        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+        // Set screen bounds and lock pet to bottom of screen
         stage.setY(bounds.getMaxY() - stage.getHeight());
-
-        // store where on the pet the mouse was pressed
-        pet.setOnMousePressed(mousePress -> {
-            dragOffsetX = mousePress.getSceneX();
-        });
-
-        // Only move on x-axis
-        pet.setOnMouseDragged(mouseDrag -> {
-
-            // Get the X position based on mouse movement
-            double mouseX = mouseDrag.getScreenX() - dragOffsetX;
-
-            // Find left edge of screen
-            double leftScreenEdge = bounds.getMinX();
-
-            // Find right edge of screen minus the pets width
-            double rightScreenEdge = bounds.getMaxX() - stage.getWidth();
-            // Clamp X-axis so pet cannot go off sides of screen
-            if (mouseX < leftScreenEdge) {
-                mouseX = leftScreenEdge;
-            }
-            if (mouseX > rightScreenEdge) {
-                mouseX = rightScreenEdge;
-            }
-            // Apply clamped X position to image
-            stage.setX(mouseX);
-        });
-
 
     }
 

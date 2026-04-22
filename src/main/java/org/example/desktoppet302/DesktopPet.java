@@ -23,9 +23,6 @@ public class DesktopPet extends Application {
     Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
     double sceneSizeX = bounds.getWidth();
     double sceneSizeY = 125;
-
-    // Sets size of pet image
-    double petSize = 115;
     @Override
     public void start(Stage stage) throws IOException {
 

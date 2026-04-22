@@ -51,28 +51,9 @@ public class PetController {
     public void initialize() {
         //Set bounds of screen.
         bounds = Screen.getPrimary().getVisualBounds();
-        TranslateTransition move = new TranslateTransition();
-        move.setNode(petImage);
-        move.setDuration(Duration.seconds(3));
-        move.setByX(500);
-
-        //move.setCycleCount(Timeline.INDEFINITE);
-        move.play();
-
-        Stage stage = new Stage();
-
-        //Creating a scene object
-        //Scene scene = new Scene(new Group(petImage));
-        //Adding scene to the stage
-        //stage.setScene(scene);
-        //Displaying the contents of the stage
-        //stage.show();
 
 
-        //move.setDuration(Duration.seconds(3));
-        //move.setByX(-500);
-        //move.setCycleCount(Timeline.INDEFINITE);
-        //move.play();
+
     }
 
 
@@ -80,12 +61,17 @@ public class PetController {
     // State change when animal is clicked.
     @FXML
     protected void onImageClick() {
-        var timeline =
-                new Timeline(
-                        new KeyFrame(Duration.seconds(0), p -> petImage.setFitHeight(50)),
-                        new KeyFrame(Duration.seconds(0.5), p -> petImage.setFitHeight(100)));
-        timeline.playFromStart();
-
+        //var timeline =
+        //        new Timeline(
+        //                new KeyFrame(Duration.seconds(0), p -> petImage.setFitHeight(50)),
+        //                new KeyFrame(Duration.seconds(0.5), p -> petImage.setFitHeight(100)));
+        //timeline.playFromStart();
+        TranslateTransition move = new TranslateTransition();
+        move.setNode(petImage);
+        move.setDuration(Duration.seconds(3));
+        move.setByX(500);
+        move.setAutoReverse(true);
+        move.play();
     }
 
     @FXML
@@ -95,12 +81,13 @@ public class PetController {
                         new KeyFrame(Duration.seconds(0), p -> petImage.setRotate(180)),
                         new KeyFrame(Duration.seconds(0.5), p -> petImage.setRotate(0)));
         timeline.playFromStart();
-
     }
 
     @FXML
-    protected void onImageDrag(ActionEvent event) {
-        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+    protected void onImageDrag() {
+        // Get current stage on window.
+        Stage stage = (Stage) canvas.getScene().getWindow();
+        // Get point of first click.
         petImage.setOnMousePressed(mousePress -> {
             dragOffsetX = mousePress.getSceneX();
         });
@@ -118,17 +105,8 @@ public class PetController {
             if (mouseX > rightScreenEdge) {
                 mouseX = rightScreenEdge;
             }
-
-
             // Apply clamped X position to image
-
-
-            petImage.setTranslateX(mouseX);
-
-
-
-
+            stage.setX(mouseX);
         });
-
     }
 }

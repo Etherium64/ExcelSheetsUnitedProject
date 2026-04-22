@@ -5,12 +5,23 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+/**
+ * Main entry point for the Trivia game application.
+ * <p>
+ * This class reads trivia questions from a text file, presents them to the user,
+ * validates answers, and tracks the player's score. The game ends with a
+ * performance-based message depending on the final score.
+ * </p>
+ * <p>
+ *     Note this file is now redundant and an old iteration of the trivia module.
+ * </p>
+ *
+ * @author Ethan B
+ */
 public class Trivia {
 
     /**
      * @param args the command line arguments
-     * @throws java.io.FileNotFoundException
      */
     public static void main(String[] args) throws FileNotFoundException {
         //scanner to read txt file input

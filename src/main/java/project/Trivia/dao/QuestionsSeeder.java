@@ -3,7 +3,28 @@ package project.Trivia.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+/**
+ * Utility class responsible for populating the questions table with initial data.
+ * <p>
+ * This class uses a prepared statement to insert predefined trivia questions into the database.
+ * </p>
+ *
+ * @author Ethan B
+ */
+
 public class QuestionsSeeder {
+
+    /**
+     * Seeds the database with initial trivia questions.
+     * <p>
+     * Inserts questions into the {@code questions} table:
+     * The {@code INSERT OR IGNORE} clause ensures that duplicate entries are not added
+     * if the method is called multiple times. Each question includes four multiple-choice options.
+     * </p>
+     *
+     * @throws RuntimeException if a database access error occurs
+     */
+
     public static void seed() {
         String sql = "INSERT OR IGNORE INTO questions (question, option_a, option_b, option_c, option_d, correct_answer) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();

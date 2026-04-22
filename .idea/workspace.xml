@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/Trivia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/Trivia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/dao/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/dao/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/dao/DatabaseInitialiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/dao/DatabaseInitialiser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/dao/QuestionsSeeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/dao/QuestionsSeeder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/dao/ScoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/dao/ScoreDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/view/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/view/MainController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +53,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -66,7 +75,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Problems",
+    "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "advanced.settings"
@@ -131,5 +140,16 @@
     <MESSAGE value="Branch merger with triviaModule." />
     <option name="LAST_COMMIT_MESSAGE" value="Branch merger with triviaModule." />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/project/Trivia/dao/DatabaseConnection.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

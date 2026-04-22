@@ -13,7 +13,7 @@
       style="-fx-background-color: transparent;">
     <ImageView fx:id="petImage" preserveRatio="true" fitWidth="100"
                onMouseClicked="#onImageClick" onMouseDragged="#onImageDrag"
-               onMouseReleased="#onDragExit">
+               onMouseReleased="#onDragExit" >
         <Image fx:id="pet" url="@/pet.png"/>
     </ImageView>
 </HBox>

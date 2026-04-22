@@ -1,11 +1,14 @@
 package org.example.desktoppet302;
 
 import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.*;
@@ -13,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.input.MouseEvent.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -41,16 +45,37 @@ public class PetController {
     @FXML
     private Image pet;
 
-    @FXML
-    public double mouse;
 
     // Initialise starting values.
     @FXML
     public void initialize() {
         //Set bounds of screen.
         bounds = Screen.getPrimary().getVisualBounds();
+        TranslateTransition move = new TranslateTransition();
+        move.setNode(petImage);
+        move.setDuration(Duration.seconds(3));
+        move.setByX(500);
 
+        //move.setCycleCount(Timeline.INDEFINITE);
+        move.play();
+
+        Stage stage = new Stage();
+
+        //Creating a scene object
+        //Scene scene = new Scene(new Group(petImage));
+        //Adding scene to the stage
+        //stage.setScene(scene);
+        //Displaying the contents of the stage
+        //stage.show();
+
+
+        //move.setDuration(Duration.seconds(3));
+        //move.setByX(-500);
+        //move.setCycleCount(Timeline.INDEFINITE);
+        //move.play();
     }
+
+
 
     // State change when animal is clicked.
     @FXML
@@ -60,6 +85,7 @@ public class PetController {
                         new KeyFrame(Duration.seconds(0), p -> petImage.setFitHeight(50)),
                         new KeyFrame(Duration.seconds(0.5), p -> petImage.setFitHeight(100)));
         timeline.playFromStart();
+
     }
 
     @FXML
@@ -73,8 +99,8 @@ public class PetController {
     }
 
     @FXML
-    protected void onImageDrag() {
-
+    protected void onImageDrag(ActionEvent event) {
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         petImage.setOnMousePressed(mousePress -> {
             dragOffsetX = mousePress.getSceneX();
         });
@@ -99,19 +125,8 @@ public class PetController {
 
             petImage.setTranslateX(mouseX);
 
-            Parent root = petImage.getParent();
 
-            //Creating a scene object
-            Scene scene = new Scene(root, 125, 125);
 
-            //Setting title to the Stage
-            stage.setTitle("Multiple transformations");
-
-            //Adding scene to the stage
-            stage.setScene(scene);
-
-            //Displaying the contents of the stage
-            stage.show();
 
         });
 

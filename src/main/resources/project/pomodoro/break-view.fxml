@@ -9,11 +9,10 @@
 
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="project.pomodoro.ButtonController">
     <VBox alignment="CENTER" spacing="30.0" fillWidth="false">
-        <HBox spacing="40.00" alignment="CENTER">
+        <HBox spacing="100.00" alignment="CENTER">
             <Button fx:id="pomoBtn"
                     text="Pomodoro"
                     onAction="#pomoBtnClick"
-                    disable="false"
             />
             <Button fx:id="scoreBtn" text="Score"/>
         </HBox>
@@ -22,14 +21,10 @@
             <Label fx:id="timerLabel"/>
         </HBox>
 
-        <HBox spacing="20.0" alignment="CENTER">
-            <Button fx:id="startBtn"
+        <HBox spacing="100.0" alignment="CENTER">
+            <Button fx:id="switchBtn"
                     text="Start"
-                    onAction="#startBtnClick"
-            />
-            <Button fx:id="pauseBtn"
-                    text="Pause"
-                    onAction="#pauseBtnClick"
+                    onAction="#switchBtnClick"
             />
             <Button fx:id="resetBtn"
                     text="Reset"

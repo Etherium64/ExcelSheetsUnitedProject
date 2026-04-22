@@ -8,21 +8,10 @@ public class ButtonController {
 
     MainApplication pomodoroScene = new MainApplication();
     MainApplication breakScene = new MainApplication();
+    private volatile boolean buttonPaused = false;
 
     @FXML
-    public void startBtnClick() {
-        TimeController.getTimer().startTimer();
-    }
-
-    @FXML
-    public void pauseBtnClick() {
-        TimeController.getTimer().pauseTimer();
-    }
-
-    @FXML
-    public void resetBtnClick() {
-        TimeController.getTimer().resetTimer();
-    }
+    private Button switchBtn;
 
     @FXML
     private Button breakBtn;
@@ -30,6 +19,24 @@ public class ButtonController {
     @FXML
     private Button pomoBtn;
 
+    @FXML
+    public void switchBtnClick() {
+        TimeController.getTimer().switchTimer();
+
+        if (!buttonPaused)
+        {
+            switchBtn.setText("Pause");
+            buttonPaused = true;
+        }
+        else
+        {
+            switchBtn.setText("Start");
+            buttonPaused = false;
+        }
+    }
+
+    @FXML
+    public void resetBtnClick() { TimeController.getTimer().resetTimer();}
     @FXML
     protected void pomoBtnClick() throws Exception {
         Stage pomoStage = (Stage) pomoBtn.getScene().getWindow();

@@ -10,7 +10,7 @@ import java.util.TimerTask;
 public class TimeController {
 
     static private TimeController thisTimeController;
-    private volatile boolean isPaused = false;
+    volatile boolean isPaused = true;
     private boolean firstCount = true;
 
     private Timer pomodoroTimer;
@@ -34,15 +34,15 @@ public class TimeController {
     public void setupTimer(Label thisLabel, int thisTime) {
         timerLabel = thisLabel;
         timeElapsed = thisTime;
-        timeBegins = thisTime+1;
-
+        timeBegins = thisTime;
+        isPaused = true;
     }
 
-    public void startTimer() {
-        isPaused = false;
 
-        if (firstCount)
-        {
+    public void switchTimer() {
+        isPaused = !isPaused;
+
+        if (firstCount) {
             firstCount = false;
             pomodoroTimer = new Timer();
             pomodoroTimer.schedule(new TimerTask() {
@@ -54,9 +54,7 @@ public class TimeController {
                     }
                 }
             }, 1000, 1000);
-        }
-        else
-        {
+        } else {
             pomodoroTimer = new Timer();
             pomodoroTimer.schedule(new TimerTask() {
                 @Override
@@ -67,17 +65,12 @@ public class TimeController {
                 }
             }, 1000, 1000);
         }
-
-
-    }
-
-    public void pauseTimer() {
-        isPaused = true;
     }
 
     public void resetTimer() {
+        isPaused = true;
         timeElapsed = timeBegins;
-
+        timerLabel.setText(formatTimer());
     }
 
 }

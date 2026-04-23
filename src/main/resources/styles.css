@@ -1,0 +1,43 @@
+.root {
+    -fx-background-color: #f0f0f0;
+    -fx-font-family: "Arial";
+}
+
+/* Header */
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #333333;
+}
+
+/* Score label */
+#scoreLabel {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0066cc;
+}
+
+/* Status message */
+#statusLabel {
+    -fx-font-size: 14px;
+    -fx-text-fill: #008000;
+}
+
+/* Button styling */
+.button {
+    -fx-font-size: 16px;
+    -fx-padding: 10 20;
+    -fx-background-color: #0066cc;
+    -fx-text-fill: white;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.button:hover {
+    -fx-background-color: #0055aa;
+}
+
+/* Text field */
+.text-field {
+    -fx-font-size: 14px;
+    -fx-pref-height: 30px;
+}

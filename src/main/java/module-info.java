@@ -16,4 +16,10 @@ module project {
     opens project.Trivia.view to javafx.fxml;
     exports project.Trivia;
     exports project.Trivia.dao;
+
+    requires javafx.graphics;
+    requires javafx.base;
+
+    opens AnimationStates;
+    exports AnimationStates;
 }

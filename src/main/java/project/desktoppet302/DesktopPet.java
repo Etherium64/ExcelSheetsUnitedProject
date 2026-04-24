@@ -70,16 +70,19 @@ public class DesktopPet extends Application {
             // Get the X position based on mouse movement
             double mouseX = mouseDrag.getScreenX() - dragOffsetX;
 
-            // Find left edge of screen
+            isDragging = true;
+
+            double mouseX = mouseDrag.getScreenX() - dragOffsetX;
+
+            // Screen boundaries
             double leftScreenEdge = bounds.getMinX();
+            double rightScreenEdge = bounds.getMaxX() - petStage.getWidth();
 
-            // Find right edge of screen minus the pets width
-            double rightScreenEdge = bounds.getMaxX() - stage.getWidth();
-
-            // Clamp X-axis so pet cannot go off sides of screen
+            // Clamp movement within screen
             if (mouseX < leftScreenEdge) {
                 mouseX = leftScreenEdge;
             }
+
             if (mouseX > rightScreenEdge) {
                 mouseX = rightScreenEdge;
             }

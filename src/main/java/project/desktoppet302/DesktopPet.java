@@ -70,22 +70,31 @@ public class DesktopPet extends Application {
             // Get the X position based on mouse movement
             double mouseX = mouseDrag.getScreenX() - dragOffsetX;
 
-            isDragging = true;
+                    double desiredX = petStage.getX() + (petStage.getWidth() / 2)
+                            - (targetStage.getWidth() / 2);
 
-            double mouseX = mouseDrag.getScreenX() - dragOffsetX;
+                    double desiredY = petStage.getY() - targetStage.getHeight();
 
-            // Screen boundaries
-            double leftScreenEdge = bounds.getMinX();
-            double rightScreenEdge = bounds.getMaxX() - petStage.getWidth();
+                    double leftScreenEdge = bounds.getMinX();
+                    double rightScreenEdge = bounds.getMaxX() - targetStage.getWidth();
 
-            // Clamp movement within screen
-            if (mouseX < leftScreenEdge) {
-                mouseX = leftScreenEdge;
-            }
+                    // Clamp horizontally
+                    if (desiredX < leftScreenEdge) {
+                        desiredX = leftScreenEdge;
+                    }
 
-            if (mouseX > rightScreenEdge) {
-                mouseX = rightScreenEdge;
-            }
+                    if (desiredX > rightScreenEdge) {
+                        desiredX = rightScreenEdge;
+                    }
+
+                    // Clamp vertically (top)
+                    if (desiredY < bounds.getMinY()) {
+                        desiredY = bounds.getMinY();
+                    }
+
+                    targetStage.setX(desiredX);
+                    targetStage.setY(desiredY);
+                }
 
             // Apply clamped X position to image
             stage.setX(mouseX);

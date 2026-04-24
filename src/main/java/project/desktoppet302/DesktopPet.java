@@ -92,7 +92,12 @@ public class DesktopPet extends Application {
         });
     }
 
-    public static void main(String[] args) {
-        launch(args);
+
+    private void onPetClicked(Stage petStage) {
+
+        System.out.println("Pet clicked!");
+
+        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+
     }
 }

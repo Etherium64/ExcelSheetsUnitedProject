@@ -5,12 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AnimationStates/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AnimationStates/Animation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AnimationStates/animController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AnimationStates/animController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AnimationStates/animStates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AnimationStates/animStates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AnimationStates/loadImages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AnimationStates/loadImages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +73,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "AnimationSetUp",
     "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Problems",
+    "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "advanced.settings"
@@ -156,9 +150,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="Branch merger with triviaModule." />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ExelsheetsUnite$AnimationTestWindow.ic" NAME="AnimationTestWindow Coverage Results" MODIFIED="1776849881894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>AnimationStates.*</FILTER>
-    </SUITE>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/project/Trivia/dao/DatabaseConnection.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

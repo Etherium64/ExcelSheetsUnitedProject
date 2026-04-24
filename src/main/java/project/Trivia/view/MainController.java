@@ -16,7 +16,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
+/**
+ * Controller for the main Trivia Game interface.
+ * <p>
+ * Manages user interaction with the quiz UI, including question display,
+ * answer handling, score tracking, and saving user scores to the database.
+ * Uses FXML injection to bind UI components and coordinates game flow.
+ * </p>
+ *
+ * @author Ethan B
+ */
 public class MainController {
     @FXML private TextField usernameField;
     @FXML public Label scoreLabel;
@@ -33,7 +42,15 @@ public class MainController {
     @FXML private VBox triviaSection;
     @FXML private VBox usernameSection;
 
-
+    /**
+     * Handles answer button clicks.
+     * <p>
+     * Evaluates the selected answer, updates score and status, and loads the next question.
+     * After MAX_QUESTIONS, disables buttons and transitions to username input.
+     * </p>
+     *
+     * @param event the ActionEvent from the clicked button
+     */
     @FXML
     private void onAnswerClick(javafx.event.ActionEvent event) {
         if (questionCount >= MAX_QUESTIONS) return;
@@ -59,6 +76,10 @@ public class MainController {
             loadNextQuestion();
         }
     }
+
+    /**
+     * Disables all answer buttons to prevent further input after quiz completion.
+     */
     private void disableButtons() {
         buttonA.setDisable(true);
         buttonB.setDisable(true);
@@ -68,12 +89,23 @@ public class MainController {
     private List<Question> questions = new ArrayList<>();
     private int currentQuestionIndex = 0;
 
+    /**
+     * Inner class representing a trivia question.
+     */
     public class Question {
         String question, a, b, c, d, correct;
         public Question(String q, String a, String b, String c, String d, String correct) {
             this.question = q; this.a = a; this.b = b; this.c = c; this.d = d; this.correct = correct;
         }
     }
+
+    /**
+     * Initializes the controller after FXML injection.
+     * <p>
+     * Loads and shuffles the list of questions from the database.
+     * Then displays the first question.
+     * </p>
+     */
     @FXML
     private void initialize() {
         loadQuestions();
@@ -81,6 +113,9 @@ public class MainController {
         loadNextQuestion();
     }
 
+    /**
+     * Loads all questions from the database into the questions list.
+     */
     private void loadQuestions() {
         String sql = "SELECT * FROM questions";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -101,6 +136,11 @@ public class MainController {
         }
     }
 
+
+    /**
+     * Loads and displays the next question from the shuffled list.
+     * Updates the UI with the question text and answer options.
+     */
     private void loadNextQuestion() {
         if (currentQuestionIndex >= questions.size() || currentQuestionIndex >= MAX_QUESTIONS) {
             // End quiz
@@ -115,6 +155,10 @@ public class MainController {
         correctAnswer = q.correct;
     }
 
+    /**
+     * Displays a popup showing the top 5 scores from the database.
+     * The popup automatically closes after 10 seconds.
+     */
     private void showTopScores() {
         VBox popup = new VBox(10);
         popup.setAlignment(Pos.CENTER);
@@ -155,6 +199,13 @@ public class MainController {
         }).start();
     }
 
+    /**
+     * Handles saving the user's score to the database.
+     * <p>
+     * Validates username input, saves the score via DAO, and displays top scores.
+     * Shows an error message if username is empty.
+     * </p>
+     */
     @FXML
     private void onSaveClick() {
         String username = usernameField.getText().trim();

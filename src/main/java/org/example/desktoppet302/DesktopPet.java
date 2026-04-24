@@ -21,8 +21,8 @@ public class DesktopPet extends Application {
 
     // Sets size of window which holds the pet
     Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
-    double sceneSizeX = bounds.getWidth();
-    double sceneSizeY = 125;
+    double sceneSizeX = bounds.getWidth()/2;
+    double sceneSizeY = bounds.getHeight()/2;
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -32,16 +32,16 @@ public class DesktopPet extends Application {
         // Create transparent window to hold canvas
         Scene scene = new Scene(fxmlLoader.load(), sceneSizeX, sceneSizeY, Color.TRANSPARENT);
         stage.setScene(scene);
-
+        stage.setTitle("Desktop Pet");
         // Remove top bar/borders and keep window in front
-        stage.initStyle(StageStyle.TRANSPARENT);
+        //stage.initStyle(StageStyle.TRANSPARENT);
         stage.setAlwaysOnTop(true);
 
         // Show window so stage height is properly known
         stage.show();
 
         // Set screen bounds and lock pet to bottom of screen
-        stage.setY(bounds.getMaxY() - stage.getHeight());
+        //stage.setY(bounds.getMaxY() - stage.getHeight());
 
     }
 

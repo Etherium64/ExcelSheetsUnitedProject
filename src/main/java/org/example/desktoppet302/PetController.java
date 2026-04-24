@@ -31,6 +31,9 @@ public class PetController {
     private double dragOffsetX;
 
     @FXML
+    private double dragOffsetY;
+
+    @FXML
     private HBox canvas;
 
     @FXML
@@ -45,13 +48,16 @@ public class PetController {
     @FXML
     private Image pet;
 
+    @FXML
+    private TranslateTransition move;
 
     // Initialise starting values.
     @FXML
     public void initialize() {
         //Set bounds of screen.
         bounds = Screen.getPrimary().getVisualBounds();
-
+        move = new TranslateTransition();
+        move.setNode(petImage);
 
 
     }
@@ -66,8 +72,7 @@ public class PetController {
         //                new KeyFrame(Duration.seconds(0), p -> petImage.setFitHeight(50)),
         //                new KeyFrame(Duration.seconds(0.5), p -> petImage.setFitHeight(100)));
         //timeline.playFromStart();
-        TranslateTransition move = new TranslateTransition();
-        move.setNode(petImage);
+
         move.setDuration(Duration.seconds(3));
         move.setByX(500);
         move.setAutoReverse(true);
@@ -90,14 +95,21 @@ public class PetController {
         // Get point of first click.
         petImage.setOnMousePressed(mousePress -> {
             dragOffsetX = mousePress.getSceneX();
+            dragOffsetY = mousePress.getSceneY();
         });
         petImage.setOnMouseDragged(mouseDrag -> {
             // Get the X position based on mouse movement
             double mouseX = mouseDrag.getScreenX() - dragOffsetX;
+            // Get the Y position based on mouse movement
+            double mouseY = mouseDrag.getScreenY() - dragOffsetY;
             // Find left edge of screen
             double leftScreenEdge = bounds.getMinX();
             // Find right edge of screen minus the pets width
             double rightScreenEdge = bounds.getMaxX() - petImage.getFitWidth();
+            // Find left edge of screen
+            double bottomScreenEdge = bounds.getMinY() + petImage.getFitHeight();
+            // Find right edge of screen minus the pets width
+            double topScreenEdge = bounds.getMaxY();
             // Clamp X-axis so pet cannot go off sides of screen
             if (mouseX < leftScreenEdge) {
                 mouseX = leftScreenEdge;
@@ -105,8 +117,25 @@ public class PetController {
             if (mouseX > rightScreenEdge) {
                 mouseX = rightScreenEdge;
             }
+            // Clamp X-axis so pet cannot go off sides of screen
+            if (mouseY < bottomScreenEdge) {
+                mouseY = bottomScreenEdge;
+            }
+            if (mouseY > topScreenEdge) {
+                mouseY = topScreenEdge;
+            }
             // Apply clamped X position to image
-            stage.setX(mouseX);
+            move.setToX(mouseX);
+            move.setToY(mouseY);
+            move.play();
         });
+//        petImage.setOnMouseDragReleased(mouseDragEvent -> {
+//            move.setByX(petImage.getTranslateX());
+//            move.play();
+//        });
+
     }
 }
+
+
+

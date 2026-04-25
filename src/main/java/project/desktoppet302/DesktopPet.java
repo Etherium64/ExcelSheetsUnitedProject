@@ -21,14 +21,14 @@ public class DesktopPet extends Application {
     double dragOffsetX;
 
     // Sets size of window which holds the pet
-    double sceneSizeX = 125;
-    double sceneSizeY = 125;
+    double sceneSizeX = 300;
+    double sceneSizeY = 300;
 
     // Handles animation states (idle, walk, jump, etc.)
     private animStates petStates;
 
     // Sets size of pet image
-    double petSize = 115;
+    double petSize = 250;
 
     @Override
     public void start(Stage stage) throws IOException {

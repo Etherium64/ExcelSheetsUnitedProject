@@ -28,14 +28,12 @@ public class DesktopPet extends Application {
 
         //Load FXML page for desktop pet.
         FXMLLoader fxmlLoader = new FXMLLoader(DesktopPet.class.getResource("pet-view.fxml"));
-        // Create transparent window to hold canvas
-        Scene scene = new Scene(fxmlLoader.load(), sceneSizeX, sceneSizeY, Color.TRANSPARENT);
+        // Create window to hold canvas.
+        Scene scene = new Scene(fxmlLoader.load(), sceneSizeX, sceneSizeY);
         stage.setScene(scene);
         stage.setTitle("Desktop Pet");
-        // Remove top bar/borders and keep window in front
-        //stage.initStyle(StageStyle.TRANSPARENT);
         stage.setAlwaysOnTop(true);
-        // Show window so stage height is properly known
+        // Show window.
         stage.show();
 
     }

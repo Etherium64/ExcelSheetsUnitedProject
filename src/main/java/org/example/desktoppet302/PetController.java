@@ -2,28 +2,18 @@ package org.example.desktoppet302;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.*;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.*;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.image.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.input.MouseEvent.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
-import java.io.IOException;
-import java.util.Objects;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class PetController {
 
@@ -57,6 +47,12 @@ public class PetController {
     @FXML
     private TranslateTransition move;
 
+    @FXML
+    private Timer timer;
+
+    @FXML
+    private TimerTask moving;
+
     // Initialise starting values.
     @FXML
     public void initialize() {
@@ -64,17 +60,51 @@ public class PetController {
         bounds = Screen.getPrimary().getVisualBounds();
         move = new TranslateTransition();
         move.setNode(petImage);
+        timer  = new Timer();
+
+        Platform.runLater(this::idling);
+
     }
 
 
 
+    @FXML
+    protected void idling() {
+        Random z = new Random();
+        double x = z.nextDouble(-100, 100);
+        double y = z.nextDouble(-100, 100);
+        TimerTask moving = new TimerTask() {
+            @Override
+            public void run() {
+                move = new TranslateTransition();
+                move.setNode(petImage);
+                move.setDuration(Duration.seconds(3));
+                move.setByX(x);
+                move.setByY(y);
+                move.play();
+                move.setDuration(Duration.seconds(3));
+                move.play();
+            }
+        };
+        timer.schedule(moving, 3000);
+
+
+    }
+
     // State change when animal is clicked.
     @FXML
     protected void onImageClick() {
-
-        move.setDuration(Duration.seconds(3));
-        move.setByX(500);
-        move.play();
+//        move = new TranslateTransition();
+//        move.setNode(petImage);
+//        move.setDuration(Duration.seconds(3));
+//        move.setByX(100);
+//        move.play();
+        var timeline =
+                new Timeline(
+                        new KeyFrame(Duration.seconds(0), p -> petImage.setRotate(180)),
+                        new KeyFrame(Duration.seconds(0.5), p -> petImage.setRotate(0)));
+        timeline.playFromStart();
+        idling();
     }
 
     @FXML
@@ -88,6 +118,7 @@ public class PetController {
 
     @FXML
     protected void onImageDrag() throws InterruptedException {
+        move.pause();
         // Get current stage on window.
         stage = (Stage) canvas.getScene().getWindow();
         petImage.setOnMouseDragged(mouseDrag -> {
@@ -121,6 +152,7 @@ public class PetController {
             petImage.setTranslateX(mouseX);
             petImage.setTranslateY(mouseY);
         });
+        idling();
     }
 
 

@@ -7,29 +7,32 @@
 
 <?import javafx.scene.layout.StackPane?>
 
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.Region?>
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="project.pomodoro.ButtonController">
-    <VBox alignment="CENTER" spacing="30.0" fillWidth="false">
-        <HBox spacing="100.00" alignment="CENTER">
+    <VBox alignment="CENTER" spacing="50.0" fillWidth="false">
+        <HBox spacing="120.00" alignment="CENTER">
             <Button fx:id="pomoBtn"
                     text="Pomodoro"
-                    onAction="#pomoBtnClick"
-            />
+                    onAction="#pomoBtnClick"/>
             <Button fx:id="scoreBtn" text="Score"/>
         </HBox>
 
-        <HBox spacing="20.0" alignment="CENTER">
+        <VBox alignment="CENTER">
             <Label fx:id="timerLabel"/>
-        </HBox>
+            <ProgressBar fx:id="pB"/>
+            <Region prefHeight="100.0"/>
+        </VBox>
 
-        <HBox spacing="100.0" alignment="CENTER">
+        <HBox spacing="120.0" alignment="CENTER">
             <Button fx:id="switchBtn"
                     text="Start"
-                    onAction="#switchBtnClick"
-            />
+                    onAction="#switchBtnClick"/>
             <Button fx:id="resetBtn"
                     text="Reset"
-                    onAction ="#resetBtnClick"
-            />
+                    onAction="#resetBtnClick"/>
         </HBox>
     </VBox>
 </StackPane>
+
+

@@ -27,6 +27,17 @@
     -fx-font-size: 200;
 }
 
+
+.progress-bar > .bar {
+    -fx-padding: 10px;
+    -fx-background-insets: 0;
+}
+
+.progress-bar {
+    -fx-pref-width: 1000px;
+    -fx-pref-height: 75;
+}
+
 .root {
     -fx-background-color: #121212;
 }

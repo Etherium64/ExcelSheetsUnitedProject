@@ -2,9 +2,11 @@ package project.pomodoro;
 
 import javafx.application.Platform;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
 
 
 public class TimeController {
@@ -17,6 +19,7 @@ public class TimeController {
     private Label timerLabel;
     private static int timeElapsed;
     private static int timeBegins;
+
 
     private String formatTimer() {
         int minutes = timeElapsed / 60;

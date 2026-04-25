@@ -1,5 +1,6 @@
 package org.example.desktoppet302;
 
+import AnimationStates.animStates;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
@@ -23,6 +24,9 @@ public class DesktopPet extends Application {
     double sceneSizeX = 125;
     double sceneSizeY = 125;
 
+    // Handles animation states (idle, walk, jump, etc.)
+    private animStates petStates;
+
     // Sets size of pet image
     double petSize = 115;
 
@@ -35,6 +39,15 @@ public class DesktopPet extends Application {
         // Create and load image into JavaFx
         Image image = new Image(imageFile.toExternalForm());
         ImageView petImage = new ImageView(image);
+
+        // Initialise animation system and set default state
+        petStates = new animStates();
+        petStates.setState(animStates.PetState.IDLE);
+
+        // ImageView used to display animation frames
+        ImageView petImage = new ImageView();
+        petImage.setFitWidth(petSize);
+        petImage.setPreserveRatio(true);
 
         // Set image size and keep aspect ratio
         petImage.setFitWidth(petSize);

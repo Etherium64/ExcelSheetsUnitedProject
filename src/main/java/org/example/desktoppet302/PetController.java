@@ -6,7 +6,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
+import javafx.geometry.*;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -40,7 +40,13 @@ public class PetController {
     private Rectangle2D bounds;
 
     @FXML
-    public Stage stage;
+    private double mouseX;
+
+    @FXML
+    private double mouseY;
+
+    @FXML
+    private Stage stage;
 
     @FXML
     private ImageView petImage;
@@ -58,8 +64,6 @@ public class PetController {
         bounds = Screen.getPrimary().getVisualBounds();
         move = new TranslateTransition();
         move.setNode(petImage);
-
-
     }
 
 
@@ -67,15 +71,9 @@ public class PetController {
     // State change when animal is clicked.
     @FXML
     protected void onImageClick() {
-        //var timeline =
-        //        new Timeline(
-        //                new KeyFrame(Duration.seconds(0), p -> petImage.setFitHeight(50)),
-        //                new KeyFrame(Duration.seconds(0.5), p -> petImage.setFitHeight(100)));
-        //timeline.playFromStart();
 
         move.setDuration(Duration.seconds(3));
         move.setByX(500);
-        move.setAutoReverse(true);
         move.play();
     }
 
@@ -89,27 +87,22 @@ public class PetController {
     }
 
     @FXML
-    protected void onImageDrag() {
+    protected void onImageDrag() throws InterruptedException {
         // Get current stage on window.
-        Stage stage = (Stage) canvas.getScene().getWindow();
-        // Get point of first click.
-        petImage.setOnMousePressed(mousePress -> {
-            dragOffsetX = mousePress.getSceneX();
-            dragOffsetY = mousePress.getSceneY();
-        });
+        stage = (Stage) canvas.getScene().getWindow();
         petImage.setOnMouseDragged(mouseDrag -> {
             // Get the X position based on mouse movement
-            double mouseX = mouseDrag.getScreenX() - dragOffsetX;
+            mouseX = mouseDrag.getSceneX();
             // Get the Y position based on mouse movement
-            double mouseY = mouseDrag.getScreenY() - dragOffsetY;
+            mouseY = mouseDrag.getSceneY();
             // Find left edge of screen
-            double leftScreenEdge = bounds.getMinX();
+            double leftScreenEdge = 0;
             // Find right edge of screen minus the pets width
-            double rightScreenEdge = bounds.getMaxX() - petImage.getFitWidth();
+            double rightScreenEdge = stage.getScene().getWidth() - petImage.getFitWidth();
             // Find left edge of screen
-            double bottomScreenEdge = bounds.getMinY() + petImage.getFitHeight();
+            double topScreenEdge = 0;
             // Find right edge of screen minus the pets width
-            double topScreenEdge = bounds.getMaxY();
+            double bottomScreenEdge = stage.getScene().getHeight() - petImage.getFitHeight();
             // Clamp X-axis so pet cannot go off sides of screen
             if (mouseX < leftScreenEdge) {
                 mouseX = leftScreenEdge;
@@ -118,23 +111,28 @@ public class PetController {
                 mouseX = rightScreenEdge;
             }
             // Clamp X-axis so pet cannot go off sides of screen
-            if (mouseY < bottomScreenEdge) {
-                mouseY = bottomScreenEdge;
-            }
-            if (mouseY > topScreenEdge) {
+            if (mouseY < topScreenEdge) {
                 mouseY = topScreenEdge;
             }
+            if (mouseY > bottomScreenEdge) {
+                mouseY = bottomScreenEdge;
+            }
             // Apply clamped X position to image
-            move.setToX(mouseX);
-            move.setToY(mouseY);
-            move.play();
+            petImage.setTranslateX(mouseX);
+            petImage.setTranslateY(mouseY);
         });
-//        petImage.setOnMouseDragReleased(mouseDragEvent -> {
-//            move.setByX(petImage.getTranslateX());
-//            move.play();
-//        });
-
     }
+
+
+
+
+//    public Stage getStage() {
+//        return stage;
+//    }
+//
+//    public void setStage(Stage stage) {
+//        this.stage = stage;
+//    }
 }
 
 

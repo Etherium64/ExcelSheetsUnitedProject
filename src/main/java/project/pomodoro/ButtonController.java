@@ -38,18 +38,21 @@ public class ButtonController {
     @FXML
     public void resetBtnClick() {
         TimeController.getTimer().resetTimer();
+        switchBtn.setDisable(false);
         switchBtn.setText("Start");
+        buttonPaused = false;
     }
+
     @FXML
     protected void pomoBtnClick() throws Exception {
         Stage pomoStage = (Stage) pomoBtn.getScene().getWindow();
         pomodoroScene.launchScene(pomoStage, "pomodoro-view.fxml", "25:00", 1500);
     }
+
     @FXML
     protected void breakBtnClick() throws Exception {
         Stage breakStage = (Stage) breakBtn.getScene().getWindow();
         breakScene.launchScene(breakStage, "break-view.fxml", "05:00", 300);
-
     }
 }
 

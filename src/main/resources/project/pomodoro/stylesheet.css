@@ -34,7 +34,7 @@
 }
 
 .progress-bar {
-    -fx-pref-width: 1000px;
+    -fx-pref-width: 500px;
     -fx-pref-height: 75;
 }
 

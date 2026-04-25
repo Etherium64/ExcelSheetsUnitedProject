@@ -21,7 +21,7 @@
         <VBox alignment="CENTER">
             <Label fx:id="timerLabel"/>
             <ProgressBar fx:id="pB"/>
-            <Region prefHeight="100.0"/>
+            <Region prefHeight="100" />
         </VBox>
 
         <HBox spacing="120.0" alignment="CENTER">

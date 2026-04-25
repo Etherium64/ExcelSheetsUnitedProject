@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -22,13 +23,14 @@ public class MainApplication extends Application {
         Scene scene = new Scene(parent, fullScreen.getWidth(), fullScreen.getHeight());
         scene.getStylesheets().add(stylesheet);
         stage.setTitle("Pomodoro");
-        stage.setScene(scene);
 
         Label timerLabel = (Label) parent.lookup("#timerLabel");
         timerLabel.setText(timeText);
-        ProgressBar pB = (ProgressBar) parent.lookup("#pB");
-        pB.setProgress(1);
-        TimeController.getTimer().setupTimer(timerLabel, timeElapsed);
+        ProgressBar timerBar = (ProgressBar) parent.lookup("#pB");
+        Button switchBtn = (Button) parent.lookup("#switchBtn");
+        TimeController.getTimer().setupTimer(timerLabel, timerBar, switchBtn, timeElapsed);
+
+        stage.setScene(scene);
     }
     @Override
     public void start(Stage primary) throws Exception {
@@ -38,7 +40,6 @@ public class MainApplication extends Application {
 }
 
 // Animated creature is idling somehwere... for Timer and Score screens
-// Progress Bar
 // Data base
 // Score screen
 // Database for Score

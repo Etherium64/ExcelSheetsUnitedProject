@@ -1,7 +1,7 @@
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "gh-pages" ]
   pull_request:
     branches: [ "master" ]
 

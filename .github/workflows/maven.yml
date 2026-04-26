@@ -25,5 +25,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: target/docs/javadoc
+          folder: target/docs
           token: ${{ secrets.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 }}

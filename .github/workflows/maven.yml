@@ -15,7 +15,6 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: 'corretto-21'
-          distribution: 'murine'
 
       - name: Generate Javadoc
         run: mvn javadoc:javadoc
@@ -23,6 +22,6 @@ jobs:
       - name: Publish Javadoc
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: target/site/apidocs
+          folder: target/docs
           branch: gh-pages
           target-folder: javadoc

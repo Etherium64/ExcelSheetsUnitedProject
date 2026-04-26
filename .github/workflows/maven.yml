@@ -1,16 +1,15 @@
-name: Java CI with Maven
+name: Deploy Javadoc
 
 on:
   push:
-    branches: [ "gh-pages" ]
-  pull_request:
-    branches: [ "Master" ]
+    branches: [ master ]
 
 jobs:
-  build:
+  deploy-javadoc:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
@@ -19,31 +18,12 @@ jobs:
           distribution: 'corretto'
           cache: maven
 
-      - name: Build with Maven
-        working-directory: ./ExcelSheetsUnitedProject
-        run: mvn --batch-mode -DskipTests package
-
       - name: Generate Javadoc
-        working-directory: ./ExcelSheetsUnitedProject
-        run: mvn javadoc:javadoc
+        run: mvn clean compile javadoc:javadoc
 
-      - name: Publish Javadoc
+      - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: target/docs/javadoc
           branch: gh-pages
-
-
-
-      - name: Test
-        working-directory: ./ExcelSheetsUnitedProject
-        run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
-
-      - name: Report
-        uses: dorny/test-reporter@v1
-        if: always()
-        with:
-          name: Maven Tests
-          path: ExcelSheetsUnitedProject/target/surefire-reports/*.xml
-          reporter: java-junit
-          fail-on-error: true
+          folder: target/site/apidocs
+          token: ${{ secrets.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 }}

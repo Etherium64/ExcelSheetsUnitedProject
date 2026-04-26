@@ -76,7 +76,6 @@
                 <configuration>
                     <source>9</source>
                     <target>9</target>
-                    <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>
             <plugin>

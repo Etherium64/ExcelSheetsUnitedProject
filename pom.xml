@@ -93,7 +93,6 @@
                 </executions>
                 <configuration>
                     <outputDirectory>${project.build.directory}/site</outputDirectory>
-                    <destDir>.</destDir>
                     <source>9</source>
                 </configuration>
             </plugin>

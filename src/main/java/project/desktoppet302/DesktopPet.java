@@ -14,18 +14,48 @@ import javafx.geometry.Rectangle2D;
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * A JavaFX application that displays a draggable desktop pet on the screen.
+ * The pet appears as a transparent window containing an image, locked to the bottom
+ * of the primary display. Users can drag the pet horizontally across the screen,
+ * but its movement is constrained to stay within the screen bounds.
+ */
 public class DesktopPet extends Application {
 
-    // Stores x coordinate of where the mouse first clicked on the pet
+    /**
+     * Stores the x-coordinate offset between the pet's window and the point
+     * where the user initially clicked to begin dragging. Used to ensure smooth dragging
+     * and prevent the pet from jumping to the mouse position.
+     */
     double dragOffsetX;
 
-    // Sets size of window which holds the pet
+    /**
+     * The width of the application window (scene) that contains the pet image.
+     * Default value is 125 pixels.
+     */
     double sceneSizeX = 125;
+
+    /**
+     * The height of the application window (scene) that contains the pet image.
+     * Default value is 125 pixels.
+     */
     double sceneSizeY = 125;
 
-    // Sets size of pet image
+    /**
+     * The displayed width of the pet image within the window. The height is scaled
+     * proportionally to preserve the image's aspect ratio. Default value is 115 pixels.
+     */
     double petSize = 115;
 
+    /**
+     * Initializes and displays the desktop pet window when the application starts.
+     * Sets up the pet image from the resources, configures the transparent window,
+     * positions it at the bottom of the screen, and enables horizontal dragging
+     * with screen edge constraints.
+     *
+     * @param stage The primary stage for this application, onto which the scene is set.
+     * @throws IOException If the pet image resource cannot be loaded.
+     */
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -90,6 +120,11 @@ public class DesktopPet extends Application {
         });
     }
 
+    /**
+     * Launches the JavaFX application.
+     *
+     * @param args Command-line arguments passed to the application.
+     */
     public static void main(String[] args) {
         launch(args);
     }

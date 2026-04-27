@@ -176,6 +176,35 @@ public class DesktopPet extends Application {
     }
 
 
+    /**
+     * Opens the Pomodoro window.
+     */
+
+    private void openPomodoro(Stage petStage) {
+        try {
+            Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+
+            if (pomStage == null) {
+                pomStage = new Stage();
+                SceneManager.launchScene(
+                        pomStage,
+                        "/project.desktoppet302/pomodoro-view.fxml",
+                        "25:00",
+                        1500
+                );
+                pomStage.setAlwaysOnTop(true);
+                pomStage.show();
+            } else if (!pomStage.isShowing()) {
+                pomStage.show();
+            }
+
+            positionStageAbovePet(petStage, pomStage, bounds);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
     /**

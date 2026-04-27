@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" spacing="15" style="-fx-padding: 20;"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="project.Trivia.view.MainController">
+
+    <Label text="Trivia Game" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <!-- Trivia Section -->
+    <VBox fx:id="triviaSection">
+        <Label fx:id="questionLabel" text="Loading..." style="-fx-font-size: 16px;" />
+        <Button fx:id="buttonA" text="Option A" onAction="#onAnswerClick" />
+        <Button fx:id="buttonB" text="Option B" onAction="#onAnswerClick" />
+        <Button fx:id="buttonC" text="Option C" onAction="#onAnswerClick" />
+        <Button fx:id="buttonD" text="Option D" onAction="#onAnswerClick" />
+    </VBox>
+
+    <!-- Username Section (hidden at start) -->
+    <VBox fx:id="usernameSection" visible="false" managed="false">
+        <Label text="Username:" />
+        <TextField fx:id="usernameField" promptText="Your name" />
+        <Button text="Save Score" onAction="#onSaveClick" />
+    </VBox>
+
+    <Label text="Score:" />
+    <Label fx:id="scoreLabel" text="0" style="-fx-font-size: 18px;" />
+    <Label fx:id="statusLabel" text="" />
+
+</VBox>

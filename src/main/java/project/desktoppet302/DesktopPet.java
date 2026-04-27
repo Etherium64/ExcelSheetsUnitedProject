@@ -1,4 +1,4 @@
-package org.example.desktoppet302;
+package project.desktoppet302;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

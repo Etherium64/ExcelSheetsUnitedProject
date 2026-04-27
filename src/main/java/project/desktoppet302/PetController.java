@@ -1,4 +1,4 @@
-package org.example.desktoppet302;
+package project.desktoppet302;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.*;
@@ -71,8 +71,8 @@ public class PetController {
     @FXML
     protected void idling() {
         Random z = new Random();
-        double x = z.nextDouble(-100, 100);
-        double y = z.nextDouble(-100, 100);
+        double x = z.nextDouble();
+        double y = z.nextDouble();
         TimerTask moving = new TimerTask() {
             @Override
             public void run() {
@@ -99,7 +99,7 @@ public class PetController {
 //        move.setDuration(Duration.seconds(3));
 //        move.setByX(100);
 //        move.play();
-        var timeline =
+        Timeline timeline =
                 new Timeline(
                         new KeyFrame(Duration.seconds(0), p -> petImage.setRotate(180)),
                         new KeyFrame(Duration.seconds(0.5), p -> petImage.setRotate(0)));
@@ -109,7 +109,7 @@ public class PetController {
 
     @FXML
     protected void onDragExit() {
-        var timeline =
+        Timeline timeline =
                 new Timeline(
                         new KeyFrame(Duration.seconds(0), p -> petImage.setRotate(180)),
                         new KeyFrame(Duration.seconds(0.5), p -> petImage.setRotate(0)));

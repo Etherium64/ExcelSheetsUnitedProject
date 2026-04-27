@@ -10,7 +10,7 @@
 
 <?import javafx.scene.text.Text?>
 <HBox fx:id="canvas" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.desktoppet302.PetController"
+      fx:controller="project.desktoppet302.PetController"
       style="-fx-background-color: white;" spacing="20">
     <ImageView fx:id="petImage" preserveRatio="true" fitWidth="100" layoutX="500"
                onMouseClicked="#onImageClick" onMouseDragged="#onImageDrag"

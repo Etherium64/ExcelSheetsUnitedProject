@@ -95,7 +95,7 @@ public class PetController {
 
     @FXML
     protected void idling() {
-        petStates.setState(animStates.PetState.IDLE);
+        petStates.setState(animStates.PetState.WALKrIGHT);
         new AnimationTimer() {
             @Override
             public void handle(long now) {

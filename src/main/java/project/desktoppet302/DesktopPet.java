@@ -15,6 +15,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 
+/**
+ * A JavaFX application that displays a draggable desktop pet on the screen.
+ * The pet appears as a transparent window containing an image, locked to the bottom
+ * of the primary display. Users can drag the pet horizontally across the screen,
+ * but its movement is constrained to stay within the screen bounds.
+ */
 public class DesktopPet extends Application {
 
 
@@ -22,14 +28,24 @@ public class DesktopPet extends Application {
     Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
     double sceneSizeX = bounds.getWidth()/2;
     double sceneSizeY = bounds.getHeight()/2;
+
+    /**
+     * Initializes and displays the desktop pet window when the application starts.
+     * Sets up the pet image from the resources, configures the transparent window,
+     * positions it at the bottom of the screen, and enables horizontal dragging
+     * with screen edge constraints.
+     *
+     * @param stage The primary stage for this application, onto which the scene is set.
+     * @throws IOException If the pet image resource cannot be loaded.
+     */
     @Override
 
     public void start(Stage stage) throws IOException {
 
-        //Load FXML page for desktop pet and create window to hold canvas.
-        Scene scene = new Scene(FXMLLoader.load
-                (Objects.requireNonNull(getClass().getResource
-                        ("/project.desktoppet302/pet-view.fxml"))), sceneSizeX, sceneSizeY);
+        //Load FXML page for desktop pet.
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project.desktoppet302/pet-view.fxml"));
+        // Create window to hold canvas.
+        Scene scene = new Scene(fxmlLoader.load(), sceneSizeX, sceneSizeY);
         stage.setScene(scene);
         stage.setTitle("Desktop Pet");
         stage.setAlwaysOnTop(true);

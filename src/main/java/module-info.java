@@ -1,6 +1,7 @@
 module project {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.graphics;
     requires java.sql;
     requires org.xerial.sqlitejdbc;
 
@@ -17,7 +18,6 @@ module project {
     exports project.Trivia;
     exports project.Trivia.dao;
 
-    requires javafx.graphics;
     requires javafx.base;
 
     opens AnimationStates;

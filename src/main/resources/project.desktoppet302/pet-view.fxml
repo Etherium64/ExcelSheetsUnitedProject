@@ -12,18 +12,18 @@
 <?import javafx.scene.layout.VBox?>
 <HBox fx:id="hbox" xmlns:fx="http://javafx.com/fxml"
       fx:controller="project.desktoppet302.PetController"
-      style="-fx-background-color: #B8E6DF;">
+       styleClass=".root" stylesheets="@/styles.css">
     <VBox minWidth="150" spacing="5" translateX="5" translateY="5">
-        <Button fx:id="timer" style="-fx-background-color: #CBA560;" text="Timer" minWidth="150" minHeight="50" onAction="#timerButton"/>
-        <Button fx:id="trivia" style="-fx-background-color: #CBA560; " text="Trivia" minWidth="150" minHeight="50" onAction="#triviaButton"/>
-        <Button style="-fx-background-color: #CBA560;" text="History" minWidth="150" minHeight="50"/>
-        <Button style="-fx-background-color: #CBA560;" text="Settings" minWidth="150" minHeight="50"/>
+        <Button fx:id="timer" styleClass="button1" text="Timer" minWidth="150" minHeight="50" onAction="#timerButton"/>
+        <Button fx:id="trivia" styleClass="button1" text="Trivia" minWidth="150" minHeight="50" onAction="#triviaButton"/>
+        <Button styleClass="button1" text="History" minWidth="150" minHeight="50"/>
+        <Button styleClass="button1" text="Settings" minWidth="150" minHeight="50"/>
     </VBox>
     <VBox fx:id="imagebox">
-        <Text fx:id="pettext" text="lol" wrappingWidth="200" textAlignment="CENTER" visible="false"/>
-        <HBox alignment="CENTER" translateY="10">
-            <Button fx:id="yesbutton" text="Yes" minWidth="50" visible="false" onAction="#goButton"/>
-            <Button fx:id="nobutton" text="No" minWidth="50" visible="false" onAction="#returnButton"/>
+        <Text fx:id="pettext" styleClass=".text-field" text="lol" wrappingWidth="200" textAlignment="CENTER" visible="false"/>
+        <HBox alignment="CENTER" translateY="10" spacing="5">
+            <Button fx:id="yesbutton" styleClass="button2" text="Yes" minWidth="50" visible="false" onAction="#goButton"/>
+            <Button fx:id="nobutton" styleClass="button2" text="No" minWidth="50" visible="false" onAction="#returnButton"/>
         </HBox>
         <ImageView translateY="-25" fx:id="petImage" preserveRatio="true" fitWidth="200" fitHeight="200"
                    onMouseClicked="#onImageClick" onMouseDragged="#onImageDrag">

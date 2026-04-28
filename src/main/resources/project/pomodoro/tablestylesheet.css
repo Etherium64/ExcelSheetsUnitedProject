@@ -1,0 +1,22 @@
+.text {
+    -fx-font-size: 30
+}
+
+.table-row-cell:empty {
+    -fx-background-color: white;
+}
+
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
+}
+.button {
+    -fx-border-radius: 25;
+    -fx-font-size: 60;
+}
+
+.button:hover {
+    -fx-background-color: #ffffff ;
+}
+#confirmBtn {
+    -fx-background-color: #ffffff ;
+}

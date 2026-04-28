@@ -1,0 +1,43 @@
+
+.button {
+    -fx-background-color: #121212;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-border-radius: 25;
+    -fx-font-size: 60;
+}
+
+.radio-button {
+    -fx-background-color: #121212;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-border-radius: 25;
+    -fx-font-size: 40;
+    -fx-padding: 25px;
+}
+
+.button:hover {
+    -fx-background-color: #2e2e2e;
+}
+#confirmBtn {
+    -fx-background-color: #23ad56;
+}
+
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 200;
+}
+
+.progress-bar > .bar {
+    -fx-padding: 10px;
+}
+
+.progress-bar {
+    -fx-pref-width: 500px;
+    -fx-pref-height: 70px;
+}
+
+.root {
+    -fx-background-color: #121212;
+}
+

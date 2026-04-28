@@ -9,15 +9,22 @@ import java.sql.SQLException;
 
 
 public class DBConnection {
-    private static String url = "JDBC:sqlite:" + System.getProperty("user.home") +  "/.session/session.db";
+    private static Connection instance = null;
 
-    public static Connection getInstance() {
+    private DBConnection() {
+        String url = "JDBC:sqlite:" + System.getProperty("user.home") +  "/.session/session.db";
         try {
-            return DriverManager.getConnection(url);
+            instance =  DriverManager.getConnection(url);
         } catch (SQLException ex) {
             System.err.println(ex);
-            return null;
         }
+    }
+
+    public static Connection getInstance() {
+        if (instance == null) {
+            new DBConnection();
+        }
+        return instance;
     }
 }
 

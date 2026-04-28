@@ -13,11 +13,10 @@ import javafx.stage.Screen;
 import javafx.geometry.Rectangle2D;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 
 public class DesktopPet extends Application {
 
-    // Stores x coordinate of where the mouse first clicked on the pet
-    double dragOffsetX;
 
     // Sets size of window which holds the pet
     Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
@@ -26,10 +25,8 @@ public class DesktopPet extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        //Load FXML page for desktop pet.
-        FXMLLoader fxmlLoader = new FXMLLoader(DesktopPet.class.getResource("pet-view.fxml"));
-        // Create window to hold canvas.
-        Scene scene = new Scene(fxmlLoader.load(), sceneSizeX, sceneSizeY);
+        //Load FXML page for desktop pet and create window to hold canvas.
+        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/project.desktoppet302/pet-view.fxml"))), sceneSizeX, sceneSizeY);
         stage.setScene(scene);
         stage.setTitle("Desktop Pet");
         stage.setAlwaysOnTop(true);

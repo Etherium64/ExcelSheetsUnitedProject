@@ -4,10 +4,13 @@ import AnimationStates.animStates;
 import javafx.animation.KeyFrame;
 import javafx.animation.*;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.*;
+import javafx.scene.control.Button;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -25,7 +28,25 @@ public class PetController {
     private double dragOffsetY;
 
     @FXML
-    private HBox box;
+    private Button timer;
+
+    @FXML
+    private Button trivia;
+
+    @FXML
+    private VBox imagebox;
+
+    @FXML
+    private HBox hbox;
+
+    @FXML
+    private Text pettext;
+
+    @FXML
+    private Button yesbutton;
+
+    @FXML
+    private Button nobutton;
 
     @FXML
     private Rectangle2D bounds;
@@ -66,7 +87,7 @@ public class PetController {
         //Set bounds of screen.
         bounds = Screen.getPrimary().getVisualBounds();
         move = new TranslateTransition();
-        move.setNode(petImage);
+        move.setNode(imagebox);
         petStates = new animStates();
         this.then = (System.currentTimeMillis());
         this.moving = new AnimationTimer() {
@@ -80,8 +101,34 @@ public class PetController {
                     move.setDuration(Duration.seconds(2));
                     move.setByX(x);
                     move.setByY(y);
+                    if (x > 0) {
+                        petStates.setState(animStates.PetState.WALKlEFT);
+                        new AnimationTimer() {
+                            @Override
+                            public void handle(long now) {
+                                petStates.update();
+                                Image pet = petStates.getCurrentFrame();
+                                petImage.setImage(pet);
+                            }
+                        }.start();
+                    }
+                    else {
+                        petStates.setState(animStates.PetState.WALKrIGHT);
+                        new AnimationTimer() {
+                            @Override
+                            public void handle(long now) {
+                                petStates.update();
+                                Image pet = petStates.getCurrentFrame();
+                                petImage.setImage(pet);
+                            }
+                        }.start();
+                    }
                     move.play();
                     then = now;
+                    Timeline timeline = new Timeline(
+                            new KeyFrame(Duration.seconds(2), e -> idling()));
+                    timeline.playFromStart();
+
                 }
 
             }
@@ -91,11 +138,9 @@ public class PetController {
 
     }
 
-
-
     @FXML
     protected void idling() {
-        petStates.setState(animStates.PetState.WALKrIGHT);
+        petStates.setState(animStates.PetState.IDLE);
         new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -105,7 +150,6 @@ public class PetController {
             }
         }.start();
         moving.start();
-
     }
 
     // State change when animal is clicked.
@@ -123,41 +167,27 @@ public class PetController {
         }.start();
         then = System.currentTimeMillis();
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(10)));
+                new KeyFrame(Duration.seconds(5), e -> idling()));
         timeline.playFromStart();
-        idling();
     }
 
-    @FXML
-    protected void onDragExit() {
-        petStates.setState(animStates.PetState.JUMP);
-        new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                petStates.update();
-                Image pet = petStates.getCurrentFrame();
-                petImage.setImage(pet);
-            }
-        }.start();
-        idling();
-    }
 
     @FXML
     protected void onImageDrag() throws InterruptedException {
         moving.stop();
         // Get current stage on window.
-        stage = (Stage) box.getScene().getWindow();
+        stage = (Stage) hbox.getScene().getWindow();
         petImage.setOnMouseDragged(mouseDrag -> {
             // Get the X position based on mouse movement
-            mouseX = mouseDrag.getSceneX() - petImage.getFitWidth()/2 - 75;
+            mouseX = mouseDrag.getSceneX() - petImage.getFitWidth()/2 - 150;
             // Get the Y position based on mouse movement
             mouseY = mouseDrag.getSceneY() - petImage.getFitHeight()/2;
             // Find left edge of screen
             double leftScreenEdge = -75;
             // Find right edge of screen minus the pets width
-            double rightScreenEdge = stage.getScene().getWidth() - petImage.getFitWidth() + 75;
+            double rightScreenEdge = stage.getScene().getWidth() - petImage.getFitWidth() - 100;
             // Find left edge of screen
-            double topScreenEdge = -50;
+            double topScreenEdge = 0;
             // Find right edge of screen minus the pets width
             double bottomScreenEdge = stage.getScene().getHeight() - petImage.getFitHeight() + 75;
             // Clamp X-axis so pet cannot go off sides of screen
@@ -175,14 +205,36 @@ public class PetController {
                 mouseY = bottomScreenEdge;
             }
             // Apply clamped X position to image
-            petImage.setTranslateX(mouseX);
-            petImage.setTranslateY(mouseY);
+            imagebox.setTranslateX(mouseX);
+            imagebox.setTranslateY(mouseY);
         });
         idling();
     }
 
+    @FXML
+    protected void timerButton() {
+        pettext.setText("NEVER KYS");
+        pettext.setVisible(true);
+    }
 
+    @FXML
+    protected void triviaButton() {
+        pettext.setText("Do you want to play trivia with me?");
+        pettext.setVisible(true);
+        yesbutton.setVisible(true);
+        nobutton.setVisible(true);
+    }
 
+    @FXML
+    protected void returnButton() {
+        pettext.setText("KYS");
+        pettext.setVisible(false);
+        yesbutton.setVisible(false);
+        nobutton.setVisible(false);
+    }
+
+    public void goButton() {
+    }
 }
 
 

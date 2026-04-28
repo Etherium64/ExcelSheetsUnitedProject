@@ -23,10 +23,13 @@ public class DesktopPet extends Application {
     double sceneSizeX = bounds.getWidth()/2;
     double sceneSizeY = bounds.getHeight()/2;
     @Override
+
     public void start(Stage stage) throws IOException {
 
         //Load FXML page for desktop pet and create window to hold canvas.
-        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/project.desktoppet302/pet-view.fxml"))), sceneSizeX, sceneSizeY);
+        Scene scene = new Scene(FXMLLoader.load
+                (Objects.requireNonNull(getClass().getResource
+                        ("/project.desktoppet302/pet-view.fxml"))), sceneSizeX, sceneSizeY);
         stage.setScene(scene);
         stage.setTitle("Desktop Pet");
         stage.setAlwaysOnTop(true);

@@ -9,9 +9,16 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.layout.VBox?>
 <HBox fx:id="box" xmlns:fx="http://javafx.com/fxml"
       fx:controller="project.desktoppet302.PetController"
       style="-fx-background-color: white;" spacing="20">
+    <VBox>
+        <Button text="Timer"/>
+        <Button text="Trivia"/>
+        <Button text="History"/>
+        <Button text="Settings"/>
+    </VBox>
     <ImageView fx:id="petImage" preserveRatio="true" fitWidth="200" fitHeight="200"
                onMouseClicked="#onImageClick" onMouseDragged="#onImageDrag"
                onMouseReleased="#onDragExit" >

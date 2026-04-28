@@ -110,7 +110,7 @@ public class PetController {
 
     // State change when animal is clicked.
     @FXML
-    protected void onImageClick() {
+    protected void onImageClick() throws InterruptedException {
         moving.stop();
         petStates.setState(animStates.PetState.JUMP);
         new AnimationTimer() {
@@ -136,6 +136,7 @@ public class PetController {
                 petImage.setImage(pet);
             }
         }.start();
+        idling();
     }
 
     @FXML

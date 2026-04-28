@@ -4,6 +4,8 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="project.pomodoro.controller.RestController">
     <padding>
@@ -66,5 +68,12 @@
             </HBox>
         </VBox>
     </right>
+    <center>
+        <ImageView translateY="-25" fx:id="petImage" preserveRatio="true" fitWidth="200" fitHeight="200">
+            <Image fx:id="pet" url="@/AnimationStates"/>
+        </ImageView>
+    </center>
 </BorderPane>
+
+
 

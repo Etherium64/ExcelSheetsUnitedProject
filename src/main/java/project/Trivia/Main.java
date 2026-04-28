@@ -1,8 +1,10 @@
 package project.Trivia;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import project.Trivia.dao.DatabaseInitialiser;
 
@@ -32,13 +34,18 @@ public class Main extends Application {
      * @param stage the primary stage for this application, provided by the JavaFX runtime
      * @throws Exception if the FXML or CSS resources cannot be loaded
      */
+
     @Override
     public void start(Stage stage) throws Exception {
+        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+        double sceneSizeX = bounds.getWidth()/2;
+        double sceneSizeY = bounds.getHeight()/2;
+
         // Initialize database tables
         DatabaseInitialiser.init();
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/project.trivia/main.fxml")));
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, sceneSizeX, sceneSizeY);
         scene.getStylesheets().add("/styles.css");
         stage.setTitle("Trivia Game");
         stage.setScene(scene);

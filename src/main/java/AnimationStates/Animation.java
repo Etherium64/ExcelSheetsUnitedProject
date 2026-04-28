@@ -35,6 +35,7 @@ public class Animation {
         long now = System.currentTimeMillis();
 
         if (now - lastUpdate >= frameDuration) {
+
             currentFrame = (currentFrame + 1) % frames.length;
             lastUpdate = now;
 

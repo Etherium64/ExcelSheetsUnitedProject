@@ -9,12 +9,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.text.Text?>
 
-<HBox fx:id="canvas" xmlns:fx="http://javafx.com/fxml"
+<HBox fx:id="box" xmlns:fx="http://javafx.com/fxml"
       fx:controller="project.desktoppet302.PetController"
       style="-fx-background-color: white;" spacing="20">
-    <ImageView fx:id="petImage" preserveRatio="true" fitWidth="100"
+    <ImageView fx:id="petImage" preserveRatio="true" fitWidth="200" fitHeight="200"
                onMouseClicked="#onImageClick" onMouseDragged="#onImageDrag"
                onMouseReleased="#onDragExit" >
-        <Image fx:id="pet" url="@/pet.png"/>
+        <Image fx:id="pet" url="@/AnimationStates"/>
     </ImageView>
 </HBox>

@@ -1,6 +1,14 @@
+@font-face {
+    font-family: 'Constantia';
+    src: local('Constantia.ttf');
+}
+@font-face {
+    font-family: 'CenturyOldStyle';
+    src: local('CenturyOldStyleStd-Regular.ttf');
+}
+
 .root {
-    -fx-background-color: #f0f0f0;
-    -fx-font-family: "Arial";
+    -fx-background-color: #A7D3F5;
 }
 
 /* Header */
@@ -23,21 +31,36 @@
 }
 
 /* Button styling */
-.button {
-    -fx-font-size: 16px;
+.button1 {
+    -fx-font-size: 20px;
     -fx-padding: 10 20;
-    -fx-background-color: #0066cc;
-    -fx-text-fill: white;
+    -fx-background-color: #B8E6DF;
+    -fx-text-fill: black;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
+    -fx-font-family: Constantia;
 }
 
-.button:hover {
-    -fx-background-color: #0055aa;
+.button1:hover {
+    -fx-background-color: #6EC6C5;
 }
+
+.button2 {
+    -fx-font-size: 12px;
+    -fx-background-color: #B8E6DF;
+    -fx-text-fill: black;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-family: CenturyOldStyle;
+}
+
+.button2:hover {
+    -fx-background-color: #6EC6C5;
+}
+
 
 /* Text field */
 .text-field {
     -fx-font-size: 14px;
-    -fx-pref-height: 30px;
+    -fx-font-family: CenturyOldStyle;
 }

@@ -13,8 +13,8 @@
 <HBox fx:id="box" xmlns:fx="http://javafx.com/fxml"
       fx:controller="project.desktoppet302.PetController"
       style="-fx-background-color: white;" spacing="20">
-    <VBox>
-        <Button text="Timer"/>
+    <VBox spacing="20">
+        <Button text="Timer" />
         <Button text="Trivia"/>
         <Button text="History"/>
         <Button text="Settings"/>

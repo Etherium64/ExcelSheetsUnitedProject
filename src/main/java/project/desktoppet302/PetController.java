@@ -122,6 +122,9 @@ public class PetController {
             }
         }.start();
         then = System.currentTimeMillis();
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(10)));
+        timeline.playFromStart();
         idling();
     }
 
@@ -146,7 +149,7 @@ public class PetController {
         stage = (Stage) box.getScene().getWindow();
         petImage.setOnMouseDragged(mouseDrag -> {
             // Get the X position based on mouse movement
-            mouseX = mouseDrag.getSceneX() - petImage.getFitWidth()/2;
+            mouseX = mouseDrag.getSceneX() - petImage.getFitWidth()/2 - 75;
             // Get the Y position based on mouse movement
             mouseY = mouseDrag.getSceneY() - petImage.getFitHeight()/2;
             // Find left edge of screen

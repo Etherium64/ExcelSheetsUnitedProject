@@ -1,5 +1,6 @@
 package project.desktoppet302;
 
+import AnimationStates.animStates;
 import javafx.animation.KeyFrame;
 import javafx.animation.*;
 import javafx.application.Platform;
@@ -10,9 +11,10 @@ import javafx.scene.layout.*;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.sql.Time;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.Random.*;
 
 public class PetController {
 
@@ -23,7 +25,7 @@ public class PetController {
     private double dragOffsetY;
 
     @FXML
-    private HBox canvas;
+    private HBox box;
 
     @FXML
     private Rectangle2D bounds;
@@ -47,10 +49,16 @@ public class PetController {
     private TranslateTransition move;
 
     @FXML
-    private Timer timer;
+    private AnimationTimer moving;
 
     @FXML
-    private TimerTask moving;
+    private long then;
+
+//    @FXML
+//    private long now;
+
+    @FXML
+    private animStates petStates;
 
     // Initialise starting values.
     @FXML
@@ -59,7 +67,25 @@ public class PetController {
         bounds = Screen.getPrimary().getVisualBounds();
         move = new TranslateTransition();
         move.setNode(petImage);
-        timer  = new Timer();
+        petStates = new animStates();
+        this.then = (System.currentTimeMillis());
+        this.moving = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                now = System.currentTimeMillis();
+                if (now - then > 8000) {
+                    Random z = new Random();
+                    double x = (double) z.nextInt(200) - 100;
+                    double y = (double) z.nextInt(200) - 100;
+                    move.setDuration(Duration.seconds(2));
+                    move.setByX(x);
+                    move.setByY(y);
+                    move.play();
+                    then = now;
+                }
+
+            }
+        };
 
         Platform.runLater(this::idling);
 
@@ -69,70 +95,68 @@ public class PetController {
 
     @FXML
     protected void idling() {
-        Random z = new Random();
-        double x = z.nextDouble(-100, 100);
-        double y = z.nextDouble(-100, 100);
-        TimerTask moving = new TimerTask() {
+        petStates.setState(animStates.PetState.IDLE);
+        new AnimationTimer() {
             @Override
-            public void run() {
-                move = new TranslateTransition();
-                move.setNode(petImage);
-                move.setDuration(Duration.seconds(3));
-                move.setByX(x);
-                move.setByY(y);
-                move.play();
-                move.setDuration(Duration.seconds(3));
-                move.play();
+            public void handle(long now) {
+                petStates.update();
+                Image pet = petStates.getCurrentFrame();
+                petImage.setImage(pet);
             }
-        };
-        timer.schedule(moving, 3000);
-
+        }.start();
+        moving.start();
 
     }
 
     // State change when animal is clicked.
-//    @FXML
-//    protected void onImageClick() {
-//        move = new TranslateTransition();
-//        move.setNode(petImage);
-//        move.setDuration(Duration.seconds(3));
-//        move.setByX(100);
-//        move.play();
-//        var timeline =
-//                new Timeline(
-//                        new KeyFrame(Duration.seconds(0), p -> petImage.setRotate(180)),
-//                        new KeyFrame(Duration.seconds(0.5), p -> petImage.setRotate(0)));
-//        timeline.playFromStart();
-//        idling();
-//    }
-//
-//    @FXML
-//    protected void onDragExit() {
-//        var timeline =
-//                new Timeline(
-//                        new KeyFrame(Duration.seconds(0), p -> petImage.setRotate(180)),
-//                        new KeyFrame(Duration.seconds(0.5), p -> petImage.setRotate(0)));
-//        timeline.playFromStart();
-//    }
+    @FXML
+    protected void onImageClick() throws InterruptedException {
+        moving.stop();
+        petStates.setState(animStates.PetState.JUMP);
+        new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                petStates.update();
+                Image pet = petStates.getCurrentFrame();
+                petImage.setImage(pet);
+            }
+        }.start();
+        then = System.currentTimeMillis();
+        idling();
+    }
+
+    @FXML
+    protected void onDragExit() {
+        petStates.setState(animStates.PetState.JUMP);
+        new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                petStates.update();
+                Image pet = petStates.getCurrentFrame();
+                petImage.setImage(pet);
+            }
+        }.start();
+        idling();
+    }
 
     @FXML
     protected void onImageDrag() throws InterruptedException {
-        move.pause();
+        moving.stop();
         // Get current stage on window.
-        stage = (Stage) canvas.getScene().getWindow();
+        stage = (Stage) box.getScene().getWindow();
         petImage.setOnMouseDragged(mouseDrag -> {
             // Get the X position based on mouse movement
-            mouseX = mouseDrag.getSceneX();
+            mouseX = mouseDrag.getSceneX() - petImage.getFitWidth()/2;
             // Get the Y position based on mouse movement
-            mouseY = mouseDrag.getSceneY();
+            mouseY = mouseDrag.getSceneY() - petImage.getFitHeight()/2;
             // Find left edge of screen
-            double leftScreenEdge = 0;
+            double leftScreenEdge = -75;
             // Find right edge of screen minus the pets width
-            double rightScreenEdge = stage.getScene().getWidth() - petImage.getFitWidth();
+            double rightScreenEdge = stage.getScene().getWidth() - petImage.getFitWidth() + 75;
             // Find left edge of screen
-            double topScreenEdge = 0;
+            double topScreenEdge = -50;
             // Find right edge of screen minus the pets width
-            double bottomScreenEdge = stage.getScene().getHeight() - petImage.getFitHeight();
+            double bottomScreenEdge = stage.getScene().getHeight() - petImage.getFitHeight() + 75;
             // Clamp X-axis so pet cannot go off sides of screen
             if (mouseX < leftScreenEdge) {
                 mouseX = leftScreenEdge;
@@ -156,14 +180,6 @@ public class PetController {
 
 
 
-
-//    public Stage getStage() {
-//        return stage;
-//    }
-//
-//    public void setStage(Stage stage) {
-//        this.stage = stage;
-//    }
 }
 
 

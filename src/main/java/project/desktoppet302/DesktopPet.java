@@ -13,6 +13,7 @@ import javafx.stage.Screen;
 import javafx.geometry.Rectangle2D;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 
 /**
  * A JavaFX application that displays a draggable desktop pet on the screen.
@@ -22,18 +23,11 @@ import java.net.URL;
  */
 public class DesktopPet extends Application {
 
-    /**
-     * Stores the x-coordinate offset between the pet's window and the point
-     * where the user initially clicked to begin dragging. Used to ensure smooth dragging
-     * and prevent the pet from jumping to the mouse position.
-     */
-    double dragOffsetX;
 
     // Sets size of window which holds the pet
     Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
     double sceneSizeX = bounds.getWidth()/2;
     double sceneSizeY = bounds.getHeight()/2;
-
 
     /**
      * Initializes and displays the desktop pet window when the application starts.
@@ -45,10 +39,11 @@ public class DesktopPet extends Application {
      * @throws IOException If the pet image resource cannot be loaded.
      */
     @Override
+
     public void start(Stage stage) throws IOException {
 
         //Load FXML page for desktop pet.
-        FXMLLoader fxmlLoader = new FXMLLoader(DesktopPet.class.getResource("pet-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project.desktoppet302/pet-view.fxml"));
         // Create window to hold canvas.
         Scene scene = new Scene(fxmlLoader.load(), sceneSizeX, sceneSizeY);
         stage.setScene(scene);

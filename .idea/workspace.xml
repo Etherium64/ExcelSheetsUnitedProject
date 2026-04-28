@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbd594c0-eb00-47f3-9d3a-a72ba5ca93f4" name="Changes" comment="Merge branch 'SCA'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/module-info.java&#10;#&#9;src/main/java/project/desktoppet302/DesktopPet.java&#10;#&#9;src/main/java/project/desktoppet302/PetController.java&#10;#&#9;src/main/resources/project.desktoppet302/hello-view.fxml&#10;#&#9;src/main/resources/project.desktoppet302/pet-view.fxml">
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/project.desktoppet302/pet-view.fxml" afterDir="false" />
+    <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Animations added.">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AnimationStates/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AnimationStates/Animation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/DesktopPet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/DesktopPet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/project.desktoppet302/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project.desktoppet302/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/project.desktoppet302/pet-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project.desktoppet302/pet-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,13 +68,27 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "git-widget-placeholder": "Merging master"
+    "Application.AnimationTestWindow.executor": "Debug",
+    "Application.DesktopPet.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MainApplication.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "Application.animation test.executor": "Run",
+    "Maven.DesktopPet302 [org.apache.maven.plugins:maven-javadoc-plugin:3.4.0:javadoc].executor": "Run",
+    "Maven.DesktopPet302 [package].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Merging master",
+    "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "advanced.settings"
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Gemma Morgan\Desktop\UNI\CAB302\DesktopPetCAB302\src\main\resources" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\4hunt\IdeaProjects\ESU_Project\src\main\java\project\desktoppet302" />
       <recent name="C:\Users\kilro\IdeaProjects\DesktopPet302\src\main\java\org\example\desktoppet302" />
@@ -89,6 +105,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.32098.37" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -114,7 +137,23 @@
       <option name="project" value="LOCAL" />
       <updated>1776658474518</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Clean up again.">
+      <option name="closed" value="true" />
+      <created>1777340033956</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1777340033956</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Animations added.">
+      <option name="closed" value="true" />
+      <created>1777351754275</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1777351754275</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -133,7 +172,9 @@
     <MESSAGE value="Merge branch 'pomodoro'&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;Documents/Excel Sheets United CAB302 Project Brief.docx&#10;#&#9;Documents/IntelliJ Set up.pdf&#10;#&#9;Documents/Meeting Minutes .xlsx&#10;#&#9;Documents/Meeting Minutes Post Checkpoint 1.xlsx&#10;#&#9;Documents/README.md&#10;#&#9;Documents/User Sories 1-12.docx&#10;#&#9;Documents/User Stories 20.docx&#10;#&#9;Documents/User Story Template.docx&#10;#&#9;Documents/UserStories.txt&#10;#&#9;Documents/idleSpritesheet-sad.png&#10;#&#9;Documents/idleSpritesheet@2x.png&#10;#&#9;Documents/jumpSpritesheet.png&#10;#&#9;Documents/walkLeftSpritesheet.png&#10;#&#9;Documents/walkRightSpritesheet.png&#10;#&#9;pom.xml&#10;#&#9;src/main/java/module-info.java" />
     <MESSAGE value="Merged Master and Pomodoro" />
     <MESSAGE value="Branch merger with triviaModule." />
-    <option name="LAST_COMMIT_MESSAGE" value="Branch merger with triviaModule." />
+    <MESSAGE value="Clean up again." />
+    <MESSAGE value="Animations added." />
+    <option name="LAST_COMMIT_MESSAGE" value="Animations added." />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">

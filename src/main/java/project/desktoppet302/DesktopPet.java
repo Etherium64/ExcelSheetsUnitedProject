@@ -32,7 +32,7 @@ public class DesktopPet extends Application {
                         ("/project.desktoppet302/pet-view.fxml"))), sceneSizeX, sceneSizeY);
         stage.setScene(scene);
         stage.setTitle("Desktop Pet");
-        stage.setAlwaysOnTop(true);
+        //stage.setAlwaysOnTop(true);
         // Show window.
         stage.show();
 

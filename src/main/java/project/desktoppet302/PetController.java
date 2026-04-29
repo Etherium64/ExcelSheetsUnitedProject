@@ -307,47 +307,22 @@ public class PetController {
 //            yesbutton.setVisible(false);
 //            nobutton.setVisible(false);
 //        }
-//        else if (historyPrompt) { // Add this new block
-//            try {
-//                Stage primaryStage = (Stage) pettext.getScene().getWindow();
-//                Stage historyStage = new Stage();
-//                new project.History.Main().start(historyStage); // Adjust package/class as needed
-//                historyStage.setAlwaysOnTop(true);
-//
-//                // Position relative to desktop pet (same as trivia and pomodoro)
-//                primaryStage.xProperty().addListener((obs, old, val) ->
-//                        historyStage.setX(val.doubleValue() + 10));
-//                primaryStage.yProperty().addListener((obs, old, val) ->
-//                        historyStage.setY(val.doubleValue() + primaryStage.getHeight() - historyStage.getHeight() + 10));
-//                primaryStage.widthProperty().addListener((obs, old, val) -> historyStage.sizeToScene());
-//                primaryStage.heightProperty().addListener((obs, old, val) -> historyStage.sizeToScene());
-//                primaryStage.iconifiedProperty().addListener((obs, old, val) -> historyStage.setIconified(val));
-//
-//                // Initial position in bottom-left of main window
-//                historyStage.setX(primaryStage.getX() + 10);
-//                historyStage.setY(primaryStage.getY() + primaryStage.getHeight() - historyStage.getHeight() + 10);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//            // Reset
-//            historyPrompt = false;
-//            pettext.setVisible(false);
-//            yesbutton.setVisible(false);
-//            nobutton.setVisible(false);
         }
     }
 
-    @FXML
-    protected void returnButton() {
-        pettext.setText("KYS");
-        pettext.setVisible(false);
-        yesbutton.setVisible(false);
-        nobutton.setVisible(false);
-    }
+            @FXML
+            protected void returnButton () {
+                pettext.setText("KYS");
+                pettext.setVisible(false);
+                yesbutton.setVisible(false);
+                nobutton.setVisible(false);
+            }
+        }
 
 
 
-}
+
+
 
 
 

@@ -14,6 +14,11 @@ module project {
 
     opens project.pomodoro to javafx.fxml;
     exports project.pomodoro;
+    opens project.pomodoro.controller to javafx.fxml;
+    exports project.pomodoro.controller;
+    opens project.pomodoro.model to javafx.fxml;
+    exports project.pomodoro.model;
+
     opens project.Trivia.view to javafx.fxml;
     exports project.Trivia;
     exports project.Trivia.dao;
@@ -22,4 +27,6 @@ module project {
 
     opens AnimationStates;
     exports AnimationStates;
+
+
 }

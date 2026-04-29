@@ -5,11 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Merge branch 'master' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0005.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0006.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0007.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0008.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0009.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0010.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0011.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0012.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0013.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0015.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0016.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0017.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0018.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0019.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0020.png">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/CenturyOldStyleStd-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Constantia.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/PomodoroController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/RestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/WorkController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/DBConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/Session.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/SessionDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/project/pomodoro/table-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/project/pomodoro/tablestylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/project.desktoppet302/pet-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project.desktoppet302/pet-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/ButtonController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/TimeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/project/pomodoro/break-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project/pomodoro/rest-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/project/pomodoro/pomodoro-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project/pomodoro/work-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/project/pomodoro/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project/pomodoro/stylesheet.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +71,9 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="3BZdJ4SN13BeBx4UjDw88Ul4FiP" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -72,16 +86,20 @@
     "Application.MainApplication.executor": "Run",
     "Application.Unnamed.executor": "Run",
     "Application.animation test.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
     "Maven.DesktopPet302 [org.apache.maven.plugins:maven-javadoc-plugin:3.4.0:javadoc].executor": "Run",
     "Maven.DesktopPet302 [package].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "SCA",
+    "git-widget-placeholder": "SCA-2.0",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Gemma Morgan/Desktop/UNI/CAB302/DesktopPetCAB302/src/main/resources",
-    "project.structure.last.edited": "SDKs",
+    "last_opened_file_path": "C:/Users/ddo14/Documents/GitHub/ExcelSheetsUnitedProject/src/main/resources/project/pomodoro",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "advanced.settings"
@@ -89,6 +107,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\src\main\resources\project\pomodoro" />
+      <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\src\main\java\project\pomodoro" />
       <recent name="C:\Users\Gemma Morgan\Desktop\UNI\CAB302\DesktopPetCAB302\src\main\resources" />
       <recent name="C:\Users\Gemma Morgan\Desktop\UNI\CAB302\DesktopPetCAB302\target\classes" />
       <recent name="C:\Users\Gemma Morgan\Desktop\UNI\CAB302\DesktopPetCAB302\src\main\resources\ImageSequences\walkright" />
@@ -97,6 +117,9 @@
       <recent name="C:\Users\4hunt\IdeaProjects\ESU_Project\src\main\java\project\desktoppet302" />
       <recent name="C:\Users\kilro\IdeaProjects\DesktopPet302\src\main\java\org\example\desktoppet302" />
       <recent name="C:\Users\kilro\IdeaProjects\DesktopPet302\Documents" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="project.pomodoro.controller" />
     </key>
   </component>
   <component name="RunManager">

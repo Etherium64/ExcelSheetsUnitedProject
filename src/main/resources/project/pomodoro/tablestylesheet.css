@@ -7,12 +7,6 @@ src: local('Constantia.ttf');
 font-family: 'CenturyOldStyle';
 src: local('CenturyOldStyleStd-Regular.ttf');
 }
-
-.root {
-    -fx-background-color: #A7D3F5;
-}
-
-/* Header */
 .label {
     -fx-font-size: 50;
     -fx-text-fill: #333333;
@@ -20,16 +14,6 @@ src: local('CenturyOldStyleStd-Regular.ttf');
 
 /* Button styling */
 .button {
-    -fx-border-radius: 25;
-    -fx-background-radius: 25px;
-    -fx-font-size: 30;
-    -fx-padding: 10 20;
-    -fx-background-color: #B8E6DF;
-    -fx-text-fill: black;
-    -fx-font-family: Constantia;
-}
-
-.radio-button{
     -fx-border-radius: 25;
     -fx-background-radius: 25px;
     -fx-font-size: 30;
@@ -47,12 +31,15 @@ src: local('CenturyOldStyleStd-Regular.ttf');
     -fx-background-color: #6EC6C5;
 }
 
-.progress-bar > .bar {
-    -fx-padding: 10px;
+
+.text {
+    -fx-font-size: 30
 }
 
-.progress-bar {
-    -fx-pref-width: 500px;
-    -fx-pref-height: 70px;
+.table-row-cell:empty {
+    -fx-background-color: white;
 }
 
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
+}

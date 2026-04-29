@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="project.pomodoro.controller.RestController">
+    <padding>
+        <Insets left="100" right="100"/>
+    </padding>
+    <left>
+        <VBox alignment="CENTER" spacing="100">
+            <fx:define>
+                <ToggleGroup fx:id="breakGroup"/>
+            </fx:define>
+            <RadioButton fx:id="rBtn1"
+                         text="Mindfulness"
+                         toggleGroup="$breakGroup"
+                         selected="true"
+            >
+            </RadioButton>
+            <RadioButton fx:id="rBtn2"
+                         text="Deep Breathing"
+                         toggleGroup="$breakGroup">
+            </RadioButton>
+            <RadioButton fx:id="rBtn3"
+                         text="Drink Water"
+                         toggleGroup="$breakGroup">
+            </RadioButton>
+            <RadioButton fx:id="rBtn4"
+                         text="Snack Time"
+                         toggleGroup="$breakGroup">
+            </RadioButton>
+        </VBox>
+    </left>
+
+    <right>
+        <VBox alignment="CENTER" spacing="100">
+            <HBox spacing="200.0" alignment="CENTER">
+                <Button fx:id="workBtn"
+                        text="Work"
+                        onAction="#workBtnClick"
+                />
+                <Button fx:id="tableBtn"
+                        text="Sessions"
+                        onAction="#tableBtnClick"
+                />
+            </HBox>
+
+            <VBox alignment="CENTER">
+                <Label fx:id="timerLabel"
+                       text="05:00"/>
+                <ProgressBar fx:id="timerBar"/>
+                <Region prefHeight="100"/>
+            </VBox>
+
+            <HBox spacing="200.0" alignment="CENTER">
+                <Button fx:id="startPauseBtn"
+                        text="Start"
+                        onAction="#startPauseBtnClick"/>
+                <Button fx:id="resetBtn"
+                        text="Reset"
+                        onAction="#resetBtnClick"
+                />
+            </HBox>
+        </VBox>
+    </right>
+</BorderPane>
+
+
+

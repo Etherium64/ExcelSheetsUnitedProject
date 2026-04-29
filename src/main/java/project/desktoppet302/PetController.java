@@ -21,10 +21,10 @@ import java.util.Random.*;
 public class PetController {
 
     @FXML
-    private double dragOffsetX;
+    public Button trivia;
 
     @FXML
-    private double dragOffsetY;
+    public Button timer;
 
     @FXML
     private HBox box;
@@ -68,8 +68,6 @@ public class PetController {
     @FXML
     private long then;
 
-//    @FXML
-//    private long now;
 
     @FXML
     private animStates petStates;
@@ -94,8 +92,33 @@ public class PetController {
                     move.setDuration(Duration.seconds(2));
                     move.setByX(x);
                     move.setByY(y);
+                    if (x > 0) {
+                        petStates.setState(animStates.PetState.WALKlEFT);
+                        new AnimationTimer() {
+                            @Override
+                            public void handle(long now) {
+                                petStates.update();
+                                Image pet = petStates.getCurrentFrame();
+                                petImage.setImage(pet);
+                            }
+                        }.start();
+                    }
+                    else {
+                        petStates.setState(animStates.PetState.WALKrIGHT);
+                        new AnimationTimer() {
+                            @Override
+                            public void handle(long now) {
+                                petStates.update();
+                                Image pet = petStates.getCurrentFrame();
+                                petImage.setImage(pet);
+                            }
+                        }.start();
+                    }
                     move.play();
                     then = now;
+                    Timeline timeline = new Timeline(
+                            new KeyFrame(Duration.seconds(2), e -> idling()));
+                    timeline.playFromStart();
                 }
 
             }
@@ -124,7 +147,7 @@ public class PetController {
 
     // State change when animal is clicked.
     @FXML
-    protected void onImageClick() throws InterruptedException {
+    protected void onImageClick() {
         moving.stop();
         petStates.setState(animStates.PetState.JUMP);
         new AnimationTimer() {
@@ -136,22 +159,11 @@ public class PetController {
             }
         }.start();
         then = System.currentTimeMillis();
-        idling();
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(5), e -> idling()));
+        timeline.playFromStart();
     }
 
-    @FXML
-    protected void onDragExit() {
-        petStates.setState(animStates.PetState.JUMP);
-        new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                petStates.update();
-                Image pet = petStates.getCurrentFrame();
-                petImage.setImage(pet);
-            }
-        }.start();
-        idling();
-    }
 
     @FXML
     protected void onImageDrag() throws InterruptedException {
@@ -160,7 +172,7 @@ public class PetController {
         stage = (Stage) box.getScene().getWindow();
         petImage.setOnMouseDragged(mouseDrag -> {
             // Get the X position based on mouse movement
-            mouseX = mouseDrag.getSceneX() - petImage.getFitWidth()/2;
+            mouseX = mouseDrag.getSceneX() - petImage.getFitWidth()/2 - 125;
             // Get the Y position based on mouse movement
             mouseY = mouseDrag.getSceneY() - petImage.getFitHeight()/2;
             // Find left edge of screen

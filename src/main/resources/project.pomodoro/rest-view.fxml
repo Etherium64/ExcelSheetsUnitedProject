@@ -68,11 +68,6 @@
             </HBox>
         </VBox>
     </right>
-    <center>
-        <ImageView translateY="-25" fx:id="petImage" preserveRatio="true" fitWidth="200" fitHeight="200">
-            <Image fx:id="pet" url="@/AnimationStates"/>
-        </ImageView>
-    </center>
 </BorderPane>
 
 

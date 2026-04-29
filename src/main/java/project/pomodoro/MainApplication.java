@@ -38,7 +38,7 @@ public class MainApplication extends Application {
         PomodoroController.getPomodoro().setPomodoro(sessionType, timerLabel, timerBar, startPauseBtn);
     }
 
-    public void launchTable(Stage stage) throws Exception {
+    public void launchTable(Stage stage) throws Exception    {
         Parent parent = FXMLLoader.load(Objects.requireNonNull(MainApplication.class.getResource("/project.pomodoro/table-view.fxml")));
         String stylesheet = MainApplication.class.getResource("/project.pomodoro/tablestylesheet.css").toExternalForm();
         Scene scene = new Scene(parent, sceneSizeX, sceneSizeY);

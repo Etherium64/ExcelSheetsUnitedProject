@@ -7,8 +7,6 @@
     <list default="true" id="c41286fa-c1ae-42a6-a11f-5b3f5eb4c807" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/view/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/view/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/project.trivia/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project.trivia/main.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +47,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.DesktopPet.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,

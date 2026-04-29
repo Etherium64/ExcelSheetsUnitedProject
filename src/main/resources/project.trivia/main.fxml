@@ -1,38 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" spacing="15" style="-fx-padding: 20;"
-      xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="project.Trivia.view.MainController">
+<VBox alignment="CENTER" prefHeight="185.0" prefWidth="218.0" spacing="15" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.Trivia.view.MainController">
 
-    <Label text="Trivia Game" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <Label style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Trivia Game" />
 
-    <!-- Trivia Section -->
     <GridPane fx:id="triviaSection" alignment="CENTER" prefHeight="125.0" prefWidth="179.0">
-        <!-- Question Label -->
-        <Label fx:id="questionLabel" style="-fx-font-size: 15px; -fx-text-fill: white;" text="Loading..." GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+        <children>
+            <Label fx:id="questionLabel"
+                   style="-fx-font-size: 12px; -fx-text-fill: black;"
+                   text="Loading..."
+                   GridPane.columnSpan="2"
+                   GridPane.halignment="CENTER"
+                   GridPane.rowIndex="0"
+                   GridPane.valignment="CENTER" />
 
-        <!-- Option A -->
-        <Button fx:id="buttonA" onAction="#onAnswerClick" contentDisplay="CENTER" pickOnBounds="false" prefHeight="20" prefWidth="85" style="-fx-font-size: 9px; -fx-ellipsis-string: '';" text="Option A" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button fx:id="buttonA"
+                    onAction="#onAnswerClick"
+                    prefHeight="20" prefWidth="85"
+                    style="-fx-font-size: 9px; -fx-ellipsis-string: '';"
+                    text="Option A"
+                    GridPane.columnIndex="0"
+                    GridPane.rowIndex="1"
+                    GridPane.halignment="CENTER"
+                    GridPane.valignment="CENTER" />
 
-        <!-- Option B -->
-        <Button fx:id="buttonB" onAction="#onAnswerClick" prefHeight="20" prefWidth="85" style="-fx-font-size: 9px; -fx-ellipsis-string: '';" text="Option B" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button fx:id="buttonB"
+                    onAction="#onAnswerClick"
+                    prefHeight="20" prefWidth="85"
+                    style="-fx-font-size: 9px; -fx-ellipsis-string: '';"
+                    text="Option B"
+                    GridPane.columnIndex="1"
+                    GridPane.rowIndex="1"
+                    GridPane.halignment="CENTER"
+                    GridPane.valignment="CENTER" />
 
-        <!-- Option C -->
-        <Button fx:id="buttonC" onAction="#onAnswerClick" prefHeight="20" prefWidth="85" style="-fx-font-size: 9px; -fx-ellipsis-string: '';" text="Option C" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button fx:id="buttonC"
+                    onAction="#onAnswerClick"
+                    prefHeight="20" prefWidth="85"
+                    style="-fx-font-size: 9px; -fx-ellipsis-string: '';"
+                    text="Option C"
+                    GridPane.columnIndex="0"
+                    GridPane.rowIndex="2"
+                    GridPane.halignment="CENTER"
+                    GridPane.valignment="CENTER" />
 
-        <!-- Option D -->
-        <Button fx:id="buttonD" onAction="#onAnswerClick" prefHeight="20" prefWidth="85" style="-fx-font-size: 9px; -fx-ellipsis-string: '';" text="Option D" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button fx:id="buttonD"
+                    onAction="#onAnswerClick"
+                    prefHeight="20" prefWidth="85"
+                    style="-fx-font-size: 9px; -fx-ellipsis-string: '';"
+                    text="Option D"
+                    GridPane.columnIndex="1"
+                    GridPane.rowIndex="2"
+                    GridPane.halignment="CENTER"
+                    GridPane.valignment="CENTER" />
+        </children>
         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="85" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="85" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints />
@@ -43,14 +70,14 @@
     </GridPane>
 
     <!-- Username Section (hidden at start) -->
-    <VBox fx:id="usernameSection" visible="false" managed="false">
+    <VBox fx:id="usernameSection" managed="false" visible="false">
         <Label text="Username:" />
         <TextField fx:id="usernameField" promptText="Your name" />
-        <Button text="Save Score" onAction="#onSaveClick" />
+        <Button onAction="#onSaveClick" text="Save Score" />
     </VBox>
 
     <Label text="Score:" />
-    <Label fx:id="scoreLabel" text="0" style="-fx-font-size: 18px;" />
+    <Label fx:id="scoreLabel" style="-fx-font-size: 18px;" text="0" />
     <Label fx:id="statusLabel" text="" />
 
 </VBox>

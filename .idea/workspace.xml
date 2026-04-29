@@ -4,15 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41286fa-c1ae-42a6-a11f-5b3f5eb4c807" name="Changes" comment="Merge branch 'SCA' of https://github.com/Etherium64/ExcelSheetsUnitedProject into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+    <list default="true" id="e51f00cf-ce61-4406-a641-8516950eb5e8" name="Changes" comment="Merge branch 'PomodoroWithoutPet' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/compiler.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/project/Trivia/Main.java">
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/PomodoroController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/RestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/WorkController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/DBConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/Session.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/SessionDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/project.pomodoro/rest-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/project.pomodoro/stylesheet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/project.pomodoro/table-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/project.pomodoro/tablestylesheet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/project.pomodoro/work-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AnimationStates/animStates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AnimationStates/animStates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/ButtonController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/TimeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/project/pomodoro/break-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/project/pomodoro/pomodoro-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/project/pomodoro/stylesheet.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="FxmlFile" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -29,6 +54,9 @@
     &quot;accountId&quot;: &quot;f3a6a29a-c208-4546-913f-07c8c7ec351e&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -39,7 +67,10 @@
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="3D0YmgbG5aI2KxQJr6sM4mONo5u" />
+  <component name="ProjectId" id="3BZdJ4SN13BeBx4UjDw88Ul4FiP" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -47,23 +78,27 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.DesktopPet.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging SCA",
-    "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "configurable.group.appearance"
+    "Application.MainApplication.executor": "Run",
+    "git-widget-placeholder": "Merging SCA"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\src\main\resources" />
+      <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\src\main\java\project\pomodoro" />
+      <recent name="C:\Users\Gemma Morgan\Desktop\UNI\CAB302\DesktopPetCAB302\src\main\resources" />
+      <recent name="C:\Users\Gemma Morgan\Desktop\UNI\CAB302\DesktopPetCAB302\target\classes" />
+      <recent name="C:\Users\Gemma Morgan\Desktop\UNI\CAB302\DesktopPetCAB302\src\main\resources\ImageSequences\walkright" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\4hunt\IdeaProjects\ESU_Project\src\main\java\project\desktoppet302" />
+      <recent name="C:\Users\kilro\IdeaProjects\DesktopPet302\src\main\java\org\example\desktoppet302" />
+      <recent name="C:\Users\kilro\IdeaProjects\DesktopPet302\Documents" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="project.pomodoro.controller" />
+    </key>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="c41286fa-c1ae-42a6-a11f-5b3f5eb4c807" name="Changes" comment="" />
@@ -72,6 +107,55 @@
       <option name="presentableId" value="Default" />
       <updated>1777420614926</updated>
     </task>
+    <task id="LOCAL-00001">
+      <option name="closed" value="true" />
+      <created>1776656235767</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1776656235767</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Branch merger with triviaModule.">
+      <option name="closed" value="true" />
+      <created>1776658474518</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1776658474518</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Clean up again.">
+      <option name="closed" value="true" />
+      <created>1777340033956</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1777340033956</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Animations added.">
+      <option name="closed" value="true" />
+      <created>1777351754275</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1777351754275</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Merge branch 'master' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0005.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0006.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0007.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0008.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0009.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0010.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0011.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0012.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0013.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0015.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0016.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0017.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0018.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0019.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0020.png">
+      <option name="closed" value="true" />
+      <created>1777355854783</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1777355854783</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Merge branch 'master' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0005.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0006.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0007.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0008.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0009.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0010.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0011.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0012.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0013.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0015.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0016.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0017.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0018.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0019.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0020.png">
+      <option name="closed" value="true" />
+      <created>1777355993135</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1777355993135</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -84,6 +168,28 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Why is this not working" />
+    <MESSAGE value="Merge branch 'pomodoro'&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;Documents/Excel Sheets United CAB302 Project Brief.docx&#10;#&#9;Documents/IntelliJ Set up.pdf&#10;#&#9;Documents/Meeting Minutes .xlsx&#10;#&#9;Documents/Meeting Minutes Post Checkpoint 1.xlsx&#10;#&#9;Documents/README.md&#10;#&#9;Documents/User Sories 1-12.docx&#10;#&#9;Documents/User Stories 20.docx&#10;#&#9;Documents/User Story Template.docx&#10;#&#9;Documents/UserStories.txt&#10;#&#9;Documents/idleSpritesheet-sad.png&#10;#&#9;Documents/idleSpritesheet@2x.png&#10;#&#9;Documents/jumpSpritesheet.png&#10;#&#9;Documents/walkLeftSpritesheet.png&#10;#&#9;Documents/walkRightSpritesheet.png&#10;#&#9;pom.xml&#10;#&#9;src/main/java/module-info.java" />
+    <MESSAGE value="Merged Master and Pomodoro" />
+    <MESSAGE value="Branch merger with triviaModule." />
+    <MESSAGE value="Clean up again." />
+    <MESSAGE value="Animations added." />
+    <MESSAGE value="Merge branch 'master' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0005.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0006.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0007.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0008.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0009.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0010.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0011.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0012.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0013.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0015.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0016.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0017.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0018.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0019.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0020.png" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0005.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0006.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0007.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0008.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0009.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0010.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0011.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0012.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0013.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0015.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0016.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0017.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0018.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0019.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0020.png" />
+    <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/project/Trivia/dao/DatabaseConnection.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Project302$DatabaseInitialiserTest.ic" NAME="DatabaseInitialiserTest Coverage Results" MODIFIED="1777437553546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />

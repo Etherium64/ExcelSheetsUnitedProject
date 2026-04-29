@@ -1,0 +1,45 @@
+
+@font-face {
+font-family: 'Constantia';
+src: local('Constantia.ttf');
+}
+@font-face {
+font-family: 'CenturyOldStyle';
+src: local('CenturyOldStyleStd-Regular.ttf');
+}
+.label {
+    -fx-font-size: 50;
+    -fx-text-fill: #333333;
+}
+
+/* Button styling */
+.button {
+    -fx-border-radius: 25;
+    -fx-background-radius: 25px;
+    -fx-font-size: 30;
+    -fx-padding: 10 20;
+    -fx-background-color: #B8E6DF;
+    -fx-text-fill: black;
+    -fx-font-family: Constantia;
+}
+
+.button:hover {
+    -fx-background-color: #6EC6C5;
+}
+
+#confirmBtn {
+    -fx-background-color: #6EC6C5;
+}
+
+
+.text {
+    -fx-font-size: 30
+}
+
+.table-row-cell:empty {
+    -fx-background-color: white;
+}
+
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
+}

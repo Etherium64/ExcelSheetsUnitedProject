@@ -68,12 +68,14 @@
             <RowConstraints />
         </rowConstraints>
     </GridPane>
+    <Button text="End" onAction="#endTrivia" />
 
     <!-- Username Section (hidden at start) -->
     <VBox fx:id="usernameSection" managed="false" visible="false">
         <Label text="Username:" />
         <TextField fx:id="usernameField" promptText="Your name" />
         <Button onAction="#onSaveClick" text="Save Score" />
+        <Button text="Don't Save" onAction="#dontSave" />
     </VBox>
 
     <Label text="Score:" />

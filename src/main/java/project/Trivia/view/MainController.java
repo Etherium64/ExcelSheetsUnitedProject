@@ -228,4 +228,19 @@ public class MainController {
         });
         delay.play();
     }
+
+    @FXML
+    private void dontSave() {
+        Stage stage = (Stage) statusLabel.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void endTrivia() {
+        Stage stage = (Stage) statusLabel.getScene().getWindow();
+        stage.close();
+    }
+
+
+
 }

@@ -258,6 +258,43 @@ public class DesktopPet extends Application {
         }
     }
 
+    /**
+     * Opens the Trivia window and initialises the database.
+     */
+    private void openTrivia(Stage petStage) {
+        try {
+            Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+
+            if (triviaStage == null) {
+
+                // Ensure database and questions exist
+                DatabaseInitialiser.init();
+
+                triviaStage = new Stage();
+
+                Parent root = FXMLLoader.load(
+                        Objects.requireNonNull(
+                                getClass().getResource("/project.trivia/main.fxml")
+                        )
+                );
+
+                Scene triviaScene = new Scene(root, 600, 400);
+
+                triviaStage.setTitle("Trivia Game");
+                triviaStage.setScene(triviaScene);
+                triviaStage.setAlwaysOnTop(true);
+                triviaStage.show();
+
+            } else if (!triviaStage.isShowing()) {
+                triviaStage.show();
+            }
+
+            positionStageAbovePet(petStage, triviaStage, bounds);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Positions a window directly above the pet.

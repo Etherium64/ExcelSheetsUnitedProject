@@ -57,6 +57,9 @@ public class PetController {
     private Image pet;
 
     @FXML
+    private VBox imagebox;
+
+    @FXML
     private TranslateTransition move;
 
     @FXML
@@ -77,7 +80,7 @@ public class PetController {
         //Set bounds of screen.
         bounds = Screen.getPrimary().getVisualBounds();
         move = new TranslateTransition();
-        move.setNode(petImage);
+        move.setNode(imagebox);
         petStates = new animStates();
         this.then = (System.currentTimeMillis());
         this.moving = new AnimationTimer() {
@@ -183,8 +186,8 @@ public class PetController {
                 mouseY = bottomScreenEdge;
             }
             // Apply clamped X position to image
-            petImage.setTranslateX(mouseX);
-            petImage.setTranslateY(mouseY);
+            imagebox.setTranslateX(mouseX);
+            imagebox.setTranslateY(mouseY);
         });
         idling();
     }

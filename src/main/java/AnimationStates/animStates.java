@@ -13,7 +13,6 @@ import javafx.scene.image.Image;
  *     <li>Call {@link #update()} once per frame (e.g., in AnimationTimer)</li>
  *     <li>Call {@link #getCurrentFrame()} to draw the current frame</li>
  * </ul>
- * </p>
  */
 
 public class animStates {
@@ -40,7 +39,6 @@ public class animStates {
      *     <li>Loads all animation image sequences from resources</li>
      *     <li>Registers each animation with the controller</li>
      * </ul>
-     * </p>
      */
 
     public animStates() {
@@ -59,7 +57,7 @@ public class animStates {
             // change the frame duration to influence how long each frame is held
             Animation walkleft = new Animation(loadImages.loadSequence("/ImageSequences/walkLeft"), 100);
             Animation walkright = new Animation(loadImages.loadSequence("/ImageSequences/walkRight"), 100);
-            Animation jump = new Animation(loadImages.loadSequence("/ImageSequences/jump"), 200);
+            Animation jump = new Animation(loadImages.loadSequence("/ImageSequences/jump"), 100);
             Animation sadidle = new Animation(loadImages.loadSequence("/ImageSequences/sadIdle"), 200);
 
             // Register animations with the controller
@@ -78,7 +76,6 @@ public class animStates {
      * Switches the pet to a new animation state.
      * <p>
      * The animation will loop automatically until another state is set.
-     * </p>
      *
      * @param newState the new animation state to activate
      */
@@ -109,7 +106,6 @@ public class animStates {
      * <p>
      * This should be called once per frame (e.g., inside an {@code AnimationTimer})
      * to advance the animation to the next frame when appropriate.
-     * </p>
      */
     public void update() {
         controller.update();
@@ -123,7 +119,7 @@ public class animStates {
     public Image getCurrentFrame() {
         return controller.getCurrentFrame();
     }
-
+  // update for pushing
 
 }
 //checking

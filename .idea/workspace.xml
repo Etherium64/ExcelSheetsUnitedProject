@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Animations added.">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AnimationStates/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AnimationStates/Animation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/DesktopPet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/DesktopPet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/project.desktoppet302/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project.desktoppet302/hello-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/project.desktoppet302/pet-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project.desktoppet302/pet-view.fxml" afterDir="false" />
+    <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Merge branch 'PomodoroWithoutPet' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/compiler.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/project/Trivia/Main.java">
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +56,9 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="3BZdJ4SN13BeBx4UjDw88Ul4FiP" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -80,7 +77,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging master",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
@@ -187,5 +184,9 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Project302$DatabaseInitialiserTest.ic" NAME="DatabaseInitialiserTest Coverage Results" MODIFIED="1777437553546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/Project302$DatabaseConnectionTest.ic" NAME="DatabaseConnectionTest Coverage Results" MODIFIED="1777437570890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>

@@ -175,6 +175,59 @@ public class DesktopPet extends Application {
         });
     }
 
+    /**
+     * Triggered when the pet is clicked (not dragged).
+     * Opens the feature menu above the pet.
+     */
+    private void onPetClicked(Stage petStage) {
+
+        System.out.println("Pet clicked!");
+
+        // Play jump animation on click
+        petStates.setState(animStates.PetState.JUMP);
+
+        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+
+        // Create menu only once
+        if (featureMenuStage == null) {
+            featureMenuStage = new Stage();
+
+            Button pomodoroButton = new Button("Pomodoro");
+            Button triviaButton = new Button("Trivia");
+
+            // Open Pomodoro feature
+            pomodoroButton.setOnAction(event -> {
+                openPomodoro(petStage);
+                featureMenuStage.hide();
+            });
+
+            // Open Trivia feature
+            triviaButton.setOnAction(event -> {
+                openTrivia(petStage);
+                featureMenuStage.hide();
+            });
+
+            // Vertical menu layout
+            VBox menuBox = new VBox(10, pomodoroButton, triviaButton);
+
+            // Basic styling
+            menuBox.setStyle(
+                    "-fx-background-color: white;" +
+                            "-fx-padding: 15;" +
+                            "-fx-border-color: black;" +
+                            "-fx-border-width: 1;"
+            );
+
+            Scene menuScene = new Scene(menuBox, 180, 120);
+
+            featureMenuStage.setScene(menuScene);
+            featureMenuStage.setTitle("Pet Menu");
+            featureMenuStage.setAlwaysOnTop(true);
+        }
+
+        featureMenuStage.show();
+        positionStageAbovePet(petStage, featureMenuStage, bounds);
+    }
 
     /**
      * Opens the Pomodoro window.
@@ -204,7 +257,6 @@ public class DesktopPet extends Application {
             e.printStackTrace();
         }
     }
-
 
 
     /**

@@ -5,26 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e51f00cf-ce61-4406-a641-8516950eb5e8" name="Changes" comment="Merge branch 'PomodoroWithoutPet' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/compiler.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/project/Trivia/Main.java">
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/PomodoroController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/RestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/WorkController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/DBConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/Session.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/SessionDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/project.pomodoro/rest-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/project.pomodoro/stylesheet.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/project.pomodoro/table-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/project.pomodoro/tablestylesheet.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/project.pomodoro/work-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/ButtonController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/TimeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/project/pomodoro/break-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/project/pomodoro/pomodoro-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/project/pomodoro/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +62,7 @@
   "keyToString": {
     "Application.DesktopPet.executor": "Run",
     "Application.MainApplication.executor": "Run",
-    "git-widget-placeholder": "Merging SCA"
+    "git-widget-placeholder": "SCA"
   }
 }]]></component>
   <component name="RecentsManager">

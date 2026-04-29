@@ -318,6 +318,7 @@ public class PetController {
                 nobutton.setVisible(false);
             }
         }
+        //why isn't this working
 
 
 

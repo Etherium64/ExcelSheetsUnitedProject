@@ -6,8 +6,10 @@ import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.*;
+import javafx.scene.control.Button;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -26,6 +28,15 @@ public class PetController {
 
     @FXML
     private HBox box;
+
+    @FXML
+    private Text pettext;
+
+    @FXML
+    private Button yesbutton;
+
+    @FXML
+    private Button nobutton;
 
     @FXML
     private Rectangle2D bounds;
@@ -176,6 +187,50 @@ public class PetController {
             petImage.setTranslateY(mouseY);
         });
         idling();
+    }
+
+    @FXML
+    protected void timerButton() {
+        pettext.setText("NEVER KYS");
+        pettext.setVisible(true);
+    }
+
+    private boolean isTriviaPrompt = false;
+
+    @FXML
+    protected void triviaButton() {
+        pettext.setText("Do you want to play trivia with me?");
+        pettext.setVisible(true);
+        yesbutton.setVisible(true);
+        nobutton.setVisible(true);
+        isTriviaPrompt = true; // Set the state
+    }
+
+    @FXML
+    private void goButton() {
+        if (isTriviaPrompt) {
+            // Launch trivia game
+            try {
+                Stage triviaStage = new Stage();
+                new project.Trivia.Main().start(triviaStage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            // Reset
+            isTriviaPrompt = false;
+            pettext.setVisible(false);
+            yesbutton.setVisible(false);
+            nobutton.setVisible(false);
+        }
+        // Add else-if blocks for other prompts if needed
+    }
+
+    @FXML
+    protected void returnButton() {
+        pettext.setText("KYS");
+        pettext.setVisible(false);
+        yesbutton.setVisible(false);
+        nobutton.setVisible(false);
     }
 
 

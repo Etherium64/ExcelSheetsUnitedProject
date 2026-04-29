@@ -4,29 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Animations added.">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20_04_2026_2_24_pm_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_20_04_2026_2_24_pm__Changes_.xml" beforeDir="false" />
+    <list default="true" id="c41286fa-c1ae-42a6-a11f-5b3f5eb4c807" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -41,9 +28,6 @@
     &quot;accountId&quot;: &quot;80ff2d5a-7e8f-4772-a30e-3552355cb4f9&quot;
   }
 }</component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" root0="SKIP_INSPECTION" />
-  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -51,58 +35,33 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 2
+  &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="3BZdJ4SN13BeBx4UjDw88Ul4FiP" />
+  <component name="ProjectId" id="3D0YmgbG5aI2KxQJr6sM4mONo5u" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Application.AnimationTestWindow.executor&quot;: &quot;Debug&quot;,
     &quot;Application.DesktopPet.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;Application.animation test.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.DesktopPet302 [org.apache.maven.plugins:maven-javadoc-plugin:3.4.0:javadoc].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.DesktopPet302 [package].executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;SCA&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Gemma Morgan/Desktop/UNI/CAB302/DesktopPetCAB302/src/main/resources&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\4hunt\IdeaProjects\ESU_Project\src\main\java\project\desktoppet302" />
-      <recent name="C:\Users\kilro\IdeaProjects\DesktopPet302\src\main\java\org\example\desktoppet302" />
-      <recent name="C:\Users\kilro\IdeaProjects\DesktopPet302\Documents" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="animation test" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="corretto-21" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="AnimationStates.AnimationTestWindow" />
-      <module name="DesktopPet302" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -112,45 +71,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="" />
-      <created>1774700450780</created>
+      <changelist id="c41286fa-c1ae-42a6-a11f-5b3f5eb4c807" name="Changes" comment="" />
+      <created>1777420614926</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1774700450780</updated>
+      <updated>1777420614926</updated>
     </task>
-    <task id="LOCAL-00001">
-      <option name="closed" value="true" />
-      <created>1776656235767</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1776656235767</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Branch merger with triviaModule.">
-      <option name="closed" value="true" />
-      <created>1776658474518</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1776658474518</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Clean up again.">
-      <option name="closed" value="true" />
-      <created>1777340033956</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1777340033956</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Animations added.">
-      <option name="closed" value="true" />
-      <created>1777351754275</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1777351754275</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -163,26 +89,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Why is this not working" />
-    <MESSAGE value="Merge branch 'pomodoro'&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;Documents/Excel Sheets United CAB302 Project Brief.docx&#10;#&#9;Documents/IntelliJ Set up.pdf&#10;#&#9;Documents/Meeting Minutes .xlsx&#10;#&#9;Documents/Meeting Minutes Post Checkpoint 1.xlsx&#10;#&#9;Documents/README.md&#10;#&#9;Documents/User Sories 1-12.docx&#10;#&#9;Documents/User Stories 20.docx&#10;#&#9;Documents/User Story Template.docx&#10;#&#9;Documents/UserStories.txt&#10;#&#9;Documents/idleSpritesheet-sad.png&#10;#&#9;Documents/idleSpritesheet@2x.png&#10;#&#9;Documents/jumpSpritesheet.png&#10;#&#9;Documents/walkLeftSpritesheet.png&#10;#&#9;Documents/walkRightSpritesheet.png&#10;#&#9;pom.xml&#10;#&#9;src/main/java/module-info.java" />
-    <MESSAGE value="Merged Master and Pomodoro" />
-    <MESSAGE value="Branch merger with triviaModule." />
-    <MESSAGE value="Clean up again." />
-    <MESSAGE value="Animations added." />
-    <option name="LAST_COMMIT_MESSAGE" value="Animations added." />
-    <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/project/Trivia/dao/DatabaseConnection.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

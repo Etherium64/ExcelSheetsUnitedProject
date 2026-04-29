@@ -211,6 +211,8 @@ public class PetController {
     }
 
     private boolean isTriviaPrompt = false;
+    private boolean ispomodoroPrompt = false;
+    private boolean ishistoryPrompt = false;
 
     @FXML
     protected void triviaButton() {
@@ -219,6 +221,15 @@ public class PetController {
         yesbutton.setVisible(true);
         nobutton.setVisible(true);
         isTriviaPrompt = true; // Set the state
+    }
+
+    @FXML
+    protected void pomodoroButton() {
+        pettext.setText("Want to start Pomodoro timer");
+        pettext.setVisible(true);
+        yesbutton.setVisible(true);
+        nobutton.setVisible(true);
+        ispomodoroPrompt = true;
     }
 
     @FXML
@@ -250,8 +261,62 @@ public class PetController {
             pettext.setVisible(false);
             yesbutton.setVisible(false);
             nobutton.setVisible(false);
+//        } else if (pomodoroPrompt) { // Add this new block
+//            try {
+//                Stage primaryStage = (Stage) pettext.getScene().getWindow();
+//                Stage pomodoroStage = new Stage();
+//                new project.Pomodoro.Main().start(pomodoroStage); // Adjust package/class as needed
+//                pomodoroStage.setAlwaysOnTop(true);
+//
+//                // Position relative to desktop pet (same as trivia)
+//                primaryStage.xProperty().addListener((obs, old, val) ->
+//                        pomodoroStage.setX(val.doubleValue() + 10));
+//                primaryStage.yProperty().addListener((obs, old, val) ->
+//                        pomodoroStage.setY(val.doubleValue() + primaryStage.getHeight() - pomodoroStage.getHeight() + 10));
+//                primaryStage.widthProperty().addListener((obs, old, val) -> pomodoroStage.sizeToScene());
+//                primaryStage.heightProperty().addListener((obs, old, val) -> pomodoroStage.sizeToScene());
+//                primaryStage.iconifiedProperty().addListener((obs, old, val) -> pomodoroStage.setIconified(val));
+//
+//                // Initial position in bottom-left of main window
+//                pomodoroStage.setX(primaryStage.getX() + 10);
+//                pomodoroStage.setY(primaryStage.getY() + primaryStage.getHeight() - pomodoroStage.getHeight() + 10);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//            // Reset
+//            pomodoroPrompt = false;
+//            pettext.setVisible(false);
+//            yesbutton.setVisible(false);
+//            nobutton.setVisible(false);
+//        }
+//        else if (historyPrompt) { // Add this new block
+//            try {
+//                Stage primaryStage = (Stage) pettext.getScene().getWindow();
+//                Stage historyStage = new Stage();
+//                new project.History.Main().start(historyStage); // Adjust package/class as needed
+//                historyStage.setAlwaysOnTop(true);
+//
+//                // Position relative to desktop pet (same as trivia and pomodoro)
+//                primaryStage.xProperty().addListener((obs, old, val) ->
+//                        historyStage.setX(val.doubleValue() + 10));
+//                primaryStage.yProperty().addListener((obs, old, val) ->
+//                        historyStage.setY(val.doubleValue() + primaryStage.getHeight() - historyStage.getHeight() + 10));
+//                primaryStage.widthProperty().addListener((obs, old, val) -> historyStage.sizeToScene());
+//                primaryStage.heightProperty().addListener((obs, old, val) -> historyStage.sizeToScene());
+//                primaryStage.iconifiedProperty().addListener((obs, old, val) -> historyStage.setIconified(val));
+//
+//                // Initial position in bottom-left of main window
+//                historyStage.setX(primaryStage.getX() + 10);
+//                historyStage.setY(primaryStage.getY() + primaryStage.getHeight() - historyStage.getHeight() + 10);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//            // Reset
+//            historyPrompt = false;
+//            pettext.setVisible(false);
+//            yesbutton.setVisible(false);
+//            nobutton.setVisible(false);
         }
-        // Add else-if blocks for other prompts if needed
     }
 
     @FXML

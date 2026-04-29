@@ -4,46 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c41286fa-c1ae-42a6-a11f-5b3f5eb4c807" name="Changes" comment="">
+    <list default="true" id="c41286fa-c1ae-42a6-a11f-5b3f5eb4c807" name="Changes" comment="Animations added.">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/DesktopPet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/DesktopPet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0005.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0006.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0007.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0008.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0009.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0010.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0011.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0012.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0013.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0014.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0015.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0016.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0017.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0018.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0019.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0020.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0021.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0022.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png0023.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0005.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0005.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0006.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0006.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0007.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0007.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0008.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0008.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0009.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0009.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0010.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0010.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0011.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0011.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0012.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0012.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0013.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0013.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0015.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0015.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0016.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0016.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0017.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0017.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0018.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0018.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0019.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0019.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0020.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0020.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0021.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0022.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0023.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,12 +24,12 @@
     &quot;assignee&quot;: &quot;Etherium64&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Etherium64/ExcelSheetsUnitedProject.git",
-    "accountId": "f3a6a29a-c208-4546-913f-07c8c7ec351e"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Etherium64/ExcelSheetsUnitedProject.git&quot;,
+    &quot;accountId&quot;: &quot;f3a6a29a-c208-4546-913f-07c8c7ec351e&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -120,5 +85,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Project302$DatabaseInitialiserTest.ic" NAME="DatabaseInitialiserTest Coverage Results" MODIFIED="1777437553546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/Project302$DatabaseConnectionTest.ic" NAME="DatabaseConnectionTest Coverage Results" MODIFIED="1777437570890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>

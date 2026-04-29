@@ -68,7 +68,6 @@ public class PetController {
     @FXML
     private long then;
 
-
     @FXML
     private animStates petStates;
 
@@ -77,21 +76,30 @@ public class PetController {
     public void initialize() {
         //Set bounds of screen.
         bounds = Screen.getPrimary().getVisualBounds();
+        // Set translate transition to allows for animation translations for movement.
         move = new TranslateTransition();
         move.setNode(imagebox);
+        // Set the animation state for the pet.
         petStates = new animStates();
+        // Record current time of system when application starts.
         this.then = (System.currentTimeMillis());
+        //Create animation timer for the movement when the pet is not interacted with.
         this.moving = new AnimationTimer() {
             @Override
             public void handle(long now) {
+                //Record  current time of system.
                 now = System.currentTimeMillis();
                 if (now - then > 8000) {
+                    // Generate two random numbers between -100 and 100 after eight seconds from previous generation or System Start.
                     Random z = new Random();
                     double x = (double) z.nextInt(200) - 100;
                     double y = (double) z.nextInt(200) - 100;
+                    // Set animation movement time.
                     move.setDuration(Duration.seconds(2));
+                    // Set horizontal and vertical translation base on the random numbers generated.
                     move.setByX(x);
                     move.setByY(y);
+                    // Based on whether the pet moves left or right, update animation state to show the pet walking in said direction.
                     if (x > 0) {
                         petStates.setState(animStates.PetState.WALKlEFT);
                         new AnimationTimer() {
@@ -114,8 +122,11 @@ public class PetController {
                             }
                         }.start();
                     }
+                    // Play animation.
                     move.play();
+                    // Set the old system time to the current time, allowing for repetition of animation timer.
                     then = now;
+                    // Timeline that allows for walking animation to play before restarting the animation timer again.
                     Timeline timeline = new Timeline(
                             new KeyFrame(Duration.seconds(2), e -> idling()));
                     timeline.playFromStart();
@@ -123,7 +134,7 @@ public class PetController {
 
             }
         };
-
+        // Run idling after the stage is set.
         Platform.runLater(this::idling);
 
     }
@@ -132,6 +143,7 @@ public class PetController {
 
     @FXML
     protected void idling() {
+        // Set the pet to the idle animation.
         petStates.setState(animStates.PetState.IDLE);
         new AnimationTimer() {
             @Override
@@ -141,6 +153,7 @@ public class PetController {
                 petImage.setImage(pet);
             }
         }.start();
+        // Start the animation timer for movement when pet is not interacted with.
         moving.start();
 
     }
@@ -148,7 +161,9 @@ public class PetController {
     // State change when animal is clicked.
     @FXML
     protected void onImageClick() {
+        // Stop the idle animation countdown.
         moving.stop();
+        // Implement the jumping animation.
         petStates.setState(animStates.PetState.JUMP);
         new AnimationTimer() {
             @Override
@@ -158,21 +173,24 @@ public class PetController {
                 petImage.setImage(pet);
             }
         }.start();
+        // Reset the timer for the idling animation.
         then = System.currentTimeMillis();
+        // Implement a timeline that allows jumping animation to play through and then start idling animation and events again.
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(5), e -> idling()));
+                new KeyFrame(Duration.seconds(2.75), e -> idling()));
         timeline.playFromStart();
     }
 
 
     @FXML
     protected void onImageDrag() throws InterruptedException {
+        // Stop the idle animation countdown.
         moving.stop();
         // Get current stage on window.
         stage = (Stage) box.getScene().getWindow();
         petImage.setOnMouseDragged(mouseDrag -> {
             // Get the X position based on mouse movement
-            mouseX = mouseDrag.getSceneX() - petImage.getFitWidth()/2 - 125;
+            mouseX = mouseDrag.getSceneX() - petImage.getFitWidth()/2 - 150;
             // Get the Y position based on mouse movement
             mouseY = mouseDrag.getSceneY() - petImage.getFitHeight()/2;
             // Find left edge of screen
@@ -252,7 +270,7 @@ public class PetController {
 
                 // Initial position in bottom-left of main window
                 triviaStage.setX(primaryStage.getX() + 10);
-                triviaStage.setY(primaryStage.getY() + primaryStage.getHeight() - triviaStage.getHeight() + 10);
+                triviaStage.setY(primaryStage.getY() + primaryStage.getHeight() - triviaStage.getHeight() - 30);
             } catch (Exception e) {
                 e.printStackTrace();
             }

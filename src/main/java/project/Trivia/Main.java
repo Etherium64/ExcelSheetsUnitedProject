@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import project.Trivia.dao.DatabaseInitialiser;
 
 import java.util.Objects;
@@ -34,14 +35,17 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
-        // Initialize database tables
         DatabaseInitialiser.init();
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/project.trivia/main.fxml")));
-        Scene scene = new Scene(root, 600, 400);
+
+        Scene scene = new Scene(root, 300, 200);
+        scene.setFill(null);
         scene.getStylesheets().add("/styles.css");
+
         stage.setTitle("Trivia Game");
         stage.setScene(scene);
+        stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
     }
 

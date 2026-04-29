@@ -15,13 +15,32 @@
     <Label text="Trivia Game" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
 
     <!-- Trivia Section -->
-    <VBox fx:id="triviaSection">
-        <Label fx:id="questionLabel" text="Loading..." style="-fx-font-size: 16px;" />
-        <Button fx:id="buttonA" text="Option A" onAction="#onAnswerClick" />
-        <Button fx:id="buttonB" text="Option B" onAction="#onAnswerClick" />
-        <Button fx:id="buttonC" text="Option C" onAction="#onAnswerClick" />
-        <Button fx:id="buttonD" text="Option D" onAction="#onAnswerClick" />
-    </VBox>
+    <GridPane fx:id="triviaSection" alignment="CENTER" prefHeight="125.0" prefWidth="179.0">
+        <!-- Question Label -->
+        <Label fx:id="questionLabel" style="-fx-font-size: 15px; -fx-text-fill: white;" text="Loading..." GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+
+        <!-- Option A -->
+        <Button fx:id="buttonA" onAction="#onAnswerClick" contentDisplay="CENTER" pickOnBounds="false" prefHeight="20" prefWidth="85" style="-fx-font-size: 9px; -fx-ellipsis-string: '';" text="Option A" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+
+        <!-- Option B -->
+        <Button fx:id="buttonB" onAction="#onAnswerClick" prefHeight="20" prefWidth="85" style="-fx-font-size: 9px; -fx-ellipsis-string: '';" text="Option B" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+
+        <!-- Option C -->
+        <Button fx:id="buttonC" onAction="#onAnswerClick" prefHeight="20" prefWidth="85" style="-fx-font-size: 9px; -fx-ellipsis-string: '';" text="Option C" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+
+        <!-- Option D -->
+        <Button fx:id="buttonD" onAction="#onAnswerClick" prefHeight="20" prefWidth="85" style="-fx-font-size: 9px; -fx-ellipsis-string: '';" text="Option D" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+        <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+        </rowConstraints>
+    </GridPane>
 
     <!-- Username Section (hidden at start) -->
     <VBox fx:id="usernameSection" visible="false" managed="false">

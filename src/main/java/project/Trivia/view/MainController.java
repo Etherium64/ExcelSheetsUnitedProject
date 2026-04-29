@@ -1,11 +1,14 @@
 package project.Trivia.view;
 
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import project.Trivia.dao.DatabaseConnection;
 import project.Trivia.dao.ScoreDAO;
 import javafx.fxml.FXML;
@@ -39,7 +42,7 @@ public class MainController {
     private static final int MAX_QUESTIONS = 5;
     private final ScoreDAO dao = new ScoreDAO();
 
-    @FXML private VBox triviaSection;
+    @FXML private GridPane triviaSection;
     @FXML private VBox usernameSection;
 
     /**
@@ -216,5 +219,13 @@ public class MainController {
         dao.saveScore(username, score);
         statusLabel.setText("Score saved!");
         showTopScores();
+
+        // Close the trivia stage after 3 seconds
+        PauseTransition delay = new PauseTransition(Duration.seconds(3));
+        delay.setOnFinished(event -> {
+            Stage stage = (Stage) statusLabel.getScene().getWindow();
+            stage.close();
+        });
+        delay.play();
     }
 }

@@ -213,6 +213,7 @@ public class PetController {
             try {
                 Stage triviaStage = new Stage();
                 new project.Trivia.Main().start(triviaStage);
+                triviaStage.setAlwaysOnTop(true);
             } catch (Exception e) {
                 e.printStackTrace();
             }

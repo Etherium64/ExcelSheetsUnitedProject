@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e51f00cf-ce61-4406-a641-8516950eb5e8" name="Changes" comment="Merge branch 'PomodoroWithoutPet' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/compiler.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/project/Trivia/Main.java">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" afterDir="false" />
+    <list default="true" id="e51f00cf-ce61-4406-a641-8516950eb5e8" name="Changes" comment="Merge branch 'SCA' of https://github.com/Etherium64/ExcelSheetsUnitedProject into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/DesktopPet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/DesktopPet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +60,7 @@
   "keyToString": {
     "Application.DesktopPet.executor": "Run",
     "Application.MainApplication.executor": "Run",
-    "git-widget-placeholder": "SCA"
+    "git-widget-placeholder": "Merging SCA"
   }
 }]]></component>
   <component name="RecentsManager">

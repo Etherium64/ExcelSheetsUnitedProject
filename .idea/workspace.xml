@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Merge branch 'master' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0005.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0006.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0007.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0008.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0009.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0010.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0011.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0012.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0013.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0015.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0016.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0017.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0018.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0019.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0020.png">
+    <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Merge branch 'SCA' of https://github.com/Etherium64/ExcelSheetsUnitedProject into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/DBConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,12 +35,12 @@
     &quot;assignee&quot;: &quot;Etherium64&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Etherium64/ExcelSheetsUnitedProject.git",
-    "accountId": "c7ddf258-7f21-4303-9d1e-e40399a8a932"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Etherium64/ExcelSheetsUnitedProject.git&quot;,
+    &quot;accountId&quot;: &quot;c7ddf258-7f21-4303-9d1e-e40399a8a932&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" root0="SKIP_INSPECTION" />
   </component>
@@ -78,10 +79,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "SCAwithPomodoro",
+    "git-widget-placeholder": "PomodoroWithoutPet",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/ddo14/Documents/GitHub/ExcelSheetsUnitedProject/src/main/resources",
-    "project.structure.last.edited": "SDKs",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "advanced.settings"
@@ -103,17 +104,6 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="project.pomodoro.controller" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="animation test" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="corretto-21" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="AnimationStates.AnimationTestWindow" />
-      <module name="Pomodoro" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -213,5 +203,9 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Project302$DatabaseInitialiserTest.ic" NAME="DatabaseInitialiserTest Coverage Results" MODIFIED="1777437553546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/Project302$DatabaseConnectionTest.ic" NAME="DatabaseConnectionTest Coverage Results" MODIFIED="1777437570890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>

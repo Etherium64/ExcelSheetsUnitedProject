@@ -9,7 +9,7 @@ public class SessionDAO {
     private Connection connection;
 
     public SessionDAO() {
-        connection = DBConnection.getInstance();
+        connection = DBConnection.getConnection();
     }
 
     public void createTable() {

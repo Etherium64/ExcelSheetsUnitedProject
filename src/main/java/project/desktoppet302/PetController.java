@@ -212,11 +212,24 @@ public class PetController {
     @FXML
     private void goButton() {
         if (isTriviaPrompt) {
-            // Launch trivia game
             try {
+                Stage primaryStage = (Stage) pettext.getScene().getWindow();
                 Stage triviaStage = new Stage();
                 new project.Trivia.Main().start(triviaStage);
                 triviaStage.setAlwaysOnTop(true);
+
+                // Position relative to desktop pet
+                primaryStage.xProperty().addListener((obs, old, val) ->
+                        triviaStage.setX(val.doubleValue() + 10));
+                primaryStage.yProperty().addListener((obs, old, val) ->
+                        triviaStage.setY(val.doubleValue() + primaryStage.getHeight() - triviaStage.getHeight() + 10));
+                primaryStage.widthProperty().addListener((obs, old, val) -> triviaStage.sizeToScene());
+                primaryStage.heightProperty().addListener((obs, old, val) -> triviaStage.sizeToScene());
+                primaryStage.iconifiedProperty().addListener((obs, old, val) -> triviaStage.setIconified(val));
+
+                // Initial position in bottom-left of main window
+                triviaStage.setX(primaryStage.getX() + 10);
+                triviaStage.setY(primaryStage.getY() + primaryStage.getHeight() - triviaStage.getHeight() + 10);
             } catch (Exception e) {
                 e.printStackTrace();
             }

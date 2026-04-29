@@ -2,21 +2,25 @@ package AnimationStates;
 
 import javafx.scene.image.Image;
 
-    // Handles switching between animations and updating the current one.
-
-    // Team Usage:
-    // addAnimation(State, Animation) to register animations
-    // setState(State) to switch animations
-    // update() once per frame
-    // getCurrentFrame() to draw
-
-
-
+/**
+ * Manages all animation states for the pet and provides a simple interface
+ * for switching, updating, and retrieving animation frames.
+ *
+ * <p>Usage:
+ * <ul>
+ *     <li>Instantiate once: {@code animStates states = new animStates();}</li>
+ *     <li>Call {@link #setState(PetState)} to switch animations</li>
+ *     <li>Call {@link #update()} once per frame (e.g., in AnimationTimer)</li>
+ *     <li>Call {@link #getCurrentFrame()} to draw the current frame</li>
+ * </ul>
+ * </p>
+ */
 
 public class animStates {
     private animController controller;
 
-    // Public enum of all available animation states.
+        /** Public enum of all available animation states.
+         */
     public enum PetState {
         IDLE,
         WALKrIGHT,
@@ -26,6 +30,18 @@ public class animStates {
     }
 
     private PetState currentState = PetState.IDLE;
+
+    /**
+     * Creates a new animation state manager and loads all animation sequences.
+     * <p>
+     * This constructor:
+     * <ul>
+     *     <li>Initializes the animation controller</li>
+     *     <li>Loads all animation image sequences from resources</li>
+     *     <li>Registers each animation with the controller</li>
+     * </ul>
+     * </p>
+     */
 
     public animStates() {
         controller = new animController();
@@ -58,8 +74,14 @@ public class animStates {
         }
     }
 
-    //Switches the pet to a new animation state.
-    // The animation will loop automatically until another state is set.
+    /**
+     * Switches the pet to a new animation state.
+     * <p>
+     * The animation will loop automatically until another state is set.
+     * </p>
+     *
+     * @param newState the new animation state to activate
+     */
     public void setState(PetState newState) {
         currentState = newState;
 
@@ -82,12 +104,22 @@ public class animStates {
         }
     }
 
-    //Updates the current animation frame. Call once per frame.
+    /**
+     * Updates the currently active animation.
+     * <p>
+     * This should be called once per frame (e.g., inside an {@code AnimationTimer})
+     * to advance the animation to the next frame when appropriate.
+     * </p>
+     */
     public void update() {
         controller.update();
     }
 
-    //Returns the current frame image for rendering.
+    /**
+     * Returns the current animation frame image for rendering.
+     *
+     * @return the current frame as a {@link Image}, or {@code null} if no animation is active
+     */
     public Image getCurrentFrame() {
         return controller.getCurrentFrame();
     }

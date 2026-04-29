@@ -57,7 +57,7 @@ public class animStates {
             // change the frame duration to influence how long each frame is held
             Animation walkleft = new Animation(loadImages.loadSequence("/ImageSequences/walkLeft"), 100);
             Animation walkright = new Animation(loadImages.loadSequence("/ImageSequences/walkRight"), 100);
-            Animation jump = new Animation(loadImages.loadSequence("/ImageSequences/jump"), 200);
+            Animation jump = new Animation(loadImages.loadSequence("/ImageSequences/jump"), 100);
             Animation sadidle = new Animation(loadImages.loadSequence("/ImageSequences/sadIdle"), 200);
 
             // Register animations with the controller

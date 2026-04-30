@@ -112,8 +112,8 @@ public class PomodoroController implements Initializable {
      * @return A string representation of the time in "mm:ss" format with leading zeros.
      */
     private String formatTimer(int timeValue) {
-        int minutes = timeElapsed / 60;
-        int seconds = timeElapsed % 60;
+        int minutes = timeValue / 60;
+        int seconds = timeValue % 60;
         return String.format("%02d:%02d", minutes, seconds);
     }
 
@@ -239,7 +239,7 @@ public class PomodoroController implements Initializable {
     @FXML
     public void backBtnClick() throws Exception {
         Stage backStage = (Stage) backBtn.getScene().getWindow();
-        backScene.launch(backStage, "work-view.fxml");
+        backScene.launchWork(backStage);
     }
 
 

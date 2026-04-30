@@ -101,7 +101,7 @@ public class WorkController {
             taskIsSet = false;
         }
         Stage workStage = (Stage) restBtn.getScene().getWindow();
-        workScene.launch(workStage, "rest-view.fxml");
+        workScene.launchWork(workStage);
     }
 
 
@@ -112,7 +112,7 @@ public class WorkController {
             taskIsSet = false;
         }
         Stage restStage = (Stage) resetBtn.getScene().getWindow();
-        restScene.launch(restStage, "work-view.fxml");
+        restScene.launchRest(restStage);
     }
 
     @FXML

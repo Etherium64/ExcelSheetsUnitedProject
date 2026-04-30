@@ -22,6 +22,7 @@ module project {
     opens project.Trivia.view to javafx.fxml;
     exports project.Trivia;
     exports project.Trivia.dao;
+    exports project.Trivia.view;
 
     requires javafx.base;
 

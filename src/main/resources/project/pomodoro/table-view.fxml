@@ -2,12 +2,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml"
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
            fx:controller="project.pomodoro.controller.PomodoroController">
     <BorderPane>
-        <padding>
-            <Insets bottom="300" top="30" left="30" right="30"/>
-        </padding>
         <center>
             <TableView id="tableView" fx:id="tableView">
                 <columnResizePolicy>

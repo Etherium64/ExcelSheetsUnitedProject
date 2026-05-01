@@ -7,7 +7,7 @@ public class Session {
     private Timestamp timestamp;
     private String sessionType;
     private String sessionTask;
-    private String timeSpent;
+    private String timespent;
     private boolean completion;
 
     public Session(int id, Timestamp timestamp, String sessionType, String sessionTask, String timeSpent, boolean completion) {
@@ -15,15 +15,15 @@ public class Session {
         this.timestamp = timestamp;
         this.sessionType = sessionType;
         this.sessionTask = sessionTask;
-        this.timeSpent = timeSpent;
+        this.timespent = timeSpent;
         this.completion = completion;
     }
 
-    public Session(Timestamp timestamp, String sessionType, String sessionTask, String timeSpent, boolean completion) {
+    public Session(Timestamp timestamp, String sessionType, String sessionTask, String timespent, boolean completion) {
         this.timestamp = timestamp;
         this.sessionType = sessionType;
         this.sessionTask = sessionTask;
-        this.timeSpent = timeSpent;
+        this.timespent = timespent;
         this.completion = completion;
     }
 
@@ -41,7 +41,7 @@ public class Session {
 
     public void setSessionTask(String sessionTask) {this.sessionTask = sessionTask; }
 
-    public void setTimeSpent(String timeSpent) {this.timeSpent = timeSpent; }
+    public void setTimespent(String timespent) {this.timespent = timespent; }
 
     public void setCompletion(Boolean completion) {this.completion = completion; }
 
@@ -55,7 +55,7 @@ public class Session {
 
     public String getSessionTask() { return sessionTask; }
 
-    public String getTimeSpent() { return timeSpent; }
+    public String getTimespent() { return timespent; }
 
     public boolean getCompletion() {return completion;}
 
@@ -66,7 +66,7 @@ public class Session {
                 ", timestamp='" + timestamp + '\'' +
                 ", sessionTask='" + sessionTask + '\'' +
                 ", sessionType=" + sessionType + '\'' +
-                ", timeSpent='" + timeSpent + '\'' +
+                ", timespent='" + timespent + '\'' +
                 ", completion=" + completion +
                 '}';
     }

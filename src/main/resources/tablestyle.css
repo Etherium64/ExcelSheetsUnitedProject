@@ -12,7 +12,11 @@ src: local('CenturyOldStyleStd-Regular.ttf');
     -fx-text-fill: #333333;
 }
 
-/* Button styling */
+.text-field {
+    -fx-font-size: 30;
+    -fx-text-fill: #333333;
+}
+
 .button {
     -fx-border-radius: 30;
     -fx-background-radius: 25px;

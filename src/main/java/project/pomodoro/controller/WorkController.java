@@ -17,9 +17,7 @@ public class WorkController {
     /**
      * Application instance used to launch the Pomodoro timer view.
      */
-    private MainApplication workScene = new MainApplication();
-    private MainApplication restScene = new MainApplication();
-    private MainApplication tableScene = new MainApplication();
+    private MainApplication newScene = new MainApplication();
     private volatile boolean buttonPaused = false;
     private boolean taskIsSet = false;
 
@@ -100,8 +98,8 @@ public class WorkController {
             PomodoroController.getPomodoro().unfinishedPomodoro();
             taskIsSet = false;
         }
-        Stage restStage = (Stage) restBtn.getScene().getWindow();
-        workScene.launch(restStage, "rest-view.fxml");
+        Stage newStage = (Stage) restBtn.getScene().getWindow();
+        newScene.launch(newStage, "rest-view.fxml");
     }
 
 
@@ -111,8 +109,8 @@ public class WorkController {
             PomodoroController.getPomodoro().unfinishedPomodoro();
             taskIsSet = false;
         }
-        Stage workStage = (Stage) resetBtn.getScene().getWindow();
-        workScene.launch(workStage, "work-view.fxml");
+        Stage newStage = (Stage) resetBtn.getScene().getWindow();
+        newScene.launch(newStage, "work-view.fxml");
     }
 
     @FXML
@@ -121,8 +119,8 @@ public class WorkController {
             PomodoroController.getPomodoro().unfinishedPomodoro();
             taskIsSet = false;
         }
-        Stage tableStage = (Stage) tableBtn.getScene().getWindow();
-        tableScene.launch(tableStage, "table-view.fxml");
+        Stage newStage = (Stage) tableBtn.getScene().getWindow();
+        newScene.launch(newStage, "table-view.fxml");
     }
 
 }

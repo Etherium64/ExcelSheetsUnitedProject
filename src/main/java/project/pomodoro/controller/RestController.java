@@ -7,15 +7,9 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import project.pomodoro.MainApplication;
 
-;
-
-
 public class RestController {
 
-    private MainApplication workScene = new MainApplication();
-    private MainApplication restScene = new MainApplication();
-    private MainApplication tableScene = new MainApplication();
-
+    private MainApplication newScene = new MainApplication();
     private volatile boolean buttonPaused = false;
     private boolean taskIsSet = false;
 
@@ -73,7 +67,7 @@ public class RestController {
             taskIsSet = false;
         }
         Stage workStage = (Stage) workBtn.getScene().getWindow();
-        workScene.launch(workStage, "work-view.fxml");
+        newScene.launch(workStage, "work-view.fxml");
     }
 
     @FXML
@@ -83,7 +77,7 @@ public class RestController {
             taskIsSet = false;
         }
         Stage restStage = (Stage) resetBtn.getScene().getWindow();
-        workScene.launch(restStage, "rest-view.fxml");
+        newScene.launch(restStage, "rest-view.fxml");
     }
 
     @FXML
@@ -92,8 +86,8 @@ public class RestController {
             PomodoroController.getPomodoro().unfinishedPomodoro();
             taskIsSet = false;
         }
-        Stage tableStage = (Stage) tableBtn.getScene().getWindow();
-        tableScene.launch(tableStage, "table-view.fxml");
+        Stage newStage = (Stage) tableBtn.getScene().getWindow();
+        newScene.launch(newStage, "table-view.fxml");
     }
 
 }

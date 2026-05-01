@@ -6,7 +6,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import project.pomodoro.MainApplication;
 import project.pomodoro.model.Session;
@@ -60,35 +62,43 @@ public class PomodoroController implements Initializable {
      * Flag to determine if this is the first time the timer is being started.
      */
     private boolean firstCount = true;
+    private boolean updateMode = false;
     private ProgressBar timerBar;
     private static double progress;
     private static double progressIncrements;
     private Button startPauseBtn;
-    private MainApplication backScene = new MainApplication();
+    private MainApplication newScene = new MainApplication();
+
 
     @FXML
-    private Button backBtn;
+    private Button returnWorkBtn;
+
+    @FXML
+    private Button returnRestBtn;
+
+    @FXML
+    private Button updateBtn;
 
     @FXML
     private TableView<Session> tableView;
 
     @FXML
-    private TableColumn idCol;
+    private TableColumn<Session, Integer> idCol;
 
     @FXML
-    private TableColumn timestampCol;
+    private TableColumn<Session, Timestamp> timestampCol;
 
     @FXML
-    private TableColumn typeCol;
+    private TableColumn<Session, String> typeCol;
 
     @FXML
-    private TableColumn taskCol;
+    private TableColumn<Session, String> taskCol;
 
     @FXML
-    private TableColumn timespentCol;
+    private TableColumn<Session, String> timespentCol;
 
     @FXML
-    private TableColumn completionCol;
+    private TableColumn<Session, Boolean> completionCol;
 
     /**
      * Returns the singleton instance of the TimeController.
@@ -145,10 +155,10 @@ public class PomodoroController implements Initializable {
     }
 
     public void unfinishedPomodoro() {
-        int timeSpent = timeBegins - timeElapsed;
-        String timeSpentReformat = formatTimer(timeSpent);
+        int timespent = timeBegins - timeElapsed;
+        String timeSpentReformat = formatTimer(timespent);
         Session session = sessionDAO.getByTimestamp(timestamp);
-        session.setTimeSpent(timeSpentReformat);
+        session.setTimespent(timeSpentReformat);
         sessionDAO.update(session);
     }
 
@@ -158,10 +168,10 @@ public class PomodoroController implements Initializable {
         startPauseBtn.setDisable(true);
         Session session = sessionDAO.getByTimestamp(timestamp);
         if (sessionType == "work") {
-            session.setTimeSpent("25:00");
+            session.setTimespent("25:00");
             startPauseBtn.setText("Please have a rest.");
         } else {
-            session.setTimeSpent("05:00");
+            session.setTimespent("05:00");
             startPauseBtn.setText("Time for work!");
         }
         session.Completed();
@@ -224,34 +234,99 @@ public class PomodoroController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.sessionsObservableList = FXCollections.observableArrayList();
 
-        idCol.setCellValueFactory((new PropertyValueFactory<Session, String>("id")));
-        timestampCol.setCellValueFactory((new PropertyValueFactory<Session, String>("timestamp")));
-        typeCol.setCellValueFactory((new PropertyValueFactory<Session, String>("sessionType")));
-        taskCol.setCellValueFactory((new PropertyValueFactory<Session, String>("sessionTask")));
-        timespentCol.setCellValueFactory((new PropertyValueFactory<Session, String>("timeSpent")));
-        completionCol.setCellValueFactory((new PropertyValueFactory<Session, String>("completion")));
+        idCol.setCellValueFactory((new PropertyValueFactory<>("id")));
+        timestampCol.setCellValueFactory((new PropertyValueFactory<>("timestamp")));
 
-        sessionsObservableList.addAll(sessionDAO.getAll());
-        tableView.setItems(sessionsObservableList);
+        typeCol.setCellValueFactory((new PropertyValueFactory<>("sessionType")));
+        typeCol.setCellFactory(TextFieldTableCell.<Session>forTableColumn());
+        typeCol.setOnEditCommit(event -> {
+            Session selectedSession = tableView.getSelectionModel().getSelectedItem();
+            selectedSession.setSessionType(event.getNewValue());
+            sessionDAO.update(selectedSession);
+        });
 
-    }
+        taskCol.setCellValueFactory((new PropertyValueFactory<>("sessionTask")));
+        taskCol.setCellFactory(TextFieldTableCell.<Session>forTableColumn());
+        taskCol.setOnEditCommit(event -> {
+            Session selectedSession = tableView.getSelectionModel().getSelectedItem();
+            selectedSession.setSessionTask(event.getNewValue());
+            sessionDAO.update(selectedSession);
+        });
 
-    @FXML
-    public void backBtnClick() throws Exception {
-        Stage backStage = (Stage) backBtn.getScene().getWindow();
-        backScene.launch(backStage, "work-view.fxml");
-    }
+        timespentCol.setCellValueFactory((new PropertyValueFactory<>("timespent")));
+        timespentCol.setCellFactory(TextFieldTableCell.<Session>forTableColumn());
+        timespentCol.setOnEditCommit(event -> {
+            Session selectedSession = tableView.getSelectionModel().getSelectedItem();
+            selectedSession.setTimespent(event.getNewValue());
+            sessionDAO.update(selectedSession);
+        });
 
-    @FXML
-    public void deleteBtnClick() {
-        Session selectedSession = tableView.getSelectionModel().getSelectedItem();
-        sessionDAO.delete(selectedSession);
+        completionCol.setCellFactory(CheckBoxTableCell.forTableColumn(completionCol));
+        completionCol.setCellFactory(CheckBoxTableCell.<Session>forTableColumn(completionCol));
+        completionCol.setOnEditCommit(event -> {
+            Session selectedSession = tableView.getSelectionModel().getSelectedItem();
+            selectedSession.setCompletion(event.getNewValue());
+            sessionDAO.update(selectedSession);
+        });
+
         tableView.getItems().clear();
         sessionsObservableList.addAll(sessionDAO.getAll());
         tableView.setItems(sessionsObservableList);
     }
 
+    @FXML
+    public void returnWorkBtnClick() throws Exception {
+        Stage newStage = (Stage) returnWorkBtn.getScene().getWindow();
+        newScene.launch(newStage, "work-view.fxml");
+    }
+
+    @FXML
+    public void returnRestBtnClick() throws Exception {
+        Stage newStage = (Stage) returnRestBtn.getScene().getWindow();
+        newScene.launch(newStage, "rest-view.fxml");
+    }
+
+    @FXML
+    public void createBtnClick() {
+        LocalDateTime now = LocalDateTime.now();
+        timestamp = Timestamp.valueOf(now);
+        sessionDAO.insert(new Session(timestamp, "", "", "00:00", false));
+        tableView.getItems().clear();
+        sessionsObservableList.addAll(sessionDAO.getAll());
+        tableView.setItems(sessionsObservableList);
+    }
+
+    @FXML
+    public void deleteBtnClick() {
+        Session selectedSession = tableView.getSelectionModel().getSelectedItem();
+        if (selectedSession != null)
+        {
+            sessionDAO.delete(selectedSession);
+            tableView.getItems().clear();
+            sessionsObservableList.addAll(sessionDAO.getAll());
+            tableView.setItems(sessionsObservableList);
+            tableView.getSelectionModel().selectNext();
+        }
+    }
+
+    @FXML
+    public void updateBtnClick() {
+        updateMode = !updateMode;
+        if (updateMode) {
+            tableView.setEditable(true);
+            updateBtn.setText("Update Mode: ON");
+        } else {
+            tableView.setEditable(false);
+            updateBtn.setText("Update Mode: OFF");
+        }
+
+
+    }
+
 }
+
+
+
 
 
 

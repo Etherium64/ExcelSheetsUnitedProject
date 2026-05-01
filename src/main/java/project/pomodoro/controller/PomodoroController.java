@@ -70,7 +70,7 @@ public class PomodoroController implements Initializable {
     private Button backBtn;
 
     @FXML
-    private TableView tableView;
+    private TableView<Session> tableView;
 
     @FXML
     private TableColumn idCol;
@@ -239,11 +239,22 @@ public class PomodoroController implements Initializable {
     @FXML
     public void backBtnClick() throws Exception {
         Stage backStage = (Stage) backBtn.getScene().getWindow();
-        backScene.launchWork(backStage);
+        backScene.launch(backStage, "work-view.fxml");
     }
 
+    @FXML
+    public void deleteBtnClick() {
+        Session selectedSession = tableView.getSelectionModel().getSelectedItem();
+        sessionDAO.delete(selectedSession);
+        tableView.getItems().clear();
+        sessionsObservableList.addAll(sessionDAO.getAll());
+        tableView.setItems(sessionsObservableList);
+    }
 
 }
+
+
+
 
 
 

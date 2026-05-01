@@ -31,10 +31,14 @@
             </TableView>
         </center>
         <bottom>
-            <HBox alignment="CENTER">
+            <HBox spacing="150.0" alignment="CENTER" >
                 <Button fx:id="backBtn"
                         text="Go Back"
                         onAction="#backBtnClick"
+                />
+                <Button
+                        text="Delete Session"
+                        onAction="#deleteBtnClick"
                 />
             </HBox>
         </bottom>

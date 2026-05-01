@@ -100,8 +100,8 @@ public class WorkController {
             PomodoroController.getPomodoro().unfinishedPomodoro();
             taskIsSet = false;
         }
-        Stage workStage = (Stage) restBtn.getScene().getWindow();
-        workScene.launchWork(workStage);
+        Stage restStage = (Stage) restBtn.getScene().getWindow();
+        workScene.launch(restStage, "rest-view.fxml");
     }
 
 
@@ -111,8 +111,8 @@ public class WorkController {
             PomodoroController.getPomodoro().unfinishedPomodoro();
             taskIsSet = false;
         }
-        Stage restStage = (Stage) resetBtn.getScene().getWindow();
-        restScene.launchRest(restStage);
+        Stage workStage = (Stage) resetBtn.getScene().getWindow();
+        workScene.launch(workStage, "work-view.fxml");
     }
 
     @FXML
@@ -122,7 +122,7 @@ public class WorkController {
             taskIsSet = false;
         }
         Stage tableStage = (Stage) tableBtn.getScene().getWindow();
-        tableScene.launchTable(tableStage);
+        tableScene.launch(tableStage, "table-view.fxml");
     }
 
 }

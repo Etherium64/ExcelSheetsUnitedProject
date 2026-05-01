@@ -63,6 +63,16 @@ public class SessionDAO {
         }
     }
 
+    public void delete(Session session) {
+        try {
+            PreparedStatement deleteSession = connection.prepareStatement("DELETE FROM sessions WHERE id = ?");
+            deleteSession.setInt(1, session.getId());
+            deleteSession.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public List<Session> getAll() {
         List<Session> sessions = new ArrayList<>();
         try {

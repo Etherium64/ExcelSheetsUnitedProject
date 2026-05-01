@@ -73,7 +73,7 @@ public class RestController {
             taskIsSet = false;
         }
         Stage workStage = (Stage) workBtn.getScene().getWindow();
-        workScene.launchWork(workStage);
+        workScene.launch(workStage, "work-view.fxml");
     }
 
     @FXML
@@ -83,7 +83,7 @@ public class RestController {
             taskIsSet = false;
         }
         Stage restStage = (Stage) resetBtn.getScene().getWindow();
-        restScene.launchRest(restStage);
+        workScene.launch(restStage, "rest-view.fxml");
     }
 
     @FXML
@@ -93,7 +93,7 @@ public class RestController {
             taskIsSet = false;
         }
         Stage tableStage = (Stage) tableBtn.getScene().getWindow();
-        tableScene.launchTable(tableStage);
+        tableScene.launch(tableStage, "table-view.fxml");
     }
 
 }

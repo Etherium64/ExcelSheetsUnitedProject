@@ -24,40 +24,26 @@ public class MainApplication extends Application {
      * @param stage The primary stage to set the scene on
      * @throws Exception if the FXML file cannot be loaded or the timer label cannot be found
      */
-    public void launchWork(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("work-view.fxml")));
-        Scene scene = new Scene(root, 600, 400);
-        scene.getStylesheets().add("/pomodorostyle.css");
-        stage.setTitle("Pomodoro");
-        stage.setScene(scene);
-        Label timerLabel = (Label) root.lookup("#timerLabel");
-        ProgressBar timerBar = (ProgressBar) root.lookup("#timerBar");
-        timerBar.setProgress(1);
-        Button startPauseBtn = (Button) root.lookup("#startPauseBtn");
-        String sessionType = "work";
-        PomodoroController.getPomodoro().setPomodoro(sessionType, timerLabel, timerBar, startPauseBtn);
-    }
-
-    public void launchRest(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("rest-view.fxml")));
-        Scene scene = new Scene(root, 600, 400);
-        scene.getStylesheets().add("/pomodorostyle.css");
-        stage.setTitle("Pomodoro");
-        stage.setScene(scene);
-        Label timerLabel = (Label) root.lookup("#timerLabel");
-        ProgressBar timerBar = (ProgressBar) root.lookup("#timerBar");
-        timerBar.setProgress(1);
-        Button startPauseBtn = (Button) root.lookup("#startPauseBtn");
-        String sessionType = "rest";
-        PomodoroController.getPomodoro().setPomodoro(sessionType, timerLabel, timerBar, startPauseBtn);
-    }
-
-    public void launchTable(Stage stage) throws Exception    {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("table-view.fxml")));
+    public void launch(Stage stage, String FXMLstring) throws Exception {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(FXMLstring)));
         Scene scene = new Scene(root, 1080, 720);
-        scene.getStylesheets().add("/tablestyle.css");
-        stage.setTitle("Pomodoro");
-        stage.setScene(scene);
+        if (FXMLstring == "table-view.fxml")
+        {
+            scene.getStylesheets().add("/tablestyle.css");
+            stage.setTitle("Pomodoro");
+            stage.setScene(scene);
+        }
+        else{
+            scene.getStylesheets().add("/pomodorostyle.css");
+            stage.setTitle("Pomodoro");
+            stage.setScene(scene);
+            Label timerLabel = (Label) root.lookup("#timerLabel");
+            ProgressBar timerBar = (ProgressBar) root.lookup("#timerBar");
+            timerBar.setProgress(1);
+            Button startPauseBtn = (Button) root.lookup("#startPauseBtn");
+            String sessionType = FXMLstring.substring(0, 4);
+            PomodoroController.getPomodoro().setPomodoro(sessionType, timerLabel, timerBar, startPauseBtn);
+        }
     }
 
     /**
@@ -70,17 +56,7 @@ public class MainApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("work-view.fxml")));
-        Scene scene = new Scene(root, 1080, 720);
-        scene.getStylesheets().add("/pomodorostyle.css");
-        stage.setTitle("Pomodoro");
-        stage.setScene(scene);
-        Label timerLabel = (Label) root.lookup("#timerLabel");
-        ProgressBar timerBar = (ProgressBar) root.lookup("#timerBar");
-        timerBar.setProgress(1);
-        Button startPauseBtn = (Button) root.lookup("#startPauseBtn");
-        String sessionType = "work";
-        PomodoroController.getPomodoro().setPomodoro(sessionType, timerLabel, timerBar, startPauseBtn);
+        launch(stage, "work-view.fxml");
         stage.show();
     }
 }

@@ -12,6 +12,10 @@ src: local('CenturyOldStyleStd-Regular.ttf');
     -fx-text-fill: #333333;
 }
 
+.check-box {
+    -fx-font-size: 30;
+}
+
 .text-field {
     -fx-font-size: 30;
     -fx-text-fill: #333333;

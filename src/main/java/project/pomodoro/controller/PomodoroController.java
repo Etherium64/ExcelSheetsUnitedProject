@@ -129,7 +129,6 @@ public class PomodoroController implements Initializable {
 
 
     public void setPomodoro(String sessionType, Label timerLabel, ProgressBar timerBar, Button startPauseBtn) {
-
         // Set up sessionDAO
         this.sessionType = sessionType;
 

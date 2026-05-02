@@ -110,6 +110,7 @@ public class WorkController {
         if (taskIsSet) {
             PomodoroController.getPomodoro().unfinishedPomodoro();
             taskIsSet = false;
+            buttonPaused = true;
         }
         Stage newStage = (Stage) restBtn.getScene().getWindow();
         newScene.launch(newStage, "rest-view.fxml");
@@ -127,6 +128,7 @@ public class WorkController {
         if (taskIsSet) {
             PomodoroController.getPomodoro().unfinishedPomodoro();
             taskIsSet = false;
+            buttonPaused = true;
         }
         Stage newStage = (Stage) resetBtn.getScene().getWindow();
         newScene.launch(newStage, "work-view.fxml");
@@ -143,6 +145,7 @@ public class WorkController {
         if (taskIsSet) {
             PomodoroController.getPomodoro().unfinishedPomodoro();
             taskIsSet = false;
+            buttonPaused = true;
         }
         Stage newStage = (Stage) tableBtn.getScene().getWindow();
         newScene.launch(newStage, "table-view.fxml");

@@ -104,10 +104,10 @@ public class RestController {
      */
     @FXML
     protected void workBtnClick() throws Exception {
-        ;
         if (taskIsSet) {
             PomodoroController.getPomodoro().unfinishedPomodoro();
             taskIsSet = false;
+            buttonPaused = true;
         }
         Stage workStage = (Stage) workBtn.getScene().getWindow();
         newScene.launch(workStage, "work-view.fxml");
@@ -126,6 +126,7 @@ public class RestController {
         if (taskIsSet) {
             PomodoroController.getPomodoro().unfinishedPomodoro();
             taskIsSet = false;
+            buttonPaused = true;
         }
         Stage restStage = (Stage) resetBtn.getScene().getWindow();
         newScene.launch(restStage, "rest-view.fxml");
@@ -142,6 +143,7 @@ public class RestController {
         if (taskIsSet) {
             PomodoroController.getPomodoro().unfinishedPomodoro();
             taskIsSet = false;
+            buttonPaused = true;
         }
         Stage newStage = (Stage) tableBtn.getScene().getWindow();
         newScene.launch(newStage, "table-view.fxml");

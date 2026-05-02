@@ -180,6 +180,7 @@ public class PomodoroController implements Initializable {
      * Assigns the required private fields for running Timer, Progress bar, Session, DAO, TableView and CRUD
      */
     public void setPomodoro(String sessionType, Label timerLabel, ProgressBar timerBar, Button startPauseBtn) {
+        isPaused=true;
         //Session type taken from MainApplication
         this.sessionType = sessionType;
 

@@ -7,6 +7,11 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Testing Setters and Getters of Session Data Model
+ */
+
+
 public class SessionTest {
     private Session session;
     LocalDateTime nowSession = LocalDateTime.now();

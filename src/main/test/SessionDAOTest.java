@@ -1,19 +1,16 @@
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import project.Trivia.dao.DatabaseConnection;
-import project.Trivia.dao.DatabaseInitialiser;
-import project.Trivia.dao.ScoreDAO;
-import project.pomodoro.controller.PomodoroController;
 import project.pomodoro.model.Session;
 import project.pomodoro.model.SessionDAO;
 
 import java.sql.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * Testing CRUD operations of SessionDAO
+ */
 
 public class SessionDAOTest {
     private SessionDAO sessionDAO;

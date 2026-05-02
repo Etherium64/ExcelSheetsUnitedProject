@@ -40,15 +40,15 @@ public class PomodoroController implements Initializable {
     static private PomodoroController pomodoro;
 
     /**
-     * List of Session classes allowing for Listeners. Required to populate the TableView rows. .
-     */
-    private ObservableList<Session> sessionsObservableList;
-
-    /**
      * Data Access Object for Session Class.
      * Session is a Custom class for Pomodoro Session and interacted with via CRUD.
      *  */
     private static SessionDAO sessionDAO;
+    /**
+     * List of Session classes allowing for Listeners. Required to populate the TableView rows. .
+     */
+    private ObservableList<Session> sessionsObservableList;
+
     /**
      * Timestamp created the moment Pomodoro Timer starts. Stored as a private field heree to set to Session.
      */
@@ -73,14 +73,7 @@ public class PomodoroController implements Initializable {
      * The label displaying the timer value in the UI.
      */
     private Label timerLabel;
-    /**
-     * Indicates whether the timer is currently paused.
-     */
-    volatile boolean isPaused = true;
-    /**
-     * Flag to determine if this is the first time the timer is being started.
-     */
-    private boolean firstCount = true;
+
     /**
      * ProgressBar UI element synced to the Timer
      */
@@ -97,6 +90,14 @@ public class PomodoroController implements Initializable {
      * Start Pause Button UI element. Switches from Start and Pause Text.
      */
     private Button startPauseBtn;
+    /**
+     * Indicates whether the timer is currently paused.
+     */
+    volatile boolean isPaused = true;
+    /**
+     * Flag to determine if this is the first time the timer is being started.
+     */
+    private boolean firstCount = true;
     /**
      * Instantiation of MainApplication for Scene transition
      */
@@ -249,7 +250,6 @@ public class PomodoroController implements Initializable {
         sessionDAO.insert(new Session(timestamp, sessionType, sessionTask, "00:00", false));
     }
 
-
     /**
      * Starts or resumes the timer.
      * On first call, creates a new Timer and begins countdown.
@@ -346,6 +346,7 @@ public class PomodoroController implements Initializable {
         });
 
         //For Completion TableColumn, use ComboBox with options limited to true and false booleans
+        completionCol.setCellValueFactory((new PropertyValueFactory<>("completion")));
         completionCol.setCellFactory(ComboBoxTableCell.forTableColumn(true, false));
         completionCol.setOnEditCommit(event -> {
             Session selectedSession = tableView.getSelectionModel().getSelectedItem();

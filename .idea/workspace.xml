@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Merge branch 'master' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0005.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0006.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0007.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0008.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0009.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0010.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0011.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0012.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0013.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0015.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0016.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0017.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0018.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0019.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0020.png">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/test/SessionDAOTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/test/SessionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/PomodoroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/PomodoroController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/RestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/RestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/WorkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/WorkController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/DBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/Session.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/SessionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/SessionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/PetTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +23,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="JavaScript File" />
         <option value="Class" />
       </list>
     </option>
@@ -78,9 +78,13 @@
     "Application.DesktopPet.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.MainApplication.executor": "Run",
+    "Application.PomodoroTest.executor": "Run",
     "Application.Unnamed.executor": "Run",
     "Application.animation test.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.PomodoroTest.executor": "Debug",
+    "JUnit.SessionDAOTest.executor": "Run",
+    "JUnit.SessionTest.executor": "Run",
     "Maven.DesktopPet302 [org.apache.maven.plugins:maven-javadoc-plugin:3.4.0:javadoc].executor": "Run",
     "Maven.DesktopPet302 [package].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
@@ -92,7 +96,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "SCA-3.0",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ddo14/Documents/GitHub/ExcelSheetsUnitedProject/src/main/resources",
+    "last_opened_file_path": "C:/Users/ddo14/Documents/GitHub/ExcelSheetsUnitedProject/src/main/test",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -101,18 +105,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\src\main\test" />
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\src\main\resources" />
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject" />
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\target" />
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\src\main\resources\project\pomodoro" />
-      <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\src\main\java\project\pomodoro" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\src\main\java\project\pomodoro\test" />
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\target\classes\project.pomodoro" />
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\target\classes" />
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\target\classes\project" />
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\src\main\resources" />
-      <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\src\main\resources\project.trivia" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="project.pomodoro.controller" />
@@ -216,5 +220,15 @@
     <MESSAGE value="Merge branch 'master' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0005.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0006.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0007.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0008.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0009.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0010.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0011.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0012.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0013.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0015.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0016.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0017.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0018.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0019.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0020.png" />
     <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0005.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0006.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0007.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0008.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0009.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0010.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0011.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0012.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0013.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0015.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0016.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0017.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0018.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0019.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0020.png" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ExceptionInInitializerError" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

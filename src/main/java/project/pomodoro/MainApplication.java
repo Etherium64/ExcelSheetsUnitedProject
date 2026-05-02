@@ -29,7 +29,7 @@ public class MainApplication extends Application {
      * @param stage The primary stage to set the scene on
      * @throws Exception if the FXML file cannot be loaded or the timer label cannot be found
      */
-    Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+
     public void launch(Stage stage, String FXMLstring) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(FXMLstring)));
         Scene scene = new Scene(root, 1080, 720);

@@ -9,13 +9,13 @@ import java.util.List;
  * Data Access Object for managing the CRUD operations of Session Data
  * Connects to the Sqlite database vis DBConnection Class
  * Allows for persistent storage of Pomodoro Session Data
-*/
+ */
 public class SessionDAO {
     private Connection connection;
 
-/**
- * Public constructor that instantiates connection by calling DBConnection method getConnection
- */
+    /**
+     * Public constructor that instantiates connection by calling DBConnection method getConnection
+     */
     public SessionDAO() {
         connection = DBConnection.getConnection();
     }
@@ -36,6 +36,16 @@ public class SessionDAO {
                             + "completion BIT NOT NULL"
                             + ")"
             );
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+    }
+
+    public void dropTable() {
+        try {
+            Statement statement = connection.createStatement();
+            String query = "DROP TABLE sessions";
+            statement.execute(query);
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -93,8 +103,8 @@ public class SessionDAO {
             PreparedStatement deleteSession = connection.prepareStatement("DELETE FROM sessions WHERE id = ?");
             deleteSession.setInt(1, session.getId());
             deleteSession.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException ex) {
+            System.err.println(ex);
         }
     }
 
@@ -150,6 +160,36 @@ public class SessionDAO {
             System.err.println(ex);
         }
         return null;
+    }
+
+    public Session getById(int id) {
+        try {
+            PreparedStatement getMockSession = connection.prepareStatement("SELECT * FROM sessions WHERE id = ?");
+            getMockSession.setInt(1, id);
+            ResultSet resultset = getMockSession.executeQuery();
+            if (resultset.next()) {
+                return new Session(
+                        resultset.getInt("id"),
+                        resultset.getTimestamp("timestamp"),
+                        resultset.getString("sessionType"),
+                        resultset.getString("sessionTask"),
+                        resultset.getString("timespent"),
+                        resultset.getBoolean("completion")
+                );
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return null;
+    }
+
+
+    public void close() {
+        try {
+            connection.close();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
     }
 }
 

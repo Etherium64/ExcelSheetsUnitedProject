@@ -19,6 +19,8 @@ import java.util.Objects;
 /**
  * JavaFX Application class responsible for launching and configuring scenes in the Pomodoro timer application.
  * Manages scene creation, stylesheet application, and initial timer setup.
+ *
+ * @author Minhman Do
  */
 public class MainApplication extends Application {
     /**
@@ -28,22 +30,20 @@ public class MainApplication extends Application {
      * @throws Exception if the FXML file cannot be loaded or the timer label cannot be found
      */
     Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
-    double sceneSizeX = bounds.getWidth();
-    double sceneSizeY = bounds.getHeight();
     public void launch(Stage stage, String FXMLstring) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(FXMLstring)));
+        Scene scene = new Scene(root, 1080, 720);
         if (FXMLstring == "table-view.fxml")
         {
-            Scene scene = new Scene(root, sceneSizeX, sceneSizeY);
             scene.getStylesheets().add("/tablestyle.css");
             stage.setTitle("Sessions");
             stage.setScene(scene);
         }
         else{
-            Scene scene = new Scene(root, 1080, 720);
             scene.getStylesheets().add("/pomodorostyle.css");
             stage.setTitle("Pomodoro");
             stage.setScene(scene);
+            //Set up all the necessary fields to run the Pomodoro Controller if running a Pomodoro Work / Rest Session
             Label timerLabel = (Label) root.lookup("#timerLabel");
             ProgressBar timerBar = (ProgressBar) root.lookup("#timerBar");
             timerBar.setProgress(1);

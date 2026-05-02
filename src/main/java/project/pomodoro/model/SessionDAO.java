@@ -5,13 +5,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * Data Access Object for managing the CRUD operations of Session Data
+ * Connects to the Sqlite database vis DBConnection Class
+ * Allows for persistent storage of Pomodoro Session Data
+*/
 public class SessionDAO {
     private Connection connection;
 
+/**
+ * Public constructor that instantiates connection by calling DBConnection method getConnection
+ */
     public SessionDAO() {
         connection = DBConnection.getConnection();
     }
 
+    /**
+     * Create an SQL Table sessions in the Database if none yet exist
+     */
     public void createTable() {
         try {
             Statement createTable = connection.createStatement();
@@ -30,6 +41,10 @@ public class SessionDAO {
         }
     }
 
+    /**
+     * CRUD Operation - Create Operation
+     * Insert a new Session to the database, assigning the new Session fields
+     */
     public void insert(Session session) {
         try {
             PreparedStatement insertSession = connection.prepareStatement(
@@ -46,6 +61,11 @@ public class SessionDAO {
         }
     }
 
+    /**
+     * CRUD Operation - Update  Operation
+     * Update a currently existing Session in the database
+     * Perform this after calling Session setter methods
+     */
     public void update(Session session) {
         try {
             PreparedStatement updateSession = connection.prepareStatement(
@@ -64,6 +84,10 @@ public class SessionDAO {
     }
 
 
+    /**
+     * CRUD Operation - Delete Operation
+     * Delete a currently existing Session in the database
+     */
     public void delete(Session session) {
         try {
             PreparedStatement deleteSession = connection.prepareStatement("DELETE FROM sessions WHERE id = ?");
@@ -74,6 +98,11 @@ public class SessionDAO {
         }
     }
 
+    /**
+     * CRUD Operation - Read Operation
+     * Returns a list of all the Session data to be read
+     * List is moved to an ObservableList which is then used to populate the TableView
+     */
     public List<Session> getAll() {
         List<Session> sessions = new ArrayList<>();
         try {
@@ -97,6 +126,11 @@ public class SessionDAO {
         return sessions;
     }
 
+    /**
+     * Retrieve the session via timestamp rather than id. Used before updating the session.
+     * Easier for the current instance of the Pomodoro Controller / Session DAO to find the timestamp of the latest session rather than the id
+     * As id is always auto-incrementing
+     */
     public Session getByTimestamp(Timestamp timestamp) {
         try {
             PreparedStatement getSession = connection.prepareStatement("SELECT * FROM sessions WHERE timestamp = ?");

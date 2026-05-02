@@ -27,7 +27,7 @@ public class PetController {
     public Button timer;
 
     @FXML
-    private HBox box;
+    private HBox hbox;
 
     @FXML
     private Text pettext;
@@ -185,7 +185,7 @@ public class PetController {
         // Stop the idle animation countdown.
         moving.stop();
         // Get current stage on window.
-        stage = (Stage) box.getScene().getWindow();
+        stage = (Stage) hbox.getScene().getWindow();
         petImage.setOnMouseDragged(mouseDrag -> {
             // Get the X position based on mouse movement
             mouseX = mouseDrag.getSceneX() - petImage.getFitWidth() / 2 - 150;

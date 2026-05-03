@@ -28,4 +28,98 @@ be83be9 was jakefarrell57 (n10145419@qut.edu.au), 1777355146, 5 days ago, messag
 72d5632 was jakefarrell57 (n10145419@qut.edu.au), 1777354772, 5 days ago, message: pushing everything
 826d6c8 was Etherium (4huntbrown@gmail.com), 1777354251, 5 days ago, message: merger of updated SCA
 920c4c7 was natw5004-source (natw5004@gmail.com), 1777354146, 5 days ago, message: Add renamed walkLeft and walkRight image sequences
-:
+c040388 was natw5004-source (natw5004@gmail.com), 1777354107, 5 days ago, message: Merge branch 'AnimationSetUp' of https://github.com/Etherium64/ExcelSheetsUnitedProject into AnimationSetUp # Please enter a commit message to explain why this merge is necessary, # especially if it merges an updated upstream into a topic branch. # # Lines starting with '#' will be ignored, and an empty message aborts # the commit.
+49ee7bc was Etherium (4huntbrown@gmail.com), 1777353710, 5 days ago, message: Adjusting Pet to RCM to comfiguration part three.
+d35dddd was natw5004-source (natw5004@gmail.com), 1777353594, 5 days ago, message: Rename walkLeft and walkRight image sequences for consistency
+cc3b014 was Etherium (4huntbrown@gmail.com), 1777353564, 5 days ago, message: Adjusting Pet to RCM to comfiguration part three.
+e3f0f6d was jakefarrell57 (n10145419@qut.edu.au), 1777353508, 5 days ago, message: pushing everything
+47c8eb3 was jakefarrell57 (n10145419@qut.edu.au), 1777353297, 5 days ago, message: More updates.
+0699378 was Etherium (4huntbrown@gmail.com), 1777353173, 5 days ago, message: merge master and SCA
+b67ed87 was Etherium (4huntbrown@gmail.com), 1777352284, 5 days ago, message: test
+7274679 was jakefarrell57 (n10145419@qut.edu.au), 1777351752, 5 days ago, message: Animations added.
+24f4304 was jakefarrell57 (n10145419@qut.edu.au), 1777340032, 5 days ago, message: Clean up again.
+5403130 was jakefarrell57 (n10145419@qut.edu.au), 1777266494, 6 days ago, message: Clean up.
+43f765a was jakefarrell57 (n10145419@qut.edu.au), 1777265912, 6 days ago, message: Merge branch 'master' into SCA
+2a4128a was Etherium (4huntbrown@gmail.com), 1777253607, 6 days ago, message: javadoc comments for existing files
+9e96b68 was Etherium (4huntbrown@gmail.com), 1777252316, 6 days ago, message: testing
+1512e8d was Etherium (4huntbrown@gmail.com), 1777201393, 7 days ago, message: please please please
+59f2cfc was Etherium (4huntbrown@gmail.com), 1777200830, 7 days ago, message: just work!
+f684afb was Etherium (4huntbrown@gmail.com), 1777200640, 7 days ago, message: the light is fading
+050875f was Etherium (4huntbrown@gmail.com), 1777200239, 7 days ago, message: That's to damn bad
+1902c62 was Etherium (4huntbrown@gmail.com), 1777200148, 7 days ago, message: I'm tired of this grampa
+24189f2 was Etherium (4huntbrown@gmail.com), 1777199228, 7 days ago, message: one last try
+79b413b was Etherium (4huntbrown@gmail.com), 1777198914, 7 days ago, message: please oh god please
+363c27e was Etherium (4huntbrown@gmail.com), 1777198625, 7 days ago, message: i swear to god
+2b8b75c was Etherium (4huntbrown@gmail.com), 1777198370, 7 days ago, message: fml
+e566057 was Etherium (4huntbrown@gmail.com), 1777198205, 7 days ago, message: still trouble shooting automation
+25ff6ff was Etherium (4huntbrown@gmail.com), 1777198041, 7 days ago, message: please work
+7ee3db2 was Etherium (4huntbrown@gmail.com), 1777197810, 7 days ago, message: getting there
+b565a41 was Etherium (4huntbrown@gmail.com), 1777197332, 7 days ago, message: should work
+f62d6d3 was Etherium (4huntbrown@gmail.com), 1777196889, 7 days ago, message: testing 2
+c03c139 was Etherium (4huntbrown@gmail.com), 1777187724, 7 days ago, message: corrections
+f1e4ec0 was Etherium (4huntbrown@gmail.com), 1777187618, 7 days ago, message: alsmost there
+b8a6a27 was Etherium (4huntbrown@gmail.com), 1777186952, 7 days ago, message: testing
+c577ed7 was Etherium (4huntbrown@gmail.com), 1777186803, 7 days ago, message: naming error oops
+b4663bb was Etherium (4huntbrown@gmail.com), 1777186691, 7 days ago, message: more automation troubleshooting
+a451205 was Etherium (4huntbrown@gmail.com), 1777185983, 7 days ago, message: still debugging javadoc automation
+a763b81 was Etherium (4huntbrown@gmail.com), 1777184957, 7 days ago, message: automation debugging
+6636244 was Etherium (4huntbrown@gmail.com), 1777184294, 7 days ago, message: debugging automation
+4f18731 was Etherium (4huntbrown@gmail.com), 1777183807, 7 days ago, message: working to automate javadoc
+5485c5d was Etherium (4huntbrown@gmail.com), 1777183281, 7 days ago, message: Add Javadoc generation and publishing steps
+ca1374b was Etherium (4huntbrown@gmail.com), 1777182653, 7 days ago, message: Add Javadoc generation and publishing steps
+40f4714 was Etherium64 (4huntbrown@gmail.com), 1777181590, 7 days ago, message: Create maven.yml
+e1b031d was jakefarrell57 (n10145419@qut.edu.au), 1777113923, 8 days ago, message: Working on state changes again.
+8683db5 was jakefarrell57 (n10145419@qut.edu.au), 1777099169, 8 days ago, message: Working on state changes again.
+f8c55e6 was jakefarrell57 (n10145419@qut.edu.au), 1777011589, 9 days ago, message: Working on state changes again.
+177aa19 was Nate (natw5004@gmail.com), 1777009061, 9 days ago, message: Merge pull request #2 from Etherium64/AnimationSetUp
+acfdf92 was Nate (natw5004@gmail.com), 1777009007, 9 days ago, message: Merge branch 'master' into AnimationSetUp
+e4bd7c7 was natw5004-source (natw5004@gmail.com), 1777008284, 9 days ago, message: commented code and added changes to module-info.java
+044de0f was natw5004-source (natw5004@gmail.com), 1776859977, 11 days ago, message: animation set up and states
+74d8096 was Etherium (4huntbrown@gmail.com), 1776846479, 11 days ago, message: JavaDoc comment integration
+9ced2fe was jakefarrell57 (n10145419@qut.edu.au), 1776837490, 11 days ago, message: Working on state changes again.
+96e1ad3 was Etherium (4huntbrown@gmail.com), 1776837240, 11 days ago, message: Fixing the JDK name.
+2a69647 was jakefarrell57 (n10145419@qut.edu.au), 1776835351, 11 days ago, message: Working on state changes.
+921f222 was jakefarrell57 (n10145419@qut.edu.au), 1776757498, 12 days ago, message: Adjusting Pet to RCM to comfiguration part three.
+e07fa29 was jakefarrell57 (n10145419@qut.edu.au), 1776741363, 12 days ago, message: Adjusting Pet to RCM to comfiguration part two.
+0fd3773 was jakefarrell57 (n10145419@qut.edu.au), 1776668994, 13 days ago, message: Adjusting Pet to RCM to comfiguration.
+4ddabf0 was Etherium (4huntbrown@gmail.com), 1776659628, 13 days ago, message: merger with oldmaster branch giving new document directory
+b1586c2 was Etherium (4huntbrown@gmail.com), 1776659378, 13 days ago, message: Minor cleanup.
+b5bcb6a was Etherium (4huntbrown@gmail.com), 1776658962, 13 days ago, message: Minor cleanup.
+52b65e6 was Etherium (4huntbrown@gmail.com), 1776658712, 13 days ago, message: Minor cleanup.
+7f0994f was Etherium (4huntbrown@gmail.com), 1776658468, 13 days ago, message: Branch merger with triviaModule.
+0c68e34 was Etherium (4huntbrown@gmail.com), 1776657170, 13 days ago, message: Merged Master and Pomodoro
+7e6a238 was Etherium (4huntbrown@gmail.com), 1776656235, 13 days ago, message: Merge branch 'pomodoro'
+01661da was CataDogue (minhmanddo@gmail.com), 1776268389, 3 weeks ago, message: Full Pomodoro timer functionality implemented
+e1e580a was CataDogue (minhmanddo@gmail.com), 1776244023, 3 weeks ago, message: Implement pomdoro start timer
+08904cd was Nick (kilroenicholas@gmail.com), 1776242029, 3 weeks ago, message: Why is this not working
+a1230c5 was Nick (kilroenicholas@gmail.com), 1776241501, 3 weeks ago, message: Refactored master
+9d50c46 was Nick (kilroenicholas@gmail.com), 1776240771, 3 weeks ago, message: Merged app to master
+2aababf was Etherium (4huntbrown@gmail.com), 1776239815, 3 weeks ago, message: test suite
+fba7e02 was CataDogue (minhmanddo@gmail.com), 1776134617, 3 weeks ago, message: Pomodoro UI Prototype
+93b2252 was Etherium (4huntbrown@gmail.com), 1776133221, 3 weeks ago, message: Clean up of branch
+55750d7 was Nick (kilroenicholas@gmail.com), 1775651126, 4 weeks ago, message: Base application functionality
+4aad690 was Nate (natw5004@gmail.com), 1775626505, 4 weeks ago, message: Merge pull request #1 from Etherium64/assets/sprite-sheets
+1088bc2 was Nate (natw5004@gmail.com), 1775626422, 4 weeks ago, message: Add files via upload
+39737fb was Etherium (4huntbrown@gmail.com), 1775499424, 4 weeks ago, message: trivia database
+72b3842 was Etherium (4huntbrown@gmail.com), 1775499240, 4 weeks ago, message: The updated trivia module with database for user, score and questions.
+96dc521 was CataDogue (minhmanddo@gmail.com), 1775038233, 5 weeks ago, message: 20 uesr stories completed
+d8515cb was jakefarrell57 (85003722+jakefarrell57@users.noreply.github.com), 1775024895, 5 weeks ago, message: Delete User Stories 1-9.docx
+f05c343 was jakefarrell57 (85003722+jakefarrell57@users.noreply.github.com), 1775022320, 5 weeks ago, message: User Stories 1-12 Upload
+9b54f73 was jakefarrell57 (85003722+jakefarrell57@users.noreply.github.com), 1774938942, 5 weeks ago, message: User Stories 1-9 Uploaded
+fdd49d1 was CataDogue (minhmanddo@gmail.com), 1774700820, 5 weeks ago, message: Meeting minutes post checkpoint 1
+1411c9f was Etherium (4huntbrown@gmail.com), 1774659598, 5 weeks ago, message: base for trivia section
+8b083d0 was Etherium64 (4huntbrown@gmail.com), 1774654668, 5 weeks ago, message: Instructions how to link the repo to intellij
+53fb80a was jakefarrell57 (85003722+jakefarrell57@users.noreply.github.com), 1774425190, 6 weeks ago, message: Add files via upload
+c07f599 was Etherium (4huntbrown@gmail.com), 1774416582, 6 weeks ago, message: clean up
+0babf1e was Etherium (4huntbrown@gmail.com), 1774412313, 6 weeks ago, message: formating
+ea727b8 was Etherium (4huntbrown@gmail.com), 1774411604, 6 weeks ago, message: Merge branches for clean up # Please enter a commit message to explain why this merge is necessary, # especially if it merges an updated upstream into a topic branch. # # Lines starting with '#' will be ignored, and an empty message aborts # the commit.
+c23b40c was Etherium (4huntbrown@gmail.com), 1774411307, 6 weeks ago, message: clean up
+c733fb2 was Etherium (4huntbrown@gmail.com), 1774410211, 6 weeks ago, message: clean up and reformating the repository for Fx and clipping pointless branches to avoid confusion.
+87133ac was Etherium (4huntbrown@gmail.com), 1774410197, 6 weeks ago, message: clean up and reformating the repository for Fx and clipping pointless branches to avoid confusion.
+e8f8f81 was Etherium (4huntbrown@gmail.com), 1774409297, 6 weeks ago, message: Desktop pet menu frame
+d758087 was jakefarrell57 (85003722+jakefarrell57@users.noreply.github.com), 1774334379, 6 weeks ago, message: Project Brief
+af3e397 was CataDogue (minhmanddo@gmail.com), 1773840526, 7 weeks ago, message: Excel master sheet for Meeting Minutes created
+04dda4b was Etherium (4huntbrown@gmail.com), 1773794471, 7 weeks ago, message: adding text file for project documentation
+fb50fde was Etherium (4huntbrown@gmail.com), 1773794304, 7 weeks ago, message: Initiating the project GIT.
+90caf3c was Etherium64 (4huntbrown@gmail.com), 1773793974, 7 weeks ago, message: Initial commit
+(END)

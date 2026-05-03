@@ -3,6 +3,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import project.Trivia.dao.DatabaseInitialiser;
@@ -35,14 +36,20 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
-        // Initialize database tables
         DatabaseInitialiser.init();
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/project.trivia/main.fxml")));
-        Scene scene = new Scene(root, 600, 400);
+
+        // Make the scene and stage transparent
+        Scene scene = new Scene(root, 300, 200, Color.TRANSPARENT);
         scene.getStylesheets().add("/styles.css");
+
+        // Ensure the root node doesn't have a default background
+        root.setStyle("-fx-background-color: transparent;");
+
         stage.setTitle("Trivia Game");
         stage.setScene(scene);
+        stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
     }
 

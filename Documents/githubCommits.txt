@@ -1,0 +1,31 @@
+PS C:\Users\Gemma Morgan\Desktop\UNI\CAB302\DesktopPetCAB302> git shortlog --summary --numbered --all --no-merges
+    68  Etherium
+    27  jakefarrell57
+    24  CataDogue
+    15  Etherium64
+    14  natw5004-source
+     6  nickk4
+     4  Nick
+     1  Nate
+PS C:\Users\Gemma Morgan\Desktop\UNI\CAB302\DesktopPetCAB302> git log --pretty=format:'%h was %an (%ae), %at, %ar, message: %s'
+ca3a186 was jakefarrell57 (n10145419@qut.edu.au), 1777792769, 2 hours ago, message: bug update for drag again
+5794bf9 was Etherium (4huntbrown@gmail.com), 1777768295, 9 hours ago, message: patched in my trivia update
+df9f4e3 was CataDogue (minhmanddo@gmail.com), 1777744151, 16 hours ago, message: Minor clean up
+7bbcfd5 was CataDogue (minhmanddo@gmail.com), 1777738763, 17 hours ago, message: Test suite complete
+b9d7dfc was CataDogue (minhmanddo@gmail.com), 1777704556, 27 hours ago, message: Fixed up the Completion cell on the TableView by changing it to a ComboBox. Added documentation for everything.
+12ebee8 was CataDogue (minhmanddo@gmail.com), 1777632170, 2 days ago, message: Checkbox is larger now
+df0cea3 was CataDogue (minhmanddo@gmail.com), 1777630134, 2 days ago, message: Full Crud functionality implemented
+39000b1 was CataDogue (minhmanddo@gmail.com), 1777603160, 2 days ago, message: Added Delete Button fully working. Will probably make an 'ADMIN mode' to preserve user stories but also address CRUD requirements.
+42264dd was CataDogue (minhmanddo@gmail.com), 1777558896, 3 days ago, message: Removed history button
+796fe64 was CataDogue (minhmanddo@gmail.com), 1777558184, 3 days ago, message: All fixed!
+8d9306f was CataDogue (minhmanddo@gmail.com), 1777449602, 4 days ago, message: Hi
+07cbc74 was jakefarrell57 (n10145419@qut.edu.au), 1777375544, 5 days ago, message: Added basic UI using CSS style sheet
+db95c43 was jakefarrell57 (n10145419@qut.edu.au), 1777370628, 5 days ago, message: Adding basic UI elements
+1a36813 was jakefarrell57 (n10145419@qut.edu.au), 1777355854, 5 days ago, message: Merge branch 'master' into SCA
+1dedf1c was Nate (natw5004@gmail.com), 1777355723, 5 days ago, message: Merge pull request #3 from Etherium64/AnimationSetUp
+3e68019 was natw5004-source (natw5004@gmail.com), 1777355598, 5 days ago, message: Fix walkLeft animation frames
+be83be9 was jakefarrell57 (n10145419@qut.edu.au), 1777355146, 5 days ago, message: More updates.
+72d5632 was jakefarrell57 (n10145419@qut.edu.au), 1777354772, 5 days ago, message: pushing everything
+826d6c8 was Etherium (4huntbrown@gmail.com), 1777354251, 5 days ago, message: merger of updated SCA
+920c4c7 was natw5004-source (natw5004@gmail.com), 1777354146, 5 days ago, message: Add renamed walkLeft and walkRight image sequences
+:

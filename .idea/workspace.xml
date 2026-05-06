@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Merge branch 'master' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0005.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0006.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0007.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0008.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0009.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0010.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0011.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0012.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0013.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0015.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0016.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0017.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0018.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0019.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0020.png">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="SCA-2.0" />
+        <entry key="$PROJECT_DIR$" value="SCA-3.0" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

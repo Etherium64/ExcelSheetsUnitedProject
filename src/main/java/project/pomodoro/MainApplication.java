@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -63,7 +64,18 @@ public class MainApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception{
-        launch(stage, "work-view.fxml");
+        //launch(stage, "work-view.fxml");
+        //stage.show();
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("work-view.fxml")));
+        Scene scene = new Scene(root, 400, 300, Color.TRANSPARENT);
+        scene.getStylesheets().add("/styles.css");
+
+        root.setStyle("-fx-background-color: transparent;");
+
+        stage.setTitle("Pomodoro");
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
     }
 }

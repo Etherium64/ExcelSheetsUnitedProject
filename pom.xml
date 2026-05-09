@@ -94,6 +94,9 @@
                 <configuration>
                     <outputDirectory>${project.build.directory}/site</outputDirectory>
                     <source>9</source>
+                    <additionalOptions>
+                        <additionalOption>-Xdoclint:none</additionalOption>
+                    </additionalOptions>
                 </configuration>
             </plugin>
             <plugin>

@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -32,26 +33,29 @@ public class MainApplication extends Application {
      */
 
     public void launch(Stage stage, String FXMLstring) throws Exception {
+
+
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(FXMLstring)));
-        Scene scene = new Scene(root, 1080, 720);
-        if (FXMLstring == "table-view.fxml")
+        Scene scene = new Scene(root, 600, 300, Color.TRANSPARENT);
+        scene.getStylesheets().add("/styles.css");
+        root.setStyle("-fx-background-color: transparent;");
+        if (FXMLstring == "datab-view.fxml")
         {
-            scene.getStylesheets().add("/tablestyle.css");
-            stage.setTitle("Sessions");
-            stage.setScene(scene);
+            stage.setTitle("Sessions Database");
         }
         else{
-            scene.getStylesheets().add("/pomodorostyle.css");
             stage.setTitle("Pomodoro");
-            stage.setScene(scene);
             //Set up all the necessary fields to run the Pomodoro Controller if running a Pomodoro Work / Rest Session
             Label timerLabel = (Label) root.lookup("#timerLabel");
             ProgressBar timerBar = (ProgressBar) root.lookup("#timerBar");
             timerBar.setProgress(1);
             Button startPauseBtn = (Button) root.lookup("#startPauseBtn");
-            String sessionType = FXMLstring.substring(0, 4);
+            startPauseBtn.setBackground(Background.fill(Color.LIGHTGREEN));
+            String sessionType = FXMLstring.substring(0, 5).replace("-", "");
             PomodoroController.getPomodoro().setPomodoro(sessionType, timerLabel, timerBar, startPauseBtn);
         }
+        stage.setScene(scene);
+
     }
 
     /**
@@ -64,17 +68,7 @@ public class MainApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception{
-        //launch(stage, "work-view.fxml");
-        //stage.show();
-
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("work-view.fxml")));
-        Scene scene = new Scene(root, 400, 300, Color.TRANSPARENT);
-        scene.getStylesheets().add("/styles.css");
-
-        root.setStyle("-fx-background-color: transparent;");
-
-        stage.setTitle("Pomodoro");
-        stage.setScene(scene);
+        launch(stage, "work-view.fxml");
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
     }

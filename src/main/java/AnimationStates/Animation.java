@@ -39,7 +39,7 @@ public class Animation {
             currentFrame = (currentFrame + 1) % frames.length;
             lastUpdate = now;
 
-            //System.out.println("Frame advanced to: " + currentFrame);
+            System.out.println("Frame advanced to: " + currentFrame);
         }
     }
 

@@ -4,8 +4,6 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
@@ -41,13 +39,13 @@
     <right>
         <VBox alignment="CENTER">
             <HBox spacing="150.0" alignment="CENTER">
-                <Button fx:id="restBtn"
-                        text="Rest"
-                        onAction="#restBtnClick"
+                <Button fx:id="breakBtn"
+                        text="BREAK"
+                        onAction="#breakBtnClick"
                 />
-                <Button fx:id="tableBtn"
-                        text="Sessions"
-                        onAction="#tableBtnClick"
+                <Button fx:id="databBtn"
+                        text="DATABASE"
+                        onAction="#databBtnClick"
                 />
             </HBox>
 
@@ -61,17 +59,15 @@
 
             <HBox spacing="150.0" alignment="CENTER">
                 <Button fx:id="startPauseBtn"
-                        text="Start"
+                        text="START"
                         onAction="#startPauseBtnClick"/>
                 <Button fx:id="resetBtn"
-                        text="Reset"
+                        text="RESET"
                         onAction="#resetBtnClick"
                 />
             </HBox>
         </VBox>
     </right>
-    <center>
-    </center>
 </BorderPane>
 
 

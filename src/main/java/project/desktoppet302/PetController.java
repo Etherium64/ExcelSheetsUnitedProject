@@ -101,7 +101,7 @@ public class PetController {
                     move.setByY(y);
                     // Based on whether the pet moves left or right, update animation state to show the pet walking in said direction.
                     if (x > 0) {
-                        petStates.setState(animStates.PetState.WALKlEFT);
+                        petStates.setState(animStates.PetState.WALKLEFT);
                         new AnimationTimer() {
                             @Override
                             public void handle(long now) {
@@ -111,7 +111,7 @@ public class PetController {
                             }
                         }.start();
                     } else {
-                        petStates.setState(animStates.PetState.WALKrIGHT);
+                        petStates.setState(animStates.PetState.WALKRIGHT);
                         new AnimationTimer() {
                             @Override
                             public void handle(long now) {

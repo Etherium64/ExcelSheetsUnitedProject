@@ -11,6 +11,13 @@
     <padding>
         <Insets left="20" right="20" bottom="50"/>
     </padding>
+    <top>
+        <HBox spacing="50.0">
+            <Button fx:id="returnBtn"
+                onAction="#returnBtnClick">
+            </Button>
+        </HBox>
+    </top>
     <center>
         <TableView fx:id="tableView" editable="true" maxHeight="800">
             <columnResizePolicy>
@@ -36,31 +43,15 @@
         </TableView>
     </center>
     <bottom>
-        <HBox spacing="500" alignment="CENTER">
-            <children>
-                <VBox spacing="50.0">
-                    <Button fx:id="returnWorkBtn"
-                            text="Return to Work"
-                            onAction="#returnWorkBtnClick"
-                    />
-                    <Button fx:id="returnRestBtn"
-                            text="Retun to Rest"
-                            onAction="#returnRestBtnClick"
-                    />
-                </VBox>
-            </children>
-            <children>
-                <VBox spacing="50.0">
-                    <Button
-                            text="Create Session"
-                            onAction="#createBtnClick"
-                    />
-                    <Button
-                            text="Delete Session"
-                            onAction="#deleteBtnClick"
-                    />
-                </VBox>
-            </children>
+        <HBox spacing="100.0" alignment="CENTER">
+            <Button
+                    text="CREATE"
+                    onAction="#createBtnClick"
+            />
+            <Button
+                    text="DELETE"
+                    onAction="#deleteBtnClick"
+            />
         </HBox>
     </bottom>
 </BorderPane>

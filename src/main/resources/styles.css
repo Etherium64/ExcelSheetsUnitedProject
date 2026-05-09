@@ -24,10 +24,23 @@
     -fx-text-fill: #0066cc;
 }
 
+/* Timer label */
+#timerLabel {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0066cc;
+}
+
 /* Status message */
 #statusLabel {
     -fx-font-size: 14px;
     -fx-text-fill: #008000;
+}
+
+/* Return button */
+#returnBtn {
+    -fx-graphic: url("Back_arrow_button.png");
+    -fx-background-color: transparent;
 }
 
 /* Button styling */
@@ -58,9 +71,37 @@
     -fx-background-color: #6EC6C5;
 }
 
-
+.radio-button{
+    -fx-font-size: 12px;
+    fx-background-color: #B8E6DF;
+    -fx-text-fill: black;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-family: CenturyOldStyle;
+}
 /* Text field */
 .text-field {
     -fx-font-size: 14px;
     -fx-font-family: CenturyOldStyle;
+}
+
+.progress-bar > .bar {
+    -fx-padding: 10px;
+}
+
+.progress-bar {
+    -fx-pref-width: 100;
+    -fx-pref-height: 30px;
+}
+
+.text {
+    -fx-font-size: 14px;
+}
+
+.table-row-cell:empty {
+    -fx-background-color: white;
+}
+
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
 }

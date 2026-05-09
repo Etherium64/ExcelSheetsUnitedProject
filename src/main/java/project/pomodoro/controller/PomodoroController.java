@@ -103,15 +103,10 @@ public class PomodoroController implements Initializable {
      */
     private MainApplication newScene = new MainApplication();
     /**
-     * Returns to Work Button UI elemnent for TableView
+     * Returns to Pomodoro Button UI elemnent for TableView
      */
     @FXML
-    private Button returnWorkBtn;
-    /**
-     * Returns to Rest Button UI elemnent for TableView
-     */
-    @FXML
-    private Button returnRestBtn;
+    private Button returnBtn;
     /**
      * TableView FXML UI element
      */
@@ -228,9 +223,9 @@ public class PomodoroController implements Initializable {
         startPauseBtn.setDisable(true);
         //Get Session by Timestamp rather than iD, as difficult for current instance of DAO to find latest Session id which auto increments between sessions
         Session session = sessionDAO.getByTimestamp(timestamp);
-        if (sessionType == "work") {
+        if (Objects.equals(sessionType, "work")) {
             session.setTimespent("25:00");
-            startPauseBtn.setText("Please have a rest.");
+            startPauseBtn.setText("Please take a break.");
         } else {
             session.setTimespent("05:00");
             startPauseBtn.setText("Time for work!");
@@ -318,7 +313,7 @@ public class PomodoroController implements Initializable {
         typeCol.setCellValueFactory((new PropertyValueFactory<>("sessionType")));
         //Convert TableColumn typeCol cells into a ComboBox UI element
         //Session Type options are either work or rest so ComboBox fits
-        typeCol.setCellFactory(ComboBoxTableCell.forTableColumn("work", "rest"));
+        typeCol.setCellFactory(ComboBoxTableCell.forTableColumn("work", "break"));
         //To finalise the update, user must press the Enter Button (the default event)
         typeCol.setOnEditCommit(event -> {
             //Session to be updated is the Table row the user mouse click selects
@@ -368,19 +363,9 @@ public class PomodoroController implements Initializable {
      * Belongs to TableView FXML
      */
     @FXML
-    public void returnWorkBtnClick() throws Exception {
-        Stage newStage = (Stage) returnWorkBtn.getScene().getWindow();
+    public void returnBtnClick() throws Exception {
+        Stage newStage = (Stage) returnBtn.getScene().getWindow();
         newScene.launch(newStage, "work-view.fxml");
-    }
-
-    /**
-     * Return to Pomodoro Rest session upon Button click
-     *  Belongs to TableView FXML
-     */
-    @FXML
-    public void returnRestBtnClick() throws Exception {
-        Stage newStage = (Stage) returnRestBtn.getScene().getWindow();
-        newScene.launch(newStage, "rest-view.fxml");
     }
 
     /**

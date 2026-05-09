@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.Background;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import project.pomodoro.MainApplication;
 /**
@@ -13,7 +15,7 @@ import project.pomodoro.MainApplication;
  *
  * @author Minhman Do
  */
-public class RestController {
+public class BreakController {
     /**
      * Application instance used for scene transitions
      */
@@ -59,7 +61,7 @@ public class RestController {
      * Reference to the break button UI element, injected by FXML.
      */
     @FXML
-    private Button tableBtn;
+    private Button databBtn;
 
 
     public void rBtnDisable() {
@@ -88,10 +90,12 @@ public class RestController {
                 rBtnDisable();
                 taskIsSet = true;
             }
-            startPauseBtn.setText("Pause");
+            startPauseBtn.setText("PAUSE");
+            startPauseBtn.setBackground(Background.fill(Color.ORANGERED));
             buttonPaused = true;
         } else {
-            startPauseBtn.setText("Start");
+            startPauseBtn.setText("START");
+            startPauseBtn.setBackground(Background.fill(Color.LIGHTGREEN));
             buttonPaused = false;
         }
         PomodoroController.getPomodoro().runPomodoro();
@@ -129,7 +133,7 @@ public class RestController {
             buttonPaused = true;
         }
         Stage restStage = (Stage) resetBtn.getScene().getWindow();
-        newScene.launch(restStage, "rest-view.fxml");
+        newScene.launch(restStage, "break-view.fxml");
     }
 
     /**
@@ -139,14 +143,14 @@ public class RestController {
      * @throws Exception if there is an error loading the FXML or switching scenes
      */
     @FXML
-    public void tableBtnClick() throws Exception {
+    public void databBtnClick() throws Exception {
         if (taskIsSet) {
             PomodoroController.getPomodoro().unfinishedPomodoro();
             taskIsSet = false;
             buttonPaused = true;
         }
-        Stage newStage = (Stage) tableBtn.getScene().getWindow();
-        newScene.launch(newStage, "table-view.fxml");
+        Stage newStage = (Stage) databBtn.getScene().getWindow();
+        newScene.launch(newStage, "datab-view.fxml");
     }
 
 }

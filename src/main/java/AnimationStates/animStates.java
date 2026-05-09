@@ -24,8 +24,8 @@ public class animStates {
         IDLE,
         WALKrIGHT,
         WALKlEFT,
-        JUMP,
-        SADiDLE
+        SADiDLE,
+        SHOCK
     }
 
     private PetState currentState = PetState.IDLE;
@@ -57,15 +57,17 @@ public class animStates {
             // change the frame duration to influence how long each frame is held
             Animation walkleft = new Animation(loadImages.loadSequence("/ImageSequences/walkLeft"), 100);
             Animation walkright = new Animation(loadImages.loadSequence("/ImageSequences/walkRight"), 100);
-            Animation jump = new Animation(loadImages.loadSequence("/ImageSequences/jump"), 100);
+            //Animation jump = new Animation(loadImages.loadSequence("/ImageSequences/jump"), 100);
             Animation sadidle = new Animation(loadImages.loadSequence("/ImageSequences/sadIdle"), 200);
+            Animation shock = new Animation(loadImages.loadSequence("/ImageSequences/shocked"), 200);
 
             // Register animations with the controller
             controller.addAnimation(animController.State.IDLE, idle);
             controller.addAnimation(animController.State.WALKlEFT, walkleft);
             controller.addAnimation(animController.State.WALKrIGHT, walkright);
-            controller.addAnimation(animController.State.JUMP, jump);
+           // controller.addAnimation(animController.State.JUMP, jump);
             controller.addAnimation(animController.State.SADiDLE, sadidle);
+            controller.addAnimation(animController.State.SHOCK,shock);
 
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -92,11 +94,14 @@ public class animStates {
             case WALKrIGHT:
                 controller.setState(animController.State.WALKrIGHT);
                 break;
-            case JUMP:
-                controller.setState(animController.State.JUMP);
-                break;
+          //  case JUMP:
+         //       controller.setState(animController.State.JUMP);
+        //        break;
             case SADiDLE:
                 controller.setState(animController.State.SADiDLE);
+                break;
+            case SHOCK:
+                controller.setState(animController.State.SHOCK);
                 break;
         }
     }

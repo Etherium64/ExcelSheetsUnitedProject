@@ -112,7 +112,7 @@ public class PetController {
     @FXML
     protected void onImageClick() throws InterruptedException {
         moving.stop();
-        petStates.setState(animStates.PetState.JUMP);
+        petStates.setState(animStates.PetState.SHOCK);
         new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -127,7 +127,7 @@ public class PetController {
 
     @FXML
     protected void onDragExit() {
-        petStates.setState(animStates.PetState.JUMP);
+        petStates.setState(animStates.PetState.SHOCK);
         new AnimationTimer() {
             @Override
             public void handle(long now) {

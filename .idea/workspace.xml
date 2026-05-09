@@ -4,8 +4,199 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Merge branch 'PomodoroWithoutPet' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/compiler.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/project/Trivia/Main.java">
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/Main.java" afterDir="false" />
+    <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Animations added.">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0001.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0002.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0003.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0004.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0005.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0006.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0007.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0008.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0009.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0010.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0011.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0012.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0013.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0014.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0015.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0016.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0017.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0018.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0019.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0020.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0021.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0022.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0023.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0025.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0026.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0027.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0028.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0029.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0030.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0031.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0032.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0033.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0034.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0035.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0036.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0037.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0038.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0039.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0040.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0041.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0042.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0043.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0044.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0045.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0046.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/Idle/idle0047.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0001.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0002.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0003.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0004.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0005.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0006.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0007.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0008.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0009.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0010.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0011.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0012.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0013.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0014.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0015.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0016.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0017.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0018.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0019.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0020.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0021.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0022.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0023.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/jump/jump0024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0001.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0002.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0003.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0004.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0005.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0006.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0007.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0008.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0009.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0010.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0011.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0012.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0013.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0014.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0015.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0016.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0017.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0018.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0019.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0020.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0021.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0022.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0023.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0025.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0026.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0027.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0028.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0029.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0030.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0031.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0032.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0033.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0034.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0035.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0036.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0037.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0038.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0039.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0040.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0041.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0042.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0043.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0044.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0045.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0046.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0047.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0048.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0049.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0050.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0051.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0052.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0053.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0054.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0055.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0056.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0057.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0058.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0059.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0060.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/sadIdle/sadIdle0061.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0001.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0002.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0003.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0001.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0002.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0003.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0004.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0005.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0006.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0007.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0008.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0009.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0010.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0011.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0012.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0013.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0014.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0015.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0016.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0017.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0018.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0004png0019.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0005.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0006.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0007.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0008.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0009.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0010.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0011.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0012.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0013.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0014.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0015.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0016.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0017.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0018.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkleft/walkLeft0019.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0001.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0002.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0003.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0004.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0005.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0006.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0007.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0008.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0009.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0010.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0011.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0012.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0013.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0014.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0015.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0016.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0017.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0018.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0019.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ImageSequences/walkright/walkRight0020.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +256,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.AnimationTestWindow.executor": "Debug",
+    "Application.AnimationTestWindow.executor": "Run",
     "Application.DesktopPet.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.MainApplication.executor": "Run",
@@ -77,7 +268,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "AnimationSetUp",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",

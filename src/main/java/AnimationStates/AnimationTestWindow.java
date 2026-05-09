@@ -19,7 +19,7 @@ public class AnimationTestWindow extends Application {
     @Override
     public void start(Stage stage) {
         petStates = new animStates();
-        petStates.setState(animStates.PetState.WALKlEFT);
+        petStates.setState(animStates.PetState.SHOCK);
 
         canvas = new Canvas(600, 600);
         StackPane root = new StackPane(canvas);

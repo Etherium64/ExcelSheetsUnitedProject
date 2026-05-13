@@ -22,10 +22,10 @@ public class animStates {
          */
     public enum PetState {
         IDLE,
-        WALKrIGHT,
-        WALKlEFT,
-        SADiDLE,
-        SHOCK
+        WALKRIGHT,
+        WALKLEFT,
+        JUMP,
+        SADIDLE
     }
 
     private PetState currentState = PetState.IDLE;
@@ -49,25 +49,25 @@ public class animStates {
             Animation idle = new Animation(loadImages.loadSequence("/ImageSequences/idle"), 24);
             System.out.println("Idle frames loaded: " + idle.getFrameCount());
 
-//            System.out.println("TEST 1 = " + loadImages.class.getResource("/ImageSequences/idle/"));
-//            System.out.println("TEST 2 = " + loadImages.class.getResource("/ImageSequences/idle/idle0001.png"));
-//            System.out.println("TEST 3 = " + loadImages.class.getResource("/ImageSequences/idle/idle0002.png"));
-//            System.out.println("TEST 4 = " + loadImages.class.getResource("/ImageSequences/idle/idle0003.png"));
+            /*
+            System.out.println("TEST 1 = " + loadImages.class.getResource("/ImageSequences/idle/"));
+            System.out.println("TEST 2 = " + loadImages.class.getResource("/ImageSequences/idle/idle0001.png"));
+            System.out.println("TEST 3 = " + loadImages.class.getResource("/ImageSequences/idle/idle0002.png"));
+            System.out.println("TEST 4 = " + loadImages.class.getResource("/ImageSequences/idle/idle0003.png"));
+            */
 
             // change the frame duration to influence how long each frame is held
-            Animation walkleft = new Animation(loadImages.loadSequence("/ImageSequences/walkLeft"), 100);
-            Animation walkright = new Animation(loadImages.loadSequence("/ImageSequences/walkRight"), 100);
-            //Animation jump = new Animation(loadImages.loadSequence("/ImageSequences/jump"), 100);
-            Animation sadidle = new Animation(loadImages.loadSequence("/ImageSequences/sadIdle"), 200);
-            Animation shock = new Animation(loadImages.loadSequence("/ImageSequences/shocked"), 200);
+            Animation walkLeft = new Animation(loadImages.loadSequence("/ImageSequences/walkLeft"), 100);
+            Animation walkRight = new Animation(loadImages.loadSequence("/ImageSequences/walkRight"), 100);
+            Animation jump = new Animation(loadImages.loadSequence("/ImageSequences/jump"), 200);
+            Animation sadIdle = new Animation(loadImages.loadSequence("/ImageSequences/sadIdle"), 200);
 
             // Register animations with the controller
             controller.addAnimation(animController.State.IDLE, idle);
-            controller.addAnimation(animController.State.WALKlEFT, walkleft);
-            controller.addAnimation(animController.State.WALKrIGHT, walkright);
-           // controller.addAnimation(animController.State.JUMP, jump);
-            controller.addAnimation(animController.State.SADiDLE, sadidle);
-            controller.addAnimation(animController.State.SHOCK,shock);
+            controller.addAnimation(animController.State.WALKLEFT, walkLeft);
+            controller.addAnimation(animController.State.WALKRIGHT, walkRight);
+            controller.addAnimation(animController.State.JUMP, jump);
+            controller.addAnimation(animController.State.SADIDLE, sadIdle);
 
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -88,20 +88,17 @@ public class animStates {
             case IDLE:
                 controller.setState(animController.State.IDLE);
                 break;
-            case WALKlEFT:
-                controller.setState(animController.State.WALKlEFT);
+            case WALKLEFT:
+                controller.setState(animController.State.WALKLEFT);
                 break;
-            case WALKrIGHT:
-                controller.setState(animController.State.WALKrIGHT);
+            case WALKRIGHT:
+                controller.setState(animController.State.WALKRIGHT);
                 break;
-          //  case JUMP:
-         //       controller.setState(animController.State.JUMP);
-        //        break;
-            case SADiDLE:
-                controller.setState(animController.State.SADiDLE);
+            case JUMP:
+                controller.setState(animController.State.JUMP);
                 break;
-            case SHOCK:
-                controller.setState(animController.State.SHOCK);
+            case SADIDLE:
+                controller.setState(animController.State.SADIDLE);
                 break;
         }
     }
@@ -124,7 +121,6 @@ public class animStates {
     public Image getCurrentFrame() {
         return controller.getCurrentFrame();
     }
-  // update for pushing
+
 
 }
-//checking

@@ -2,36 +2,36 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+
 <?import javafx.geometry.Insets?>
 
 <BorderPane xmlns="http://javafx.com/javafx"
-        xmlns:fx="http://javafx.com/fxml"
-            fx:controller="project.pomodoro.controller.BreakController">
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="project.pomodoro.controller.WorkController">
     <padding>
         <Insets left="100" right="100"/>
     </padding>
     <left>
         <VBox alignment="CENTER" spacing="50">
             <fx:define>
-                <ToggleGroup fx:id="breakGroup"/>
+                <ToggleGroup fx:id="workGroup"/>
             </fx:define>
             <RadioButton fx:id="rBtn1"
-                         text="Mindfulness"
-                         toggleGroup="$breakGroup"
-                         selected="true"
-            >
+                         text="Programming"
+                         toggleGroup="$workGroup"
+                         selected="true">
             </RadioButton>
             <RadioButton fx:id="rBtn2"
-                         text="Deep Breathing"
-                         toggleGroup="$breakGroup">
+                         text="Assigned Readings"
+                         toggleGroup="$workGroup">
             </RadioButton>
             <RadioButton fx:id="rBtn3"
-                         text="Drink Water"
-                         toggleGroup="$breakGroup">
+                         text="Watch Lecture"
+                         toggleGroup="$workGroup">
             </RadioButton>
             <RadioButton fx:id="rBtn4"
-                         text="Snack Time"
-                         toggleGroup="$breakGroup">
+                         text="Housekeeping"
+                         toggleGroup="$workGroup">
             </RadioButton>
         </VBox>
     </left>
@@ -39,9 +39,9 @@
     <right>
         <VBox alignment="CENTER">
             <HBox spacing="150.0" alignment="CENTER">
-                <Button fx:id="workBtn"
-                        text="WORK"
-                        onAction="#workBtnClick"
+                <Button fx:id="breakBtn"
+                        text="BREAK"
+                        onAction="#breakBtnClick"
                 />
                 <Button fx:id="databBtn"
                         text="DATABASE"
@@ -52,7 +52,7 @@
             <VBox alignment="CENTER">
                 <Region prefHeight="70"/>
                 <Label fx:id="timerLabel"
-                       text="05:00"/>
+                       text="25:00"/>
                 <ProgressBar fx:id="timerBar"/>
                 <Region prefHeight="100"/>
             </VBox>

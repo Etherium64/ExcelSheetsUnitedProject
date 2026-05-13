@@ -2,42 +2,61 @@ package project.pomodoro;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.Background;
+import javafx.scene.paint.Color;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import project.pomodoro.controller.PomodoroController;
+import project.pomodoro.model.SessionDAO;
 
 import java.util.Objects;
-
 
 /**
  * JavaFX Application class responsible for launching and configuring scenes in the Pomodoro timer application.
  * Manages scene creation, stylesheet application, and initial timer setup.
+ *
+ * @author Minhman Do
  */
 public class MainApplication extends Application {
-
     /**
      * Loads and displays a specified FXML view within a stage, applying styling and initializing the timer display.
      *
      * @param stage The primary stage to set the scene on
-     * @param FXMLview The path to the FXML file to load (e.g., "pomodoro-view.fxml")
-     * @param timeText The initial time string to display in the timer label (e.g., "25:00")
-     * @param timeElapsed The initial timer duration in seconds (e.g., 1500 for 25 minutes)
      * @throws Exception if the FXML file cannot be loaded or the timer label cannot be found
      */
-    public void launchScene(Stage stage, String FXMLview, String timeText, int timeElapsed ) throws Exception {
-        Parent parent = FXMLLoader.load(Objects.requireNonNull(MainApplication.class.getResource(FXMLview)));
-        Scene scene = new Scene(parent, 1080, 720);
-        stage.setTitle("Pomodoro");
-        String stylesheet = MainApplication.class.getResource("stylesheet.css").toExternalForm();
-        scene.getStylesheets().add(stylesheet);
+
+    public void launch(Stage stage, String FXMLstring) throws Exception {
+
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(FXMLstring)));
+        Scene scene = new Scene(root, 600, 300, Color.TRANSPARENT);
+        scene.getStylesheets().add("/styles.css");
+        root.setStyle("-fx-background-color: transparent;");
+        if (FXMLstring == "datab-view.fxml")
+        {
+            stage.setTitle("Sessions Database");
+        }
+        else{
+            stage.setTitle("Pomodoro");
+            //Set up all the necessary fields to run the Pomodoro Controller if running a Pomodoro Work / Rest Session
+            Label timerLabel = (Label) root.lookup("#timerLabel");
+            ProgressBar timerBar = (ProgressBar) root.lookup("#timerBar");
+            timerBar.setProgress(1);
+            Button startPauseBtn = (Button) root.lookup("#startPauseBtn");
+            startPauseBtn.setBackground(Background.fill(Color.LIGHTGREEN));
+            String sessionType = FXMLstring.substring(0, 5).replace("-", "");
+            PomodoroController.getPomodoro().setPomodoro(sessionType, timerLabel, timerBar, startPauseBtn);
+        }
         stage.setScene(scene);
 
-        Label timerLabel = (Label) parent.lookup("#timerLabel");
-        timerLabel.setText(timeText);
-        TimeController.getTimer().setupTimer(timerLabel, timeElapsed);
     }
-
 
     /**
      * The main entry point for the JavaFX application.
@@ -48,9 +67,10 @@ public class MainApplication extends Application {
      * @throws Exception if there is an error loading the FXML or initializing the scene
      */
     @Override
-    public void start(Stage primary) throws Exception {
-        launchScene(primary, "pomodoro-view.fxml", "25:00", 1500);
-        primary.show();
+    public void start(Stage stage) throws Exception{
+        launch(stage, "work-view.fxml");
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.show();
     }
 }
 

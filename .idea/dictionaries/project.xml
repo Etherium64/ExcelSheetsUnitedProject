@@ -2,6 +2,9 @@
   <dictionary name="project">
     <words>
       <w>desktoppet</w>
+      <w>timespent</w>
+      <w>walkleft</w>
+      <w>walkright</w>
     </words>
   </dictionary>
 </component>

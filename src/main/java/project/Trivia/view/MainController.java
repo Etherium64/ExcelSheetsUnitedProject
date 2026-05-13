@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
 /**
  * Controller for the main Trivia Game interface.
  * <p>
@@ -35,6 +36,7 @@ public class MainController {
     @FXML private Label statusLabel;
     @FXML private Label questionLabel;
     @FXML public Button buttonA, buttonB, buttonC, buttonD;
+    @FXML public Button EndButton;
 
     private int score = 0;
     public String correctAnswer;
@@ -64,13 +66,15 @@ public class MainController {
             scoreLabel.setText(String.valueOf(score));
             statusLabel.setText("Correct!");
         } else {
-            statusLabel.setText("Wrong! Try again.");
+            statusLabel.setText("Incorrect! Maybe next time");
         }
 
         questionCount++;
         if (questionCount >= MAX_QUESTIONS) {
             statusLabel.setText("Quiz complete! Final score: " + score);
             disableButtons();
+            VBox parent = (VBox) EndButton.getParent();
+            parent.getChildren().remove(EndButton);
             triviaSection.setVisible(false);
             triviaSection.setManaged(false);
             usernameSection.setVisible(true);
@@ -88,6 +92,8 @@ public class MainController {
         buttonB.setDisable(true);
         buttonC.setDisable(true);
         buttonD.setDisable(true);
+        EndButton.setDisable(true);
+
     }
     private List<Question> questions = new ArrayList<>();
     private int currentQuestionIndex = 0;

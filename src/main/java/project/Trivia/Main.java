@@ -41,7 +41,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/project.trivia/main.fxml")));
 
         // Make the scene and stage transparent
-        Scene scene = new Scene(root, 300, 200, Color.TRANSPARENT);
+        Scene scene = new Scene(root, 350, 200, Color.TRANSPARENT);
         scene.getStylesheets().add("/styles.css");
 
         // Ensure the root node doesn't have a default background
@@ -52,6 +52,6 @@ public class Main extends Application {
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
     }
-    //testing for javdoc
+
 
 }

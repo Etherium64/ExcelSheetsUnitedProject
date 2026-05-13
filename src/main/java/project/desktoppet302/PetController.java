@@ -162,7 +162,7 @@ public class PetController {
         // Stop the idle animation countdown.
         moving.stop();
         // Implement the jumping animation.
-        petStates.setState(animStates.PetState.JUMP);
+        petStates.setState(animStates.PetState.SHOCK);
         new AnimationTimer() {
             @Override
             public void handle(long now) {

@@ -24,8 +24,7 @@ public class animStates {
         IDLE,
         WALKRIGHT,
         WALKLEFT,
-        JUMP,
-        SADIDLE
+            SHOCK, SADIDLE
     }
 
     private PetState currentState = PetState.IDLE;
@@ -59,14 +58,14 @@ public class animStates {
             // change the frame duration to influence how long each frame is held
             Animation walkLeft = new Animation(loadImages.loadSequence("/ImageSequences/walkLeft"), 100);
             Animation walkRight = new Animation(loadImages.loadSequence("/ImageSequences/walkRight"), 100);
-            Animation jump = new Animation(loadImages.loadSequence("/ImageSequences/jump"), 200);
+            Animation shock = new Animation(loadImages.loadSequence("/ImageSequences/shocked"), 200);
             Animation sadIdle = new Animation(loadImages.loadSequence("/ImageSequences/sadIdle"), 200);
 
             // Register animations with the controller
             controller.addAnimation(animController.State.IDLE, idle);
             controller.addAnimation(animController.State.WALKLEFT, walkLeft);
             controller.addAnimation(animController.State.WALKRIGHT, walkRight);
-            controller.addAnimation(animController.State.JUMP, jump);
+            controller.addAnimation(animController.State.SHOCK, shock);
             controller.addAnimation(animController.State.SADIDLE, sadIdle);
 
         } catch (Exception exception) {
@@ -94,8 +93,8 @@ public class animStates {
             case WALKRIGHT:
                 controller.setState(animController.State.WALKRIGHT);
                 break;
-            case JUMP:
-                controller.setState(animController.State.JUMP);
+            case SHOCK:
+                controller.setState(animController.State.SHOCK);
                 break;
             case SADIDLE:
                 controller.setState(animController.State.SADIDLE);

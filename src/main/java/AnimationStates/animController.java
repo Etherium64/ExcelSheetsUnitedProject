@@ -23,7 +23,7 @@ import java.util.HashMap;
 public class animController {
 
     // All possible animation states the controller can switch between.
-    public enum State { IDLE, WALKLEFT, WALKRIGHT, JUMP, SADIDLE }
+    public enum State { IDLE, WALKLEFT, WALKRIGHT, SHOCK, SADIDLE }
 
     // Stores animations mapped to their corresponding state.
     private HashMap<State, Animation> animations = new HashMap<>();

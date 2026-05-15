@@ -13,10 +13,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import java.sql.Time;
-import java.util.Random;
 import java.util.Random.*;
+
 
 public class PetController {
 
@@ -25,9 +23,13 @@ public class PetController {
 
     @FXML
     public Button timer;
+    public Image pet;
 
     @FXML
     private HBox hbox;
+
+    @FXML
+    private VBox imagebox;
 
     @FXML
     private Text pettext;
@@ -39,7 +41,7 @@ public class PetController {
     private Button nobutton;
 
     @FXML
-    private Rectangle2D bounds;
+    private Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
 
     @FXML
     private double mouseX;
@@ -51,16 +53,7 @@ public class PetController {
     private Stage stage;
 
     @FXML
-    private ImageView petImage;
-
-    @FXML
-    private Image pet;
-
-    @FXML
-    private VBox imagebox;
-
-    @FXML
-    private TranslateTransition move;
+    private TranslateTransition move = new TranslateTransition();
 
     @FXML
     private AnimationTimer moving;
@@ -69,18 +62,21 @@ public class PetController {
     private long then;
 
     @FXML
-    private animStates petStates;
+    private animStates petStates = new animStates();
+
+    @FXML
+    private ImageView petImage;
+
+    @FXML
+    private Pet desktopPet;
 
     // Initialise starting values.
     @FXML
     public void initialize() {
-        //Set bounds of screen.
-        bounds = Screen.getPrimary().getVisualBounds();
         // Set translate transition to allows for animation translations for movement.
-        move = new TranslateTransition();
         move.setNode(imagebox);
         // Set the animation state for the pet.
-        petStates = new animStates();
+        desktopPet = new Pet(petStates, petImage);
         // Record current time of system when application starts.
         this.then = (System.currentTimeMillis());
         //Create animation timer for the movement when the pet is not interacted with.
@@ -90,39 +86,7 @@ public class PetController {
                 //Record  current time of system.
                 now = System.currentTimeMillis();
                 if (now - then > 8000) {
-                    // Generate two random numbers between -100 and 100 after eight seconds from previous generation or System Start.
-                    Random z = new Random();
-                    double x = (double) z.nextInt(200) - 100;
-                    double y = (double) z.nextInt(200) - 100;
-                    // Set animation movement time.
-                    move.setDuration(Duration.seconds(2));
-                    // Set horizontal and vertical translation base on the random numbers generated.
-                    move.setByX(x);
-                    move.setByY(y);
-                    // Based on whether the pet moves left or right, update animation state to show the pet walking in said direction.
-                    if (x > 0) {
-                        petStates.setState(animStates.PetState.WALKLEFT);
-                        new AnimationTimer() {
-                            @Override
-                            public void handle(long now) {
-                                petStates.update();
-                                Image pet = petStates.getCurrentFrame();
-                                petImage.setImage(pet);
-                            }
-                        }.start();
-                    } else {
-                        petStates.setState(animStates.PetState.WALKRIGHT);
-                        new AnimationTimer() {
-                            @Override
-                            public void handle(long now) {
-                                petStates.update();
-                                Image pet = petStates.getCurrentFrame();
-                                petImage.setImage(pet);
-                            }
-                        }.start();
-                    }
-                    // Play animation.
-                    move.play();
+                    Pet.movePet(desktopPet, move, then, now);
                     // Set the old system time to the current time, allowing for repetition of animation timer.
                     then = now;
                     // Timeline that allows for walking animation to play before restarting the animation timer again.
@@ -130,30 +94,19 @@ public class PetController {
                             new KeyFrame(Duration.seconds(2), e -> idling()));
                     timeline.playFromStart();
                 }
-
             }
         };
         // Run idling after the stage is set.
         Platform.runLater(this::idling);
-
     }
 
 
     @FXML
     protected void idling() {
         // Set the pet to the idle animation.
-        petStates.setState(animStates.PetState.IDLE);
-        new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                petStates.update();
-                Image pet = petStates.getCurrentFrame();
-                petImage.setImage(pet);
-            }
-        }.start();
+        Pet.setPet(desktopPet, animStates.PetState.IDLE);
         // Start the animation timer for movement when pet is not interacted with.
         moving.start();
-
     }
 
     // State change when animal is clicked.
@@ -162,15 +115,7 @@ public class PetController {
         // Stop the idle animation countdown.
         moving.stop();
         // Implement the jumping animation.
-        petStates.setState(animStates.PetState.SHOCK);
-        new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                petStates.update();
-                Image pet = petStates.getCurrentFrame();
-                petImage.setImage(pet);
-            }
-        }.start();
+        Pet.setPet(desktopPet, animStates.PetState.SHOCK);
         // Reset the timer for the idling animation.
         then = System.currentTimeMillis();
         // Implement a timeline that allows jumping animation to play through and then start idling animation and events again.
@@ -192,9 +137,9 @@ public class PetController {
             // Get the Y position based on mouse movement
             mouseY = mouseDrag.getSceneY() - petImage.getFitHeight() / 2;
             // Find left edge of screen
-            double leftScreenEdge = -75;
+            double leftScreenEdge = - petImage.getFitWidth();
             // Find right edge of screen minus the pets width
-            double rightScreenEdge = stage.getScene().getWidth() - petImage.getFitWidth() + 75;
+            double rightScreenEdge = stage.getScene().getWidth() - petImage.getFitWidth() * 1.75;
             // Find left edge of screen
             double topScreenEdge = -50;
             // Find right edge of screen minus the pets width
@@ -215,15 +160,9 @@ public class PetController {
             }
             // Apply clamped X position to image
             imagebox.setTranslateX(mouseX);
-            imagebox.setTranslateY(mouseY);
+            //imagebox.setTranslateY(mouseY);
         });
         idling();
-    }
-
-    @FXML
-    protected void timerButton() {
-        pettext.setText("NEVER KYS");
-        pettext.setVisible(true);
     }
 
     private boolean isTriviaPrompt = false;
@@ -283,7 +222,7 @@ public class PetController {
                 new project.pomodoro.MainApplication().start(pomodoroStage); // Adjust package/class as needed
                 pomodoroStage.setAlwaysOnTop(true);
 
-//                // Position relative to desktop pet (same as trivia)
+                // Position relative to desktop pet (same as trivia)
                 primaryStage.xProperty().addListener((obs, old, val) ->
                         pomodoroStage.setX(val.doubleValue() + 10));
                 primaryStage.yProperty().addListener((obs, old, val) ->
@@ -292,7 +231,7 @@ public class PetController {
                 primaryStage.heightProperty().addListener((obs, old, val) -> pomodoroStage.sizeToScene());
                 primaryStage.iconifiedProperty().addListener((obs, old, val) -> pomodoroStage.setIconified(val));
 
-//                // Initial position in bottom-left of main window
+                // Initial position in bottom-left of main window
                 pomodoroStage.setX(primaryStage.getX() + 10);
                 pomodoroStage.setY(primaryStage.getY() + primaryStage.getHeight() - pomodoroStage.getHeight() + 10);
             } catch (Exception e) {

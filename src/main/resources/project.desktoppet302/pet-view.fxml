@@ -12,8 +12,8 @@
 <?import javafx.scene.layout.VBox?>
 <HBox fx:id="hbox" xmlns:fx="http://javafx.com/fxml"
       fx:controller="project.desktoppet302.PetController"
-       styleClass=".root" stylesheets="@/styles.css">
-    <VBox minWidth="150" spacing="5" translateX="5" translateY="5">
+       styleClass=".root" stylesheets="@/styles.css" style="-fx-background-color: transparent">
+    <VBox minWidth="150" spacing="10" translateX="5" translateY="25">
         <Button fx:id="timer" styleClass="button1" text="Pomodoro" minWidth="150" minHeight="50" onAction="#pomodoroButton"/>
         <Button fx:id="trivia" styleClass="button1" text="Trivia" minWidth="150" minHeight="50" onAction="#triviaButton"/>
         <Button styleClass="button1" text="Settings" minWidth="150" minHeight="50"/>
@@ -24,7 +24,7 @@
             <Button fx:id="yesbutton" styleClass="button2" text="Yes" minWidth="50" visible="false" onAction="#goButton"/>
             <Button fx:id="nobutton" styleClass="button2" text="No" minWidth="50" visible="false" onAction="#returnButton"/>
         </HBox>
-        <ImageView translateY="-25" fx:id="petImage" preserveRatio="true" fitWidth="200" fitHeight="200"
+        <ImageView  fx:id="petImage" preserveRatio="true" fitWidth="175" fitHeight="175"
                    onMouseClicked="#onImageClick" onMouseDragged="#onImageDrag">
             <Image fx:id="pet" url="@/AnimationStates"/>
         </ImageView>

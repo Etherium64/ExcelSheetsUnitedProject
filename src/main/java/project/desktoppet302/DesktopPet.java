@@ -26,8 +26,6 @@ public class DesktopPet extends Application {
 
     // Sets size of window which holds the pet
     Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
-    double sceneSizeX = bounds.getWidth();
-    double sceneSizeY = 250;
 
     /**
      * Initializes and displays the desktop pet window when the application starts.
@@ -45,7 +43,7 @@ public class DesktopPet extends Application {
         //Load FXML page for desktop pet.
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/project.desktoppet302/pet-view.fxml"));
         // Create window to hold canvas.
-        Scene scene = new Scene(fxmlLoader.load(), sceneSizeX, sceneSizeY, Color.TRANSPARENT);
+        Scene scene = new Scene(fxmlLoader.load(), Color.TRANSPARENT);
         stage.setScene(scene);
         stage.setTitle("Desktop Pet");
 

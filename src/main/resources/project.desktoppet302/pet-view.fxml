@@ -13,7 +13,7 @@
 <HBox fx:id="hbox" xmlns:fx="http://javafx.com/fxml"
       fx:controller="project.desktoppet302.PetController"
        styleClass=".root" stylesheets="@/styles.css" style="-fx-background-color: transparent">
-    <VBox minWidth="150" spacing="10" translateX="5" translateY="25">
+    <VBox minWidth="150" spacing="15" translateX="5" translateY="25">
         <Button fx:id="timer" styleClass="button1" text="Pomodoro" minWidth="150" minHeight="50" onAction="#pomodoroButton"/>
         <Button fx:id="trivia" styleClass="button1" text="Trivia" minWidth="150" minHeight="50" onAction="#triviaButton"/>
         <Button styleClass="button1" text="Settings" minWidth="150" minHeight="50"/>

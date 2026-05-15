@@ -86,7 +86,7 @@ public class PetController {
                 //Record  current time of system.
                 now = System.currentTimeMillis();
                 if (now - then > 8000) {
-                    Pet.movePet(desktopPet, move, then, now);
+                    Pet.movePet(desktopPet, move, then, now, bounds, imagebox);
                     // Set the old system time to the current time, allowing for repetition of animation timer.
                     then = now;
                     // Timeline that allows for walking animation to play before restarting the animation timer again.
@@ -131,19 +131,14 @@ public class PetController {
         moving.stop();
         // Get current stage on window.
         stage = (Stage) hbox.getScene().getWindow();
+        //Apply translation to pet based on mouse position change.
         petImage.setOnMouseDragged(mouseDrag -> {
             // Get the X position based on mouse movement
             mouseX = mouseDrag.getSceneX() - petImage.getFitWidth() / 2 - 150;
-            // Get the Y position based on mouse movement
-            mouseY = mouseDrag.getSceneY() - petImage.getFitHeight() / 2;
             // Find left edge of screen
-            double leftScreenEdge = - petImage.getFitWidth();
+            double leftScreenEdge = bounds.getMinX();
             // Find right edge of screen minus the pets width
-            double rightScreenEdge = stage.getScene().getWidth() - petImage.getFitWidth() * 1.75;
-            // Find left edge of screen
-            double topScreenEdge = -50;
-            // Find right edge of screen minus the pets width
-            double bottomScreenEdge = stage.getScene().getHeight() - petImage.getFitHeight() + 75;
+            double rightScreenEdge = bounds.getMaxX() - imagebox.getWidth() * 1.5;
             // Clamp X-axis so pet cannot go off sides of screen
             if (mouseX < leftScreenEdge) {
                 mouseX = leftScreenEdge;
@@ -151,17 +146,10 @@ public class PetController {
             if (mouseX > rightScreenEdge) {
                 mouseX = rightScreenEdge;
             }
-            // Clamp X-axis so pet cannot go off sides of screen
-            if (mouseY < topScreenEdge) {
-                mouseY = topScreenEdge;
-            }
-            if (mouseY > bottomScreenEdge) {
-                mouseY = bottomScreenEdge;
-            }
             // Apply clamped X position to image
             imagebox.setTranslateX(mouseX);
-            //imagebox.setTranslateY(mouseY);
         });
+        // Go back to idling.
         idling();
     }
 

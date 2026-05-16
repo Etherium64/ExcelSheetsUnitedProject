@@ -120,22 +120,30 @@ public class PetController {
         moving.start();
     }
 
-    // State change when animal is clicked.
     @FXML
     protected void onImageClick() {
+        // stop automatic movement while interacting
         moving.stop();
 
+        // play shock animation
         Pet.setPet(desktopPet, animStates.PetState.SHOCK);
 
+        // show options without affecting layout
         optionsBox.setVisible(true);
-        optionsBox.setManaged(true);
+        optionsBox.setManaged(false);
 
+        // hide yes/no prompt
         pettext.setVisible(false);
+        pettext.setManaged(false);
         yesbutton.setVisible(false);
+        yesbutton.setManaged(false);
         nobutton.setVisible(false);
+        nobutton.setManaged(false);
 
+        // reset idle timer
         then = System.currentTimeMillis();
 
+        // return to idle after shock animation
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(2.75), e -> idling())
         );
@@ -152,7 +160,7 @@ public class PetController {
         //Apply translation to pet based on mouse position change.
         petImage.setOnMouseDragged(mouseDrag -> {
             // Get the X position based on mouse movement
-            mouseX = mouseDrag.getSceneX() - petImage.getFitWidth() / 2 - 150;
+            mouseX = mouseDrag.getSceneX() - petImage.getFitWidth() / 2;
             // Find left edge of screen
             double leftScreenEdge = bounds.getMinX();
             // Find right edge of screen minus the pets width

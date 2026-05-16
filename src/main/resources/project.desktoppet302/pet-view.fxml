@@ -43,6 +43,33 @@
 
     <VBox fx:id="imagebox">
 
+        <VBox fx:id="optionsBox"
+              visible="false"
+              managed="false"
+              alignment="CENTER"
+              spacing="8"
+              translateY="-170">
+
+            <Button fx:id="timer"
+                    styleClass="button1"
+                    text="Pomodoro"
+                    minWidth="150"
+                    minHeight="50"
+                    onAction="#pomodoroButton"/>
+
+            <Button fx:id="trivia"
+                    styleClass="button1"
+                    text="Trivia"
+                    minWidth="150"
+                    minHeight="50"
+                    onAction="#triviaButton"/>
+
+            <Button styleClass="button1"
+                    text="Settings"
+                    minWidth="150"
+                    minHeight="50"/>
+        </VBox>
+
         <Text fx:id="pettext"
               styleClass="text-field"
               text="lol"

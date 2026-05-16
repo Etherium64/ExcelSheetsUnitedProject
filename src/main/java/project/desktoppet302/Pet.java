@@ -12,23 +12,23 @@ import java.util.Random;
 
 public class Pet {
 
-    // stores the current animation states
+    // stores the pet animation states
     private final animStates petStates;
 
-    // stores the image view that displays the pet
+    // stores the image view used to show the pet
     private final ImageView petImage;
 
-    // creates a pet using animation states and an image view
+    // creates the pet object
     public Pet(animStates petStates, ImageView petImage) {
         this.petStates = petStates;
         this.petImage = petImage;
     }
 
-    // changes the pet animation state
+    // changes the current pet animation
     public static void setPet(Pet desktopPet, animStates.PetState pStat) {
         desktopPet.petStates.setState(pStat);
 
-        // updates the pet image every frame
+        // updates the image frame for the pet animation
         new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -50,12 +50,12 @@ public class Pet {
         Random random = new Random();
         double x = random.nextInt(600) - 300;
 
-        // stop the pet from moving too far left
+        // stop the pet from moving off the left side
         if ((imagebox.getTranslateX() + x) < bounds.getMinX()) {
             x = -x;
         }
 
-        // stop the pet from moving too far right
+        // stop the pet from moving off the right side
         else if ((imagebox.getTranslateX() + x) > bounds.getMaxX() - imagebox.getWidth() * 1.5) {
             x = -x;
         }
@@ -63,10 +63,10 @@ public class Pet {
         // set how long the movement takes
         move.setDuration(Duration.seconds(2));
 
-        // move the pet horizontally
+        // move horizontally by the random amount
         move.setByX(x);
 
-        // choose the walking animation based on direction
+        // set walk direction animation
         if (x > 0) {
             Pet.setPet(desktopPet, animStates.PetState.WALKLEFT);
         } else {

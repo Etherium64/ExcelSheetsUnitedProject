@@ -13,39 +13,41 @@ import java.io.IOException;
 
 public class DesktopPet extends Application {
 
-    // gets the usable screen bounds
+    // gets the usable screen area
     Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
 
     @Override
     public void start(Stage stage) throws IOException {
 
-        // loads the desktop pet fxml
+        // load the desktop pet fxml
         FXMLLoader fxmlLoader = new FXMLLoader(
                 getClass().getResource("/project.desktoppet302/pet-view.fxml")
         );
 
-        // creates the transparent scene
+        // create a transparent scene
         Scene scene = new Scene(fxmlLoader.load(), Color.TRANSPARENT);
 
-        // sets up the stage
+        // set the scene on the stage
         stage.setScene(scene);
         stage.setTitle("Desktop Pet");
 
-        // make the transparent window wide enough for the whole screen
+        // make the transparent window screen width
         stage.setWidth(bounds.getWidth());
 
-        // make the transparent window taller so the buttons above the pet are visible
+        // make it tall enough so the menu above the pet can be seen
         stage.setHeight(bounds.getHeight() / 3);
 
-        // lock the transparent window to the bottom of the screen
+        // lock the window to the bottom of the screen
         stage.setY(bounds.getMaxY() - stage.getHeight());
         stage.setX(bounds.getMinX());
 
-        // make the window transparent and always above other windows
+        // remove normal window borders
         stage.initStyle(StageStyle.TRANSPARENT);
+
+        // keep the pet above other windows
         stage.setAlwaysOnTop(true);
 
-        // show the pet
+        // show the window
         stage.show();
     }
 

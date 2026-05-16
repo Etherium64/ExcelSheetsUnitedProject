@@ -21,13 +21,12 @@
                    fitHeight="175"
                    onMouseClicked="#onImageClick"
                    onMouseDragged="#onImageDrag">
-
             <Image fx:id="pet" url="@/AnimationStates"/>
         </ImageView>
 
         <HBox fx:id="optionsBox"
               visible="false"
-              managed="true"
+              managed="false"
               alignment="CENTER"
               spacing="10"
               translateY="-110">
@@ -58,25 +57,26 @@
               wrappingWidth="240"
               textAlignment="CENTER"
               visible="false"
-              managed="true"
+              managed="false"
               translateY="-70"/>
 
-        <HBox alignment="CENTER"
+        <HBox fx:id="promptButtons"
+              alignment="CENTER"
               spacing="5"
+              visible="false"
+              managed="false"
               translateY="-35">
 
             <Button fx:id="yesbutton"
                     styleClass="button2"
                     text="Yes"
                     minWidth="50"
-                    visible="false"
                     onAction="#goButton"/>
 
             <Button fx:id="nobutton"
                     styleClass="button2"
                     text="No"
                     minWidth="50"
-                    visible="false"
                     onAction="#returnButton"/>
         </HBox>
 

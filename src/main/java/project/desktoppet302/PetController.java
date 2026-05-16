@@ -1,32 +1,32 @@
 package project.desktoppet302;
-import javafx.scene.layout.StackPane;
+
 import AnimationStates.animStates;
+import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
-import javafx.animation.*;
+import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.geometry.*;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
-import javafx.scene.image.*;
-import javafx.scene.layout.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.util.Random.*;
-import javafx.scene.layout.HBox;
 
 public class PetController {
 
     @FXML
-    private HBox optionsBox;
-
-    @FXML
     public Button trivia;
-
 
     @FXML
     public Button timer;
+
+    @FXML
     public Image pet;
 
     @FXML
@@ -34,6 +34,12 @@ public class PetController {
 
     @FXML
     private StackPane imagebox;
+
+    @FXML
+    private HBox optionsBox;
+
+    @FXML
+    private HBox promptButtons;
 
     @FXML
     private Text pettext;
@@ -49,9 +55,6 @@ public class PetController {
 
     @FXML
     private double mouseX;
-
-    @FXML
-    private double mouseY;
 
     @FXML
     private Stage stage;
@@ -74,129 +77,178 @@ public class PetController {
     @FXML
     private Pet desktopPet;
 
-    // Initialise starting values.
+    private boolean isTriviaPrompt = false;
+    private boolean ispomodoroPrompt = false;
+
     @FXML
     public void initialize() {
-        // Set translate transition to allows for animation translations for movement.
+        // set the node that gets moved around
         move.setNode(imagebox);
-        // Set the animation state for the pet.
+
+        // create the pet object
         desktopPet = new Pet(petStates, petImage);
-        // Record current time of system when application starts.
-        this.then = (System.currentTimeMillis());
-        //Create animation timer for the movement when the pet is not interacted with.
+
+        // hide option buttons when the app starts
+        optionsBox.setVisible(false);
+        optionsBox.setManaged(false);
+
+        // hide prompt text when the app starts
+        pettext.setVisible(false);
+        pettext.setManaged(false);
+
+        // hide prompt buttons when the app starts
+        promptButtons.setVisible(false);
+        promptButtons.setManaged(false);
+
+        // hide individual prompt buttons as well
+        yesbutton.setVisible(false);
+        nobutton.setVisible(false);
+
+        // record the starting time
+        this.then = System.currentTimeMillis();
+
+        // create the automatic movement timer
         this.moving = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                //Record  current time of system.
+                // get the current system time
                 now = System.currentTimeMillis();
+
+                // move every 8 seconds
                 if (now - then > 8000) {
                     Pet.movePet(desktopPet, move, then, now, bounds, imagebox);
-                    // Set the old system time to the current time, allowing for repetition of animation timer.
+
+                    // reset the timer
                     then = now;
-                    // Timeline that allows for walking animation to play before restarting the animation timer again.
+
+                    // return to idle after the walking animation
                     Timeline timeline = new Timeline(
-                            new KeyFrame(Duration.seconds(2), e -> idling()));
+                            new KeyFrame(Duration.seconds(2), e -> idling())
+                    );
                     timeline.playFromStart();
                 }
             }
         };
-        // Run idling after the stage is set.
+
+        // start idling after fxml finishes loading
         Platform.runLater(this::idling);
-
-        optionsBox.setVisible(false);
-        optionsBox.setManaged(false);
-
-        pettext.setVisible(false);
-        yesbutton.setVisible(false);
-        nobutton.setVisible(false);
     }
-
 
     @FXML
     protected void idling() {
-        // Set the pet to the idle animation.
+        // set pet to idle animation
         Pet.setPet(desktopPet, animStates.PetState.IDLE);
-        // Start the animation timer for movement when pet is not interacted with.
+
+        // start the automatic movement timer
         moving.start();
     }
 
     @FXML
     protected void onImageClick() {
-        // stop the pet moving while the menu is open
+        // stop automatic movement while the menu is open
         moving.stop();
 
         // play the click reaction animation
         Pet.setPet(desktopPet, animStates.PetState.SHOCK);
 
-        // show the options above the pet
+        // show the horizontal option buttons above the pet
         optionsBox.setVisible(true);
         optionsBox.setManaged(true);
 
-        // hide the yes/no prompt
+        // hide prompt text
         pettext.setVisible(false);
+        pettext.setManaged(false);
+
+        // hide prompt buttons
+        promptButtons.setVisible(false);
+        promptButtons.setManaged(false);
         yesbutton.setVisible(false);
         nobutton.setVisible(false);
 
-        // reset the idle timer
+        // reset idle timer
         then = System.currentTimeMillis();
     }
 
-
     @FXML
-    protected void onImageDrag() throws InterruptedException {
-        // Stop the idle animation countdown.
+    protected void onImageDrag() {
+        // stop automatic movement while dragging
         moving.stop();
-        // Get current stage on window.
+
+        // get the current stage
         stage = (Stage) hbox.getScene().getWindow();
-        //Apply translation to pet based on mouse position change.
+
+        // calculate the new x position
+        mouseX = petImage.localToScene(petImage.getBoundsInLocal()).getMinX();
+
+        // set the drag event
         petImage.setOnMouseDragged(mouseDrag -> {
-            // Get the X position based on mouse movement
+            // get mouse x and center the pet under the cursor
             mouseX = mouseDrag.getSceneX() - petImage.getFitWidth() / 2;
-            // Find left edge of screen
+
+            // get the left edge of the screen
             double leftScreenEdge = bounds.getMinX();
-            // Find right edge of screen minus the pets width
+
+            // get the right edge of the screen minus the pet width
             double rightScreenEdge = bounds.getMaxX() - imagebox.getWidth() * 1.5;
-            // Clamp X-axis so pet cannot go off sides of screen
+
+            // clamp the x position to the left edge
             if (mouseX < leftScreenEdge) {
                 mouseX = leftScreenEdge;
             }
+
+            // clamp the x position to the right edge
             if (mouseX > rightScreenEdge) {
                 mouseX = rightScreenEdge;
             }
-            // Apply clamped X position to image
+
+            // move the pet and anything attached to it
             imagebox.setTranslateX(mouseX);
         });
-        // Go back to idling.
+
+        // return to idle after dragging setup
         idling();
     }
 
-    private boolean isTriviaPrompt = false;
-    private boolean ispomodoroPrompt = false;
-
     @FXML
     protected void triviaButton() {
+        // hide option buttons
         optionsBox.setVisible(false);
         optionsBox.setManaged(false);
 
+        // show trivia prompt text
         pettext.setText("Do you want to play trivia with me?");
         pettext.setVisible(true);
+        pettext.setManaged(true);
+
+        // show yes and no buttons
+        promptButtons.setVisible(true);
+        promptButtons.setManaged(true);
         yesbutton.setVisible(true);
         nobutton.setVisible(true);
 
+        // set current prompt state
         isTriviaPrompt = true;
         ispomodoroPrompt = false;
     }
 
     @FXML
     protected void pomodoroButton() {
+        // hide option buttons
         optionsBox.setVisible(false);
         optionsBox.setManaged(false);
 
+        // show pomodoro prompt text
         pettext.setText("Want to start Pomodoro timer?");
         pettext.setVisible(true);
+        pettext.setManaged(true);
+
+        // show yes and no buttons
+        promptButtons.setVisible(true);
+        promptButtons.setManaged(true);
         yesbutton.setVisible(true);
         nobutton.setVisible(true);
 
+        // set current prompt state
         ispomodoroPrompt = true;
         isTriviaPrompt = false;
     }
@@ -205,73 +257,119 @@ public class PetController {
     private void goButton() {
         if (isTriviaPrompt) {
             try {
+                // get the desktop pet stage
                 Stage primaryStage = (Stage) pettext.getScene().getWindow();
+
+                // make a new trivia stage
                 Stage triviaStage = new Stage();
+
+                // start trivia
                 new project.Trivia.Main().start(triviaStage);
+
+                // keep trivia above other windows
                 triviaStage.setAlwaysOnTop(true);
 
-                // Position relative to desktop pet
+                // keep trivia near the pet when the main stage moves
                 primaryStage.xProperty().addListener((obs, old, val) ->
                         triviaStage.setX(val.doubleValue() + 10));
+
                 primaryStage.yProperty().addListener((obs, old, val) ->
                         triviaStage.setY(val.doubleValue() + primaryStage.getHeight() - triviaStage.getHeight() + 10));
-                primaryStage.widthProperty().addListener((obs, old, val) -> triviaStage.sizeToScene());
-                primaryStage.heightProperty().addListener((obs, old, val) -> triviaStage.sizeToScene());
-                primaryStage.iconifiedProperty().addListener((obs, old, val) -> triviaStage.setIconified(val));
 
-                // Initial position in bottom-left of main window
+                primaryStage.widthProperty().addListener((obs, old, val) ->
+                        triviaStage.sizeToScene());
+
+                primaryStage.heightProperty().addListener((obs, old, val) ->
+                        triviaStage.sizeToScene());
+
+                primaryStage.iconifiedProperty().addListener((obs, old, val) ->
+                        triviaStage.setIconified(val));
+
+                // set starting trivia position
                 triviaStage.setX(primaryStage.getX() + 10);
                 triviaStage.setY(primaryStage.getY() + primaryStage.getHeight() - triviaStage.getHeight() - 30);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            // Reset
+
+            // reset prompt state
             isTriviaPrompt = false;
-            pettext.setVisible(false);
-            yesbutton.setVisible(false);
-            nobutton.setVisible(false);
-        } else if (ispomodoroPrompt) { // Add this new block
+            hideAllPopups();
+        }
+
+        else if (ispomodoroPrompt) {
             try {
+                // get the desktop pet stage
                 Stage primaryStage = (Stage) pettext.getScene().getWindow();
+
+                // make a new pomodoro stage
                 Stage pomodoroStage = new Stage();
-                new project.pomodoro.MainApplication().start(pomodoroStage); // Adjust package/class as needed
+
+                // start pomodoro
+                new project.pomodoro.MainApplication().start(pomodoroStage);
+
+                // keep pomodoro above other windows
                 pomodoroStage.setAlwaysOnTop(true);
 
-                // Position relative to desktop pet (same as trivia)
+                // keep pomodoro near the pet when the main stage moves
                 primaryStage.xProperty().addListener((obs, old, val) ->
                         pomodoroStage.setX(val.doubleValue() + 10));
+
                 primaryStage.yProperty().addListener((obs, old, val) ->
                         pomodoroStage.setY(val.doubleValue() + primaryStage.getHeight() - pomodoroStage.getHeight() + 10));
-                primaryStage.widthProperty().addListener((obs, old, val) -> pomodoroStage.sizeToScene());
-                primaryStage.heightProperty().addListener((obs, old, val) -> pomodoroStage.sizeToScene());
-                primaryStage.iconifiedProperty().addListener((obs, old, val) -> pomodoroStage.setIconified(val));
 
-                // Initial position in bottom-left of main window
+                primaryStage.widthProperty().addListener((obs, old, val) ->
+                        pomodoroStage.sizeToScene());
+
+                primaryStage.heightProperty().addListener((obs, old, val) ->
+                        pomodoroStage.sizeToScene());
+
+                primaryStage.iconifiedProperty().addListener((obs, old, val) ->
+                        pomodoroStage.setIconified(val));
+
+                // set starting pomodoro position
                 pomodoroStage.setX(primaryStage.getX() + 10);
                 pomodoroStage.setY(primaryStage.getY() + primaryStage.getHeight() - pomodoroStage.getHeight() + 10);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            // Reset
+
+            // reset prompt state
             ispomodoroPrompt = false;
-            pettext.setVisible(false);
-            yesbutton.setVisible(false);
-            nobutton.setVisible(false);
+            hideAllPopups();
         }
     }
+
     @FXML
     protected void returnButton() {
-        pettext.setVisible(false);
-        yesbutton.setVisible(false);
-        nobutton.setVisible(false);
+        // reset all prompt states
+        isTriviaPrompt = false;
+        ispomodoroPrompt = false;
 
+        // hide all menus and prompts
+        hideAllPopups();
+
+        // return to idle
+        idling();
+    }
+
+    private void hideAllPopups() {
+        // hide option buttons
         optionsBox.setVisible(false);
         optionsBox.setManaged(false);
 
-        isTriviaPrompt = false;
-        ispomodoroPrompt = false;
+        // hide prompt text
+        pettext.setVisible(false);
+        pettext.setManaged(false);
+
+        // hide prompt buttons
+        promptButtons.setVisible(false);
+        promptButtons.setManaged(false);
+
+        // hide individual prompt buttons
+        yesbutton.setVisible(false);
+        nobutton.setVisible(false);
     }
 }
-
-
-

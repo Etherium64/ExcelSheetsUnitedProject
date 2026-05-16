@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.util.Random;
+import javafx.scene.layout.StackPane;
 
 public class Pet {
 
@@ -34,7 +35,7 @@ public class Pet {
         }.start();
     }
 
-    public static void movePet(Pet desktopPet, TranslateTransition move, long then, long now, Rectangle2D bounds, VBox imagebox) {
+    public static void movePet(Pet desktopPet, TranslateTransition move, long then, long now, Rectangle2D bounds, StackPane imagebox) {
         // Generate  random number between -100 and 100.
         Random z = new Random();
         double x = (double) z.nextInt(600) - 300;

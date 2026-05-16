@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
@@ -13,42 +14,24 @@
       stylesheets="@/styles.css"
       style="-fx-background-color: transparent">
 
-    <VBox fx:id="optionsBox"
-          visible="false"
-          managed="false"
-          minWidth="150"
-          spacing="15"
-          translateX="5"
-          translateY="25">
+    <StackPane fx:id="imagebox">
 
-        <Button fx:id="timer"
-                styleClass="button1"
-                text="Pomodoro"
-                minWidth="150"
-                minHeight="50"
-                onAction="#pomodoroButton"/>
+        <ImageView fx:id="petImage"
+                   preserveRatio="true"
+                   fitWidth="175"
+                   fitHeight="175"
+                   onMouseClicked="#onImageClick"
+                   onMouseDragged="#onImageDrag">
 
-        <Button fx:id="trivia"
-                styleClass="button1"
-                text="Trivia"
-                minWidth="150"
-                minHeight="50"
-                onAction="#triviaButton"/>
-
-        <Button styleClass="button1"
-                text="Settings"
-                minWidth="150"
-                minHeight="50"/>
-    </VBox>
-
-    <VBox fx:id="imagebox">
+            <Image fx:id="pet" url="@/AnimationStates"/>
+        </ImageView>
 
         <VBox fx:id="optionsBox"
               visible="false"
-              managed="false"
+              managed="true"
               alignment="CENTER"
               spacing="8"
-              translateY="-170">
+              translateY="-100">
 
             <Button fx:id="timer"
                     styleClass="button1"
@@ -72,43 +55,32 @@
 
         <Text fx:id="pettext"
               styleClass="text-field"
-              text="lol"
+              text=""
               wrappingWidth="200"
               textAlignment="CENTER"
               visible="false"
-              managed="false"/>
+              managed="false"
+              translateY="-120"/>
 
         <HBox alignment="CENTER"
-              translateY="10"
-              spacing="5">
+              spacing="5"
+              visible="false"
+              managed="false"
+              translateY="-80">
 
             <Button fx:id="yesbutton"
                     styleClass="button2"
                     text="Yes"
                     minWidth="50"
-                    visible="false"
-                    managed="false"
                     onAction="#goButton"/>
 
             <Button fx:id="nobutton"
                     styleClass="button2"
                     text="No"
                     minWidth="50"
-                    visible="false"
-                    managed="false"
                     onAction="#returnButton"/>
         </HBox>
 
-        <ImageView fx:id="petImage"
-                   preserveRatio="true"
-                   fitWidth="175"
-                   fitHeight="175"
-                   onMouseClicked="#onImageClick"
-                   onMouseDragged="#onImageDrag">
-
-            <Image fx:id="pet" url="@/AnimationStates"/>
-        </ImageView>
-
-    </VBox>
+    </StackPane>
 
 </HBox>

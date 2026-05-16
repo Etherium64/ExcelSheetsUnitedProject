@@ -1,5 +1,5 @@
 package project.desktoppet302;
-
+import javafx.scene.layout.StackPane;
 import AnimationStates.animStates;
 import javafx.animation.KeyFrame;
 import javafx.animation.*;
@@ -33,7 +33,7 @@ public class PetController {
     private HBox hbox;
 
     @FXML
-    private VBox imagebox;
+    private StackPane imagebox;
 
     @FXML
     private Text pettext;
@@ -122,32 +122,23 @@ public class PetController {
 
     @FXML
     protected void onImageClick() {
-        // stop automatic movement while interacting
+        // stop the pet moving while the menu is open
         moving.stop();
 
-        // play shock animation
+        // play the click reaction animation
         Pet.setPet(desktopPet, animStates.PetState.SHOCK);
 
-        // show options without affecting layout
+        // show the options above the pet
         optionsBox.setVisible(true);
-        optionsBox.setManaged(false);
+        optionsBox.setManaged(true);
 
-        // hide yes/no prompt
+        // hide the yes/no prompt
         pettext.setVisible(false);
-        pettext.setManaged(false);
         yesbutton.setVisible(false);
-        yesbutton.setManaged(false);
         nobutton.setVisible(false);
-        nobutton.setManaged(false);
 
-        // reset idle timer
+        // reset the idle timer
         then = System.currentTimeMillis();
-
-        // return to idle after shock animation
-        Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(2.75), e -> idling())
-        );
-        timeline.playFromStart();
     }
 
 

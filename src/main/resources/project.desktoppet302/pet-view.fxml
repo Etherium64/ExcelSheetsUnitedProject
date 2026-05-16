@@ -5,7 +5,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
 <HBox fx:id="hbox"
@@ -26,58 +25,58 @@
             <Image fx:id="pet" url="@/AnimationStates"/>
         </ImageView>
 
-        <VBox fx:id="optionsBox"
+        <HBox fx:id="optionsBox"
               visible="false"
               managed="true"
               alignment="CENTER"
-              spacing="8"
-              translateY="-100">
+              spacing="10"
+              translateY="-110">
 
             <Button fx:id="timer"
                     styleClass="button1"
                     text="Pomodoro"
-                    minWidth="150"
-                    minHeight="50"
+                    minWidth="120"
+                    minHeight="45"
                     onAction="#pomodoroButton"/>
 
             <Button fx:id="trivia"
                     styleClass="button1"
                     text="Trivia"
-                    minWidth="150"
-                    minHeight="50"
+                    minWidth="120"
+                    minHeight="45"
                     onAction="#triviaButton"/>
 
             <Button styleClass="button1"
                     text="Settings"
-                    minWidth="150"
-                    minHeight="50"/>
-        </VBox>
+                    minWidth="120"
+                    minHeight="45"/>
+        </HBox>
 
         <Text fx:id="pettext"
               styleClass="text-field"
               text=""
-              wrappingWidth="200"
+              wrappingWidth="240"
               textAlignment="CENTER"
               visible="false"
-              managed="false"
-              translateY="-120"/>
+              managed="true"
+              translateY="-70"/>
 
         <HBox alignment="CENTER"
               spacing="5"
-              visible="false"
-              managed="false"
-              translateY="-80">
+              translateY="-35">
 
             <Button fx:id="yesbutton"
                     styleClass="button2"
                     text="Yes"
                     minWidth="50"
+                    visible="false"
                     onAction="#goButton"/>
 
             <Button fx:id="nobutton"
                     styleClass="button2"
                     text="No"
                     minWidth="50"
+                    visible="false"
                     onAction="#returnButton"/>
         </HBox>
 

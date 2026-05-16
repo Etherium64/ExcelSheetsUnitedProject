@@ -4,28 +4,31 @@ import AnimationStates.animStates;
 import javafx.animation.AnimationTimer;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.util.Duration;
-import java.util.Random;
 import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
+
+import java.util.Random;
 
 public class Pet {
 
-    //
+    // stores the current animation states
     private final animStates petStates;
+
+    // stores the image view that displays the pet
     private final ImageView petImage;
 
+    // creates a pet using animation states and an image view
     public Pet(animStates petStates, ImageView petImage) {
         this.petStates = petStates;
         this.petImage = petImage;
     }
 
+    // changes the pet animation state
     public static void setPet(Pet desktopPet, animStates.PetState pStat) {
         desktopPet.petStates.setState(pStat);
+
+        // updates the pet image every frame
         new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -35,29 +38,42 @@ public class Pet {
         }.start();
     }
 
-    public static void movePet(Pet desktopPet, TranslateTransition move, long then, long now, Rectangle2D bounds, StackPane imagebox) {
-        // Generate  random number between -100 and 100.
-        Random z = new Random();
-        double x = (double) z.nextInt(600) - 300;
-        // If the number will cause the pet to drift past the left or right side bounds, set it to negative or vice versa.
-        if ((imagebox.getTranslateX() + x) < (bounds.getMinX()))
-        {
-            x = - x;
+    // moves the pet randomly left or right
+    public static void movePet(Pet desktopPet,
+                               TranslateTransition move,
+                               long then,
+                               long now,
+                               Rectangle2D bounds,
+                               StackPane imagebox) {
+
+        // make a random x movement between -300 and 300
+        Random random = new Random();
+        double x = random.nextInt(600) - 300;
+
+        // stop the pet from moving too far left
+        if ((imagebox.getTranslateX() + x) < bounds.getMinX()) {
+            x = -x;
         }
-        else if ((imagebox.getTranslateX() + x) > (bounds.getMaxX() - imagebox.getWidth() * 1.5)) {
-            x = - x;
+
+        // stop the pet from moving too far right
+        else if ((imagebox.getTranslateX() + x) > bounds.getMaxX() - imagebox.getWidth() * 1.5) {
+            x = -x;
         }
-        // Set animation movement time.
+
+        // set how long the movement takes
         move.setDuration(Duration.seconds(2));
-        // Set horizontal translation base on the random numbers generated.
+
+        // move the pet horizontally
         move.setByX(x);
-        // Based on whether the pet moves left or right, update animation state to show the pet walking in said direction.
+
+        // choose the walking animation based on direction
         if (x > 0) {
             Pet.setPet(desktopPet, animStates.PetState.WALKLEFT);
         } else {
             Pet.setPet(desktopPet, animStates.PetState.WALKRIGHT);
         }
-        // Play animation.
+
+        // play the movement
         move.play();
     }
 }

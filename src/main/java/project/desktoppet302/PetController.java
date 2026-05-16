@@ -14,12 +14,12 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.util.Random.*;
-
+import javafx.scene.layout.HBox;
 
 public class PetController {
 
     @FXML
-    private VBox optionsBox;
+    private HBox optionsBox;
 
     @FXML
     public Button trivia;

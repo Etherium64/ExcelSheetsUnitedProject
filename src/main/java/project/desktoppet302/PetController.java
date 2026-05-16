@@ -19,7 +19,11 @@ import java.util.Random.*;
 public class PetController {
 
     @FXML
+    private VBox optionsBox;
+
+    @FXML
     public Button trivia;
+
 
     @FXML
     public Button timer;
@@ -98,6 +102,13 @@ public class PetController {
         };
         // Run idling after the stage is set.
         Platform.runLater(this::idling);
+
+        optionsBox.setVisible(false);
+        optionsBox.setManaged(false);
+
+        pettext.setVisible(false);
+        yesbutton.setVisible(false);
+        nobutton.setVisible(false);
     }
 
 
@@ -112,15 +123,22 @@ public class PetController {
     // State change when animal is clicked.
     @FXML
     protected void onImageClick() {
-        // Stop the idle animation countdown.
         moving.stop();
-        // Implement the jumping animation.
+
         Pet.setPet(desktopPet, animStates.PetState.SHOCK);
-        // Reset the timer for the idling animation.
+
+        optionsBox.setVisible(true);
+        optionsBox.setManaged(true);
+
+        pettext.setVisible(false);
+        yesbutton.setVisible(false);
+        nobutton.setVisible(false);
+
         then = System.currentTimeMillis();
-        // Implement a timeline that allows jumping animation to play through and then start idling animation and events again.
+
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(2.75), e -> idling()));
+                new KeyFrame(Duration.seconds(2.75), e -> idling())
+        );
         timeline.playFromStart();
     }
 
@@ -158,20 +176,30 @@ public class PetController {
 
     @FXML
     protected void triviaButton() {
+        optionsBox.setVisible(false);
+        optionsBox.setManaged(false);
+
         pettext.setText("Do you want to play trivia with me?");
         pettext.setVisible(true);
         yesbutton.setVisible(true);
         nobutton.setVisible(true);
-        isTriviaPrompt = true; // Set the state
+
+        isTriviaPrompt = true;
+        ispomodoroPrompt = false;
     }
 
     @FXML
     protected void pomodoroButton() {
-        pettext.setText("Want to start Pomodoro timer");
+        optionsBox.setVisible(false);
+        optionsBox.setManaged(false);
+
+        pettext.setText("Want to start Pomodoro timer?");
         pettext.setVisible(true);
         yesbutton.setVisible(true);
         nobutton.setVisible(true);
+
         ispomodoroPrompt = true;
+        isTriviaPrompt = false;
     }
 
     @FXML
@@ -232,13 +260,17 @@ public class PetController {
             nobutton.setVisible(false);
         }
     }
-
     @FXML
     protected void returnButton() {
-        pettext.setText("KYS");
         pettext.setVisible(false);
         yesbutton.setVisible(false);
         nobutton.setVisible(false);
+
+        optionsBox.setVisible(false);
+        optionsBox.setManaged(false);
+
+        isTriviaPrompt = false;
+        ispomodoroPrompt = false;
     }
 }
 

@@ -1,4 +1,4 @@
-package project.pomodoro.model;
+package project.model;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -17,7 +17,8 @@ public class SessionDAO {
      * Public constructor that instantiates connection by calling DBConnection method getConnection
      */
     public SessionDAO() {
-        connection = DBConnection.getConnection();
+        connection = DatabaseConnection.getConnection();
+        createTable();
     }
 
     /**
@@ -33,7 +34,9 @@ public class SessionDAO {
                             + "sessionType VARCHAR NOT NULL, "
                             + "sessionTask VARCHAR NOT NULL,"
                             + "timespent VARCHAR NOT NULL,"
-                            + "completion BIT NOT NULL"
+                            + "completion BIT NOT NULL,"
+                            + "user_id INTEGER NOT NULL,"
+                            + "CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(user_id)"
                             + ")"
             );
         } catch (SQLException ex) {
@@ -58,13 +61,14 @@ public class SessionDAO {
     public void insert(Session session) {
         try {
             PreparedStatement insertSession = connection.prepareStatement(
-                    "INSERT INTO sessions (timestamp, sessionType, sessionTask, timespent, completion) VALUES (?, ?, ?, ?, ?)"
+                    "INSERT INTO sessions (timestamp, sessionType, sessionTask, timespent, completion, user_id) VALUES (?, ?, ?, ?, ?, ?)"
             );
             insertSession.setTimestamp(1, session.getTimestamp());
             insertSession.setString(2, session.getSessionType());
             insertSession.setString(3, session.getSessionTask());
             insertSession.setString(4, session.getTimespent());
             insertSession.setBoolean(5, session.getCompletion());
+            insertSession.setInt(6, session.getUser_id());
             insertSession.execute();
         } catch (SQLException ex) {
             System.err.println(ex);
@@ -79,20 +83,20 @@ public class SessionDAO {
     public void update(Session session) {
         try {
             PreparedStatement updateSession = connection.prepareStatement(
-                    "UPDATE sessions SET timestamp = ?, sessionType = ?, sessionTask = ?, timespent = ?, completion=? WHERE id = ?"
+                    "UPDATE sessions SET timestamp = ?, sessionType = ?, sessionTask = ?, timespent = ?, completion=?, user_id = ? WHERE id = ?"
             );
             updateSession.setTimestamp(1, session.getTimestamp());
             updateSession.setString(2, session.getSessionType());
             updateSession.setString(3, session.getSessionTask());
             updateSession.setString(4, session.getTimespent());
             updateSession.setBoolean(5, session.getCompletion());
-            updateSession.setInt(6, session.getId());
+            updateSession.setInt(6, session.getUser_id());
+            updateSession.setInt(7, session.getId());
             updateSession.execute();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
     }
-
 
     /**
      * CRUD Operation - Delete Operation
@@ -126,7 +130,8 @@ public class SessionDAO {
                                 resultset.getString("sessionType"),
                                 resultset.getString("sessionTask"),
                                 resultset.getString("timespent"),
-                                resultset.getBoolean("completion")
+                                resultset.getBoolean("completion"),
+                                resultset.getInt("user_id")
                         )
                 );
             }
@@ -153,7 +158,8 @@ public class SessionDAO {
                         resultset.getString("sessionType"),
                         resultset.getString("sessionTask"),
                         resultset.getString("timespent"),
-                        resultset.getBoolean("completion")
+                        resultset.getBoolean("completion"),
+                        resultset.getInt("user_id")
                 );
             }
         } catch (SQLException ex) {
@@ -174,7 +180,8 @@ public class SessionDAO {
                         resultset.getString("sessionType"),
                         resultset.getString("sessionTask"),
                         resultset.getString("timespent"),
-                        resultset.getBoolean("completion")
+                        resultset.getBoolean("completion"),
+                        resultset.getInt("user_id")
                 );
             }
         } catch (SQLException ex) {
@@ -182,7 +189,6 @@ public class SessionDAO {
         }
         return null;
     }
-
 
     public void close() {
         try {

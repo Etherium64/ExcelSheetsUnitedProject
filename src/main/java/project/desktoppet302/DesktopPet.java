@@ -22,8 +22,6 @@ import java.util.Objects;
  * but its movement is constrained to stay within the screen bounds.
  */
 public class DesktopPet extends Application {
-
-
     // Sets size of window which holds the pet
     Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
     double sceneSizeX = bounds.getWidth()/2;
@@ -39,7 +37,6 @@ public class DesktopPet extends Application {
      * @throws IOException If the pet image resource cannot be loaded.
      */
     @Override
-
     public void start(Stage stage) throws IOException {
 
         //Load FXML page for desktop pet.
@@ -54,7 +51,7 @@ public class DesktopPet extends Application {
 
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+    // public static void main(String[] args) {
+    //        launch(args);
+    //    }
 }

@@ -1,5 +1,5 @@
-import project.Trivia.dao.DatabaseConnection;
-import project.Trivia.dao.DatabaseInitialiser;
+import project.model.DatabaseConnection;
+import project.model.DatabaseInitialiser;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,4 +1,4 @@
-package project.pomodoro.controller;
+package project.pomodoro;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,7 +7,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import project.pomodoro.MainApplication;
 
 /**
  * Controller class for handling button interactions in the Pomodoro Work Session UI.
@@ -16,12 +15,8 @@ import project.pomodoro.MainApplication;
  *
  * @author Minhman Do
  */
-public class WorkController {
+public class BreakController {
 
-    /**
-     * Application instance used for scene transitions
-     */
-    private MainApplication newScene = new MainApplication();
     /**
      * Boolean to determine if pause button is active
      */
@@ -35,7 +30,7 @@ public class WorkController {
      * Radio Button Group for selecting the Session Task
      */
     @FXML
-    private ToggleGroup workGroup;
+    private ToggleGroup breakGroup;
     @FXML
     private RadioButton rBtn1;
     @FXML
@@ -53,7 +48,7 @@ public class WorkController {
      * Reference to the break button UI element, injected by FXML.
      */
     @FXML
-    private Button breakBtn;
+    private Button workBtn;
     /**
      * Reference to the break button UI element, injected by FXML.
      */
@@ -78,16 +73,17 @@ public class WorkController {
      * Resumes the timer if it is paused, changing button text to "Pause".
      * Else, pauses the currently running timer, changing button text to "Start"
      */
+
     @FXML
     public void startPauseBtnClick() {
         if (!buttonPaused) {
-            //If session Task has not been set yet, extract session Task string from selected RadioButton
-            //Record the session, creating a new instance of Session using the Session Task string
-            // Disable the radiobuttons after and update TaskIsSet to true
             if (!taskIsSet) {
-                RadioButton radioButtonSelected = (RadioButton) workGroup.getSelectedToggle();
+                //If session Task has not been set yet, extract session Task string from selected RadioButton
+                //Record the session, creating a new instance of Session using the Session Task string
+                // Disable the radiobuttons after and update TaskisSet to true
+                RadioButton radioButtonSelected = (RadioButton) breakGroup.getSelectedToggle();
                 String sessionTask = radioButtonSelected.getText();
-                PomodoroController.getPomodoro().recordSession(sessionTask);
+                PomodoroController.getPomodoroController().recordSession(sessionTask);
                 rBtnDisable();
                 taskIsSet = true;
             }
@@ -99,26 +95,30 @@ public class WorkController {
             startPauseBtn.setBackground(Background.fill(Color.LIGHTGREEN));
             buttonPaused = false;
         }
-        PomodoroController.getPomodoro().runPomodoro();
+        PomodoroController.getPomodoroController().runPomodoro();
     }
 
-    /**
-     * Handles the click event for the Rest button.
-     * Switches the scene to the Rest view  with a 5-minute duration.
-     *
-     * @throws Exception if there is an error loading the FXML or switching scenes
-     */
-
-    @FXML
-    protected void breakBtnClick() throws Exception {
+    public void transition(Button button, String FXMLstring) throws Exception {
         if (taskIsSet) {
-            PomodoroController.getPomodoro().unfinishedPomodoro();
+            PomodoroController.getPomodoroController().unfinishedPomodoro();
             taskIsSet = false;
             buttonPaused = true;
         }
-        Stage newStage = (Stage) breakBtn.getScene().getWindow();
-        newScene.launch(newStage, "break-view.fxml");
+        Stage newStage = (Stage) button.getScene().getWindow();
+        Pomodoro newPomodoro = new Pomodoro();
+        newPomodoro.launch(newStage, FXMLstring);
     }
+    /**
+     * Handles the click event for the Work button.
+     * Switches the scene to the Rest view  with a 25-minute duration.
+     *
+     * @throws Exception if there is an error loading the FXML or switching scenes
+     */
+    @FXML
+    protected void workBtnClick() throws Exception {
+        transition(workBtn, "work-view.fxml");
+    }
+
     /**
      * Handles the click event for the Reset button.
      * As resetting the timer directly "stacks" the decrementing Timer,
@@ -129,13 +129,7 @@ public class WorkController {
 
     @FXML
     public void resetBtnClick() throws Exception {
-        if (taskIsSet) {
-            PomodoroController.getPomodoro().unfinishedPomodoro();
-            taskIsSet = false;
-            buttonPaused = true;
-        }
-        Stage newStage = (Stage) resetBtn.getScene().getWindow();
-        newScene.launch(newStage, "work-view.fxml");
+        transition(resetBtn, "break-view.fxml");
     }
 
     /**
@@ -146,20 +140,10 @@ public class WorkController {
      */
     @FXML
     public void databBtnClick() throws Exception {
-        if (taskIsSet) {
-            PomodoroController.getPomodoro().unfinishedPomodoro();
-            taskIsSet = false;
-            buttonPaused = true;
-        }
-        Stage newStage = (Stage) databBtn.getScene().getWindow();
-        newScene.launch(newStage, "datab-view.fxml");
+        transition(databBtn, "datab-view.fxml");
     }
 
 }
-
-
-
-
 
 
 

@@ -1,4 +1,4 @@
-package project.Trivia.dao;
+package project.model;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -24,7 +24,7 @@ public class DatabaseInitialiser {
      */
     public static void init() {
         createTables();
-        project.Trivia.dao.QuestionsSeeder.seed(); // Replace insertSampleQuestions()
+        project.model.QuestionsSeeder.seed(); // Replace insertSampleQuestions()
     }
 
     /**
@@ -44,12 +44,10 @@ public class DatabaseInitialiser {
      */
 
     private static void createTables() {
-        String createUsers = "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT UNIQUE)";
-        String createScores = "CREATE TABLE IF NOT EXISTS scores (id INTEGER PRIMARY KEY, user_id INTEGER, score INTEGER, FOREIGN KEY(user_id) REFERENCES users(id))";
-        String createQuestions = "CREATE TABLE IF NOT EXISTS questions (id INTEGER PRIMARY KEY AUTOINCREMENT, question TEXT NOT NULL UNIQUE, option_a TEXT NOT NULL, option_b TEXT NOT NULL, option_c TEXT NOT NULL, option_d TEXT NOT NULL, correct_answer TEXT NOT NULL)";
+        String createScores = "CREATE TABLE IF NOT EXISTS scores (score_id INTEGER PRIMARY KEY, score INTEGER, user_id INTEGER, FOREIGN KEY(user_id) REFERENCES users(user_id))";
+        String createQuestions = "CREATE TABLE IF NOT EXISTS questions (question_id INTEGER PRIMARY KEY AUTOINCREMENT, question TEXT NOT NULL UNIQUE, option_a TEXT NOT NULL, option_b TEXT NOT NULL, option_c TEXT NOT NULL, option_d TEXT NOT NULL, correct_answer TEXT NOT NULL)";
         try (Connection conn = DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement()) {
-            stmt.execute(createUsers);
             stmt.execute(createScores);
             stmt.execute(createQuestions);
         } catch (Exception e) {

@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import project.Trivia.dao.DatabaseInitialiser;
+import project.model.DatabaseInitialiser;
 
 import java.util.Objects;
 

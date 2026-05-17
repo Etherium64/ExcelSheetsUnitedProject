@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="185.0" prefWidth="218.0" spacing="15" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.Trivia.view.MainController">
+<VBox alignment="CENTER" prefHeight="185.0" prefWidth="218.0" spacing="15" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.Trivia.MainController">
 
     <Label style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Trivia Game" />
 

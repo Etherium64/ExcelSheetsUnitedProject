@@ -2,7 +2,6 @@ package project.pomodoro;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,11 +9,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import project.pomodoro.controller.PomodoroController;
-import project.pomodoro.model.SessionDAO;
+import project.authentication.UserSingleton;
 
 import java.util.Objects;
 
@@ -24,7 +21,7 @@ import java.util.Objects;
  *
  * @author Minhman Do
  */
-public class MainApplication extends Application {
+public class Pomodoro extends Application {
     /**
      * Loads and displays a specified FXML view within a stage, applying styling and initializing the timer display.
      *
@@ -33,15 +30,13 @@ public class MainApplication extends Application {
      */
 
     public void launch(Stage stage, String FXMLstring) throws Exception {
-
-
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(FXMLstring)));
         Scene scene = new Scene(root, 600, 300, Color.TRANSPARENT);
         scene.getStylesheets().add("/styles.css");
         root.setStyle("-fx-background-color: transparent;");
         if (FXMLstring == "datab-view.fxml")
         {
-            stage.setTitle("Sessions Database");
+            stage.setTitle(UserSingleton.getInstance().getUsername() + "'s Sessions");
         }
         else{
             stage.setTitle("Pomodoro");
@@ -52,10 +47,9 @@ public class MainApplication extends Application {
             Button startPauseBtn = (Button) root.lookup("#startPauseBtn");
             startPauseBtn.setBackground(Background.fill(Color.LIGHTGREEN));
             String sessionType = FXMLstring.substring(0, 5).replace("-", "");
-            PomodoroController.getPomodoro().setPomodoro(sessionType, timerLabel, timerBar, startPauseBtn);
+            PomodoroController.getPomodoroController().setPomodoro(sessionType, timerLabel, timerBar, startPauseBtn);
         }
         stage.setScene(scene);
-
     }
 
     /**
@@ -63,7 +57,7 @@ public class MainApplication extends Application {
      * Initializes the primary stage with the Pomodoro view, sets the initial time to 25:00,
      * and displays the window.
      *
-     * @param primary The primary stage provided by the JavaFX runtime
+     * @param stage The primary stage provided by the JavaFX runtime
      * @throws Exception if there is an error loading the FXML or initializing the scene
      */
     @Override

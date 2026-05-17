@@ -9,25 +9,26 @@ module project {
     requires org.kordamp.bootstrapfx.core;
     requires java.desktop;
 
+    opens project.authentication to javafx.fxml;
+    exports project.authentication;
+
     opens project.desktoppet302 to javafx.fxml;
     exports project.desktoppet302;
 
+    opens project.model to javafx.fxml;
+    exports project.model;
+
     opens project.pomodoro to javafx.fxml;
     exports project.pomodoro;
-    opens project.pomodoro.controller to javafx.fxml;
-    exports project.pomodoro.controller;
-    opens project.pomodoro.model to javafx.fxml;
-    exports project.pomodoro.model;
 
-    opens project.Trivia.view to javafx.fxml;
+    opens project.Trivia to javafx.fxml;
     exports project.Trivia;
-    exports project.Trivia.dao;
-    exports project.Trivia.view;
 
     requires javafx.base;
 
     opens AnimationStates;
     exports AnimationStates;
+
 
 
 }

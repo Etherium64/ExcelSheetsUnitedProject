@@ -13,10 +13,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import project.authentication.Login;
+import project.authentication.UserSingleton;
+import project.pomodoro.Pomodoro;
+import project.pomodoro.PomodoroController;
 
-import java.sql.Time;
 import java.util.Random;
-import java.util.Random.*;
 
 public class PetController {
 
@@ -24,7 +26,10 @@ public class PetController {
     public Button trivia;
 
     @FXML
-    public Button timer;
+    public Button pomodoro;
+
+    @FXML
+    public Button logout;
 
     @FXML
     private HBox hbox;
@@ -37,6 +42,7 @@ public class PetController {
 
     @FXML
     private Button nobutton;
+
 
     @FXML
     private Rectangle2D bounds;
@@ -220,14 +226,9 @@ public class PetController {
         idling();
     }
 
-    @FXML
-    protected void timerButton() {
-        pettext.setText("NEVER KYS");
-        pettext.setVisible(true);
-    }
-
     private boolean isTriviaPrompt = false;
     private boolean ispomodoroPrompt = false;
+    private boolean islogoutPrompt = false;
 
     @FXML
     protected void triviaButton() {
@@ -248,7 +249,16 @@ public class PetController {
     }
 
     @FXML
-    private void goButton() {
+    protected void logoutButton() {
+        pettext.setText("Want to log out?");
+        pettext.setVisible(true);
+        yesbutton.setVisible(true);
+        nobutton.setVisible(true);
+        islogoutPrompt = true;
+    }
+
+    @FXML
+    private void goButton() throws Exception {
         if (isTriviaPrompt) {
             try {
                 Stage primaryStage = (Stage) pettext.getScene().getWindow();
@@ -280,7 +290,7 @@ public class PetController {
             try {
                 Stage primaryStage = (Stage) pettext.getScene().getWindow();
                 Stage pomodoroStage = new Stage();
-                new project.pomodoro.MainApplication().start(pomodoroStage); // Adjust package/class as needed
+                new Pomodoro().start(pomodoroStage); // Adjust package/class as needed
                 pomodoroStage.setAlwaysOnTop(true);
 
 //                // Position relative to desktop pet (same as trivia)
@@ -303,6 +313,16 @@ public class PetController {
             pettext.setVisible(false);
             yesbutton.setVisible(false);
             nobutton.setVisible(false);
+        }
+        else if (islogoutPrompt)
+        {
+            move.stop();
+            moving.stop();
+            UserSingleton.getInstance().setup(0, ""); //Dummy information ensure User information doesn't remain
+            PomodoroController.getPomodoroController().closePomodoro();
+            Stage loginStage = (Stage) logout.getScene().getWindow();
+            Login newLogin =  new Login();
+            newLogin.start(loginStage);
         }
     }
 

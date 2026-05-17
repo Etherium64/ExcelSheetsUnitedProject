@@ -1,4 +1,4 @@
-package project.pomodoro.model;
+package project.model;
 
 import java.sql.Timestamp;
 /**
@@ -36,36 +36,38 @@ public class Session {
      */
     private boolean completion;
 
+    private int user_id;
+
     /**
      * Session Public Constructor
      */
-    public Session(int id, Timestamp timestamp, String sessionType, String sessionTask, String timeSpent, boolean completion) {
+    public Session(int id, Timestamp timestamp, String sessionType, String sessionTask, String timeSpent, boolean completion, int user_id) {
         this.id = id;
         this.timestamp = timestamp;
         this.sessionType = sessionType;
         this.sessionTask = sessionTask;
         this.timespent = timeSpent;
         this.completion = completion;
+        this.user_id = user_id;
     }
 
     /**
      * Session Public Constructor without id field.
      * For inserting new Sessions after the first, as id will auto increment in SQLite.
      */
-    public Session(Timestamp timestamp, String sessionType, String sessionTask, String timespent, boolean completion) {
+    public Session(Timestamp timestamp, String sessionType, String sessionTask, String timespent, boolean completion, int user_id ) {
         this.timestamp = timestamp;
         this.sessionType = sessionType;
         this.sessionTask = sessionTask;
         this.timespent = timespent;
         this.completion = completion;
+        this.user_id = user_id;
     }
 
     /**
      * All Session field setters and getters for use in the DAO
      */
     public void setId(int id) { this.id = id; }
-
-    public void setTimestamp(Timestamp timestamp) {this.timestamp = timestamp; }
 
     public void setSessionType(String sessionType) {this.sessionType = sessionType; }
 
@@ -89,6 +91,8 @@ public class Session {
 
     public boolean getCompletion() {return completion;}
 
+    public int getUser_id() {return user_id;}
+
     /**
      * Represents all of a Session field values as a concatenated string
      */
@@ -100,7 +104,8 @@ public class Session {
                 ", sessionTask='" + sessionTask + '\'' +
                 ", sessionType=" + sessionType + '\'' +
                 ", timespent='" + timespent + '\'' +
-                ", completion=" + completion +
+                ", completion=" + completion + '\'' +
+                ", user_id=" + user_id +
                 '}';
     }
 }

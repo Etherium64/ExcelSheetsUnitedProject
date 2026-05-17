@@ -1,4 +1,4 @@
-package project.Trivia.view;
+package project.Trivia;
 
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
@@ -9,8 +9,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import project.Trivia.dao.DatabaseConnection;
-import project.Trivia.dao.ScoreDAO;
+import project.model.DatabaseConnection;
+import project.model.ScoreDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;

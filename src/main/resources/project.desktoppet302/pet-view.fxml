@@ -18,9 +18,7 @@
         <ImageView fx:id="petImage"
                    preserveRatio="true"
                    fitWidth="175"
-                   fitHeight="175"
-                   onMouseClicked="#onImageClick"
-                   onMouseDragged="#onImageDrag">
+                   fitHeight="175">
             <Image fx:id="pet" url="@/AnimationStates"/>
         </ImageView>
 

@@ -1,43 +1,42 @@
+package java;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import project.Trivia.dao.DatabaseConnection;
 import project.Trivia.dao.DatabaseInitialiser;
-import project.Trivia.dao.QuestionsSeeder;
+import project.Trivia.dao.ScoreDAO;
 
 import java.sql.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class QuestionSeederTest {
 
+public class ScoreDAOTest {
     private Connection connection;
+    private ScoreDAO scoreDAO;
 
     @BeforeEach
     void setUp() throws SQLException {
         connection = DriverManager.getConnection("jdbc:sqlite:file:memdb1?mode=memory&cache=shared");
         DatabaseConnection.setUrlForTest("jdbc:sqlite:file:memdb1?mode=memory&cache=shared");
         DatabaseInitialiser.init();
+        scoreDAO = new ScoreDAO();
     }
 
     @AfterEach
     void tearDown() throws SQLException {
-        if (connection != null && !connection.isClosed()) {
-            connection.close();
-        }
+        connection.close();
     }
 
     @Test
-    void testSeedInsertsQuestions() throws SQLException {
-        QuestionsSeeder.seed();
+    void testSaveScore() throws SQLException {
+        scoreDAO.saveScore("Alice", 5);
 
         Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM questions");
-        rs.next();
-        assertEquals(20, rs.getInt(1), "Should have 3 seeded questions");
-
-        rs = stmt.executeQuery("SELECT question FROM questions WHERE correct_answer = 'Paris'");
-        assertTrue(rs.next(), "Should find the France capital question");
-        assertEquals("What is the capital of France?", rs.getString("question"));
+        ResultSet rs = stmt.executeQuery("SELECT s.score, u.username FROM scores s JOIN users u ON s.user_id = u.id");
+        assertTrue(rs.next());
+        assertEquals(5, rs.getInt("score"));
+        assertEquals("Alice", rs.getString("username"));
     }
 }

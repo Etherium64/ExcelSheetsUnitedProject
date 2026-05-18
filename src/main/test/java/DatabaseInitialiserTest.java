@@ -1,3 +1,5 @@
+package java;
+
 import project.Trivia.dao.DatabaseConnection;
 import project.Trivia.dao.DatabaseInitialiser;
 

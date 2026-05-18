@@ -35,12 +35,12 @@
     &quot;assignee&quot;: &quot;Etherium64&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Etherium64/ExcelSheetsUnitedProject.git",
-    "accountId": "80ff2d5a-7e8f-4772-a30e-3552355cb4f9"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Etherium64/ExcelSheetsUnitedProject.git&quot;,
+    &quot;accountId&quot;: &quot;80ff2d5a-7e8f-4772-a30e-3552355cb4f9&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" root0="SKIP_INSPECTION" />
   </component>

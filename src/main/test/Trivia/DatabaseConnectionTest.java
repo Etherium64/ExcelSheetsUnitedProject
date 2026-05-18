@@ -1,4 +1,4 @@
-package java;
+package Trivia;
 
 import project.Trivia.dao.DatabaseConnection;
 

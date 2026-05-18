@@ -37,6 +37,15 @@ jobs:
     - name: Generate HTML Test Report
       run: mvn surefire-report:report
 
+
+
+    - name: Upload Test Results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results
+        path: target/surefire-reports/
+
     - name: Copy Report to docs
       run: |
         mkdir -p Documents
@@ -45,12 +54,5 @@ jobs:
     - name: Upload HTML Report
       uses: actions/upload-artifact@v4
       with:
-          name: test-report-html
-          path: Documents/surefire-report.html
-
-    - name: Upload Test Results
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: test-results
-        path: target/surefire-reports/
+        name: test-report-html
+        path: Documents/surefire-report.html

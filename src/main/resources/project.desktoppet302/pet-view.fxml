@@ -24,7 +24,7 @@
 
         <HBox fx:id="optionsBox"
               visible="false"
-              managed="false"
+              managed="true"
               alignment="CENTER"
               spacing="10"
               translateY="-110">

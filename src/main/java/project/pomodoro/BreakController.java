@@ -2,6 +2,7 @@ package project.pomodoro;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Background;
@@ -16,7 +17,6 @@ import javafx.stage.Stage;
  * @author Minhman Do
  */
 public class BreakController {
-
     /**
      * Boolean to determine if pause button is active
      */
@@ -59,6 +59,8 @@ public class BreakController {
      */
     @FXML
     private Button databBtn;
+    @FXML
+    private Button closeBtn;
 
 
     public void rBtnDisable() {
@@ -141,6 +143,12 @@ public class BreakController {
     @FXML
     public void databBtnClick() throws Exception {
         transition(databBtn, "datab-view.fxml");
+    }
+
+    @FXML
+    public void closeBtnClick() {
+        Stage stage = (Stage) closeBtn.getScene().getWindow();
+        stage.close();
     }
 
 }

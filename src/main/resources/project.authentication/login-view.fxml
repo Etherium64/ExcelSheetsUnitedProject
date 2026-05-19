@@ -31,9 +31,6 @@
                 <Button fx:id="registerBtn"
                         onAction="#registerBtnClick"
                 />
-                <Button fx:id="deleteBtn"
-                        text="Delete User"
-                        onAction="#deleteBtnClick"/>
             </HBox>
         </VBox>
     </HBox>

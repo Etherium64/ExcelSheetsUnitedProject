@@ -2,14 +2,13 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.geometry.Insets?>
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="project.pomodoro.WorkController">
     <padding>
-        <Insets left="100" right="100"/>
+        <Insets left="20" right="20" top="20" bottom="20"/>
     </padding>
     <left>
         <VBox alignment="CENTER" spacing="50">
@@ -38,26 +37,32 @@
 
     <right>
         <VBox alignment="CENTER">
-            <HBox spacing="150.0" alignment="CENTER">
-                <Button fx:id="breakBtn"
-                        text="BREAK"
-                        onAction="#breakBtnClick"
-                />
+            <HBox spacing="100.0" alignment="CENTER">
                 <Button fx:id="databBtn"
                         text="DATABASE"
                         onAction="#databBtnClick"
                 />
+                <Button fx:id="closeBtn"
+                        text="CLOSE"
+                        onAction="#closeBtnClick"
+                />
             </HBox>
 
             <VBox alignment="CENTER">
-                <Region prefHeight="70"/>
-                <Label fx:id="timerLabel"
-                       text="25:00"/>
+                <Region prefHeight="80"/>
+                <HBox alignment="CENTER" spacing="10">
+                    <Button fx:id="breakBtn"
+                            text="BREAK"
+                            onAction="#breakBtnClick"
+                    />
+                    <Label fx:id="timerLabel"
+                           text="25:00"/>
+                </HBox>
                 <ProgressBar fx:id="timerBar"/>
-                <Region prefHeight="100"/>
+                <Region prefHeight="80"/>
             </VBox>
 
-            <HBox spacing="150.0" alignment="CENTER">
+            <HBox spacing="100.0" alignment="CENTER">
                 <Button fx:id="startPauseBtn"
                         text="START"
                         onAction="#startPauseBtnClick"/>

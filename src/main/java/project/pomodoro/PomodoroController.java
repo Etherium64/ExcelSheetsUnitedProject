@@ -61,34 +61,22 @@ public class PomodoroController implements Initializable {
 
     @FXML
     private Label timerLabel;
-
     @FXML
     private ProgressBar timerBar;
-
     @FXML
     private Button returnBtn;
-
     @FXML
     private Button startPauseBtn;
-
     @FXML
     private TableView<Session> tableView;
-
-    @FXML
-    private TableColumn<Session, Integer> idCol;
-
     @FXML
     private TableColumn<Session, Timestamp> timestampCol;
-
     @FXML
     private TableColumn<Session, String> typeCol;
-
     @FXML
     private TableColumn<Session, String> taskCol;
-
     @FXML
     private TableColumn<Session, String> timespentCol;
-
     @FXML
     private TableColumn<Session, Boolean> completionCol;
 
@@ -105,11 +93,6 @@ public class PomodoroController implements Initializable {
             sessionDAO = new SessionDAO();
         }
         return pomodoroController;
-    }
-
-    public void closePomodoro()
-    {
-        sessionDAO.close();
     }
 
     /**
@@ -166,7 +149,8 @@ public class PomodoroController implements Initializable {
     public void recordSession(String sessionTask) {
         //Session timestamp is created the moment Start button is clicked
         timestamp = captureTimestamp();
-        sessionDAO.insert(new Session(timestamp, sessionType, sessionTask, "00:00", false, UserSingleton.getInstance().getUser_id()));
+        int user_id = UserSingleton.getInstance().getUser_id();
+        sessionDAO.insert(new Session(timestamp, sessionType, sessionTask, "00:00", false, user_id));
     }
 
     /**
@@ -263,8 +247,6 @@ public class PomodoroController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Initialise the obserable list. Used later to populate the TableView cells.
         this.sessionsObservableList = FXCollections.observableArrayList();
-
-        idCol.setCellValueFactory((new PropertyValueFactory<>("id")));
         timestampCol.setCellValueFactory((new PropertyValueFactory<>("timestamp")));
 
         //Bind the TableColumn typeCol to the sessionType field in the Session class (Data Model)
@@ -311,7 +293,8 @@ public class PomodoroController implements Initializable {
         // Clear the items from Tableview first for a refresh
         tableView.getItems().clear();
         //Add all session data to the ObservableList using DAO getAll method. CRUD - Read operation.
-        sessionsObservableList.addAll(sessionDAO.getAll());
+        int user_id = UserSingleton.getInstance().getUser_id();
+        sessionsObservableList.addAll(sessionDAO.getAll(user_id));
         //Populate the Tableview using this Observable List
         tableView.setItems(sessionsObservableList);
     }
@@ -330,7 +313,8 @@ public class PomodoroController implements Initializable {
     public void refreshTable()
     {
         tableView.getItems().clear();
-        sessionsObservableList.addAll(sessionDAO.getAll());
+        int user_id = UserSingleton.getInstance().getUser_id();
+        sessionsObservableList.addAll(sessionDAO.getAll(user_id));
         tableView.setItems(sessionsObservableList);
         tableView.getSelectionModel().selectNext();
     }

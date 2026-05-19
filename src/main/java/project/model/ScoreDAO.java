@@ -12,7 +12,6 @@ import java.sql.*;
  * @author Ethan B
  */
 public class ScoreDAO {
-
     /**
      * Saves a score for the specified user.
      * <p>
@@ -21,12 +20,14 @@ public class ScoreDAO {
      * This is performed within a transaction.
      * </p>
      *
-     * @param username the username of the player, must not be null
-     * @param score    the score to save, should be impossible to have a non-negative integer
+     * @param user_id    the userId of the player, must not be null
+     * @param scoreValue the score to save, should be impossible to have a non-negative integer
      */
+
+    /*
     public void saveScore(String username, int score) {
         String insertUser = "INSERT OR IGNORE INTO users (username) VALUES (?)";
-        String getUserId = "SELECT user_id FROM users WHERE username = ?";
+        String getUserId = "SELECT id FROM users WHERE username = ?";
         String insertScore = "INSERT INTO scores (user_id, score) VALUES (?, ?)";
         try (Connection conn = DatabaseConnection.getConnection()) {
             assert conn != null;
@@ -41,7 +42,7 @@ public class ScoreDAO {
             try (PreparedStatement ps = conn.prepareStatement(getUserId)) {
                 ps.setString(1, username);
                 ResultSet rs = ps.executeQuery();
-                if (rs.next()) userId = rs.getInt("user_id");
+                if (rs.next()) userId = rs.getInt("id");
             }
 
             if (userId != -1) {
@@ -55,6 +56,62 @@ public class ScoreDAO {
             conn.commit();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+
+     */
+
+    public void insert(int user_id, int scoreValue) {
+        String insertScore = "INSERT INTO scores (scoreValue, user_id) VALUES (?, ?)";
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            assert conn != null;
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement ps = conn.prepareStatement(insertScore)) {
+                ps.setInt(1, scoreValue);
+                ps.setInt(2, user_id);
+                ps.execute();
+            }
+            conn.commit();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int get (int user_id) {
+        String getScore = "SELECT scoreValue FROM scores WHERE user_id = ?";
+        try (Connection conn = DatabaseConnection.getConnection())
+        {
+            assert conn != null;
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement ps = conn.prepareStatement(getScore)) {
+                ps.setInt(1, user_id);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) return rs.getInt("scoreValue");
+            }
+
+            conn.commit();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return -1;
+    }
+
+
+    public void update (int user_id, int scoreValue) {
+        String updateScore = "UPDATE scores SET scoreValue = ? WHERE user_id = ?";
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            assert conn != null;
+            conn.setAutoCommit(false);
+
+            try (PreparedStatement ps = conn.prepareStatement(updateScore)) {
+                ps.setInt(1, scoreValue);
+                ps.setInt(2, user_id);
+                ps.execute();
+            }
+            conn.commit();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }

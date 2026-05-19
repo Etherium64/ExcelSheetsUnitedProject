@@ -44,8 +44,21 @@ public class DatabaseInitialiser {
      */
 
     private static void createTables() {
-        String createScores = "CREATE TABLE IF NOT EXISTS scores (score_id INTEGER PRIMARY KEY, score INTEGER, user_id INTEGER, FOREIGN KEY(user_id) REFERENCES users(user_id))";
-        String createQuestions = "CREATE TABLE IF NOT EXISTS questions (question_id INTEGER PRIMARY KEY AUTOINCREMENT, question TEXT NOT NULL UNIQUE, option_a TEXT NOT NULL, option_b TEXT NOT NULL, option_c TEXT NOT NULL, option_d TEXT NOT NULL, correct_answer TEXT NOT NULL)";
+        // String createUsers = "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT UNIQUE)";
+        String createScores =
+                "CREATE TABLE IF NOT EXISTS scores " +
+                "(score_id INTEGER PRIMARY KEY," +
+                "scoreValue INTEGER, " +
+                "user_id INTEGER," +
+                "FOREIGN KEY(user_id) REFERENCES users(user_id)" +
+                        ")";
+        String createQuestions =
+                "CREATE TABLE IF NOT EXISTS questions " +
+                        "(question_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "question TEXT NOT NULL UNIQUE, option_a TEXT NOT NULL," +
+                        " option_b TEXT NOT NULL, option_c TEXT NOT NULL, " +
+                        "option_d TEXT NOT NULL, correct_answer TEXT NOT NULL" +
+                        ")";
         try (Connection conn = DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement()) {
             stmt.execute(createScores);

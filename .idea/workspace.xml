@@ -6,6 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Merge branch 'master' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0005.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0006.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0007.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0008.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0009.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0010.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0011.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0012.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0013.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0015.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0016.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0017.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0018.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0019.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0020.png">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/authentication/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/authentication/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/model/DatabaseInitialiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/DatabaseInitialiser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/model/ScoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/ScoreDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/model/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/Session.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/model/SessionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/SessionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/model/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/BreakController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/BreakController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/PomodoroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/PomodoroController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/WorkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/WorkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/project.authentication/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project.authentication/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/project.trivia/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project.trivia/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/project/pomodoro/break-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project/pomodoro/break-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/project/pomodoro/datab-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project/pomodoro/datab-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/project/pomodoro/work-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project/pomodoro/work-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,46 +82,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AnimationTestWindow.executor": "Debug",
-    "Application.DesktopPet.executor": "Run",
-    "Application.InitialLogin.executor": "Run",
-    "Application.Login.executor": "Run",
-    "Application.LoginApplication.executor": "Run",
-    "Application.LoginStart.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.MainApplication.executor": "Run",
-    "Application.PomodoroTest.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "Application.animation test.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "JUnit.PomodoroTest.executor": "Debug",
-    "JUnit.SessionDAOTest.executor": "Run",
-    "JUnit.SessionTest.executor": "Run",
-    "Maven.DesktopPet302 [org.apache.maven.plugins:maven-javadoc-plugin:3.4.0:javadoc].executor": "Run",
-    "Maven.DesktopPet302 [package].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "completeOverhaul",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/daniel/Downloads/Week4_AddressBookMockDB-main",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AnimationTestWindow.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.DesktopPet.executor&quot;: &quot;Run&quot;,
+    &quot;Application.InitialLogin.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Login.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LoginApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LoginStart.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Pomodoro.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PomodoroTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;Application.animation test.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;JUnit.PomodoroTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.SessionDAOTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SessionTest.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.DesktopPet302 [org.apache.maven.plugins:maven-javadoc-plugin:3.4.0:javadoc].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.DesktopPet302 [package].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;completeOverhaul&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/daniel/Downloads/Week4_AddressBookMockDB-main&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\src\main\test" />
@@ -171,6 +189,9 @@
       <workItem from="1779028535304" duration="3327000" />
       <workItem from="1779032032417" duration="5000" />
       <workItem from="1779032349390" duration="748000" />
+      <workItem from="1779034262366" duration="2468000" />
+      <workItem from="1779098743471" duration="21101000" />
+      <workItem from="1779159653381" duration="4637000" />
     </task>
     <task id="LOCAL-00001">
       <option name="closed" value="true" />

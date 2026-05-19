@@ -9,6 +9,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import project.authentication.UserSingleton;
 import project.model.DatabaseConnection;
 import project.model.ScoreDAO;
 import javafx.fxml.FXML;
@@ -30,7 +31,7 @@ import java.util.List;
  * @author Ethan B
  */
 public class MainController {
-    @FXML private TextField usernameField;
+    @FXML private Label usernameLabel;
     @FXML public Label scoreLabel;
     @FXML private Label statusLabel;
     @FXML private Label questionLabel;
@@ -111,6 +112,7 @@ public class MainController {
      */
     @FXML
     private void initialize() {
+        usernameLabel.setText(UserSingleton.getInstance().getUsername());
         loadQuestions();
         Collections.shuffle(questions);
         loadNextQuestion();
@@ -171,14 +173,14 @@ public class MainController {
         title.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
         popup.getChildren().add(title);
 
-        String sql = "SELECT u.username, s.score FROM scores s JOIN users u ON s.user_id = u.id ORDER BY s.score DESC LIMIT 5";
+        String sql = "SELECT u.username, s.scoreValue FROM scores s JOIN users u ON s.user_id = u.user_id ORDER BY s.scoreValue DESC LIMIT 5";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
             int rank = 1;
             while (rs.next()) {
-                Label entry = new Label(rank++ + ". " + rs.getString("username") + " - " + rs.getString("score"));
+                Label entry = new Label(rank++ + ". " + rs.getString("username") + " - " + rs.getString("scoreValue"));
                 popup.getChildren().add(entry);
             }
         } catch (SQLException e) {
@@ -211,12 +213,17 @@ public class MainController {
      */
     @FXML
     private void onSaveClick() {
-        String username = usernameField.getText().trim();
-        if (username.isEmpty()) {
-            statusLabel.setText("Enter username");
-            return;
+        int user_id = UserSingleton.getInstance().getUser_id();
+        int storedScore = dao.get(user_id);
+        if (storedScore == -1)
+        {
+            dao.insert(user_id, score);
         }
-        dao.saveScore(username, score);
+        else
+        {
+            storedScore+=score;
+            dao.update(user_id, storedScore);
+        }
         statusLabel.setText("Score saved!");
         showTopScores();
 

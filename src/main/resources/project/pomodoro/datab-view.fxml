@@ -2,9 +2,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
-
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="project.pomodoro.PomodoroController">
@@ -24,8 +21,6 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
             </columnResizePolicy>
             <columns>
-                <TableColumn fx:id="idCol" text="Id ">
-                </TableColumn>
                 <TableColumn fx:id="timestampCol" text="Timestamp">
                 </TableColumn>
                 <TableColumn fx:id="typeCol" text="Session">
@@ -38,7 +33,7 @@
                 </TableColumn>
             </columns>
             <sortOrder>
-                <fx:reference source="idCol"/>
+                <fx:reference source="timestampCol"/>
             </sortOrder>
         </TableView>
     </center>

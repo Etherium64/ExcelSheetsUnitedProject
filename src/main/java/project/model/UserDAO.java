@@ -83,12 +83,4 @@ public class UserDAO {
         return users;
     }
 
-    public void close() {
-        try {
-            connection.close();
-        } catch (SQLException ex) {
-            System.err.println(ex);
-        }
-    }
-
 }

@@ -319,7 +319,6 @@ public class PetController {
             move.stop();
             moving.stop();
             UserSingleton.getInstance().setup(0, ""); //Dummy information ensure User information doesn't remain
-            PomodoroController.getPomodoroController().closePomodoro();
             Stage loginStage = (Stage) logout.getScene().getWindow();
             Login newLogin =  new Login();
             newLogin.start(loginStage);

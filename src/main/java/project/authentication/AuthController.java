@@ -8,11 +8,7 @@ import project.desktoppet302.DesktopPet;
 import project.model.User;
 import project.model.UserDAO;
 import javafx.scene.control.Alert.AlertType;
-import project.pomodoro.Pomodoro;
-
 import java.security.MessageDigest;
-
-
 import java.security.SecureRandom;
 import java.util.Base64;
 import java.util.List;
@@ -34,12 +30,16 @@ public class AuthController {
     private Button registerBtn;
 
 
-    public AuthController() {
+    public AuthController() throws Exception {
         userDAO = new UserDAO();
         if (userDAO.getAll().isEmpty())
         {
-            userDAO.insert(new User()); //1
-            userDAO.insert(new User()); //2
+            byte[] AISalt = generateSalt();
+            byte[] humanSalt = generateSalt();
+            String AIPassword = hashPassword("AI", AISalt);
+            String humanPassword = hashPassword("Human", humanSalt);
+            userDAO.insert(new User("AI", AIPassword, AISalt, true)); //1 AI
+            userDAO.insert(new User("Human", humanPassword, humanSalt, true)); //2 Human
             userDAO.insert(new User()); //3
             userDAO.insert(new User()); //4
             userDAO.insert(new User()); //5
@@ -161,17 +161,5 @@ public class AuthController {
             selectUser(selectedUser);
         }
     }
-
-    public void deleteBtnClick() {
-        User selectedUser = usersListView.getSelectionModel().getSelectedItem();
-        if (selectedUser.getRegistered()) {
-            selectedUser.setUsername("");
-            selectedUser.setPassword("");
-            selectedUser.setRegistered(false);
-            userDAO.update(selectedUser);
-            refreshList();
-        }
-    }
-
 
 }

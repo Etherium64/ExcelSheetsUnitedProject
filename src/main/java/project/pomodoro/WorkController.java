@@ -63,7 +63,8 @@ public class WorkController {
      */
     @FXML
     private Button databBtn;
-
+    @FXML
+    private Button closeBtn;
 
     public void rBtnDisable() {
         rBtn1.setDisable(true);
@@ -144,6 +145,12 @@ public class WorkController {
     @FXML
     public void databBtnClick() throws Exception {
         transition(databBtn, "datab-view.fxml");
+    }
+
+    @FXML
+    public void closeBtnClick() {
+        Stage stage = (Stage) closeBtn.getScene().getWindow();
+        stage.close();
     }
 
 }

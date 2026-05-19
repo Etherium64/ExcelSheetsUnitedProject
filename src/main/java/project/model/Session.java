@@ -14,7 +14,7 @@ public class Session {
     /**
      * Session id which identifies the SQL row. Autoincrements.
      */
-    private int id;
+    private int session_id;
     /**
      * Session Timestamp, the exact time and date a Session is created.
      */
@@ -41,8 +41,8 @@ public class Session {
     /**
      * Session Public Constructor
      */
-    public Session(int id, Timestamp timestamp, String sessionType, String sessionTask, String timeSpent, boolean completion, int user_id) {
-        this.id = id;
+    public Session(int session_id, Timestamp timestamp, String sessionType, String sessionTask, String timeSpent, boolean completion, int user_id) {
+        this.session_id = session_id;
         this.timestamp = timestamp;
         this.sessionType = sessionType;
         this.sessionTask = sessionTask;
@@ -67,7 +67,7 @@ public class Session {
     /**
      * All Session field setters and getters for use in the DAO
      */
-    public void setId(int id) { this.id = id; }
+    public void setSession_Id(int session_id) { this.session_id = session_id; }
 
     public void setSessionType(String sessionType) {this.sessionType = sessionType; }
 
@@ -77,7 +77,7 @@ public class Session {
 
     public void setCompletion(Boolean completion) {this.completion = completion; }
 
-    public int getId() {return id;}
+    public int getSession_Id() {return session_id;}
 
     public Timestamp getTimestamp() {return timestamp;}
 
@@ -99,7 +99,7 @@ public class Session {
     @Override
     public String toString() {
         return "Session{" +
-                "id=" + id +
+                "session_id=" + session_id +
                 ", timestamp='" + timestamp + '\'' +
                 ", sessionTask='" + sessionTask + '\'' +
                 ", sessionType=" + sessionType + '\'' +

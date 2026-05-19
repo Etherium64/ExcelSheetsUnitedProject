@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Merge branch 'master' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0005.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0006.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0007.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0008.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0009.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0010.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0011.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0012.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0013.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0015.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0016.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0017.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0018.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0019.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0020.png">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Merge branch 'master' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0005.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0006.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0007.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0008.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0009.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0010.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0011.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0012.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0013.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0015.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0016.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0017.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0018.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0019.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0020.png" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -175,6 +173,7 @@
       <workItem from="1779034262366" duration="2468000" />
       <workItem from="1779098743471" duration="21101000" />
       <workItem from="1779159653381" duration="6150000" />
+      <workItem from="1779165900458" duration="317000" />
     </task>
     <task id="LOCAL-00001">
       <option name="closed" value="true" />

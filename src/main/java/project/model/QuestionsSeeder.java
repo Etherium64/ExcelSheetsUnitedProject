@@ -31,7 +31,7 @@ public class QuestionsSeeder {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             // Question 1
-            ps.setString(1, "What is the capital of France?");
+            ps.setString(1, "What is the capital ofgiFrance?");
             ps.setString(2, "London");
             ps.setString(3, "Berlin");
             ps.setString(4, "Paris");

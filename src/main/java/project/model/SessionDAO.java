@@ -44,16 +44,6 @@ public class SessionDAO {
         }
     }
 
-    public void dropTable() {
-        try {
-            Statement statement = connection.createStatement();
-            String query = "DROP TABLE sessions";
-            statement.execute(query);
-        } catch (SQLException ex) {
-            System.err.println(ex);
-        }
-    }
-
     /**
      * CRUD Operation - Create Operation
      * Insert a new Session to the database, assigning the new Session fields

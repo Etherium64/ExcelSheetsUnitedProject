@@ -19,6 +19,7 @@ jobs:
         with:
           java-version: '21'
           distribution: 'corretto'
+          cache: maven
 
       - name: Install JavaFX dependencies
         run: |

@@ -109,7 +109,7 @@ public class Pet {
 
         if ((imageBox.getTranslateX() + x) < bounds.getMinX()) {
             x = -x;
-        } else if ((imageBox.getTranslateX() + x) > bounds.getMaxX() - imageBox.getWidth() * 1.5) {
+        } else if ((imageBox.getTranslateX() + x) > bounds.getMaxX() - imageBox.getWidth()) {
             x = -x;
         }
 

@@ -56,7 +56,7 @@ public class DesktopPet extends Application {
         stage.setHeight(bounds.getHeight() / 3);
 
         // lock the window to the bottom of the screen
-        stage.setY(bounds.getMaxY() - stage.getHeight());
+        stage.setY(bounds.getMaxY() - stage.getHeight() * 0.75);
         stage.setX(bounds.getMinX());
 
         // remove normal window borders

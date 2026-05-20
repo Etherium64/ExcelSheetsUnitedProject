@@ -229,7 +229,7 @@ public class PetController {
 
             // calculate screen bounds
             double leftScreenEdge = bounds.getMinX();
-            double rightScreenEdge = bounds.getMaxX() - imageBox.getWidth() * 1.5;
+            double rightScreenEdge = bounds.getMaxX() - imageBox.getWidth() ;
 
             // clamp to left side
             if (mouseX < leftScreenEdge) {

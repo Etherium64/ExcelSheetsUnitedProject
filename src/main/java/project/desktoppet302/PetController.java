@@ -124,7 +124,7 @@ public class PetController {
             nobutton.setVisible(false);
 
             // play click animation
-            Pet.setPet(desktopPet, animStates.PetState.SHOCK);
+            desktopPet.setShock();
 
             // reset timer without moving the pet
             then = System.currentTimeMillis();
@@ -204,7 +204,7 @@ public class PetController {
     @FXML
     protected void idling() {
         // set pet to idle animation
-        Pet.setPet(desktopPet, animStates.PetState.IDLE);
+        desktopPet.setIdle();
 
         // start automatic movement
         moving.start();

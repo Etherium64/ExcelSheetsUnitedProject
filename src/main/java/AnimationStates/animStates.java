@@ -3,123 +3,146 @@ package AnimationStates;
 import javafx.scene.image.Image;
 
 /**
- * Manages all animation states for the pet and provides a simple interface
- * for switching, updating, and retrieving animation frames.
- *
- * <p>Usage:
- * <ul>
- *     <li>Instantiate once: {@code animStates states = new animStates();}</li>
- *     <li>Call {@link #setState(PetState)} to switch animations</li>
- *     <li>Call {@link #update()} once per frame (e.g., in AnimationTimer)</li>
- *     <li>Call {@link #getCurrentFrame()} to draw the current frame</li>
- * </ul>
+ * Holds all the different animation states the pet can switch between.
+ * <p>
+ * This class basically acts as the "animation library" for the pet.
+ * It loads every animation (idle, walk, shock, sad idle, etc.) and
+ * gives simple methods for switching between them.
+ * <p>
+ * It also handles special rules like the shock animation temporarily
+ * overriding everything else.
  */
 
 public class animStates {
-    private animController controller;
 
-        /** Public enum of all available animation states.
-         */
-    public enum PetState {
-        IDLE,
-        WALKRIGHT,
-        WALKLEFT,
-            SHOCK, SADIDLE
-    }
+    /** The state machine that actually manages which animation is active. */
+    private final AnimationStateMachine stateMachine;
 
-    private PetState currentState = PetState.IDLE;
+    /** All the different animation states the pet can use. */
+    private final AnimationState idle;
+    private final AnimationState walkLeft;
+    private final AnimationState walkRight;
+    private final AnimationState shock;
+    private final AnimationState sadIdle;
 
     /**
-     * Creates a new animation state manager and loads all animation sequences.
-     * <p>
-     * This constructor:
-     * <ul>
-     *     <li>Initializes the animation controller</li>
-     *     <li>Loads all animation image sequences from resources</li>
-     *     <li>Registers each animation with the controller</li>
-     * </ul>
+     * @return true if the pet is currently in the idle animation.
      */
+    public boolean isIdle() {
+        return stateMachine.getCurrentState() == idle;
+    }
 
+    /**
+     * @return true if the pet is currently in the sad idle animation.
+     */
+    public boolean isSadIdle() {
+        return stateMachine.getCurrentState() == sadIdle;
+    }
+
+    /** Whether the pet is currently in the shock animation. */
+    private boolean shocking = false;
+
+    /** When the shock animation started (ms). */
+    private long shockStartTime;
+
+    public boolean isShock() {
+        return shocking;
+    }
+    private static final long SHOCK_DURATION = 1000;
+
+    /**
+     * Loads all animation sequences and sets up the state machine.
+     * <p>
+     * Each animation gets its own AnimationPlayer with its own speed.
+     */
     public animStates() {
-        controller = new animController();
 
-        try {
-            // Load animation sequences
-            Animation idle = new Animation(loadImages.loadSequence("/ImageSequences/idle"), 24);
-            System.out.println("Idle frames loaded: " + idle.getFrameCount());
+        AnimationFrames idleFrames = new AnimationFrames(loadImages.loadSequence("/ImageSequences/idle"));
+        AnimationFrames walkLeftFrames = new AnimationFrames(loadImages.loadSequence("/ImageSequences/walkLeft"));
+        AnimationFrames walkRightFrames = new AnimationFrames(loadImages.loadSequence("/ImageSequences/walkRight"));
+        AnimationFrames shockFrames = new AnimationFrames(loadImages.loadSequence("/ImageSequences/shocked"));
+        AnimationFrames sadIdleFrames = new AnimationFrames(loadImages.loadSequence("/ImageSequences/sadIdle"));
 
-            /*
-            System.out.println("TEST 1 = " + loadImages.class.getResource("/ImageSequences/idle/"));
-            System.out.println("TEST 2 = " + loadImages.class.getResource("/ImageSequences/idle/idle0001.png"));
-            System.out.println("TEST 3 = " + loadImages.class.getResource("/ImageSequences/idle/idle0002.png"));
-            System.out.println("TEST 4 = " + loadImages.class.getResource("/ImageSequences/idle/idle0003.png"));
-            */
+        idle = new SimpleAnimationState(new AnimationPlayer(idleFrames, 200));
+        walkLeft = new SimpleAnimationState(new AnimationPlayer(walkLeftFrames, 150));
+        walkRight = new SimpleAnimationState(new AnimationPlayer(walkRightFrames, 150));
+        shock = new SimpleAnimationState(new AnimationPlayer(shockFrames, 200));
+        sadIdle = new SimpleAnimationState(new AnimationPlayer(sadIdleFrames, 150));
 
-            // change the frame duration to influence how long each frame is held
-            Animation walkLeft = new Animation(loadImages.loadSequence("/ImageSequences/walkLeft"), 100);
-            Animation walkRight = new Animation(loadImages.loadSequence("/ImageSequences/walkRight"), 100);
-            Animation shock = new Animation(loadImages.loadSequence("/ImageSequences/shocked"), 200);
-            Animation sadIdle = new Animation(loadImages.loadSequence("/ImageSequences/sadIdle"), 200);
+        stateMachine = new AnimationStateMachine(idle);
+    }
 
-            // Register animations with the controller
-            controller.addAnimation(animController.State.IDLE, idle);
-            controller.addAnimation(animController.State.WALKLEFT, walkLeft);
-            controller.addAnimation(animController.State.WALKRIGHT, walkRight);
-            controller.addAnimation(animController.State.SHOCK, shock);
-            controller.addAnimation(animController.State.SADIDLE, sadIdle);
+    public void setIdle() {
 
-        } catch (Exception exception) {
-            exception.printStackTrace();
+        if (!shocking) {
+            stateMachine.changeState(idle);
+        }
+    }
+
+    public void setWalkLeft() {
+
+        if (!shocking) {
+            stateMachine.changeState(walkLeft);
+        }
+    }
+
+    public void setWalkRight() {
+
+        if (!shocking) {
+            stateMachine.changeState(walkRight);
+        }
+    }
+
+    public void setSadIdle() {
+
+        if (!shocking) {
+            stateMachine.changeState(sadIdle);
         }
     }
 
     /**
-     * Switches the pet to a new animation state.
+     * Activates the shock animation.
      * <p>
-     * The animation will loop automatically until another state is set.
-     *
-     * @param newState the new animation state to activate
+     * Shock overrides everything else for a short time,
+     * so we mark it as "shocking" and let update() handle
+     * when it should end.
      */
-    public void setState(PetState newState) {
-        currentState = newState;
+    public void setShock() {
 
-        switch (newState) {
-            case IDLE:
-                controller.setState(animController.State.IDLE);
-                break;
-            case WALKLEFT:
-                controller.setState(animController.State.WALKLEFT);
-                break;
-            case WALKRIGHT:
-                controller.setState(animController.State.WALKRIGHT);
-                break;
-            case SHOCK:
-                controller.setState(animController.State.SHOCK);
-                break;
-            case SADIDLE:
-                controller.setState(animController.State.SADIDLE);
-                break;
+        shocking = true;
+        shockStartTime = System.currentTimeMillis();
+
+        stateMachine.changeState(shock);
+    }
+
+    /**
+     * Updates the current animation and handles shock timing.
+     * <p>
+     * If the shock animation has been running long enough,
+     * we automatically switch back to idle.
+     *
+     * @param now The current time in nanoseconds (from AnimationTimer).
+     */
+    public void update(long now) {
+
+        if (shocking) {
+
+            long elapsed = System.currentTimeMillis() - shockStartTime;
+
+            if (elapsed >= SHOCK_DURATION) {
+
+                shocking = false;
+                stateMachine.changeState(idle);
+            }
         }
+
+        stateMachine.update(now);
     }
 
     /**
-     * Updates the currently active animation.
-     * <p>
-     * This should be called once per frame (e.g., inside an {@code AnimationTimer})
-     * to advance the animation to the next frame when appropriate.
-     */
-    public void update() {
-        controller.update();
-    }
-
-    /**
-     * Returns the current animation frame image for rendering.
-     *
-     * @return the current frame as a {@link Image}, or {@code null} if no animation is active
+     * @return the current animation frame to display.
      */
     public Image getCurrentFrame() {
-        return controller.getCurrentFrame();
+        return stateMachine.getCurrentFrame();
     }
-
-
 }

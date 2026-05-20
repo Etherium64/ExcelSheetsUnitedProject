@@ -120,13 +120,35 @@
       <recent name="project.pomodoro.controller" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.test in Project302">
+    <configuration name="java in Project302" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project302" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/main/test/java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test in Project302" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project302" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/main/test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="ExcelSheetsUnitedProject" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.test in Project302" />
+        <item itemvalue="JUnit.java in Project302" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

@@ -1,3 +1,5 @@
+package Trivia;
+
 import project.Trivia.dao.DatabaseConnection;
 
 import org.junit.jupiter.api.BeforeAll;

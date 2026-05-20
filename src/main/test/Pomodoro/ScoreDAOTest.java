@@ -1,4 +1,4 @@
-
+package Pomodoro;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import project.Trivia.dao.DatabaseConnection;
 import project.Trivia.dao.DatabaseInitialiser;
 import project.Trivia.dao.ScoreDAO;
-
 import java.sql.*;
 
 import static org.junit.jupiter.api.Assertions.*;

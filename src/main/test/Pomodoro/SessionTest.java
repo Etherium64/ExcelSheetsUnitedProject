@@ -1,3 +1,5 @@
+package Pomodoro;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import project.pomodoro.model.Session;

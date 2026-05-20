@@ -42,7 +42,7 @@ public class Pet {
         this.petStates = petStates;
         this.petImage = petImage;
 
-        // added by nate new start for single animation loop
+        // new start for single animation loop
         new AnimationTimer(){
             @Override
             public void handle(long now){
@@ -53,28 +53,44 @@ public class Pet {
         }.start();
     }
 
-    // added by nate track interactions
+    /**
+     * Marks the current moment as the last time the user interacted with the pet.
+     * <p>
+     * This is used to decide when the pet should switch between normal idle
+     * and sad idle animations after being ignored for a while.
+     */
 
     private void markInteraction() {
         lastInteractionTime = System.currentTimeMillis();
     }
 
-    // added by nate switch between idles
+    /**
+     * Checks how long it's been since the last interaction and switches
+     * between idle and sad idle animations accordingly.
+     * <p>
+     * If the pet hasn't been touched for a while, it goes into sad idle.
+     * If the user interacts again or enough time hasn't passed, it stays in normal idle.
+     *
+     * @param now The current timestamp from the animation timer (ns).
+     */
 
     private void checkIdleState(long now) {
 
         long elapsed = System.currentTimeMillis() - lastInteractionTime;
 
+        // If the pet is moving, don't change idle states.
         if (isMoving) return;
 
         if (elapsed > SAD_IDLE_DELAY) {
 
+            // Switch to sad idle only if we're not already in it.
             if (!petStates.isSadIdle()) {
                 petStates.setSadIdle();
             }
 
         } else {
 
+            // Switch back to normal idle if needed.
             if (!petStates.isIdle()) {
                 petStates.setIdle();
             }
@@ -82,13 +98,31 @@ public class Pet {
     }
 
 
-    // added by Nate replacing enums now we use he state method directly
+    /**
+     * Switches the pet to the normal idle animation.
+     */
     public void setIdle()     { petStates.setIdle(); }
-    public void setWalkLeft() { petStates.setWalkLeft(); }
-    public void setWalkRight(){ petStates.setWalkRight(); }
-    public void setShock()    { petStates.setShock(); markInteraction(); }
-    public void setSadIdle()  { petStates.setSadIdle(); }
 
+    /**
+     * Switches the pet to the walking-left animation.
+     */
+    public void setWalkLeft() { petStates.setWalkLeft(); }
+
+    /**
+     * Switches the pet to the walking-right animation.
+     */
+    public void setWalkRight(){ petStates.setWalkRight(); }
+
+    /**
+     * Triggers the shock animation and marks it as an interaction,
+     * so the pet doesn't immediately switch into sad idle afterward.
+     */
+    public void setShock()    { petStates.setShock(); markInteraction(); }
+
+    /**
+     * Switches the pet to the sad idle animation.
+     */
+    public void setSadIdle()  { petStates.setSadIdle(); }
 
     /**
      * Move the pet left or right from its current position and adjusting its state while it does so.

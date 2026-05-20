@@ -8,6 +8,7 @@ import java.util.List;
 public class UserDAO {
 
     private Connection connection;
+
     public UserDAO() {
         connection = DatabaseConnection.getConnection();
         createTable();
@@ -25,6 +26,16 @@ public class UserDAO {
                             + "registered BIT NOT NULL"
                             + ")"
             );
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+    }
+
+    public void dropTable() {
+        try {
+            Statement statement = connection.createStatement();
+            String query = "DROP TABLE users";
+            statement.execute(query);
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -83,4 +94,52 @@ public class UserDAO {
         return users;
     }
 
+    public User getById(int user_id) {
+        try {
+            PreparedStatement getUser = connection.prepareStatement("SELECT * FROM users WHERE user_id = ?");
+            getUser.setInt(1, user_id);
+            ResultSet resultset = getUser.executeQuery();
+            if (resultset.next()) {
+                return new User(
+                        resultset.getInt("user_id"),
+                        resultset.getString("username"),
+                        resultset.getString("password"),
+                        resultset.getBytes("salt"),
+                        resultset.getBoolean("registered")
+                );
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return null;
+    }
+
+    public User getByUsername(String username) {
+        try {
+            PreparedStatement getUser = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
+            getUser.setString(1, username);
+            ResultSet resultset = getUser.executeQuery();
+            if (resultset.next()) {
+                return new User(
+                        resultset.getInt("user_id"),
+                        resultset.getString("username"),
+                        resultset.getString("password"),
+                        resultset.getBytes("salt"),
+                        resultset.getBoolean("registered")
+                );
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return null;
+    }
+
+    public void close() {
+        try {
+            connection.close();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+    }
 }
+

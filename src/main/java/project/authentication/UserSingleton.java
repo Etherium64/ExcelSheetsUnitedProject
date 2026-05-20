@@ -1,12 +1,13 @@
 package project.authentication;
 
-import project.model.ScoreDAO;
-import project.model.SessionDAO;
-
+/**
+ *  User Singleton class
+ *  Stores the Username and User_ID for access across other controller in a UserSingleton Class
+ *  Simulates an "Active" User across all the stages
+ */
 public final class UserSingleton {
     private int user_id;
     private String username;
-    private ScoreDAO scoreDAO;
     private final static UserSingleton INSTANCE = new UserSingleton();
 
     private UserSingleton() {};

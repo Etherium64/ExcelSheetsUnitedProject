@@ -9,6 +9,11 @@ import javafx.stage.Stage;
 import java.util.Objects;
 
 public class Login extends Application {
+
+    /**
+     * User Login starting menu.
+     * Provides a stage that hosts user authentication functionality.
+     */
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/project.authentication/login-view.fxml")));

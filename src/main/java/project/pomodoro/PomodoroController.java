@@ -34,31 +34,46 @@ import java.util.TimerTask;
  */
 
 public class PomodoroController implements Initializable {
-
+    //Singleton instance of the Pomodoro controller.
     static private PomodoroController pomodoroController;
 
+    //Data Access Object for Session Data Model
     private static SessionDAO sessionDAO;
 
+    //List of Session classes, requied to populate TableView
     private ObservableList<Session> sessionsObservableList;
 
+    //The background timer task that drives the countdown.
     private Timer timer;
 
+    //Timestamp created the moment Pomodoro Timer starts and assigned to Session class
     private Timestamp timestamp;
 
+    //Type of session work vs rest and assigned to Session class
     private String sessionType;
 
+    //Remaining time in seconds.
     private static int timeElapsed;
 
+    //Initial time set for the timer (used for reset).
     private static int timeBegins;
 
+    //Progress value assigned to ProgressBar. Decrements in sync with Timer.
     private static double progress;
 
+    // 1/ Number of total seconds. Ensures progress is decremented accurately.
     private static double progressIncrements;
 
+    //Indicates whether the timer is currently paused.
     volatile boolean isPaused = true;
 
+    //Flags if this is the first time the timer is being started
     private boolean firstCount = true;
 
+    //TableView GUI elements
+    // timerLabel and timerBar dynamically changes to match timer
+    // Buttons return and startPause
+    // TableColumns
     @FXML
     private Label timerLabel;
     @FXML
@@ -135,6 +150,9 @@ public class PomodoroController implements Initializable {
         return String.format("%02d:%02d", minutes, seconds);
     }
 
+    /**
+     * @return A curent timestamp t be assigned to a Session
+     */
     private Timestamp captureTimestamp()
     {
         LocalDateTime now = LocalDateTime.now();
@@ -310,6 +328,10 @@ public class PomodoroController implements Initializable {
         newScene.launch(newStage, "work-view.fxml");
     }
 
+    /**
+     * Refreshes the tableview with the User's sessions after a CRUD operation or when the tableview first initialises
+     * Then selects the next row
+     */
     private void refreshTable()
     {
         tableView.getItems().clear();

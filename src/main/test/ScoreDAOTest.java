@@ -20,8 +20,9 @@ public class ScoreDAOTest {
     void setUp() throws SQLException {
         connection = DriverManager.getConnection("jdbc:sqlite:file:memdb1?mode=memory&cache=shared");
         DatabaseConnection.setUrlForTest("jdbc:sqlite:file:memdb1?mode=memory&cache=shared");
-        DatabaseInitialiser.init();
         scoreDAO = new ScoreDAO();
+        scoreDAO.dropTable();
+        DatabaseInitialiser.init();
     }
 
     @AfterEach
@@ -30,13 +31,30 @@ public class ScoreDAOTest {
     }
 
     @Test
-    void testSaveScore() throws SQLException {
-        scoreDAO.saveScore("Alice", 5);
+    void testInsertScore() throws SQLException {
+        scoreDAO.insert(1, 5);
 
         Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT s.score, u.username FROM scores s JOIN users u ON s.user_id = u.id");
+        ResultSet rs = stmt.executeQuery("SELECT s.scoreValue, u.username FROM scores s JOIN users u ON s.user_id = u.user_id");
         assertTrue(rs.next());
-        assertEquals(5, rs.getInt("score"));
-        assertEquals("Alice", rs.getString("username"));
+        assertEquals(5, rs.getInt("scoreValue"));
+        assertEquals(1, rs.getInt("user_id"));
     }
+
+    @Test
+    void testUpdateScore() throws SQLException {
+        int previousScore = scoreDAO.getScore(1);
+        int nextScore = 3;
+        int totalScore = newScore + previousScore;
+
+        assertEquals(5, previousScore);
+
+        scoreDAO.updateScore(1, totalScore);
+
+        assertNotEquals(scoreDAO.getScore(1), previousScore);
+        assertNotEquals(scoreDAO.getScore(1), nextScore);
+        assertEquals(scoreDAO.getScoe(1), totalScore);
+    }
+
+    @
 }

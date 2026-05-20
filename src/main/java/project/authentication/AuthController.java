@@ -15,21 +15,25 @@ import java.util.List;
 import java.util.Objects;
 
 public class AuthController {
+    //Data Access Object for User Data Model
     private static UserDAO userDAO;
 
+    //UI elements for Authentication GUI
     @FXML
     private ListView<User> usersListView;
-
     @FXML
     private TextField usernameTextField;
-
     @FXML
     private PasswordField passwordField;
-
     @FXML
     private Button registerBtn;
 
-
+    /**
+     * Public Constructor for Auth Controller
+     * Starts with an instantiation of UserDAO
+     * If there are no User rows, creates the first 15, inclluding sample users AI and Human
+     * new User(); are blank slots for you to register in
+     */
     public AuthController() throws Exception {
         userDAO = new UserDAO();
         if (userDAO.getAll().isEmpty())
@@ -56,6 +60,12 @@ public class AuthController {
         }
     }
 
+
+    /**
+     * Handles the selection of the User row in a ListView of Users
+     * Password field is blank
+     * First User row is an already registered User.
+     */
     private void selectUser(User user) {
         usersListView.getSelectionModel().select(user);
         usernameTextField.setText(user.getUsername());
@@ -64,6 +74,11 @@ public class AuthController {
         registerBtn.setText("Login");
     }
 
+    /**
+     * Renders each cell of the ListView
+     * If row contains a registered User, show their Username, disable Username field, and switch to Login button
+     * If row contains no user yet, allow Username field to be modified and switch text to Register
+     */
     private ListCell<User> renderCell(ListView<User> usersListView) {
         return new ListCell<>() {
             private void onUserSelected(MouseEvent mouseEvent) {
@@ -94,6 +109,10 @@ public class AuthController {
 
     }
 
+    /**
+     * Refresh the user ListView with the List of Users stored in the DAO
+     *  Select the first user row
+     */
     private void refreshList() {
         usersListView.getItems().clear();
         List<User> users = userDAO.getAll();
@@ -105,13 +124,20 @@ public class AuthController {
         }
     }
 
+    /**
+     * Initialises TableView GUI
+     */
     @FXML
     public void initialize() {
         usersListView.setCellFactory(this::renderCell);
         refreshList();
     }
 
-    private byte[] generateSalt()
+    /**
+     * Generates Salt for Hashing the Password
+     * A unique Salt is generated and assigned as a field to the User Data Model
+     */
+    byte[] generateSalt()
     {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[32];
@@ -119,7 +145,11 @@ public class AuthController {
         return salt;
     }
 
-    private static String hashPassword(String password, byte[] salt) throws Exception
+    /**
+     * Hashes Password using SHA-512.
+     * After password is hashed, it is then stored in the database
+     */
+    static String hashPassword(String password, byte[] salt) throws Exception
     {
         MessageDigest messageDigest = MessageDigest.getInstance("SHA-512");
         messageDigest.update(salt);
@@ -127,6 +157,11 @@ public class AuthController {
         return Base64.getEncoder().encodeToString(hashedPassword);
     }
 
+    /**
+     * Handles what happens if you click the Register / Login Button
+     * Eiher calls the Register function if it is a blank ListView row
+     * Or calls the Login function if there is already q registered User
+     */
     @FXML
     private void registerBtnClick() throws Exception {
         User selectedUser = usersListView.getSelectionModel().getSelectedItem();
@@ -137,6 +172,9 @@ public class AuthController {
         }
     }
 
+    /**
+     *  To 'Register' insert a Username, Salt, Password, and set Registered as True to an empty User class
+     */
     private void register(User selectedUser) throws Exception {
         selectedUser.setUsername(usernameTextField.getText());
         selectedUser.setSalt(generateSalt());
@@ -146,10 +184,17 @@ public class AuthController {
         refreshList();
     }
 
+    /**
+     *  Check if input password maches the User registration details after hashing
+     *  If it matches, allow entry into Desktop Pet application
+     *  If it doesn't match, do an Incorrect password alert
+     */
     protected void login(User selectedUser) throws Exception {
         String inputPassword = hashPassword(passwordField.getText(),selectedUser.getSalt());
         if (Objects.equals(inputPassword, selectedUser.getPassword()) )
         {
+            //Stores the Username and User_ID for access across other controller in a UserSingleton Class
+            //Simulates an Active User
             UserSingleton.getInstance().setup(selectedUser.getUser_id(), selectedUser.getUsername());
             Stage petStage = (Stage) registerBtn.getScene().getWindow();
             DesktopPet newDesktopPet = new DesktopPet();
@@ -162,5 +207,4 @@ public class AuthController {
             selectUser(selectedUser);
         }
     }
-
 }

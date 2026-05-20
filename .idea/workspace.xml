@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Merge branch 'master' into SCA&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0005.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0006.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0007.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0008.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0009.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0010.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0011.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0012.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0013.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0015.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0016.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0017.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0018.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0019.png&#10;#&#9;src/main/resources/ImageSequences/walkright/walkRight0020.png">
+      <change afterPath="$PROJECT_DIR$/src/main/java/project/authentication/MockAuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/test/UserAuthenticationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/project/authentication/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/authentication/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/BreakController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/BreakController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/authentication/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/authentication/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/authentication/UserSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/authentication/UserSingleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/model/ScoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/ScoreDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/model/SessionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/SessionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/model/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/UserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/PomodoroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/PomodoroController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/WorkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/WorkController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/project/pomodoro/break-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project/pomodoro/break-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/ScoreDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/ScoreDAOTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +107,7 @@
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;completeOverhaul&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/daniel/Downloads/Week4_AddressBookMockDB-main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/run/media/daniel/Resources/ExcelSheetsUnitedProject/src/main/test&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
@@ -113,11 +118,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/test" />
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\src\main\test" />
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\src\main\resources" />
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject" />
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\target" />
-      <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\src\main\resources\project\pomodoro" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/project.authentication" />
@@ -188,7 +193,8 @@
       <workItem from="1779174220445" duration="226000" />
       <workItem from="1779174523561" duration="1481000" />
       <workItem from="1779176461086" duration="215000" />
-      <workItem from="1779258748061" duration="2050000" />
+      <workItem from="1779258748061" duration="26305000" />
+      <workItem from="1779296484714" duration="792000" />
     </task>
     <task id="LOCAL-00001">
       <option name="closed" value="true" />

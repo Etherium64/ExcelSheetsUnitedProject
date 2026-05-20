@@ -7,12 +7,17 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.layout.VBox?>
 <HBox fx:id="hbox"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="project.desktoppet302.PetController"
       stylesheets="@/styles.css"
       style="-fx-background-color: transparent">
-
+    <VBox minWidth="150" spacing="5" translateX="5" translateY="5">
+        <Button fx:id="" styleClass="button1" text="Pomodoro" minWidth="150" minHeight="50" onAction="#pomodoroButton"/>
+        <Button fx:id="" styleClass="button1" text="Trivia" minWidth="150" minHeight="50" onAction="#triviaButton"/>
+        <Button styleClass="button1" text="Settings" minWidth="150" minHeight="50"/>
+    </VBox>
     <StackPane fx:id="imageBox">
 
         <ImageView fx:id="petImage"

@@ -276,7 +276,7 @@ public class PetController {
             petText.setText("Take a break to eat or drink!");
             petText.setVisible(true);
             // Reset timer so countdown starts again.
-            breakTimer = (System.currentTimeMillis());
+            breakTimer = breakNow;
             // After a while set the text invisible to finish the message delivery.
             Timeline timeline = new Timeline(
                     new KeyFrame(Duration.seconds(10), e -> petText.setVisible(false)));

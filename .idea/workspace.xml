@@ -7,8 +7,6 @@
     <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Merge branch 'SCA-3.0'&#10;&#10;# Conflicts:&#10;#&#9;.idea/compiler.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;Documents/githubCommits.txt&#10;#&#9;src/main/java/AnimationStates/animController.java&#10;#&#9;src/main/java/AnimationStates/animStates.java&#10;#&#9;src/main/java/project/desktoppet302/PetController.java&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0000.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0001.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0002.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0003.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0004.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0005.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0006.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0007.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0008.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0009.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0010.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0011.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0012.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0013.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0014.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0015.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0016.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0017.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0018.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0019.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0020.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0021.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0022.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0023.png&#10;#&#9;src/main/resources/ImageSequences/walkRight/walkRight0021.png&#10;#&#9;src/main/resources/ImageSequences/walkRight/walkRight0022.png&#10;#&#9;src/main/resources/ImageSequences/walkRight/walkRight0023.png&#10;#&#9;src/main/resources/ImageSequences/walkRight/walkRight0024.png">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/Pet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/project.desktoppet302/pet-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project.desktoppet302/pet-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="finalMerge" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -68,41 +66,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AnimationTestWindow.executor&quot;: &quot;Run&quot;,
-    &quot;Application.DesktopPet.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PomodoroTest.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;Application.animation test.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;JUnit.PomodoroTest.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.SessionDAOTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SessionTest.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.DesktopPet302 [org.apache.maven.plugins:maven-javadoc-plugin:3.4.0:javadoc].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.DesktopPet302 [package].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/daniel/IdeaProjects/ESU/ExcelSheetsUnitedProject&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AnimationTestWindow.executor": "Run",
+    "Application.DesktopPet.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MainApplication.executor": "Run",
+    "Application.PomodoroTest.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "Application.animation test.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.PomodoroTest.executor": "Debug",
+    "JUnit.SessionDAOTest.executor": "Run",
+    "JUnit.SessionTest.executor": "Run",
+    "Maven.DesktopPet302 [org.apache.maven.plugins:maven-javadoc-plugin:3.4.0:javadoc].executor": "Run",
+    "Maven.DesktopPet302 [package].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "AnimationSetUp",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/daniel/IdeaProjects/ESU/ExcelSheetsUnitedProject",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\src\main\test" />
@@ -122,7 +120,7 @@
       <recent name="project.pomodoro.controller" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.java in Project302">
     <configuration name="java in Project302" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project302" />
       <option name="TEST_OBJECT" value="directory" />
@@ -145,6 +143,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.java in Project302" />
+      <item itemvalue="JUnit.test in Project302" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.test in Project302" />

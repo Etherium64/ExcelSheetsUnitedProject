@@ -38,7 +38,7 @@ public class MainApplication extends Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(FXMLstring)));
         Scene scene = new Scene(root, 600, 300, Color.TRANSPARENT);
         scene.getStylesheets().add("/styles.css");
-        root.setStyle("-fx-background-color: transparent;");
+        //root.setStyle("-fx-background-color: transparent;");
         if (FXMLstring == "datab-view.fxml")
         {
             stage.setTitle("Sessions Database");
@@ -69,7 +69,7 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception{
         launch(stage, "work-view.fxml");
-        stage.initStyle(StageStyle.TRANSPARENT);
+        //stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
     }
 }

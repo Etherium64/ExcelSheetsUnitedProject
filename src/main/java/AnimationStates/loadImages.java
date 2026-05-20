@@ -4,91 +4,87 @@ import javafx.scene.image.Image;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Utility class for loading and scaling animation frame sequences from the application's
- * resource directory. Each animation sequence is expected to follow a strict naming pattern:
- *
- * <p><b>Example folder structure:</b>
- * <pre>
- * /ImageSequences/walkLeft/
- *     walkLeft0001.png
- *     walkLeft0002.png
- *     walkLeft0003.png
- *     ...
- * </pre>
- *
- * <p>The loader automatically:
- * <ul>
- *     <li>Builds filenames using a 4‑digit index (e.g., {@code walkLeft0001.png})</li>
- *     <li>Loads each frame until a missing file is encountered</li>
- *     <li>Scales each frame using a global scale factor</li>
- * </ul>
- *
- * <p>This class is used by the animation system to load all pet animations at startup.</p>
+ * Utility class for loading animation frame sequences from the resources folder.
+ * <p>
+ * This handles the whole "load every frame until we run out" pattern,
+ * plus scaling the images down so the pet isn't massive on screen.
  */
-
 public class loadImages {
 
-    // Scale factor applied to every loaded frame, was set when renders where 4k might need adjusting to fit your windows
     private static final double SCALE = 0.25;
 
+    /**
+     * Loads a sequence of animation frames from a folder.
+     * <p>
+     * The method expects files named like:
+     * <pre>
+     *     /folder/prefix0001.png
+     *     ...
+     * </pre>
+     * It keeps loading frames until it hits a missing file.
+     *
+     * @param folderPath The resource folder containing the animation frames.
+     * @return An array of scaled {@link Image} objects.
+     */
     public static Image[] loadSequence(String folderPath) {
 
-        /**
-         * Loads a sequence of images from a resource folder. The method assumes that the folder
-         * contains files named using the pattern:
-         *
-         * <p>{@code <prefix><index>.png}</p>
-         *
-         * where:
-         * <ul>
-         *     <li><b>prefix</b> is the folder name (e.g., {@code walkLeft})</li>
-         *     <li><b>index</b> is a 4‑digit number starting at 0001</li>
-         * </ul>
-         *
-         * <p>The method continues loading frames until a file is missing, which signals the end
-         * of the sequence.</p>
-         *
-         * @param folderPath the resource path to the animation folder
-         *                   (e.g., {@code "/ImageSequences/walkLeft"})
-         *
-         * @return an array of scaled {@link Image} objects representing the animation frames
-         */
-
-        ArrayList<Image> frames = new ArrayList<>();
+        List<Image> frames = new ArrayList<>();
         int index = 1;
 
-        String prefix = folderPath.substring(folderPath.lastIndexOf('/') + 1);
+        String prefix = extractPrefix(folderPath);
 
-        // Builds the expected filename using a fixed 4‑digit pattern: "%s/%s%04d.png"
         while (true) {
-            String fileName = String.format("%s/%s%04d.png", folderPath, prefix, index);
+            String fileName = buildFramePath(folderPath, prefix, index);
 
-            // Try to load the frame from resources
-            InputStream stream = loadImages.class.getResourceAsStream(fileName);
-
-            // If the frame doesn't exist, the sequence is finished
-            if (stream == null) {
+            Image scaled = loadAndScale(fileName);
+            if (scaled == null) {
                 System.out.println("Missing frame: " + fileName);
                 break;
             }
 
-            // Load and scale
-            Image original = new Image(stream);
-            double targetWidth = original.getWidth() * SCALE;
-            double targetHeight = original.getHeight() * SCALE;
-
-            // Reload for scaling
-            InputStream stream2 = loadImages.class.getResourceAsStream(fileName);
-            Image scaled = new Image(stream2, targetWidth, targetHeight, true, true);
-
-            // Store the scaled frame
             frames.add(scaled);
             index++;
         }
 
         System.out.println("Loaded " + frames.size() + " frames from " + folderPath);
         return frames.toArray(new Image[0]);
+    }
+
+    /**
+     * Pulls the last part of the folder path to use as the filename prefix.
+     * <p>
+     * Example: "/ImageSequences/idle" → "idle"
+     */
+    private static String extractPrefix(String folderPath) {
+        return folderPath.substring(folderPath.lastIndexOf('/') + 1);
+    }
+
+    /**
+    * Builds a full resource path for a specific frame number.
+    */
+    private static String buildFramePath(String folderPath, String prefix, int index) {
+        return String.format("%s/%s%04d.png", folderPath, prefix, index);
+    }
+
+    /**
+     * Loads an image from the classpath and scales it down.
+     *
+     * @param filePath The resource path to the image.
+     * @return A scaled {@link Image}, or null if the file doesn't exist.
+     */
+    private static Image loadAndScale(String filePath) {
+        InputStream stream = loadImages.class.getResourceAsStream(filePath);
+        if (stream == null) return null;
+
+        Image original = new Image(stream);
+        double width = original.getWidth() * SCALE;
+        double height = original.getHeight() * SCALE;
+
+        // Reload for scaling
+        InputStream stream2 = loadImages.class.getResourceAsStream(filePath);
+        return new Image(stream2, width, height, true, true);
     }
 }

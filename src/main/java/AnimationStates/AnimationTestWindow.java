@@ -19,7 +19,8 @@ public class AnimationTestWindow extends Application {
     @Override
     public void start(Stage stage) {
         petStates = new animStates();
-        petStates.setState(animStates.PetState.SHOCK);
+
+        petStates.setShock();
 
         canvas = new Canvas(600, 600);
         StackPane root = new StackPane(canvas);
@@ -33,7 +34,10 @@ public class AnimationTestWindow extends Application {
         new AnimationTimer() {
             @Override
             public void handle(long now) {
-                petStates.update();
+
+                // NEW: update now takes a timestamp
+                petStates.update(now);
+
                 draw();
             }
         }.start();

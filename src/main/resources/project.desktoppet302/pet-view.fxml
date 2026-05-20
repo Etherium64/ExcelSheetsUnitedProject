@@ -1,33 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.layout.VBox?>
-<HBox fx:id="hbox" xmlns:fx="http://javafx.com/fxml"
+<HBox fx:id="hbox"
+      xmlns:fx="http://javafx.com/fxml"
       fx:controller="project.desktoppet302.PetController"
-       styleClass=".root" stylesheets="@/styles.css">
-    <VBox minWidth="150" spacing="5" translateX="5" translateY="5">
-        <Button fx:id="timer" styleClass="button1" text="Pomodoro" minWidth="150" minHeight="50" onAction="#pomodoroButton"/>
-        <Button fx:id="trivia" styleClass="button1" text="Trivia" minWidth="150" minHeight="50" onAction="#triviaButton"/>
-        <Button styleClass="button1" text="Settings" minWidth="150" minHeight="50"/>
-    </VBox>
-    <VBox fx:id="imagebox">
-        <Text fx:id="pettext" styleClass=".text-field" text="lol" wrappingWidth="200" textAlignment="CENTER" visible="false"/>
-        <HBox alignment="CENTER" translateY="10" spacing="5">
-            <Button fx:id="yesbutton" styleClass="button2" text="Yes" minWidth="50" visible="false" onAction="#goButton"/>
-            <Button fx:id="nobutton" styleClass="button2" text="No" minWidth="50" visible="false" onAction="#returnButton"/>
-        </HBox>
-        <ImageView translateY="-25" fx:id="petImage" preserveRatio="true" fitWidth="200" fitHeight="200"
-                   onMouseClicked="#onImageClick" onMouseDragged="#onImageDrag">
+      stylesheets="@/styles.css"
+      style="-fx-background-color: transparent">
+
+    <StackPane fx:id="imagebox">
+
+        <ImageView fx:id="petImage"
+                   preserveRatio="true"
+                   fitWidth="175"
+                   fitHeight="175">
             <Image fx:id="pet" url="@/AnimationStates"/>
         </ImageView>
-    </VBox>
+
+        <HBox fx:id="optionsBox"
+              visible="false"
+              managed="true"
+              alignment="CENTER"
+              spacing="10"
+              translateY="-110">
+
+            <Button fx:id="timer"
+                    styleClass="button1"
+                    text="Pomodoro"
+                    minWidth="120"
+                    minHeight="45"
+                    onAction="#pomodoroButton"/>
+
+            <Button fx:id="trivia"
+                    styleClass="button1"
+                    text="Trivia"
+                    minWidth="120"
+                    minHeight="45"
+                    onAction="#triviaButton"/>
+
+            <Button styleClass="button1"
+                    text="Settings"
+                    minWidth="120"
+                    minHeight="45"/>
+        </HBox>
+
+        <Text fx:id="pettext"
+              styleClass="text-field"
+              text=""
+              wrappingWidth="240"
+              textAlignment="CENTER"
+              visible="false"
+              managed="false"
+              translateY="-70"/>
+
+        <HBox fx:id="promptButtons"
+              alignment="CENTER"
+              spacing="5"
+              visible="false"
+              managed="false"
+              translateY="-35">
+
+            <Button fx:id="yesbutton"
+                    styleClass="button2"
+                    text="Yes"
+                    minWidth="50"
+                    onAction="#goButton"/>
+
+            <Button fx:id="nobutton"
+                    styleClass="button2"
+                    text="No"
+                    minWidth="50"
+                    onAction="#returnButton"/>
+        </HBox>
+
+    </StackPane>
 
 </HBox>

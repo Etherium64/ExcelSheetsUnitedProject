@@ -45,11 +45,11 @@ public class Main extends Application {
         scene.getStylesheets().add("/styles.css");
 
         // Ensure the root node doesn't have a default background
-        root.setStyle("-fx-background-color: transparent;");
+        //root.setStyle("-fx-background-color: transparent;");
 
         stage.setTitle("Trivia Game");
         stage.setScene(scene);
-        stage.initStyle(StageStyle.TRANSPARENT);
+        //stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
     }
 

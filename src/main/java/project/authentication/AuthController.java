@@ -111,7 +111,7 @@ public class AuthController {
         refreshList();
     }
 
-    public byte[] generateSalt()
+    private byte[] generateSalt()
     {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[32];
@@ -119,7 +119,7 @@ public class AuthController {
         return salt;
     }
 
-    public static String hashPassword(String password, byte[] salt) throws Exception
+    private static String hashPassword(String password, byte[] salt) throws Exception
     {
         MessageDigest messageDigest = MessageDigest.getInstance("SHA-512");
         messageDigest.update(salt);
@@ -127,7 +127,8 @@ public class AuthController {
         return Base64.getEncoder().encodeToString(hashedPassword);
     }
 
-    public void registerBtnClick() throws Exception {
+    @FXML
+    private void registerBtnClick() throws Exception {
         User selectedUser = usersListView.getSelectionModel().getSelectedItem();
         if (!selectedUser.getRegistered()) {
             register(selectedUser);
@@ -136,7 +137,7 @@ public class AuthController {
         }
     }
 
-    public void register(User selectedUser) throws Exception {
+    private void register(User selectedUser) throws Exception {
         selectedUser.setUsername(usernameTextField.getText());
         selectedUser.setSalt(generateSalt());
         selectedUser.setPassword(hashPassword(passwordField.getText(),selectedUser.getSalt()));
@@ -145,7 +146,7 @@ public class AuthController {
         refreshList();
     }
 
-    public void login(User selectedUser) throws Exception {
+    protected void login(User selectedUser) throws Exception {
         String inputPassword = hashPassword(passwordField.getText(),selectedUser.getSalt());
         if (Objects.equals(inputPassword, selectedUser.getPassword()) )
         {

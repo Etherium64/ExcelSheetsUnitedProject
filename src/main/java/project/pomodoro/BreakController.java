@@ -63,11 +63,22 @@ public class BreakController {
     private Button closeBtn;
 
 
-    public void rBtnDisable() {
+    private void rBtnDisable() {
         rBtn1.setDisable(true);
         rBtn2.setDisable(true);
         rBtn3.setDisable(true);
         rBtn4.setDisable(true);
+    }
+
+    protected void transition(Button button, String FXMLstring) throws Exception {
+        if (taskIsSet) {
+            PomodoroController.getPomodoroController().unfinishedPomodoro();
+            taskIsSet = false;
+            buttonPaused = true;
+        }
+        Stage newStage = (Stage) button.getScene().getWindow();
+        Pomodoro newPomodoro = new Pomodoro();
+        newPomodoro.launch(newStage, FXMLstring);
     }
 
     /**
@@ -77,7 +88,7 @@ public class BreakController {
      */
 
     @FXML
-    public void startPauseBtnClick() {
+    protected void startPauseBtnClick() {
         if (!buttonPaused) {
             if (!taskIsSet) {
                 //If session Task has not been set yet, extract session Task string from selected RadioButton
@@ -100,16 +111,6 @@ public class BreakController {
         PomodoroController.getPomodoroController().runPomodoro();
     }
 
-    public void transition(Button button, String FXMLstring) throws Exception {
-        if (taskIsSet) {
-            PomodoroController.getPomodoroController().unfinishedPomodoro();
-            taskIsSet = false;
-            buttonPaused = true;
-        }
-        Stage newStage = (Stage) button.getScene().getWindow();
-        Pomodoro newPomodoro = new Pomodoro();
-        newPomodoro.launch(newStage, FXMLstring);
-    }
     /**
      * Handles the click event for the Work button.
      * Switches the scene to the Rest view  with a 25-minute duration.
@@ -130,7 +131,7 @@ public class BreakController {
      */
 
     @FXML
-    public void resetBtnClick() throws Exception {
+    protected void resetBtnClick() throws Exception {
         transition(resetBtn, "break-view.fxml");
     }
 
@@ -141,12 +142,12 @@ public class BreakController {
      * @throws Exception if there is an error loading the FXML or switching scenes
      */
     @FXML
-    public void databBtnClick() throws Exception {
+    protected void databBtnClick() throws Exception {
         transition(databBtn, "datab-view.fxml");
     }
 
     @FXML
-    public void closeBtnClick() {
+    protected void closeBtnClick() {
         Stage stage = (Stage) closeBtn.getScene().getWindow();
         stage.close();
     }

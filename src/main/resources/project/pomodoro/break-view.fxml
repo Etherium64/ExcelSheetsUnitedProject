@@ -53,7 +53,7 @@
                 <Region prefHeight="80"/>
                 <HBox alignment="CENTER" spacing="10">
                     <Button fx:id="workBtn"
-                            text="BREAK"
+                            text="WORK"
                             onAction="#workBtnClick"
                     />
                     <Label fx:id="timerLabel"

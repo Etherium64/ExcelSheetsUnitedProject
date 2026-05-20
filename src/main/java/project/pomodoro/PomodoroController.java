@@ -135,7 +135,7 @@ public class PomodoroController implements Initializable {
         return String.format("%02d:%02d", minutes, seconds);
     }
 
-    public Timestamp captureTimestamp()
+    private Timestamp captureTimestamp()
     {
         LocalDateTime now = LocalDateTime.now();
         return Timestamp.valueOf(now);
@@ -304,13 +304,13 @@ public class PomodoroController implements Initializable {
      * Belongs to TableView FXML
      */
     @FXML
-    public void returnBtnClick() throws Exception {
+    protected void returnBtnClick() throws Exception {
         Stage newStage = (Stage) returnBtn.getScene().getWindow();
         Pomodoro newScene = new Pomodoro();
         newScene.launch(newStage, "work-view.fxml");
     }
 
-    public void refreshTable()
+    private void refreshTable()
     {
         tableView.getItems().clear();
         int user_id = UserSingleton.getInstance().getUser_id();
@@ -325,7 +325,7 @@ public class PomodoroController implements Initializable {
      *  Handles CRUD create and read operations
      */
     @FXML
-    public void createBtnClick() {
+    private void createBtnClick() {
         sessionDAO.insert(new Session(captureTimestamp(), "", "", "00:00", false, UserSingleton.getInstance().getUser_id()));
         refreshTable();
     }
@@ -336,7 +336,7 @@ public class PomodoroController implements Initializable {
      *  Handles CRUD delete and read operations
      */
     @FXML
-    public void deleteBtnClick() {
+    private void deleteBtnClick() {
         Session selectedSession = tableView.getSelectionModel().getSelectedItem();
         if (selectedSession != null)
         {

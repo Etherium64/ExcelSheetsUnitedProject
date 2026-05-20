@@ -10,12 +10,22 @@ import javafx.util.Duration;
 
 import java.util.Random;
 
+/**
+ * JavaFX  class responsible for managing the different animation states for the pet
+ * when idling or after an action is taken.
+ *
+ * @author Jacob Farrell
+ */
 public class Pet {
 
-    // stores the pet animation states
+    /**
+     * Animation state of the pet.
+     */
     private final animStates petStates;
 
-    // stores the image view used to show the pet
+    /**
+     * Displayed image of the pet.
+     */
     private final ImageView petImage;
 
     // check if moving
@@ -23,7 +33,11 @@ public class Pet {
     private long lastInteractionTime = System.currentTimeMillis();
     private static final long SAD_IDLE_DELAY = 10_000; // 10 seconds
 
-    // creates the pet object
+    /**
+     * Constructs a new Pet with the specified animation state and image.
+     * @param petStates The animation state of the pet.
+     * @param petImage The displayed image of the pet.
+     */
     public Pet(animStates petStates, ImageView petImage) {
         this.petStates = petStates;
         this.petImage = petImage;
@@ -76,27 +90,31 @@ public class Pet {
     public void setSadIdle()  { petStates.setSadIdle(); }
 
 
-    // added by nate moves pet randomly left or right
+    /**
+     * Move the pet left or right from its current position and adjusting its state while it does so.
+     * @param desktopPet The pet that is moving.
+     * @param movePet The animation transition that moves the pet.
+     * @param bounds The bounds of the screen.
+     * @param imageBox The vertical box containing the pet and relevant text boxes and buttons.
+     */
     public static void movePet(Pet desktopPet,
-                               TranslateTransition move,
-                               long then,
-                               long now,
+                               TranslateTransition movePet,
                                Rectangle2D bounds,
-                               StackPane imagebox) {
+                               StackPane imageBox) {
 
         desktopPet.isMoving = true;
 
         Random random = new Random();
         double x = random.nextInt(600) - 300;
 
-        if ((imagebox.getTranslateX() + x) < bounds.getMinX()) {
+        if ((imageBox.getTranslateX() + x) < bounds.getMinX()) {
             x = -x;
-        } else if ((imagebox.getTranslateX() + x) > bounds.getMaxX() - imagebox.getWidth() * 1.5) {
+        } else if ((imageBox.getTranslateX() + x) > bounds.getMaxX() - imageBox.getWidth() * 1.5) {
             x = -x;
         }
 
-        move.setDuration(Duration.seconds(2));
-        move.setByX(x);
+        movePet.setDuration(Duration.seconds(2));
+        movePet.setByX(x);
 
         if (x > 0) {
             desktopPet.setWalkLeft();
@@ -104,11 +122,11 @@ public class Pet {
             desktopPet.setWalkRight();
         }
 
-        move.setOnFinished(e -> {
+        movePet.setOnFinished(e -> {
             desktopPet.isMoving = false;
         });
 
-        move.play();
+        movePet.play();
     }
 }
 

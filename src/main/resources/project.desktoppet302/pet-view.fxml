@@ -13,7 +13,7 @@
       stylesheets="@/styles.css"
       style="-fx-background-color: transparent">
 
-    <StackPane fx:id="imagebox">
+    <StackPane fx:id="imageBox">
 
         <ImageView fx:id="petImage"
                    preserveRatio="true"
@@ -49,7 +49,7 @@
                     minHeight="45"/>
         </HBox>
 
-        <Text fx:id="pettext"
+        <Text fx:id="petText"
               styleClass="text-field"
               text=""
               wrappingWidth="240"

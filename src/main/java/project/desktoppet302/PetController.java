@@ -18,44 +18,105 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+/**
+ * Controller class for all interactions for the menu and the companion pet.
+ * Includes clicking and dragging the pet, idle movement and animation changes for the pet,
+ * and initiation of pomodoro and trivia applications.
+ *
+ * @author Jacob Farrell
+ */
 public class PetController {
+
 
     @FXML public Button trivia;
     @FXML public Button timer;
+    /**
+     * Image of the pet displayed in fxml.
+     */
     @FXML public Image pet;
-
+    /**
+     * Box for the pet and menu in the application in fxml.
+     */
     @FXML private HBox hbox;
-    @FXML private StackPane imagebox;
+    /**
+     * Box for the pet and an associated text box and buttons in fxml.
+     */
+    @FXML private StackPane imageBox;
+
     @FXML private HBox optionsBox;
+
     @FXML private HBox promptButtons;
-    @FXML private Text pettext;
+    /**
+     * Text displayed above the pet in fxml.
+     */
+    @FXML private Text petText;
+    /**
+     * Yes button in fxml for answering the pet.
+     */
     @FXML private Button yesbutton;
+    /**
+     * No button in fxml for answering the pet.
+     */
     @FXML private Button nobutton;
+    /**
+     * ImageView of the pet in fxml.
+     */
     @FXML private ImageView petImage;
-
+    /**
+     * Value representing the bounds of the screen.
+     */
     private final Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
-
-    private final TranslateTransition move = new TranslateTransition();
-    private AnimationTimer moving;
+    /**
+     * Translation transition for the pet for movement.
+     */
+    private final TranslateTransition movePet = new TranslateTransition();
+    /**
+     * Animation timer for pet when idle.
+     */
+    private AnimationTimer idlePet;
+    /**
+     * Long number for recording time between pet movement.
+     */
     private long then;
-
+    /**
+     * Animation state for the pet.
+     */
     private final animStates petStates = new animStates();
+    /**
+     * Pet object representing the pet in the application.
+     */
     private Pet desktopPet;
-
+    /**
+     * Boolean to determine if the trivia button was clicked.
+     */
     private boolean isTriviaPrompt = false;
-    private boolean ispomodoroPrompt = false;
-
+    /**
+     * Boolean to determine the pomodoro button was clicked.
+     */
+    private boolean isPomodoroPrompt = false;
+    /**
+     * Double representing the change in position from the start of a mouse drag to present.
+     */
     private double mouseX;
+    /**
+     * Long number for recording time between a message for a break.
+     */
+    private long breakTimer;
+
     private double dragStartSceneX;
     private double dragStartTranslateX;
     private boolean wasDragged = false;
 
     private static final double DRAG_THRESHOLD = 5;
 
+    /**
+     * Handles initialisation actions for variables walkPet, desktopPet, then, breakTimer,
+     * and idlePet. Calls for idling method after stage is set.
+     */
     @FXML
     public void initialize() {
         // set the whole pet stack as the moving node
-        move.setNode(imagebox);
+        movePet.setNode(imageBox);
 
         // create the pet object
         desktopPet = new Pet(petStates, petImage);
@@ -68,16 +129,16 @@ public class PetController {
 
         // record starting time
         then = System.currentTimeMillis();
-
+        breakTimer = System.currentTimeMillis();
         // create automatic idle movement timer
-        moving = new AnimationTimer() {
+        idlePet = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 now = System.currentTimeMillis();
 
                 // move every 8 seconds
                 if (now - then > 8000) {
-                    Pet.movePet(desktopPet, move, then, now, bounds, imagebox);
+                    Pet.movePet(desktopPet, movePet, bounds, imageBox);
 
                     then = now;
 
@@ -91,7 +152,7 @@ public class PetController {
         };
 
         // click the pet to open or close the menu
-        imagebox.setOnMouseClicked(mouseClick -> {
+        imageBox.setOnMouseClicked(mouseClick -> {
             // ignore button clicks
             if (mouseClick.getTarget() instanceof Button) {
                 return;
@@ -104,8 +165,8 @@ public class PetController {
             }
 
             // stop movement while interacting
-            moving.stop();
-            move.stop();
+            idlePet.stop();
+            movePet.stop();
 
             // toggle the main options menu
             boolean shouldShow = !optionsBox.isVisible();
@@ -114,8 +175,8 @@ public class PetController {
             optionsBox.setManaged(true);
 
             // close confirmation prompt when toggling the main menu
-            pettext.setVisible(false);
-            pettext.setManaged(false);
+            petText.setVisible(false);
+            petText.setManaged(false);
 
             promptButtons.setVisible(false);
             promptButtons.setManaged(false);
@@ -131,19 +192,19 @@ public class PetController {
         });
 
         // remember where the mouse started
-        imagebox.setOnMousePressed(mousePress -> {
+        imageBox.setOnMousePressed(mousePress -> {
             // ignore button presses
             if (mousePress.getTarget() instanceof Button) {
                 return;
             }
 
             dragStartSceneX = mousePress.getSceneX();
-            dragStartTranslateX = imagebox.getTranslateX();
+            dragStartTranslateX = imageBox.getTranslateX();
             wasDragged = false;
         });
 
         // drag the whole pet stack so the popup follows
-        imagebox.setOnMouseDragged(mouseDrag -> {
+        imageBox.setOnMouseDragged(mouseDrag -> {
             // ignore dragging from buttons
             if (mouseDrag.getTarget() instanceof Button) {
                 return;
@@ -160,15 +221,15 @@ public class PetController {
             wasDragged = true;
 
             // stop automatic movement while dragging
-            moving.stop();
-            move.stop();
+            idlePet.stop();
+            movePet.stop();
 
             // calculate new pet position
             mouseX = dragStartTranslateX + dragDistance;
 
             // calculate screen bounds
             double leftScreenEdge = bounds.getMinX();
-            double rightScreenEdge = bounds.getMaxX() - imagebox.getWidth() * 1.5;
+            double rightScreenEdge = bounds.getMaxX() - imageBox.getWidth() * 1.5;
 
             // clamp to left side
             if (mouseX < leftScreenEdge) {
@@ -181,11 +242,11 @@ public class PetController {
             }
 
             // move pet, options, and prompt together
-            imagebox.setTranslateX(mouseX);
+            imageBox.setTranslateX(mouseX);
         });
 
         // only restart idle after an actual drag
-        imagebox.setOnMouseReleased(mouseRelease -> {
+        imageBox.setOnMouseReleased(mouseRelease -> {
             // ignore button releases
             if (mouseRelease.getTarget() instanceof Button) {
                 return;
@@ -200,16 +261,37 @@ public class PetController {
         // start idle after fxml finishes loading
         Platform.runLater(this::idling);
     }
-
+    /**
+     * Handles the actions of the pet when it is not being interacted with by the user.
+     * Includes telling the user to take a break if a certain period of time has passed,
+     * and the pet moving to the left or right on the screen randomly.
+     */
     @FXML
     protected void idling() {
+        // Get current time of system.
+        long breakNow = System.currentTimeMillis();
+        // Check that a certain period of time has passed and no other text is above the pet.
+        if (breakNow - breakTimer > 8000 && !isTriviaPrompt && !isPomodoroPrompt) {
+            // Set text to a break message and make it visible.
+            petText.setText("Take a break to eat or drink!");
+            petText.setVisible(true);
+            // Reset timer so countdown starts again.
+            breakTimer = (System.currentTimeMillis());
+            // After a while set the text invisible to finish the message delivery.
+            Timeline timeline = new Timeline(
+                    new KeyFrame(Duration.seconds(10), e -> petText.setVisible(false)));
+            timeline.playFromStart();
+        }
         // set pet to idle animation
         desktopPet.setIdle();
 
         // start automatic movement
-        moving.start();
+        idlePet.start();
     }
-
+    /**
+     * Handles when the user selects the trivia button. Sets buttons and text visible
+     * and text asks users to confirm intent to start trivia using the buttons.
+     */
     @FXML
     protected void triviaButton() {
         // hide options but keep it managed to avoid layout shifting
@@ -217,9 +299,9 @@ public class PetController {
         optionsBox.setManaged(true);
 
         // show trivia prompt
-        pettext.setText("Do you want to play trivia with me?");
-        pettext.setVisible(true);
-        pettext.setManaged(true);
+        petText.setText("Do you want to play trivia with me?");
+        petText.setVisible(true);
+        petText.setManaged(true);
 
         promptButtons.setVisible(true);
         promptButtons.setManaged(true);
@@ -228,9 +310,12 @@ public class PetController {
         nobutton.setVisible(true);
 
         isTriviaPrompt = true;
-        ispomodoroPrompt = false;
+        isPomodoroPrompt = false;
     }
-
+    /**
+     * Handles when the user selects the pomodoro button. Sets buttons and text visible
+     * and text asks users to confirm intent to start pomodoro using the buttons.
+     */
     @FXML
     protected void pomodoroButton() {
         // hide options but keep it managed to avoid layout shifting
@@ -238,9 +323,9 @@ public class PetController {
         optionsBox.setManaged(true);
 
         // show pomodoro prompt
-        pettext.setText("Want to start Pomodoro timer?");
-        pettext.setVisible(true);
-        pettext.setManaged(true);
+        petText.setText("Want to start Pomodoro timer?");
+        petText.setVisible(true);
+        petText.setManaged(true);
 
         promptButtons.setVisible(true);
         promptButtons.setManaged(true);
@@ -248,15 +333,19 @@ public class PetController {
         yesbutton.setVisible(true);
         nobutton.setVisible(true);
 
-        ispomodoroPrompt = true;
+        isPomodoroPrompt = true;
         isTriviaPrompt = false;
     }
-
+    /**
+     * Handles when the user selects yes to launch the trivia or pomodoro application.
+     * Determines whether the pomodoro or trivia button was selected and launches the
+     * relevant application. Sets all text and buttons above the pet to invisible.
+     */
     @FXML
     private void goButton() {
         if (isTriviaPrompt) {
             try {
-                Stage primaryStage = (Stage) pettext.getScene().getWindow();
+                Stage primaryStage = (Stage) petText.getScene().getWindow();
 
                 Stage triviaStage = new Stage();
                 new project.Trivia.Main().start(triviaStage);
@@ -273,9 +362,9 @@ public class PetController {
             hideAllPopups();
         }
 
-        else if (ispomodoroPrompt) {
+        else if (isPomodoroPrompt) {
             try {
-                Stage primaryStage = (Stage) pettext.getScene().getWindow();
+                Stage primaryStage = (Stage) petText.getScene().getWindow();
 
                 Stage pomodoroStage = new Stage();
                 new project.pomodoro.MainApplication().start(pomodoroStage);
@@ -288,15 +377,18 @@ public class PetController {
                 e.printStackTrace();
             }
 
-            ispomodoroPrompt = false;
+            isPomodoroPrompt = false;
             hideAllPopups();
         }
     }
-
+    /**
+     * Handles when the user selects not to start the trivia or pomodoro application after
+     * being asked by the pet. Sets all text and buttons to be invisible.
+     */
     @FXML
     protected void returnButton() {
         isTriviaPrompt = false;
-        ispomodoroPrompt = false;
+        isPomodoroPrompt = false;
 
         hideAllPopups();
 
@@ -309,8 +401,8 @@ public class PetController {
         optionsBox.setManaged(true);
 
         // hide prompt text
-        pettext.setVisible(false);
-        pettext.setManaged(false);
+        petText.setVisible(false);
+        petText.setManaged(false);
 
         // hide prompt buttons
         promptButtons.setVisible(false);

@@ -11,11 +11,29 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
+/**
+ * A JavaFX application that displays a draggable desktop pet on the screen.
+ * The pet appears as a transparent window containing an image, locked to the bottom
+ * of the primary display. Users can drag the pet horizontally across the screen,
+ * but its movement is constrained to stay within the screen bounds.
+ */
 public class DesktopPet extends Application {
 
-    // gets the usable screen area
+    /**
+     * Visual bounds of the screen.
+     */
     Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
 
+
+    /**
+     * Initializes and displays the desktop pet window when the application starts.
+     * Sets up the pet image from the resources, configures the transparent window,
+     * positions it at the bottom of the screen, and enables horizontal dragging
+     * with screen edge constraints.
+     *
+     * @param stage The primary stage for this application, onto which the scene is set.
+     * @throws IOException If the pet image resource cannot be loaded.
+     */
     @Override
     public void start(Stage stage) throws IOException {
 

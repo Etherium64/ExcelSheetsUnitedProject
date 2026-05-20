@@ -53,10 +53,10 @@ public class DesktopPet extends Application {
         stage.setWidth(bounds.getWidth());
 
         // make it tall enough so the menu above the pet can be seen
-        stage.setHeight(bounds.getHeight() / 3);
+        stage.setHeight(bounds.getHeight() / 6);
 
         // lock the window to the bottom of the screen
-        stage.setY(bounds.getMaxY() - stage.getHeight() * 0.75);
+        stage.setY(bounds.getMaxY() - stage.getHeight());
         stage.setX(bounds.getMinX());
 
         // remove normal window borders

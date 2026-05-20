@@ -83,6 +83,7 @@
 .text-field {
     -fx-font-size: 14px;
     -fx-font-family: CenturyOldStyle;
+    -fx-background-color: #F2F4F7;
 }
 
 .progress-bar > .bar {

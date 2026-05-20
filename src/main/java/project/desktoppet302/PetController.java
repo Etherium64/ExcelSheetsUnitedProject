@@ -9,10 +9,12 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -41,7 +43,7 @@ public class PetController {
     /**
      * Box for the pet and an associated text box and buttons in fxml.
      */
-    @FXML private StackPane imageBox;
+    @FXML private VBox imageBox;
 
     @FXML private HBox optionsBox;
 
@@ -50,6 +52,10 @@ public class PetController {
      * Text displayed above the pet in fxml.
      */
     @FXML private Text petText;
+    /**
+     * Text field displayed above the pet in fxml.
+     */
+    @FXML private TextField textField;
     /**
      * Yes button in fxml for answering the pet.
      */
@@ -125,7 +131,7 @@ public class PetController {
         hideAllPopups();
 
         // keep options managed so opening it does not shift the pet
-        optionsBox.setManaged(true);
+//        optionsBox.setManaged(true);
 
         // record starting time
         then = System.currentTimeMillis();
@@ -168,21 +174,21 @@ public class PetController {
             idlePet.stop();
             movePet.stop();
 
-            // toggle the main options menu
-            boolean shouldShow = !optionsBox.isVisible();
-
-            optionsBox.setVisible(shouldShow);
-            optionsBox.setManaged(true);
-
-            // close confirmation prompt when toggling the main menu
-            petText.setVisible(false);
-            petText.setManaged(false);
-
-            promptButtons.setVisible(false);
-            promptButtons.setManaged(false);
-
-            yesbutton.setVisible(false);
-            nobutton.setVisible(false);
+//            // toggle the main options menu
+//            boolean shouldShow = !optionsBox.isVisible();
+//
+//            optionsBox.setVisible(shouldShow);
+//            optionsBox.setManaged(true);
+//
+//            // close confirmation prompt when toggling the main menu
+//            petText.setVisible(false);
+//            petText.setManaged(false);
+//
+//            promptButtons.setVisible(false);
+//            promptButtons.setManaged(false);
+//
+//            yesbutton.setVisible(false);
+//            nobutton.setVisible(false);
 
             // play click animation
             desktopPet.setShock();
@@ -229,7 +235,7 @@ public class PetController {
 
             // calculate screen bounds
             double leftScreenEdge = bounds.getMinX();
-            double rightScreenEdge = bounds.getMaxX() - imageBox.getWidth() ;
+            double rightScreenEdge = bounds.getMaxX() - imageBox.getWidth() * 1.25;
 
             // clamp to left side
             if (mouseX < leftScreenEdge) {
@@ -271,10 +277,10 @@ public class PetController {
         // Get current time of system.
         long breakNow = System.currentTimeMillis();
         // Check that a certain period of time has passed and no other text is above the pet.
-        if (breakNow - breakTimer > 8000 && !isTriviaPrompt && !isPomodoroPrompt) {
+        if (breakNow - breakTimer > 24000 && !isTriviaPrompt && !isPomodoroPrompt) {
             // Set text to a break message and make it visible.
-            petText.setText("Take a break to eat or drink!");
-            petText.setVisible(true);
+            textField.setText("Take a break to eat or drink!");
+            textField.setVisible(true);
             // Reset timer so countdown starts again.
             breakTimer = breakNow;
             // After a while set the text invisible to finish the message delivery.
@@ -295,13 +301,13 @@ public class PetController {
     @FXML
     protected void triviaButton() {
         // hide options but keep it managed to avoid layout shifting
-        optionsBox.setVisible(false);
-        optionsBox.setManaged(true);
+//        optionsBox.setVisible(false);
+//        optionsBox.setManaged(true);
 
         // show trivia prompt
-        petText.setText("Do you want to play trivia with me?");
-        petText.setVisible(true);
-        petText.setManaged(true);
+        textField.setText("Do you want to play trivia with me?");
+        textField.setVisible(true);
+        textField.setManaged(true);
 
         promptButtons.setVisible(true);
         promptButtons.setManaged(true);
@@ -319,13 +325,13 @@ public class PetController {
     @FXML
     protected void pomodoroButton() {
         // hide options but keep it managed to avoid layout shifting
-        optionsBox.setVisible(false);
-        optionsBox.setManaged(true);
+//        optionsBox.setVisible(false);
+//        optionsBox.setManaged(true);
 
         // show pomodoro prompt
-        petText.setText("Want to start Pomodoro timer?");
-        petText.setVisible(true);
-        petText.setManaged(true);
+        textField.setText("Want to start Pomodoro timer?");
+        textField.setVisible(true);
+        textField.setManaged(true);
 
         promptButtons.setVisible(true);
         promptButtons.setManaged(true);
@@ -397,16 +403,16 @@ public class PetController {
 
     private void hideAllPopups() {
         // hide option menu but keep it managed to stop layout jumps
-        optionsBox.setVisible(false);
-        optionsBox.setManaged(true);
+//        optionsBox.setVisible(false);
+//        optionsBox.setManaged(true);
 
         // hide prompt text
-        petText.setVisible(false);
-        petText.setManaged(false);
+        textField.setVisible(false);
+        textField.setManaged(true);
 
         // hide prompt buttons
         promptButtons.setVisible(false);
-        promptButtons.setManaged(false);
+        promptButtons.setManaged(true);
 
         yesbutton.setVisible(false);
         nobutton.setVisible(false);

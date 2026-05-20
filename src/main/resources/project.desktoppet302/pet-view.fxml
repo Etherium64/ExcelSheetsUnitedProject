@@ -8,67 +8,44 @@
 <?import javafx.scene.text.Text?>
 
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
 <HBox fx:id="hbox"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="project.desktoppet302.PetController"
       stylesheets="@/styles.css"
       style="-fx-background-color: transparent">
     <VBox minWidth="150" spacing="5" translateX="5" translateY="5">
-        <Button fx:id="" styleClass="button1" text="Pomodoro" minWidth="150" minHeight="50" onAction="#pomodoroButton"/>
-        <Button fx:id="" styleClass="button1" text="Trivia" minWidth="150" minHeight="50" onAction="#triviaButton"/>
-        <Button styleClass="button1" text="Settings" minWidth="150" minHeight="50"/>
+        <Button fx:id="timer" styleClass="button1" text="Timer" minWidth="150" minHeight="50" onAction="#pomodoroButton"/>
+        <Button fx:id="trivia" styleClass="button1" text="Trivia" minWidth="150" minHeight="50" onAction="#triviaButton"/>
+        <Button styleClass="button1" text="Log Out" minWidth="150" minHeight="50"/>
     </VBox>
-    <StackPane fx:id="imageBox">
+    <VBox fx:id="imageBox">
 
-        <ImageView fx:id="petImage"
-                   preserveRatio="true"
-                   fitWidth="175"
-                   fitHeight="175">
-            <Image fx:id="pet" url="@/AnimationStates"/>
-        </ImageView>
+        <TextField fx:id="textField"
+                   styleClass="text-field"
+                   visible="false"
+                   minWidth="250"
+                   translateX="-40"
+                   alignment="BOTTOM_CENTER"
+        >
+            <Text fx:id="petText"
+                  styleClass="text-field"
+                  text=""
+                  wrappingWidth="240"
+                  textAlignment="CENTER"
+                  visible="true"
+                  managed="true"
+            />
+        </TextField>
 
-        <HBox fx:id="optionsBox"
-              visible="false"
-              managed="true"
-              alignment="CENTER"
-              spacing="10"
-              translateY="-110">
-
-            <Button fx:id="timer"
-                    styleClass="button1"
-                    text="Pomodoro"
-                    minWidth="120"
-                    minHeight="45"
-                    onAction="#pomodoroButton"/>
-
-            <Button fx:id="trivia"
-                    styleClass="button1"
-                    text="Trivia"
-                    minWidth="120"
-                    minHeight="45"
-                    onAction="#triviaButton"/>
-
-            <Button styleClass="button1"
-                    text="Settings"
-                    minWidth="120"
-                    minHeight="45"/>
-        </HBox>
-
-        <Text fx:id="petText"
-              styleClass="text-field"
-              text=""
-              wrappingWidth="240"
-              textAlignment="CENTER"
-              visible="false"
-              managed="false"
-              translateY="-70"/>
 
         <HBox fx:id="promptButtons"
               alignment="CENTER"
               spacing="5"
               visible="false"
-              managed="false"
-              translateY="-35">
+              managed="true"
+              translateX="-45"
+        >
 
             <Button fx:id="yesbutton"
                     styleClass="button2"
@@ -80,9 +57,22 @@
                     styleClass="button2"
                     text="No"
                     minWidth="50"
+                    maxHeight="15"
                     onAction="#returnButton"/>
         </HBox>
+        <ImageView fx:id="petImage"
+                   preserveRatio="true"
+                   fitWidth="175"
+                   fitHeight="175"
+        >
 
-    </StackPane>
+            <Image fx:id="pet" url="@/AnimationStates"/>
+        </ImageView>
+
+
+
+
+
+    </VBox>
 
 </HBox>

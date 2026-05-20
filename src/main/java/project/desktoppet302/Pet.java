@@ -6,6 +6,7 @@ import javafx.animation.TranslateTransition;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.util.Random;
@@ -134,7 +135,7 @@ public class Pet {
     public static void movePet(Pet desktopPet,
                                TranslateTransition movePet,
                                Rectangle2D bounds,
-                               StackPane imageBox) {
+                               VBox imageBox) {
 
         desktopPet.isMoving = true;
 
@@ -143,7 +144,7 @@ public class Pet {
 
         if ((imageBox.getTranslateX() + x) < bounds.getMinX()) {
             x = -x;
-        } else if ((imageBox.getTranslateX() + x) > bounds.getMaxX() - imageBox.getWidth()) {
+        } else if ((imageBox.getTranslateX() + x) > bounds.getMaxX() - imageBox.getWidth() * 2) {
             x = -x;
         }
 

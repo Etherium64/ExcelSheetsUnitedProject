@@ -16,10 +16,10 @@ import javafx.scene.image.Image;
 public class animStates {
 
     /** The state machine that actually manages which animation is active. */
-    private final AnimationStateMachine stateMachine;
+    public final AnimationStateMachine stateMachine;
 
     /** All the different animation states the pet can use. */
-    private final AnimationState idle;
+    public final AnimationState idle;
     private final AnimationState walkLeft;
     private final AnimationState walkRight;
     private final AnimationState shock;
@@ -38,6 +38,9 @@ public class animStates {
     public boolean isSadIdle() {
         return stateMachine.getCurrentState() == sadIdle;
     }
+
+
+
 
     /** Whether the pet is currently in the shock animation. */
     private boolean shocking = false;

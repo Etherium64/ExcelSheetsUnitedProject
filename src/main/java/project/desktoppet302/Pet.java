@@ -5,7 +5,6 @@ import javafx.animation.AnimationTimer;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
@@ -22,16 +21,31 @@ public class Pet {
     /**
      * Animation state of the pet.
      */
-    private final animStates petStates;
+    private animStates petStates;
 
     /**
      * Displayed image of the pet.
      */
-    private final ImageView petImage;
+    private ImageView petImage;
 
-    // check if moving
-    private boolean isMoving = false;
+    /**
+     * Boolean that indicates if the pet is in the walking left animation state.
+     */
+    public boolean isMovingLeft = false;
+
+    /**
+     * Boolean that indicates if the pet is in the walking right animation state.
+     */
+    public boolean isMovingRight = false;
+
+    /**
+     * Long number that indicates the last time the pet was interacted with.
+     */
     private long lastInteractionTime = System.currentTimeMillis();
+
+    /**
+     * Long number indicating how long before the pet idle state changes.
+     */
     private static final long SAD_IDLE_DELAY = 10_000; // 10 seconds
 
     /**
@@ -42,17 +56,23 @@ public class Pet {
     public Pet(animStates petStates, ImageView petImage) {
         this.petStates = petStates;
         this.petImage = petImage;
+    }
 
-        // new start for single animation loop
-        new AnimationTimer(){
+    /**
+     * Starts the pet animation of a created pet.
+     */
+    public void startPet() {
+        new AnimationTimer() {
             @Override
-            public void handle(long now){
-                checkIdleState(now);
+            public void handle(long now) {
+                checkIdleState();
                 petStates.update(now);
                 petImage.setImage(petStates.getCurrentFrame());
             }
         }.start();
     }
+
+
 
     /**
      * Marks the current moment as the last time the user interacted with the pet.
@@ -60,7 +80,6 @@ public class Pet {
      * This is used to decide when the pet should switch between normal idle
      * and sad idle animations after being ignored for a while.
      */
-
     private void markInteraction() {
         lastInteractionTime = System.currentTimeMillis();
     }
@@ -71,16 +90,13 @@ public class Pet {
      * <p>
      * If the pet hasn't been touched for a while, it goes into sad idle.
      * If the user interacts again or enough time hasn't passed, it stays in normal idle.
-     *
-     * @param now The current timestamp from the animation timer (ns).
      */
-
-    private void checkIdleState(long now) {
+    private void checkIdleState() {
 
         long elapsed = System.currentTimeMillis() - lastInteractionTime;
 
         // If the pet is moving, don't change idle states.
-        if (isMoving) return;
+        if (isMovingLeft || isMovingRight) return;
 
         if (elapsed > SAD_IDLE_DELAY) {
 
@@ -98,7 +114,6 @@ public class Pet {
         }
     }
 
-
     /**
      * Switches the pet to the normal idle animation.
      */
@@ -107,12 +122,12 @@ public class Pet {
     /**
      * Switches the pet to the walking-left animation.
      */
-    public void setWalkLeft() { petStates.setWalkLeft(); }
+    public void setWalkLeft() { petStates.setWalkLeft(); isMovingLeft = true; }
 
     /**
      * Switches the pet to the walking-right animation.
      */
-    public void setWalkRight(){ petStates.setWalkRight(); }
+    public void setWalkRight(){ petStates.setWalkRight(); isMovingRight = true; }
 
     /**
      * Triggers the shock animation and marks it as an interaction,
@@ -137,7 +152,7 @@ public class Pet {
                                Rectangle2D bounds,
                                VBox imageBox) {
 
-        desktopPet.isMoving = true;
+
 
         Random random = new Random();
         double x = random.nextInt(600) - 300;
@@ -158,9 +173,29 @@ public class Pet {
         }
 
         movePet.setOnFinished(e -> {
-            desktopPet.isMoving = false;
+            desktopPet.isMovingLeft = false;
+            desktopPet.isMovingRight = false;
         });
 
         movePet.play();
     }
+
+    /**
+     * Getter for petStates.
+     */
+    public animStates getAnimStates() { return petStates; }
+    /**
+     * Getter for petImage.
+     */
+    public ImageView getPetImage() { return petImage; }
+    /**
+     * Setter for petStates.
+     */
+    public void setAnimStates(animStates pS) { this.petStates = pS; }
+    /**
+     * Setter for petImage.
+     */
+    public void setPetImage(ImageView pI) { this.petImage = pI; }
+
+
 }

@@ -126,7 +126,7 @@ public class PetController {
 
         // create the pet object
         desktopPet = new Pet(petStates, petImage);
-
+        desktopPet.startPet();
         // hide everything except the pet at startup
         hideAllPopups();
 
@@ -135,7 +135,7 @@ public class PetController {
 
         // record starting time
         then = System.currentTimeMillis();
-        breakTimer = System.currentTimeMillis();
+        this.breakTimer = System.currentTimeMillis();
         // create automatic idle movement timer
         idlePet = new AnimationTimer() {
             @Override
@@ -285,7 +285,7 @@ public class PetController {
             breakTimer = breakNow;
             // After a while set the text invisible to finish the message delivery.
             Timeline timeline = new Timeline(
-                    new KeyFrame(Duration.seconds(10), e -> petText.setVisible(false)));
+                    new KeyFrame(Duration.seconds(10), e -> textField.setVisible(false)));
             timeline.playFromStart();
         }
         // set pet to idle animation

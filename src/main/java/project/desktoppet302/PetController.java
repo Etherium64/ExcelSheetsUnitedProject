@@ -351,7 +351,7 @@ public class PetController {
     private void goButton() {
         if (isTriviaPrompt) {
             try {
-                Stage primaryStage = (Stage) petText.getScene().getWindow();
+                Stage primaryStage = (Stage) textField.getScene().getWindow();
 
                 Stage triviaStage = new Stage();
                 new project.Trivia.Main().start(triviaStage);
@@ -370,7 +370,7 @@ public class PetController {
 
         else if (isPomodoroPrompt) {
             try {
-                Stage primaryStage = (Stage) petText.getScene().getWindow();
+                Stage primaryStage = (Stage) textField.getScene().getWindow();
 
                 Stage pomodoroStage = new Stage();
                 new project.pomodoro.MainApplication().start(pomodoroStage);

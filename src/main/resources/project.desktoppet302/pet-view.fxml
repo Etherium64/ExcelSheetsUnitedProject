@@ -15,9 +15,23 @@
       stylesheets="@/styles.css"
       style="-fx-background-color: transparent">
     <VBox minWidth="150" spacing="5" translateX="5" translateY="5">
-        <Button fx:id="timer" styleClass="button1" text="Timer" minWidth="150" minHeight="50" onAction="#pomodoroButton"/>
-        <Button fx:id="trivia" styleClass="button1" text="Trivia" minWidth="150" minHeight="50" onAction="#triviaButton"/>
-        <Button styleClass="button1" text="Log Out" minWidth="150" minHeight="50"/>
+        <Button
+                fx:id="timer"
+                styleClass="button1"
+                text="Timer"
+                minWidth="150"
+                minHeight="70"
+                onAction="#pomodoroButton"/>
+        <Button fx:id="trivia"
+                styleClass="button1"
+                text="Trivia"
+                minWidth="150"
+                minHeight="70"
+                onAction="#triviaButton"/>
+        <Button styleClass="button1"
+                text="Log Out"
+                minWidth="150"
+                minHeight="70"/>
     </VBox>
     <VBox fx:id="imageBox">
 

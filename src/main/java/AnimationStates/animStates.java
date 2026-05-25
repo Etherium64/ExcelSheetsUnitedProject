@@ -16,10 +16,10 @@ import javafx.scene.image.Image;
 public class animStates {
 
     /** The state machine that actually manages which animation is active. */
-    public final AnimationStateMachine stateMachine;
+    private final AnimationStateMachine stateMachine;
 
     /** All the different animation states the pet can use. */
-    public final AnimationState idle;
+    private final AnimationState idle;
     private final AnimationState walkLeft;
     private final AnimationState walkRight;
     private final AnimationState shock;

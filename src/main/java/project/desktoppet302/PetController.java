@@ -277,7 +277,7 @@ public class PetController {
         // Get current time of system.
         long breakNow = System.currentTimeMillis();
         // Check that a certain period of time has passed and no other text is above the pet.
-        if (breakNow - breakTimer > 24000 && !isTriviaPrompt && !isPomodoroPrompt) {
+        if (breakNow - breakTimer > 30000 && !isTriviaPrompt && !isPomodoroPrompt) {
             // Set text to a break message and make it visible.
             textField.setText("Take a break to eat or drink!");
             textField.setVisible(true);

@@ -19,8 +19,6 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.util.concurrent.CompletableFuture;
-
 /**
  * Controller class for all interactions for the menu and the companion pet.
  * Includes clicking and dragging the pet, idle movement and animation changes for the pet,
@@ -100,9 +98,8 @@ public class PetController {
 
     /**
      * Animation state for the pet.
-     * This is loaded in the background so the window can appear faster.
      */
-    private animStates petStates;
+    private final animStates petStates = new animStates();
 
     /**
      * Pet object representing the pet in the application.
@@ -133,60 +130,29 @@ public class PetController {
     private double dragStartTranslateX;
     private double lastDragTranslateX;
     private boolean wasDragged = false;
-    private boolean animationsReady = false;
 
     private static final double DRAG_THRESHOLD = 5;
     private static final double SCREEN_PADDING = 10;
 
     /**
-     * Handles initialisation actions for the pet controller.
+     * Handles initialisation actions for variables walkPet, desktopPet, then, breakTimer,
+     * and idlePet. Calls for idling method after stage is set.
      */
     @FXML
     public void initialize() {
         movePet.setNode(imageBox);
+
+        desktopPet = new Pet(petStates, petImage);
+        desktopPet.startPet();
 
         hideAllPopups();
 
         then = System.currentTimeMillis();
         this.breakTimer = System.currentTimeMillis();
 
-        setupIdleTimer();
-        setupMouseControls();
-
-        loadAnimationsInBackground();
-    }
-
-    /**
-     * Loads the image animation sequences after the window has already started loading.
-     * This prevents the app from freezing on startup while every animation frame is loaded.
-     */
-    private void loadAnimationsInBackground() {
-        CompletableFuture
-                .supplyAsync(animStates::new)
-                .thenAccept(loadedStates -> Platform.runLater(() -> {
-                    petStates = loadedStates;
-                    desktopPet = new Pet(petStates, petImage);
-                    desktopPet.startPet();
-                    animationsReady = true;
-                    idling();
-                }))
-                .exceptionally(error -> {
-                    error.printStackTrace();
-                    return null;
-                });
-    }
-
-    /**
-     * Creates automatic idle movement timer.
-     */
-    private void setupIdleTimer() {
         idlePet = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if (!animationsReady || desktopPet == null) {
-                    return;
-                }
-
                 now = System.currentTimeMillis();
 
                 if (now - then > 8000) {
@@ -201,12 +167,7 @@ public class PetController {
                 }
             }
         };
-    }
 
-    /**
-     * Sets up click and drag handling for the pet.
-     */
-    private void setupMouseControls() {
         imageBox.setOnMouseClicked(mouseClick -> {
             if (mouseClick.getTarget() instanceof Button) {
                 return;
@@ -220,9 +181,7 @@ public class PetController {
             idlePet.stop();
             movePet.stop();
 
-            if (animationsReady && desktopPet != null) {
-                desktopPet.setShock();
-            }
+            desktopPet.setShock();
 
             then = System.currentTimeMillis();
         });
@@ -267,12 +226,12 @@ public class PetController {
                 mouseX = rightScreenEdge;
             }
 
-            if (animationsReady && desktopPet != null) {
-                if (mouseX > lastDragTranslateX) {
-                    desktopPet.setWalkLeft();
-                } else if (mouseX < lastDragTranslateX) {
-                    desktopPet.setWalkRight();
-                }
+            // animation directions are intentionally swapped here because the current
+            // walk-left and walk-right animation sets face opposite to their names
+            if (mouseX > lastDragTranslateX) {
+                desktopPet.setWalkLeft();
+            } else if (mouseX < lastDragTranslateX) {
+                desktopPet.setWalkRight();
             }
 
             imageBox.setTranslateX(mouseX);
@@ -284,18 +243,15 @@ public class PetController {
                 return;
             }
 
-            if (animationsReady && desktopPet != null) {
-                desktopPet.stopMoving();
-            }
+            desktopPet.stopMoving();
 
             if (wasDragged) {
                 then = System.currentTimeMillis();
-
-                if (animationsReady) {
-                    idling();
-                }
+                idling();
             }
         });
+
+        Platform.runLater(this::idling);
     }
 
     /**
@@ -303,10 +259,6 @@ public class PetController {
      */
     @FXML
     protected void idling() {
-        if (!animationsReady || desktopPet == null) {
-            return;
-        }
-
         long breakNow = System.currentTimeMillis();
 
         if (breakNow - breakTimer > 30000 && !isTriviaPrompt && !isPomodoroPrompt) {
@@ -462,9 +414,7 @@ public class PetController {
 
         hideAllPopups();
 
-        if (animationsReady) {
-            idling();
-        }
+        idling();
     }
 
     /**

@@ -25,6 +25,7 @@ module project {
     exports project.Trivia.view;
 
     requires javafx.base;
+    requires java.net.http;
 
     opens AnimationStates;
     exports AnimationStates;

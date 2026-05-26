@@ -21,9 +21,8 @@ public class DesktopPet extends Application {
 
     /**
      * Visual bounds of the screen.
-     * getVisualBounds excludes the taskbar, so the pet window stays above it.
      */
-    private final Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+    Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
 
     /**
      * Initializes and displays the desktop pet window when the application starts.
@@ -46,16 +45,16 @@ public class DesktopPet extends Application {
         stage.setScene(scene);
         stage.setTitle("Desktop Pet");
 
-        // make the transparent window full usable screen width
+        // make the transparent window full screen width
         stage.setWidth(bounds.getWidth());
 
-        // scale the pet window based on usable screen height, but keep it within sensible limits
-        double petWindowHeight = clamp(bounds.getHeight() * 0.25, 220, 320);
+        // give the pet and prompt area enough height so they are not clipped
+        double petWindowHeight = Math.min(360, bounds.getHeight() * 0.35);
         stage.setHeight(petWindowHeight);
 
-        // lock the window to the bottom of the usable screen, above the taskbar
-        stage.setX(bounds.getMinX());
+        // lock the window to the bottom of the screen
         stage.setY(bounds.getMaxY() - stage.getHeight());
+        stage.setX(bounds.getMinX());
 
         // remove normal window borders
         stage.initStyle(StageStyle.TRANSPARENT);
@@ -65,18 +64,6 @@ public class DesktopPet extends Application {
 
         // show the window
         stage.show();
-    }
-
-    /**
-     * Keeps a value between a minimum and maximum amount.
-     *
-     * @param value the value to clamp
-     * @param min the lowest allowed value
-     * @param max the highest allowed value
-     * @return the clamped value
-     */
-    private double clamp(double value, double min, double max) {
-        return Math.max(min, Math.min(max, value));
     }
 
     public static void main(String[] args) {

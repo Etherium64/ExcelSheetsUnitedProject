@@ -13,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
@@ -29,17 +28,19 @@ import javafx.util.Duration;
  */
 public class PetController {
 
-
     @FXML public Button trivia;
     @FXML public Button timer;
+
     /**
      * Image of the pet displayed in fxml.
      */
     @FXML public Image pet;
+
     /**
      * Box for the pet and menu in the application in fxml.
      */
     @FXML private HBox hbox;
+
     /**
      * Box for the pet and an associated text box and buttons in fxml.
      */
@@ -48,62 +49,78 @@ public class PetController {
     @FXML private HBox optionsBox;
 
     @FXML private HBox promptButtons;
+
     /**
      * Text displayed above the pet in fxml.
      */
     @FXML private Text petText;
+
     /**
      * Text field displayed above the pet in fxml.
      */
     @FXML private TextField textField;
+
     /**
      * Yes button in fxml for answering the pet.
      */
     @FXML private Button yesbutton;
+
     /**
      * No button in fxml for answering the pet.
      */
     @FXML private Button nobutton;
+
     /**
      * ImageView of the pet in fxml.
      */
     @FXML private ImageView petImage;
+
     /**
-     * Value representing the bounds of the screen.
+     * Visual bounds of the screen.
+     * getVisualBounds excludes the taskbar, so launched windows can be clamped above it.
      */
     private final Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+
     /**
      * Translation transition for the pet for movement.
      */
     private final TranslateTransition movePet = new TranslateTransition();
+
     /**
      * Animation timer for pet when idle.
      */
     private AnimationTimer idlePet;
+
     /**
      * Long number for recording time between pet movement.
      */
     private long then;
+
     /**
      * Animation state for the pet.
      */
     private final animStates petStates = new animStates();
+
     /**
      * Pet object representing the pet in the application.
      */
     private Pet desktopPet;
+
     /**
      * Boolean to determine if the trivia button was clicked.
      */
     private boolean isTriviaPrompt = false;
+
     /**
      * Boolean to determine the pomodoro button was clicked.
      */
     private boolean isPomodoroPrompt = false;
+
     /**
      * Double representing the change in position from the start of a mouse drag to present.
      */
     private double mouseX;
+
     /**
      * Long number for recording time between a message for a break.
      */
@@ -114,6 +131,7 @@ public class PetController {
     private boolean wasDragged = false;
 
     private static final double DRAG_THRESHOLD = 5;
+    private static final double SCREEN_PADDING = 10;
 
     /**
      * Handles initialisation actions for variables walkPet, desktopPet, then, breakTimer,
@@ -127,15 +145,14 @@ public class PetController {
         // create the pet object
         desktopPet = new Pet(petStates, petImage);
         desktopPet.startPet();
+
         // hide everything except the pet at startup
         hideAllPopups();
-
-        // keep options managed so opening it does not shift the pet
-//        optionsBox.setManaged(true);
 
         // record starting time
         then = System.currentTimeMillis();
         this.breakTimer = System.currentTimeMillis();
+
         // create automatic idle movement timer
         idlePet = new AnimationTimer() {
             @Override
@@ -173,22 +190,6 @@ public class PetController {
             // stop movement while interacting
             idlePet.stop();
             movePet.stop();
-
-//            // toggle the main options menu
-//            boolean shouldShow = !optionsBox.isVisible();
-//
-//            optionsBox.setVisible(shouldShow);
-//            optionsBox.setManaged(true);
-//
-//            // close confirmation prompt when toggling the main menu
-//            petText.setVisible(false);
-//            petText.setManaged(false);
-//
-//            promptButtons.setVisible(false);
-//            promptButtons.setManaged(false);
-//
-//            yesbutton.setVisible(false);
-//            nobutton.setVisible(false);
 
             // play click animation
             desktopPet.setShock();
@@ -267,6 +268,7 @@ public class PetController {
         // start idle after fxml finishes loading
         Platform.runLater(this::idling);
     }
+
     /**
      * Handles the actions of the pet when it is not being interacted with by the user.
      * Includes telling the user to take a break if a certain period of time has passed,
@@ -274,36 +276,38 @@ public class PetController {
      */
     @FXML
     protected void idling() {
-        // Get current time of system.
+        // get current time of system
         long breakNow = System.currentTimeMillis();
-        // Check that a certain period of time has passed and no other text is above the pet.
+
+        // check that a certain period of time has passed and no other text is above the pet
         if (breakNow - breakTimer > 30000 && !isTriviaPrompt && !isPomodoroPrompt) {
-            // Set text to a break message and make it visible.
+            // set text to a break message and make it visible
             textField.setText("Take a break to eat or drink!");
             textField.setVisible(true);
-            // Reset timer so countdown starts again.
+
+            // reset timer so countdown starts again
             breakTimer = breakNow;
-            // After a while set the text invisible to finish the message delivery.
+
+            // after a while set the text invisible to finish the message delivery
             Timeline timeline = new Timeline(
-                    new KeyFrame(Duration.seconds(10), e -> textField.setVisible(false)));
+                    new KeyFrame(Duration.seconds(10), e -> textField.setVisible(false))
+            );
             timeline.playFromStart();
         }
+
         // set pet to idle animation
         desktopPet.setIdle();
 
         // start automatic movement
         idlePet.start();
     }
+
     /**
      * Handles when the user selects the trivia button. Sets buttons and text visible
      * and text asks users to confirm intent to start trivia using the buttons.
      */
     @FXML
     protected void triviaButton() {
-        // hide options but keep it managed to avoid layout shifting
-//        optionsBox.setVisible(false);
-//        optionsBox.setManaged(true);
-
         // show trivia prompt
         textField.setText("Do you want to play trivia with me?");
         textField.setVisible(true);
@@ -318,16 +322,13 @@ public class PetController {
         isTriviaPrompt = true;
         isPomodoroPrompt = false;
     }
+
     /**
      * Handles when the user selects the pomodoro button. Sets buttons and text visible
      * and text asks users to confirm intent to start pomodoro using the buttons.
      */
     @FXML
     protected void pomodoroButton() {
-        // hide options but keep it managed to avoid layout shifting
-//        optionsBox.setVisible(false);
-//        optionsBox.setManaged(true);
-
         // show pomodoro prompt
         textField.setText("Want to start Pomodoro timer?");
         textField.setVisible(true);
@@ -342,6 +343,7 @@ public class PetController {
         isPomodoroPrompt = true;
         isTriviaPrompt = false;
     }
+
     /**
      * Handles when the user selects yes to launch the trivia or pomodoro application.
      * Determines whether the pomodoro or trivia button was selected and launches the
@@ -357,8 +359,7 @@ public class PetController {
                 new project.Trivia.Main().start(triviaStage);
 
                 triviaStage.setAlwaysOnTop(true);
-                triviaStage.setX(primaryStage.getX() + 10);
-                triviaStage.setY(primaryStage.getY() + primaryStage.getHeight() - triviaStage.getHeight() - 30);
+                clampChildStageToUsableScreen(primaryStage, triviaStage);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -366,9 +367,7 @@ public class PetController {
 
             isTriviaPrompt = false;
             hideAllPopups();
-        }
-
-        else if (isPomodoroPrompt) {
+        } else if (isPomodoroPrompt) {
             try {
                 Stage primaryStage = (Stage) textField.getScene().getWindow();
 
@@ -376,8 +375,7 @@ public class PetController {
                 new project.pomodoro.MainApplication().start(pomodoroStage);
 
                 pomodoroStage.setAlwaysOnTop(true);
-                pomodoroStage.setX(primaryStage.getX() + 10);
-                pomodoroStage.setY(primaryStage.getY() + primaryStage.getHeight() - pomodoroStage.getHeight() + 10);
+                clampChildStageToUsableScreen(primaryStage, pomodoroStage);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -387,6 +385,62 @@ public class PetController {
             hideAllPopups();
         }
     }
+
+    /**
+     * Positions a launched trivia or pomodoro window near the pet while keeping it inside
+     * the usable screen area. The usable bounds exclude the Windows taskbar.
+     *
+     * @param primaryStage the desktop pet stage
+     * @param childStage the launched trivia or pomodoro stage
+     */
+    private void clampChildStageToUsableScreen(Stage primaryStage, Stage childStage) {
+        Rectangle2D usableScreen = Screen.getPrimary().getVisualBounds();
+
+        double childWidth = childStage.getWidth();
+        double childHeight = childStage.getHeight();
+
+        // fallback values in case JavaFX has not calculated the stage dimensions yet
+        if (childWidth <= 0) {
+            childWidth = childStage.getScene().getWidth();
+        }
+
+        if (childHeight <= 0) {
+            childHeight = childStage.getScene().getHeight();
+        }
+
+        // keep the child window close to the pet horizontally
+        double preferredX = primaryStage.getX() + imageBox.getTranslateX() + 20;
+
+        // place the child window low on the screen, just above the taskbar
+        double preferredY = usableScreen.getMaxY() - childHeight - SCREEN_PADDING;
+
+        // clamp horizontally inside the usable screen
+        double minX = usableScreen.getMinX() + SCREEN_PADDING;
+        double maxX = usableScreen.getMaxX() - childWidth - SCREEN_PADDING;
+
+        // clamp vertically inside the usable screen
+        double minY = usableScreen.getMinY() + SCREEN_PADDING;
+        double maxY = usableScreen.getMaxY() - childHeight - SCREEN_PADDING;
+
+        double clampedX = clamp(preferredX, minX, maxX);
+        double clampedY = clamp(preferredY, minY, maxY);
+
+        childStage.setX(clampedX);
+        childStage.setY(clampedY);
+    }
+
+    /**
+     * Keeps a value between a minimum and maximum amount.
+     *
+     * @param value the value to clamp
+     * @param min the lowest allowed value
+     * @param max the highest allowed value
+     * @return the clamped value
+     */
+    private double clamp(double value, double min, double max) {
+        return Math.max(min, Math.min(max, value));
+    }
+
     /**
      * Handles when the user selects not to start the trivia or pomodoro application after
      * being asked by the pet. Sets all text and buttons to be invisible.
@@ -401,11 +455,10 @@ public class PetController {
         idling();
     }
 
+    /**
+     * Hides the prompt text and confirmation buttons above the pet.
+     */
     private void hideAllPopups() {
-        // hide option menu but keep it managed to stop layout jumps
-//        optionsBox.setVisible(false);
-//        optionsBox.setManaged(true);
-
         // hide prompt text
         textField.setVisible(false);
         textField.setManaged(true);

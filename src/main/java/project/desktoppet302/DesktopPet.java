@@ -21,15 +21,12 @@ public class DesktopPet extends Application {
 
     /**
      * Visual bounds of the screen.
+     * getVisualBounds excludes the taskbar, so the pet window stays above it.
      */
-    Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
-
+    private final Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
 
     /**
      * Initializes and displays the desktop pet window when the application starts.
-     * Sets up the pet image from the resources, configures the transparent window,
-     * positions it at the bottom of the screen, and enables horizontal dragging
-     * with screen edge constraints.
      *
      * @param stage The primary stage for this application, onto which the scene is set.
      * @throws IOException If the pet image resource cannot be loaded.
@@ -49,15 +46,16 @@ public class DesktopPet extends Application {
         stage.setScene(scene);
         stage.setTitle("Desktop Pet");
 
-        // make the transparent window screen width
+        // make the transparent window full usable screen width
         stage.setWidth(bounds.getWidth());
 
-        // make it tall enough so the menu above the pet can be seen
-        stage.setHeight(bounds.getHeight() / 6);
+        // scale the pet window based on usable screen height, but keep it within sensible limits
+        double petWindowHeight = clamp(bounds.getHeight() * 0.25, 220, 320);
+        stage.setHeight(petWindowHeight);
 
-        // lock the window to the bottom of the screen
-        stage.setY(bounds.getMaxY() - stage.getHeight());
+        // lock the window to the bottom of the usable screen, above the taskbar
         stage.setX(bounds.getMinX());
+        stage.setY(bounds.getMaxY() - stage.getHeight());
 
         // remove normal window borders
         stage.initStyle(StageStyle.TRANSPARENT);
@@ -67,6 +65,18 @@ public class DesktopPet extends Application {
 
         // show the window
         stage.show();
+    }
+
+    /**
+     * Keeps a value between a minimum and maximum amount.
+     *
+     * @param value the value to clamp
+     * @param min the lowest allowed value
+     * @param max the highest allowed value
+     * @return the clamped value
+     */
+    private double clamp(double value, double min, double max) {
+        return Math.max(min, Math.min(max, value));
     }
 
     public static void main(String[] args) {

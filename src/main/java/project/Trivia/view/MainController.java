@@ -52,7 +52,7 @@ public class MainController {
     private int questionCount = 0;
 
     private static final int MAX_QUESTIONS = 5;
-    private static final int AI_QUESTION_AMOUNT = 10;
+    private static final int AI_QUESTION_AMOUNT = 20;
 
     private final ScoreDAO dao = new ScoreDAO();
 
@@ -101,6 +101,8 @@ public class MainController {
      */
     @FXML
     private void initialize() {
+        createUsedAiQuestionsTable();
+
         loadQuestions();
         Collections.shuffle(questions);
         loadNextQuestion();
@@ -119,6 +121,31 @@ public class MainController {
                     error.printStackTrace();
                     return null;
                 });
+    }
+
+    /**
+     * Creates a table that tracks AI questions already shown in previous trivia sessions.
+     * Hardcoded seeded questions are not stored here.
+     */
+    private void createUsedAiQuestionsTable() {
+        String sql = """
+                CREATE TABLE IF NOT EXISTS used_ai_questions (
+                    question TEXT PRIMARY KEY
+                )
+                """;
+
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            if (conn == null) {
+                return;
+            }
+
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -178,7 +205,7 @@ public class MainController {
 
     /**
      * Loads all questions from the database into the questions list.
-     * Questions from the original seeded set are marked with an asterisk.
+     * Hardcoded questions can repeat, but AI questions already used in previous trivia sessions are excluded.
      */
     private void loadQuestions() {
         String sql = "SELECT * FROM questions";
@@ -196,8 +223,11 @@ public class MainController {
                 while (rs.next()) {
 
                     String questionText = rs.getString("question");
-
                     boolean hardcoded = isHardcodedQuestion(questionText);
+
+                    if (!hardcoded && wasAiQuestionAlreadyUsed(questionText)) {
+                        continue;
+                    }
 
                     questions.add(new Question(
                             questionText,
@@ -209,6 +239,57 @@ public class MainController {
                             hardcoded
                     ));
                 }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Checks whether an AI-generated question has already appeared in a previous trivia session.
+     *
+     * @param question question text
+     * @return true if the AI question has already been used
+     */
+    private boolean wasAiQuestionAlreadyUsed(String question) {
+        String sql = "SELECT 1 FROM used_ai_questions WHERE question = ?";
+
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            if (conn == null) {
+                return false;
+            }
+
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, question);
+
+                try (ResultSet rs = ps.executeQuery()) {
+                    return rs.next();
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Records that an AI-generated question has appeared in a trivia session.
+     *
+     * @param question question text
+     */
+    private void markAiQuestionAsUsed(String question) {
+        String sql = "INSERT OR IGNORE INTO used_ai_questions (question) VALUES (?)";
+
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            if (conn == null) {
+                return;
+            }
+
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, question);
+                ps.executeUpdate();
             }
 
         } catch (SQLException e) {
@@ -249,7 +330,7 @@ public class MainController {
     private void loadNextQuestion() {
 
         if (questions.isEmpty()) {
-            questionLabel.setText("No trivia questions available.");
+            questionLabel.setText("No unused trivia questions available.");
 
             buttonA.setDisable(true);
             buttonB.setDisable(true);
@@ -267,11 +348,11 @@ public class MainController {
 
         Question q = questions.get(currentQuestionIndex++);
 
-        // add an asterisk to hardcoded seeded questions
         if (q.hardcoded) {
             questionLabel.setText("* " + q.question);
         } else {
             questionLabel.setText(q.question);
+            markAiQuestionAsUsed(q.question);
         }
 
         buttonA.setText(q.a);

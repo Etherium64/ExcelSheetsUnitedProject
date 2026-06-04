@@ -23,17 +23,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 /**
  * Controller for the main Trivia Game interface.
- * <p>
- * Manages user interaction with the quiz UI, including question display,
- * answer handling, score tracking, AI question generation, and saving user scores to the database.
- * Uses FXML injection to bind UI components and coordinates game flow.
- * </p>
- *
- * @author Ethan B
  */
 public class MainController {
 
@@ -52,31 +44,26 @@ public class MainController {
     private int questionCount = 0;
 
     private static final int MAX_QUESTIONS = 5;
-    private static final int AI_QUESTION_AMOUNT = 20;
 
     private final ScoreDAO dao = new ScoreDAO();
 
-    private List<Question> questions = new ArrayList<>();
+    private final List<Question> questions = new ArrayList<>();
     private int currentQuestionIndex = 0;
+    private boolean usingHardcodedQuestions = false;
 
-    /**
-     * Inner class representing a trivia question.
-     */
     public class Question {
 
+        int id;
         String question;
         String a;
         String b;
         String c;
         String d;
         String correct;
-
-        /**
-         * True if this question came from the original hardcoded seeder.
-         */
         boolean hardcoded;
 
-        public Question(String q,
+        public Question(int id,
+                        String q,
                         String a,
                         String b,
                         String c,
@@ -84,6 +71,7 @@ public class MainController {
                         String correct,
                         boolean hardcoded) {
 
+            this.id = id;
             this.question = q;
             this.a = a;
             this.b = b;
@@ -94,69 +82,71 @@ public class MainController {
         }
     }
 
-    /**
-     * Initializes the controller after FXML injection.
-     * Loads existing database questions immediately so the displayed question does not change
-     * while Ollama generates extra questions in the background.
-     */
     @FXML
     private void initialize() {
-        createUsedAiQuestionsTable();
+        LocalAIQuestionGenerator.ensureAskedColumnExists();
+        resetTriviaState();
 
-        loadQuestions();
-        Collections.shuffle(questions);
-        loadNextQuestion();
-
-        generateAiQuestionsInBackground();
-    }
-
-    /**
-     * Generates additional AI trivia questions using local Ollama.
-     * This runs in the background so the Trivia window does not freeze while Ollama responds.
-     * The current quiz is not reloaded afterward, preventing the first displayed question from changing.
-     */
-    private void generateAiQuestionsInBackground() {
-        CompletableFuture.runAsync(() -> LocalAIQuestionGenerator.generateAndInsertQuestions(AI_QUESTION_AMOUNT))
-                .exceptionally(error -> {
-                    error.printStackTrace();
-                    return null;
-                });
-    }
-
-    /**
-     * Creates a table that tracks AI questions already shown in previous trivia sessions.
-     * Hardcoded seeded questions are not stored here.
-     */
-    private void createUsedAiQuestionsTable() {
-        String sql = """
-                CREATE TABLE IF NOT EXISTS used_ai_questions (
-                    question TEXT PRIMARY KEY
-                )
-                """;
-
-        try (Connection conn = DatabaseConnection.getConnection()) {
-            if (conn == null) {
-                return;
-            }
-
-            try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                ps.executeUpdate();
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (LocalAIQuestionGenerator.countAiQuestionsInDatabase() >= MAX_QUESTIONS) {
+            startTriviaWithAiQuestions();
+        } else {
+            startTriviaWithHardcodedQuestions();
         }
     }
 
-    /**
-     * Handles answer button clicks.
-     * <p>
-     * Evaluates the selected answer, updates score and status, and loads the next question.
-     * After MAX_QUESTIONS, disables buttons and transitions to username input.
-     * </p>
-     *
-     * @param event the ActionEvent from the clicked button
-     */
+    private void startTriviaWithHardcodedQuestions() {
+        resetTriviaState();
+        usingHardcodedQuestions = true;
+
+        resetAskedFlagsIfAllQuestionsAsked(true);
+        loadUnaskedHardcodedQuestionsFromDatabase();
+
+        Collections.shuffle(questions);
+
+        statusLabel.setText("");
+
+        enableAnswerButtons();
+        loadNextQuestion();
+    }
+
+    private void startTriviaWithAiQuestions() {
+        resetTriviaState();
+        usingHardcodedQuestions = false;
+
+        resetAskedFlagsIfAllQuestionsAsked(false);
+        loadUnaskedAiQuestionsFromDatabase();
+
+        Collections.shuffle(questions);
+
+        statusLabel.setText("");
+
+        enableAnswerButtons();
+        loadNextQuestion();
+    }
+
+    private void resetTriviaState() {
+        questions.clear();
+        currentQuestionIndex = 0;
+        questionCount = 0;
+        score = 0;
+
+        if (scoreLabel != null) {
+            scoreLabel.setText("0");
+        }
+
+        if (statusLabel != null) {
+            statusLabel.setText("");
+        }
+    }
+
+    private void enableAnswerButtons() {
+        buttonA.setDisable(false);
+        buttonB.setDisable(false);
+        buttonC.setDisable(false);
+        buttonD.setDisable(false);
+        EndButton.setDisable(false);
+    }
+
     @FXML
     private void onAnswerClick(javafx.event.ActionEvent event) {
         if (questionCount >= MAX_QUESTIONS) {
@@ -192,9 +182,6 @@ public class MainController {
         }
     }
 
-    /**
-     * Disables all answer buttons to prevent further input after quiz completion.
-     */
     private void disableButtons() {
         buttonA.setDisable(true);
         buttonB.setDisable(true);
@@ -203,15 +190,65 @@ public class MainController {
         EndButton.setDisable(true);
     }
 
-    /**
-     * Loads all questions from the database into the questions list.
-     * Hardcoded questions can repeat, but AI questions already used in previous trivia sessions are excluded.
-     */
-    private void loadQuestions() {
-        String sql = "SELECT * FROM questions";
+    private void resetAskedFlagsIfAllQuestionsAsked(boolean hardcodedMode) {
+        if (countQuestionsByAskedState(hardcodedMode, false) > 0) {
+            return;
+        }
+
+        String sql = "UPDATE questions SET asked = 0";
 
         try (Connection conn = DatabaseConnection.getConnection()) {
+            if (conn == null) {
+                return;
+            }
 
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private int countQuestionsByAskedState(boolean hardcodedMode, boolean asked) {
+        int count = 0;
+        String sql = "SELECT question, asked FROM questions";
+
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            if (conn == null) {
+                return 0;
+            }
+
+            try (PreparedStatement ps = conn.prepareStatement(sql);
+                 ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+                    String questionText = rs.getString("question");
+                    boolean isHardcoded = LocalAIQuestionGenerator.isHardcodedQuestion(questionText);
+                    boolean isAsked = rs.getInt("asked") == 1;
+
+                    if (hardcodedMode == isHardcoded && asked == isAsked) {
+                        count++;
+                    }
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return count;
+    }
+
+    private void loadUnaskedHardcodedQuestionsFromDatabase() {
+        String sql = """
+                SELECT *
+                FROM questions
+                WHERE asked = 0
+                """;
+
+        try (Connection conn = DatabaseConnection.getConnection()) {
             if (conn == null) {
                 questionLabel.setText("Database connection failed.");
                 return;
@@ -221,22 +258,21 @@ public class MainController {
                  ResultSet rs = ps.executeQuery()) {
 
                 while (rs.next()) {
-
                     String questionText = rs.getString("question");
-                    boolean hardcoded = isHardcodedQuestion(questionText);
 
-                    if (!hardcoded && wasAiQuestionAlreadyUsed(questionText)) {
+                    if (!LocalAIQuestionGenerator.isHardcodedQuestion(questionText)) {
                         continue;
                     }
 
                     questions.add(new Question(
+                            rs.getInt("id"),
                             questionText,
                             rs.getString("option_a"),
                             rs.getString("option_b"),
                             rs.getString("option_c"),
                             rs.getString("option_d"),
                             rs.getString("correct_answer"),
-                            hardcoded
+                            true
                     ));
                 }
             }
@@ -246,41 +282,53 @@ public class MainController {
         }
     }
 
-    /**
-     * Checks whether an AI-generated question has already appeared in a previous trivia session.
-     *
-     * @param question question text
-     * @return true if the AI question has already been used
-     */
-    private boolean wasAiQuestionAlreadyUsed(String question) {
-        String sql = "SELECT 1 FROM used_ai_questions WHERE question = ?";
+    private void loadUnaskedAiQuestionsFromDatabase() {
+        String sql = """
+                SELECT *
+                FROM questions
+                WHERE asked = 0
+                """;
 
         try (Connection conn = DatabaseConnection.getConnection()) {
             if (conn == null) {
-                return false;
+                questionLabel.setText("Database connection failed.");
+                return;
             }
 
-            try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                ps.setString(1, question);
+            try (PreparedStatement ps = conn.prepareStatement(sql);
+                 ResultSet rs = ps.executeQuery()) {
 
-                try (ResultSet rs = ps.executeQuery()) {
-                    return rs.next();
+                while (rs.next()) {
+                    String questionText = rs.getString("question");
+
+                    if (LocalAIQuestionGenerator.isHardcodedQuestion(questionText)) {
+                        continue;
+                    }
+
+                    questions.add(new Question(
+                            rs.getInt("id"),
+                            questionText,
+                            rs.getString("option_a"),
+                            rs.getString("option_b"),
+                            rs.getString("option_c"),
+                            rs.getString("option_d"),
+                            rs.getString("correct_answer"),
+                            false
+                    ));
                 }
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
     }
 
-    /**
-     * Records that an AI-generated question has appeared in a trivia session.
-     *
-     * @param question question text
-     */
-    private void markAiQuestionAsUsed(String question) {
-        String sql = "INSERT OR IGNORE INTO used_ai_questions (question) VALUES (?)";
+    private void markQuestionAsAsked(int questionId) {
+        String sql = """
+                UPDATE questions
+                SET asked = 1
+                WHERE id = ?
+                """;
 
         try (Connection conn = DatabaseConnection.getConnection()) {
             if (conn == null) {
@@ -288,7 +336,7 @@ public class MainController {
             }
 
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                ps.setString(1, question);
+                ps.setInt(1, questionId);
                 ps.executeUpdate();
             }
 
@@ -297,40 +345,9 @@ public class MainController {
         }
     }
 
-    /**
-     * Determines whether a question came from the original hardcoded seeder.
-     *
-     * @param question question text
-     * @return true if it is one of the original seeded questions
-     */
-    private boolean isHardcodedQuestion(String question) {
-
-        return question.equals("What is the capital of France?")
-                || question.equals("Which planet is known as the Red Planet?")
-                || question.equals("What is the largest mammal?")
-                || question.equals("Who painted the Mona Lisa?")
-                || question.equals("What is the chemical symbol for water?")
-                || question.equals("Which country is home to the kangaroo?")
-                || question.equals("What is the tallest mountain in the world?")
-                || question.equals("Which element has the atomic number 1?")
-                || question.equals("Who wrote 'Romeo and Juliet'?")
-                || question.equals("What is the largest ocean on Earth?")
-                || question.equals("Which gas do plants absorb from the atmosphere?")
-                || question.equals("What is the closest star to Earth?")
-                || question.equals("Which planet has the most moons?")
-                || question.equals("What is the main ingredient in guacamole?")
-                || question.equals("Which country invented tea?")
-                || question.equals("What is the smallest country in the world?");
-    }
-
-    /**
-     * Loads and displays the next question from the shuffled list.
-     * Updates the UI with the question text and answer options.
-     */
     private void loadNextQuestion() {
-
         if (questions.isEmpty()) {
-            questionLabel.setText("No unused trivia questions available.");
+            questionLabel.setText("No trivia questions available.");
 
             buttonA.setDisable(true);
             buttonB.setDisable(true);
@@ -340,19 +357,23 @@ public class MainController {
             return;
         }
 
-        if (currentQuestionIndex >= questions.size()
-                || currentQuestionIndex >= MAX_QUESTIONS) {
+        if (currentQuestionIndex >= questions.size()) {
+            if (usingHardcodedQuestions) {
+                startTriviaWithHardcodedQuestions();
+            } else {
+                startTriviaWithAiQuestions();
+            }
 
             return;
         }
 
         Question q = questions.get(currentQuestionIndex++);
+        markQuestionAsAsked(q.id);
 
         if (q.hardcoded) {
             questionLabel.setText("* " + q.question);
         } else {
             questionLabel.setText(q.question);
-            markAiQuestionAsUsed(q.question);
         }
 
         buttonA.setText(q.a);
@@ -363,12 +384,7 @@ public class MainController {
         correctAnswer = q.correct;
     }
 
-    /**
-     * Displays a popup showing the top 5 scores from the database.
-     * The popup automatically closes after 10 seconds.
-     */
     private void showTopScores() {
-
         VBox popup = new VBox(10);
 
         popup.setAlignment(Pos.CENTER);
@@ -388,7 +404,6 @@ public class MainController {
                         "LIMIT 5";
 
         try (Connection conn = DatabaseConnection.getConnection()) {
-
             if (conn == null) {
                 return;
             }
@@ -399,7 +414,6 @@ public class MainController {
                 int rank = 1;
 
                 while (rs.next()) {
-
                     Label entry = new Label(
                             rank++ + ". "
                                     + rs.getString("username")
@@ -434,16 +448,8 @@ public class MainController {
         }).start();
     }
 
-    /**
-     * Handles saving the user's score to the database.
-     * <p>
-     * Validates username input, saves the score via DAO, and displays top scores.
-     * Shows an error message if username is empty.
-     * </p>
-     */
     @FXML
     private void onSaveClick() {
-
         String username = usernameField.getText().trim();
 
         if (username.isEmpty()) {
@@ -467,18 +473,12 @@ public class MainController {
         delay.play();
     }
 
-    /**
-     * Closes the trivia window without saving the score.
-     */
     @FXML
     private void dontSave() {
         Stage stage = (Stage) statusLabel.getScene().getWindow();
         stage.close();
     }
 
-    /**
-     * Ends the trivia game and closes the trivia window.
-     */
     @FXML
     private void endTrivia() {
         Stage stage = (Stage) statusLabel.getScene().getWindow();

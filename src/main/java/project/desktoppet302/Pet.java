@@ -180,10 +180,14 @@ public class Pet {
         movePet.setDuration(Duration.seconds(2));
         movePet.setByX(x);
 
+        /*
+         * These are intentionally swapped because the current walk-left and
+         * walk-right animation frame sets face opposite to their method names.
+         */
         if (x > 0) {
-            desktopPet.setWalkRight();
-        } else {
             desktopPet.setWalkLeft();
+        } else {
+            desktopPet.setWalkRight();
         }
 
         movePet.setOnFinished(e -> desktopPet.stopMoving());

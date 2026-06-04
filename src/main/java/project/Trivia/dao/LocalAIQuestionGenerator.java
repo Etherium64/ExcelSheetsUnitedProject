@@ -16,17 +16,11 @@ import java.util.Set;
 
 /**
  * Generates trivia questions using a local Ollama model and stores them in the trivia database.
- * Ollama must be installed, running, and have at least one supported model downloaded.
  */
 public class LocalAIQuestionGenerator {
 
     private static final String OLLAMA_URL = "http://localhost:11434/api/generate";
 
-    /**
-     * Tries these local Ollama models in order.
-     * To install one, run for example:
-     * ollama pull llama3.2
-     */
     private static final String[] MODEL_NAMES = {
             "llama3.2",
             "llama3.1",
@@ -35,114 +29,168 @@ public class LocalAIQuestionGenerator {
             "gemma2:2b"
     };
 
-    /**
-     * Attempts to generate and insert AI trivia questions.
-     *
-     * @param amount number of questions to request from Ollama
-     */
-    public static void generateAndInsertQuestions(int amount) {
+    private static final int BATCH_SIZE = 10;
+    private static final int MAX_GENERATION_ATTEMPTS = 8;
+
+    public static int generateUntilAiQuestionCount(int targetAiQuestionCount) {
+        ensureAskedColumnExists();
+
+        int insertedTotal = 0;
+        int attempts = 0;
+
+        System.out.println("Starting AI trivia generation. Target AI questions: " + targetAiQuestionCount);
+
+        while (countAiQuestionsInDatabase() < targetAiQuestionCount && attempts < MAX_GENERATION_ATTEMPTS) {
+            attempts++;
+
+            int currentAiCount = countAiQuestionsInDatabase();
+            int remaining = targetAiQuestionCount - currentAiCount;
+            int batchAmount = Math.min(BATCH_SIZE, remaining);
+
+            System.out.println("AI trivia generation attempt " + attempts + ". Current AI questions: " + currentAiCount);
+
+            int insertedThisBatch = generateAndInsertQuestionBatch(batchAmount);
+            insertedTotal += insertedThisBatch;
+
+            if (insertedThisBatch == 0) {
+                System.out.println("AI trivia generation stopped because this batch inserted 0 questions.");
+                break;
+            }
+        }
+
+        System.out.println("AI trivia generation finished. New questions inserted: " + insertedTotal);
+        System.out.println("Total AI questions now stored: " + countAiQuestionsInDatabase());
+
+        return insertedTotal;
+    }
+
+    public static int generateAndInsertQuestions(int amount) {
+        ensureAskedColumnExists();
+
+        int insertedTotal = 0;
+        int attempts = 0;
+
+        while (insertedTotal < amount && attempts < MAX_GENERATION_ATTEMPTS) {
+            attempts++;
+
+            int remaining = amount - insertedTotal;
+            int batchAmount = Math.min(BATCH_SIZE, remaining);
+
+            int insertedThisBatch = generateAndInsertQuestionBatch(batchAmount);
+            insertedTotal += insertedThisBatch;
+
+            if (insertedThisBatch == 0) {
+                break;
+            }
+        }
+
+        return insertedTotal;
+    }
+
+    private static int generateAndInsertQuestionBatch(int amount) {
         try {
-            createUsedAiQuestionsTable();
+            Set<String> existingQuestions = getExistingQuestions();
 
-            Set<String> blockedQuestions = getBlockedQuestions();
-
-            String response = requestQuestionsFromOllama(amount, blockedQuestions);
-            List<GeneratedQuestion> questions = parseGeneratedQuestions(response, blockedQuestions);
+            String response = requestQuestionsFromOllama(amount);
+            List<GeneratedQuestion> questions = parseGeneratedQuestions(response, existingQuestions);
 
             if (questions.isEmpty()) {
-                System.out.println("AI trivia generation skipped: Ollama returned no new valid questions.");
-                return;
+                System.out.println("AI trivia batch skipped: Ollama returned no valid questions.");
+                System.out.println("Raw Ollama response:");
+                System.out.println(response);
+                return 0;
             }
 
             int insertedCount = insertQuestions(questions);
-            System.out.println("AI trivia questions generated: " + insertedCount);
+
+            System.out.println("AI trivia batch inserted: " + insertedCount);
+
+            return insertedCount;
 
         } catch (ConnectException e) {
             System.out.println("AI trivia generation skipped: Ollama is not running. Start Ollama first.");
+            return 0;
         } catch (Exception e) {
             System.out.println("AI trivia generation skipped: " + safeMessage(e));
             e.printStackTrace();
+            return 0;
         }
     }
 
-    /**
-     * Creates the table used to remember AI questions that have already appeared.
-     */
-    private static void createUsedAiQuestionsTable() {
-        String sql = """
-                CREATE TABLE IF NOT EXISTS used_ai_questions (
-                    question TEXT PRIMARY KEY
-                )
-                """;
+    public static int countAiQuestionsInDatabase() {
+        ensureAskedColumnExists();
+
+        int count = 0;
+        String sql = "SELECT question FROM questions";
 
         try (Connection conn = DatabaseConnection.getConnection()) {
             if (conn == null) {
-                return;
+                return 0;
             }
 
-            try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                ps.executeUpdate();
-            }
-
-        } catch (Exception e) {
-            System.out.println("Could not create used AI question table: " + safeMessage(e));
-        }
-    }
-
-    /**
-     * Gets all questions that AI should avoid generating again.
-     * This includes every question already in the database and every AI question already shown.
-     *
-     * @return set of blocked normalized question text
-     */
-    private static Set<String> getBlockedQuestions() {
-        Set<String> blockedQuestions = new HashSet<>();
-
-        String existingQuestionsSql = "SELECT question FROM questions";
-        String usedQuestionsSql = "SELECT question FROM used_ai_questions";
-
-        try (Connection conn = DatabaseConnection.getConnection()) {
-            if (conn == null) {
-                return blockedQuestions;
-            }
-
-            try (PreparedStatement ps = conn.prepareStatement(existingQuestionsSql);
+            try (PreparedStatement ps = conn.prepareStatement(sql);
                  ResultSet rs = ps.executeQuery()) {
 
                 while (rs.next()) {
-                    blockedQuestions.add(normaliseQuestion(rs.getString("question")));
-                }
-            }
+                    String question = rs.getString("question");
 
-            try (PreparedStatement ps = conn.prepareStatement(usedQuestionsSql);
-                 ResultSet rs = ps.executeQuery()) {
-
-                while (rs.next()) {
-                    blockedQuestions.add(normaliseQuestion(rs.getString("question")));
+                    if (!isHardcodedQuestion(question)) {
+                        count++;
+                    }
                 }
             }
 
         } catch (Exception e) {
-            System.out.println("Could not load blocked AI questions: " + safeMessage(e));
+            System.out.println("Could not count AI trivia questions: " + safeMessage(e));
         }
 
-        return blockedQuestions;
+        return count;
     }
 
-    /**
-     * Tries each supported local Ollama model until one works.
-     *
-     * @param amount number of questions to generate
-     * @param blockedQuestions questions the AI should avoid
-     * @return raw model response text
-     * @throws Exception if no model works
-     */
-    private static String requestQuestionsFromOllama(int amount, Set<String> blockedQuestions) throws Exception {
+    public static void ensureAskedColumnExists() {
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(
+                     "ALTER TABLE questions ADD COLUMN asked INTEGER NOT NULL DEFAULT 0"
+             )) {
+
+            ps.executeUpdate();
+
+        } catch (Exception ignored) {
+            // column already exists
+        }
+    }
+
+    private static Set<String> getExistingQuestions() {
+        Set<String> questions = new HashSet<>();
+
+        String sql = "SELECT question FROM questions";
+
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            if (conn == null) {
+                return questions;
+            }
+
+            try (PreparedStatement ps = conn.prepareStatement(sql);
+                 ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+                    questions.add(normaliseQuestion(rs.getString("question")));
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("Could not load existing trivia questions: " + safeMessage(e));
+        }
+
+        return questions;
+    }
+
+    private static String requestQuestionsFromOllama(int amount) throws Exception {
         Exception lastError = null;
 
         for (String modelName : MODEL_NAMES) {
             try {
-                return requestQuestionsFromModel(amount, modelName, blockedQuestions);
+                return requestQuestionsFromModel(amount, modelName);
             } catch (Exception e) {
                 lastError = e;
                 System.out.println("Ollama model skipped: " + modelName + " - " + safeMessage(e));
@@ -155,44 +203,41 @@ public class LocalAIQuestionGenerator {
         );
     }
 
-    /**
-     * Sends a prompt to one local Ollama model asking for trivia questions.
-     *
-     * @param amount number of questions to generate
-     * @param modelName Ollama model name
-     * @param blockedQuestions questions the AI should avoid
-     * @return raw model response text
-     * @throws Exception if the HTTP request fails
-     */
-    private static String requestQuestionsFromModel(int amount, String modelName, Set<String> blockedQuestions) throws Exception {
-        String avoidedQuestionsText = buildAvoidedQuestionsText(blockedQuestions);
-
+    private static String requestQuestionsFromModel(int amount, String modelName) throws Exception {
         String prompt = """
-                Generate %d new general knowledge trivia questions.
+                Create %d simple general knowledge multiple choice trivia questions.
 
-                Return ONLY this exact format, one question per line:
+                Return plain text only.
+
+                Use this exact format for every question:
                 question|option_a|option_b|option_c|option_d|correct_answer
 
-                Rules:
+                Important rules:
+                - one question per line
                 - no numbering
+                - no bullet points
                 - no markdown
+                - no headings
                 - no explanations
-                - correct_answer must exactly match one of the four options
-                - questions must be suitable for a simple trivia game
-                - avoid duplicate questions
-                - do not repeat the same question idea with slightly different wording
-                - make the questions varied across history, science, geography, sport, music, film, technology, and culture
-                - do not generate any question from the avoid list below
+                - do not use extra text before or after the questions
+                - correct_answer must be exactly the same text as one of the four options
+                - questions should be varied across science, history, geography, animals, sport, music, film, technology, food, and culture
 
-                Avoid these existing or previously used questions:
-                %s
-                """.formatted(amount, avoidedQuestionsText);
+                Valid examples:
+                What is the largest planet in our solar system?|Earth|Mars|Jupiter|Venus|Jupiter
+                Which country is famous for the Eiffel Tower?|Italy|France|Spain|Germany|France
+                Which animal is known as the king of the jungle?|Tiger|Lion|Elephant|Bear|Lion
+                """.formatted(amount);
 
         String jsonBody = """
                 {
                   "model": "%s",
                   "prompt": "%s",
-                  "stream": false
+                  "stream": false,
+                  "options": {
+                    "temperature": 0.8,
+                    "num_predict": 2048
+                  }
                 }
                 """.formatted(modelName, escapeJson(prompt));
 
@@ -202,7 +247,7 @@ public class LocalAIQuestionGenerator {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(OLLAMA_URL))
-                .timeout(Duration.ofSeconds(120))
+                .timeout(Duration.ofSeconds(180))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(jsonBody))
                 .build();
@@ -215,41 +260,10 @@ public class LocalAIQuestionGenerator {
         }
 
         System.out.println("Using Ollama model: " + modelName);
+
         return extractResponseField(httpResponse.body());
     }
 
-    /**
-     * Builds a compact avoid list for the model prompt.
-     *
-     * @param blockedQuestions normalized blocked questions
-     * @return prompt text
-     */
-    private static String buildAvoidedQuestionsText(Set<String> blockedQuestions) {
-        if (blockedQuestions.isEmpty()) {
-            return "None";
-        }
-
-        StringBuilder builder = new StringBuilder();
-        int count = 0;
-
-        for (String question : blockedQuestions) {
-            builder.append("- ").append(question).append("\n");
-            count++;
-
-            if (count >= 80) {
-                break;
-            }
-        }
-
-        return builder.toString();
-    }
-
-    /**
-     * Extracts the response field from Ollama's JSON response without requiring an external JSON library.
-     *
-     * @param json raw Ollama JSON response
-     * @return generated response text
-     */
     private static String extractResponseField(String json) {
         String key = "\"response\":\"";
         int start = json.indexOf(key);
@@ -295,43 +309,31 @@ public class LocalAIQuestionGenerator {
         return result.toString();
     }
 
-    /**
-     * Parses pipe-separated generated question lines into GeneratedQuestion objects.
-     * Questions already in the blocked set are rejected.
-     *
-     * @param response text returned by Ollama
-     * @param blockedQuestions normalized questions that cannot be used
-     * @return valid generated questions
-     */
-    private static List<GeneratedQuestion> parseGeneratedQuestions(String response, Set<String> blockedQuestions) {
+    private static List<GeneratedQuestion> parseGeneratedQuestions(String response, Set<String> existingQuestions) {
         List<GeneratedQuestion> questions = new ArrayList<>();
         Set<String> questionsGeneratedThisBatch = new HashSet<>();
 
         String[] lines = response.split("\\R");
 
         for (String line : lines) {
-            String cleanedLine = line.trim();
+            String cleanedLine = cleanGeneratedLine(line);
 
             if (cleanedLine.isEmpty()) {
                 continue;
             }
 
-            if (cleanedLine.matches("^\\d+\\.\\s+.*")) {
-                cleanedLine = cleanedLine.replaceFirst("^\\d+\\.\\s+", "");
-            }
-
-            String[] parts = cleanedLine.split("\\|");
+            String[] parts = cleanedLine.split("\\|", -1);
 
             if (parts.length != 6) {
                 continue;
             }
 
-            String question = parts[0].trim();
-            String optionA = parts[1].trim();
-            String optionB = parts[2].trim();
-            String optionC = parts[3].trim();
-            String optionD = parts[4].trim();
-            String correctAnswer = parts[5].trim();
+            String question = removeWrappingQuotes(parts[0].trim());
+            String optionA = removeWrappingQuotes(parts[1].trim());
+            String optionB = removeWrappingQuotes(parts[2].trim());
+            String optionC = removeWrappingQuotes(parts[3].trim());
+            String optionD = removeWrappingQuotes(parts[4].trim());
+            String correctAnswer = removeWrappingQuotes(parts[5].trim());
 
             String normalizedQuestion = normaliseQuestion(question);
 
@@ -348,7 +350,7 @@ public class LocalAIQuestionGenerator {
                     || optionD.isEmpty()
                     || correctAnswer.isEmpty()
                     || !correctMatchesOption
-                    || blockedQuestions.contains(normalizedQuestion)
+                    || existingQuestions.contains(normalizedQuestion)
                     || questionsGeneratedThisBatch.contains(normalizedQuestion)) {
                 continue;
             }
@@ -360,18 +362,51 @@ public class LocalAIQuestionGenerator {
         return questions;
     }
 
-    /**
-     * Inserts generated questions into the existing questions table.
-     * INSERT OR IGNORE prevents exact duplicate questions from being added.
-     *
-     * @param questions generated trivia questions
-     * @return number of questions inserted
-     */
+    private static String cleanGeneratedLine(String line) {
+        if (line == null) {
+            return "";
+        }
+
+        String cleanedLine = line.trim();
+
+        cleanedLine = cleanedLine.replace("```", "").trim();
+
+        if (cleanedLine.matches("^\\d+\\.\\s+.*")) {
+            cleanedLine = cleanedLine.replaceFirst("^\\d+\\.\\s+", "");
+        }
+
+        if (cleanedLine.matches("^\\d+\\)\\s+.*")) {
+            cleanedLine = cleanedLine.replaceFirst("^\\d+\\)\\s+", "");
+        }
+
+        if (cleanedLine.matches("^-\\s+.*")) {
+            cleanedLine = cleanedLine.replaceFirst("^-\\s+", "");
+        }
+
+        return cleanedLine;
+    }
+
+    private static String removeWrappingQuotes(String value) {
+        if (value == null) {
+            return "";
+        }
+
+        String cleanedValue = value.trim();
+
+        if (cleanedValue.length() >= 2
+                && cleanedValue.startsWith("\"")
+                && cleanedValue.endsWith("\"")) {
+            return cleanedValue.substring(1, cleanedValue.length() - 1).trim();
+        }
+
+        return cleanedValue;
+    }
+
     private static int insertQuestions(List<GeneratedQuestion> questions) {
         String sql = """
                 INSERT OR IGNORE INTO questions
-                (question, option_a, option_b, option_c, option_d, correct_answer)
-                VALUES (?, ?, ?, ?, ?, ?)
+                (question, option_a, option_b, option_c, option_d, correct_answer, asked)
+                VALUES (?, ?, ?, ?, ?, ?, 0)
                 """;
 
         int insertedCount = 0;
@@ -403,13 +438,30 @@ public class LocalAIQuestionGenerator {
         return insertedCount;
     }
 
-    /**
-     * Normalizes question text so small casing and spacing differences are treated as the same question.
-     *
-     * @param question question text
-     * @return normalized question text
-     */
-    private static String normaliseQuestion(String question) {
+    public static boolean isHardcodedQuestion(String question) {
+        if (question == null) {
+            return false;
+        }
+
+        return question.equals("What is the capital of France?")
+                || question.equals("Which planet is known as the Red Planet?")
+                || question.equals("What is the largest mammal?")
+                || question.equals("Who painted the Mona Lisa?")
+                || question.equals("What is the chemical symbol for water?")
+                || question.equals("Which country is home to the kangaroo?")
+                || question.equals("What is the tallest mountain in the world?")
+                || question.equals("Which element has the atomic number 1?")
+                || question.equals("Who wrote 'Romeo and Juliet'?")
+                || question.equals("What is the largest ocean on Earth?")
+                || question.equals("Which gas do plants absorb from the atmosphere?")
+                || question.equals("What is the closest star to Earth?")
+                || question.equals("Which planet has the most moons?")
+                || question.equals("What is the main ingredient in guacamole?")
+                || question.equals("Which country invented tea?")
+                || question.equals("What is the smallest country in the world?");
+    }
+
+    public static String normaliseQuestion(String question) {
         if (question == null) {
             return "";
         }
@@ -421,12 +473,6 @@ public class LocalAIQuestionGenerator {
                 .trim();
     }
 
-    /**
-     * Escapes text so it can be safely placed inside a JSON string.
-     *
-     * @param value raw text
-     * @return escaped JSON text
-     */
     private static String escapeJson(String value) {
         return value
                 .replace("\\", "\\\\")
@@ -436,12 +482,6 @@ public class LocalAIQuestionGenerator {
                 .replace("\t", "\\t");
     }
 
-    /**
-     * Gets a readable exception message.
-     *
-     * @param e exception
-     * @return readable message
-     */
     private static String safeMessage(Exception e) {
         String message = e.getMessage();
 
@@ -452,10 +492,7 @@ public class LocalAIQuestionGenerator {
         return message;
     }
 
-    /**
-     * Data holder for an AI-generated trivia question.
-     */
-    private record GeneratedQuestion(
+    public record GeneratedQuestion(
             String question,
             String optionA,
             String optionB,

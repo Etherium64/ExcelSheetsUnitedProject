@@ -8,27 +8,32 @@ import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import project.Trivia.dao.LocalAIQuestionGenerator;
 
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * A JavaFX application that displays a draggable desktop pet on the screen.
- * The pet appears as a transparent window containing an image, locked to the bottom
- * of the primary display. Users can drag the pet horizontally across the screen,
- * but its movement is constrained to stay within the screen bounds.
  */
 public class DesktopPet extends Application {
 
     /**
      * Visual bounds of the screen.
+     * getVisualBounds excludes the taskbar, so the pet window stays above it.
      */
-    Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+    private final Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+
+    /**
+     * Number of AI trivia questions generated once when the app first launches.
+     */
+    private static final int STARTUP_AI_QUESTION_TARGET = 20;
 
     /**
      * Initializes and displays the desktop pet window when the application starts.
      *
      * @param stage The primary stage for this application, onto which the scene is set.
-     * @throws IOException If the pet image resource cannot be loaded.
+     * @throws IOException If the pet FXML resource cannot be loaded.
      */
     @Override
     public void start(Stage stage) throws IOException {
@@ -45,16 +50,16 @@ public class DesktopPet extends Application {
         stage.setScene(scene);
         stage.setTitle("Desktop Pet");
 
-        // make the transparent window full screen width
+        // make the transparent window full usable screen width
         stage.setWidth(bounds.getWidth());
 
-        // give the pet and prompt area enough height so they are not clipped
-        double petWindowHeight = Math.min(360, bounds.getHeight() * 0.35);
+        // scale the pet window based on usable screen height, but keep it within sensible limits
+        double petWindowHeight = clamp(bounds.getHeight() * 0.25, 220, 320);
         stage.setHeight(petWindowHeight);
 
-        // lock the window to the bottom of the screen
-        stage.setY(bounds.getMaxY() - stage.getHeight());
+        // lock the window to the bottom of the usable screen, above the taskbar
         stage.setX(bounds.getMinX());
+        stage.setY(bounds.getMaxY() - stage.getHeight());
 
         // remove normal window borders
         stage.initStyle(StageStyle.TRANSPARENT);
@@ -64,6 +69,41 @@ public class DesktopPet extends Application {
 
         // show the window
         stage.show();
+
+        // generate AI questions once at app startup instead of when trivia is opened
+        generateStartupAiTriviaQuestions();
+    }
+
+    /**
+     * Generates the app's AI trivia questions once when the desktop pet launches.
+     * Trivia windows only read existing database questions and do not trigger generation.
+     */
+    private void generateStartupAiTriviaQuestions() {
+        CompletableFuture.runAsync(() -> {
+            int currentAiQuestions = LocalAIQuestionGenerator.countAiQuestionsInDatabase();
+
+            if (currentAiQuestions >= STARTUP_AI_QUESTION_TARGET) {
+                System.out.println("AI trivia startup generation skipped: already have "
+                        + currentAiQuestions + " AI questions.");
+                return;
+            }
+
+            int inserted = LocalAIQuestionGenerator.generateUntilAiQuestionCount(STARTUP_AI_QUESTION_TARGET);
+
+            System.out.println("AI trivia startup generation inserted: " + inserted);
+        });
+    }
+
+    /**
+     * Keeps a value between a minimum and maximum amount.
+     *
+     * @param value the value to clamp
+     * @param min the lowest allowed value
+     * @param max the highest allowed value
+     * @return the clamped value
+     */
+    private double clamp(double value, double min, double max) {
+        return Math.max(min, Math.min(max, value));
     }
 
     public static void main(String[] args) {

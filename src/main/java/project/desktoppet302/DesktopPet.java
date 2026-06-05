@@ -23,15 +23,18 @@ import java.util.concurrent.CompletableFuture;
 public class DesktopPet extends Application {
 
     /**
+     * Number of AI trivia questions generated once when the app first launches.
+     */
+    private static final int STARTUP_AI_QUESTION_TARGET = 20;
+    /**
      * Visual bounds of the screen.
      * getVisualBounds excludes the taskbar, so the pet window stays above it.
      */
     private final Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
 
-    /**
-     * Number of AI trivia questions generated once when the app first launches.
-     */
-    private static final int STARTUP_AI_QUESTION_TARGET = 20;
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     /**
      * Initializes and displays the desktop pet window when the application starts.
@@ -69,10 +72,12 @@ public class DesktopPet extends Application {
         stage.setY(bounds.getMaxY() - stage.getHeight());
 
         // remove normal window borders
-        stage.initStyle(StageStyle.TRANSPARENT);
+        //stage.initStyle(StageStyle.TRANSPARENT);
 
         // keep the pet above other windows
         stage.setAlwaysOnTop(true);
+
+        stage.initStyle(StageStyle.TRANSPARENT);
 
         // show the window
         stage.show();
@@ -108,15 +113,11 @@ public class DesktopPet extends Application {
      * Keeps a value between a minimum and maximum amount.
      *
      * @param value the value to clamp
-     * @param min the lowest allowed value
-     * @param max the highest allowed value
+     * @param min   the lowest allowed value
+     * @param max   the highest allowed value
      * @return the clamped value
      */
     private double clamp(double value, double min, double max) {
         return Math.max(min, Math.min(max, value));
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }

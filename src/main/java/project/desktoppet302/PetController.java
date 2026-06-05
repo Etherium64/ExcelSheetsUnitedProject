@@ -18,7 +18,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import project.authentication.Login;
 import project.authentication.UserSingleton;
 
 /**
@@ -29,7 +28,6 @@ import project.authentication.UserSingleton;
  * @author Jacob Farrell
  */
 public class PetController {
-
     private static final double DRAG_THRESHOLD = 5;
     private static final double SCREEN_PADDING = 10;
     /**
@@ -48,7 +46,7 @@ public class PetController {
     @FXML
     public Button trivia;
     @FXML
-    public Button timer;
+    public Button pomodoro;
     @FXML
     public Button logout;
     /**
@@ -56,6 +54,7 @@ public class PetController {
      */
     @FXML
     public Image pet;
+
     /**
      * Box for the pet and menu in the application in fxml.
      */
@@ -108,14 +107,12 @@ public class PetController {
      */
     private Pet desktopPet;
     /**
-     * Boolean to determine if the trivia button was clicked.
+     * Boolean to determine if the trivia / pomodoro / logout button was clicked.
      */
     private boolean isTriviaPrompt = false;
-    private boolean islogoutPrompt = false;
-    /**
-     * Boolean to determine the pomodoro button was clicked.
-     */
     private boolean isPomodoroPrompt = false;
+    private boolean islogoutPrompt = false;
+
     /**
      * Double representing the change in position from the start of a mouse drag to present.
      */
@@ -290,6 +287,7 @@ public class PetController {
 
         isTriviaPrompt = true;
         isPomodoroPrompt = false;
+        islogoutPrompt = false;
     }
 
     /**
@@ -309,15 +307,24 @@ public class PetController {
 
         isPomodoroPrompt = true;
         isTriviaPrompt = false;
+        islogoutPrompt = false;
     }
 
     @FXML
     protected void logoutButton() {
         textField.setText("Want to log out?");
         textField.setVisible(true);
+        textField.setManaged(true);
+
+        promptButtons.setVisible(true);
+        promptButtons.setManaged(true);
+
         yesbutton.setVisible(true);
         nobutton.setVisible(true);
+
         islogoutPrompt = true;
+        isTriviaPrompt = false;
+        isPomodoroPrompt = false;
     }
 
     /**
@@ -328,43 +335,50 @@ public class PetController {
         if (isTriviaPrompt) {
             try {
                 Stage primaryStage = (Stage) textField.getScene().getWindow();
-
                 Stage triviaStage = new Stage();
+                triviaStage.initOwner(primaryStage); //Inheritance
                 new project.Trivia.Main().start(triviaStage);
 
                 triviaStage.setAlwaysOnTop(true);
                 clampChildStageToUsableScreen(primaryStage, triviaStage);
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
             isTriviaPrompt = false;
             hideAllPopups();
+
         } else if (isPomodoroPrompt) {
             try {
                 Stage primaryStage = (Stage) textField.getScene().getWindow();
-
                 Stage pomodoroStage = new Stage();
+                pomodoroStage.initOwner(primaryStage); //Inheritance
                 new project.pomodoro.Pomodoro().start(pomodoroStage);
 
                 pomodoroStage.setAlwaysOnTop(true);
                 clampChildStageToUsableScreen(primaryStage, pomodoroStage);
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
             isPomodoroPrompt = false;
             hideAllPopups();
+
         } else if (islogoutPrompt) {
-            desktopPet.stopMoving();
-            UserSingleton.getInstance().setup(0, ""); //Dummy information ensure User information doesn't remain
-            Stage loginStage = (Stage) logout.getScene().getWindow();
-            Login newLogin = new Login();
-            newLogin.start(loginStage);
+            try {
+                Stage primaryStage = (Stage) textField.getScene().getWindow();
+                desktopPet.stopMoving();
+                UserSingleton.getInstance().setup(0, "");
+                Stage loginStage = new Stage();
+                new project.authentication.Login().start(loginStage);
+
+                primaryStage.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            islogoutPrompt = false;
+            hideAllPopups();
         }
     }
+
 
     /**
      * Positions a launched trivia or pomodoro window inside the usable screen area.
@@ -372,7 +386,7 @@ public class PetController {
      * @param primaryStage the desktop pet stage
      * @param childStage   the launched trivia or pomodoro stage
      */
-    private void clampChildStageToUsableScreen(Stage primaryStage, Stage childStage) {
+    private void clampChildStageToUsableScreen(Stage primaryStage, Stage childStage) throws Exception {
         Rectangle2D usableScreen = Screen.getPrimary().getVisualBounds();
 
         double childWidth = childStage.getWidth();
@@ -421,6 +435,7 @@ public class PetController {
     protected void returnButton() {
         isTriviaPrompt = false;
         isPomodoroPrompt = false;
+        islogoutPrompt = false;
 
         hideAllPopups();
 

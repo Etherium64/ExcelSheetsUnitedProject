@@ -1,6 +1,7 @@
 package project.model;
 
 import java.sql.Timestamp;
+
 /**
  * Custom data model class for a Pomodoro Session.
  * Represents each Pomodoro session that the User initiates. .
@@ -55,7 +56,7 @@ public class Session {
      * Session Public Constructor without id field.
      * For inserting new Sessions after the first, as id will auto increment in SQLite.
      */
-    public Session(Timestamp timestamp, String sessionType, String sessionTask, String timespent, boolean completion, int user_id ) {
+    public Session(Timestamp timestamp, String sessionType, String sessionTask, String timespent, boolean completion, int user_id) {
         this.timestamp = timestamp;
         this.sessionType = sessionType;
         this.sessionTask = sessionTask;
@@ -64,34 +65,64 @@ public class Session {
         this.user_id = user_id;
     }
 
+    public int getSession_Id() {
+        return session_id;
+    }
+
     /**
      * All Session field setters and getters for use in the DAO
      */
-    public void setSession_Id(int session_id) { this.session_id = session_id; }
+    public void setSession_Id(int session_id) {
+        this.session_id = session_id;
+    }
 
-    public void setSessionType(String sessionType) {this.sessionType = sessionType; }
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
 
-    public void setSessionTask(String sessionTask) {this.sessionTask = sessionTask; }
-
-    public void setTimespent(String timespent) {this.timespent = timespent; }
-
-    public void setCompletion(Boolean completion) {this.completion = completion; }
-
-    public int getSession_Id() {return session_id;}
-
-    public Timestamp getTimestamp() {return timestamp;}
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
 
     public String getSessionType() {
         return sessionType;
     }
 
-    public String getSessionTask() { return sessionTask; }
+    public void setSessionType(String sessionType) {
+        this.sessionType = sessionType;
+    }
 
-    public String getTimespent() { return timespent; }
+    public String getSessionTask() {
+        return sessionTask;
+    }
 
-    public boolean getCompletion() {return completion;}
+    public void setSessionTask(String sessionTask) {
+        this.sessionTask = sessionTask;
+    }
 
-    public int getUser_id() {return user_id;}
+    public String getTimespent() {
+        return timespent;
+    }
+
+    public void setTimespent(String timespent) {
+        this.timespent = timespent;
+    }
+
+    public boolean getCompletion() {
+        return completion;
+    }
+
+    public void setCompletion(Boolean completion) {
+        this.completion = completion;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
 
     /**
      * Represents all of a Session field values as a concatenated string

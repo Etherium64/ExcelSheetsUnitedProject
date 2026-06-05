@@ -172,6 +172,28 @@ public class SessionDAO {
         return null;
     }
 
+    public Session getById(int session_id) {
+        try {
+            PreparedStatement getMockSession = connection.prepareStatement("SELECT * FROM sessions WHERE session_id = ?");
+            getMockSession.setInt(1, session_id);
+            ResultSet resultset = getMockSession.executeQuery();
+            if (resultset.next()) {
+                return new Session(
+                        resultset.getInt("session_id"),
+                        resultset.getTimestamp("timestamp"),
+                        resultset.getString("sessionType"),
+                        resultset.getString("sessionTask"),
+                        resultset.getString("timespent"),
+                        resultset.getBoolean("completion"),
+                        resultset.getInt("user_id")
+                );
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return null;
+    }
+
     public void close() {
         try {
             connection.close();

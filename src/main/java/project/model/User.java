@@ -22,39 +22,52 @@ public class User {
         this.registered = registered;
     }
 
-    public User()
-    {
-        this.username="";
-        this.password="";
+    public User() {
+        this.username = "";
+        this.password = "";
         this.salt = null;
         this.registered = false;
+    }
+
+    public int getUser_id() {
+        return user_id;
     }
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public void setSalt(byte[] salt) {this.salt = salt;}
+    public byte[] getSalt() {
+        return salt;
+    }
 
-    public void setRegistered(Boolean registered) { this.registered = registered;}
+    public void setSalt(byte[] salt) {
+        this.salt = salt;
+    }
 
-    public int getUser_id() {return user_id;}
+    public Boolean getRegistered() {
+        return registered;
+    }
 
-    public String getUsername() {return username;}
-
-    public String getPassword() {return password;}
-
-    public byte[] getSalt() { return salt;}
-
-    public Boolean getRegistered() {return registered;}
+    public void setRegistered(Boolean registered) {
+        this.registered = registered;
+    }
 
     @Override
     public String toString() {

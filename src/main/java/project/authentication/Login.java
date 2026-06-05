@@ -10,6 +10,10 @@ import java.util.Objects;
 
 public class Login extends Application {
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     /**
      * User Login starting menu.
      * Provides a stage that hosts user authentication functionality.
@@ -22,10 +26,6 @@ public class Login extends Application {
         stage.setScene(scene);
         stage.setTitle("User Login");
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
 

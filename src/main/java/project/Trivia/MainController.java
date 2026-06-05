@@ -378,6 +378,7 @@ public class MainController {
 
         popup.getChildren().add(title);
 
+        /*
         String sql =
                 "SELECT u.username, s.score " +
                         "FROM scores s " +
@@ -385,7 +386,22 @@ public class MainController {
                         "ORDER BY s.score DESC " +
                         "LIMIT 5";
 
-        try (Connection conn = DatabaseConnection.getConnection()) {
+         */
+        String sql = "SELECT u.username, s.scoreValue FROM scores s JOIN users u ON s.user_id = u.user_id ORDER BY s.scoreValue DESC LIMIT 5";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            int rank = 1;
+            while (rs.next()) {
+                Label entry = new Label(rank++ + ". " + rs.getString("username") + " - " + rs.getString("scoreValue"));
+                popup.getChildren().add(entry);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        /*try (Connection conn = DatabaseConnection.getConnection()) {
             if (conn == null) {
                 return;
             }
@@ -410,6 +426,8 @@ public class MainController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+         */
 
         Scene popupScene = new Scene(popup, 300, 200);
 

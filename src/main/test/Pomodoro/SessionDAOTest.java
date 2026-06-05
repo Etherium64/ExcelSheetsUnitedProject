@@ -6,10 +6,11 @@ import org.junit.jupiter.api.Test;
 import project.model.Session;
 import project.model.SessionDAO;
 
-import java.sql.*;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 /**
  * Testing CRUD operations of SessionDAO
  */
@@ -29,9 +30,8 @@ public class SessionDAOTest {
         sessionDAO = new SessionDAO();
         sessionDAO.dropTable();
         sessionDAO.createTable();
-
-        sessionDAO.insert(new Session(A, "work", "Test 1", "25:00", true ));
-        sessionDAO.insert(new Session(B, "rest", "Test 2", "02:00", false));
+        sessionDAO.insert(new Session(A, "work", "Test 1", "25:00", true, 16));
+        sessionDAO.insert(new Session(B, "rest", "Test 2", "02:00", false, 16));
     }
 
     @AfterEach
@@ -41,10 +41,10 @@ public class SessionDAOTest {
 
     @Test
     public void testOne() {
-        assertFalse(sessionDAO.getAll().isEmpty());
+        assertFalse(sessionDAO.getAll(16).isEmpty());
 
-        assertEquals(1, sessionDAO.getByTimestamp(A).getId());
-        assertEquals(2, sessionDAO.getByTimestamp(B).getId());
+        assertEquals(1, sessionDAO.getByTimestamp(A).getSession_Id());
+        assertEquals(2, sessionDAO.getByTimestamp(B).getSession_Id());
 
         assertNotEquals(sessionDAO.getById(1).getSessionType(), sessionDAO.getById(2).getSessionType());
         assertNotEquals(sessionDAO.getById(1).getSessionTask(), sessionDAO.getById(2).getSessionTask());
@@ -55,10 +55,10 @@ public class SessionDAOTest {
     @Test
     public void testTwo() {
         sessionDAO.delete(sessionDAO.getById(1));
-        assertEquals(1, sessionDAO.getAll().size());
+        assertEquals(1, sessionDAO.getAll(16).size());
 
         sessionDAO.delete(sessionDAO.getByTimestamp(B));
-        assert(sessionDAO.getAll().isEmpty());
+        assert (sessionDAO.getAll(11).isEmpty());
 
     }
 
@@ -75,15 +75,15 @@ public class SessionDAOTest {
 
         assertNotEquals(B, sessionOne.getTimestamp());
         assertEquals("05:00", sessionOne.getTimespent());
-        assert(sessionOne.getCompletion());
+        assert (sessionOne.getCompletion());
 
         Session sessionTwo = sessionDAO.getByTimestamp(A);
-        sessionTwo.setId(3);
+        sessionTwo.setSession_Id(3);
         sessionTwo.setSessionType("rest");
         sessionTwo.setSessionTask("Test 3");
         sessionDAO.update(sessionTwo);
 
-        assertNotEquals(1, sessionTwo.getId());
+        assertNotEquals(1, sessionTwo.getSession_Id());
         assertEquals("rest", sessionTwo.getSessionType());
         assertEquals("Test 3", sessionTwo.getSessionTask());
     }

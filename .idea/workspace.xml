@@ -5,50 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Merge branch 'SCA-3.0'&#10;&#10;# Conflicts:&#10;#&#9;.idea/compiler.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;Documents/githubCommits.txt&#10;#&#9;src/main/java/AnimationStates/animController.java&#10;#&#9;src/main/java/AnimationStates/animStates.java&#10;#&#9;src/main/java/project/desktoppet302/PetController.java&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0000.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0001.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0002.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0003.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0004.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0005.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0006.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0007.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0008.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0009.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0010.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0011.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0012.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0013.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0014.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0015.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0016.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0017.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0018.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0019.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0020.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0021.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0022.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0023.png&#10;#&#9;src/main/resources/ImageSequences/walkRight/walkRight0021.png&#10;#&#9;src/main/resources/ImageSequences/walkRight/walkRight0022.png&#10;#&#9;src/main/resources/ImageSequences/walkRight/walkRight0023.png&#10;#&#9;src/main/resources/ImageSequences/walkRight/walkRight0024.png">
-      <change afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/authentication/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/authentication/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/authentication/MockAuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/authentication/UserSingleton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/model/ScoreDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/project/model/UserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/project.authentication/login-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/test/UserAuthenticationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/session.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/dao/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/dao/DatabaseInitialiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/DatabaseInitialiser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/dao/LocalAIQuestionGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/LocalAIQuestionGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/dao/QuestionsSeeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/QuestionsSeeder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/dao/ScoreDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/view/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/authentication/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/authentication/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/authentication/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/authentication/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/authentication/MockAuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/authentication/MockAuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/DesktopPet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/DesktopPet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/desktoppet302/PetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/Pomodoro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/BreakController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/BreakController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/PomodoroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/PomodoroController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/controller/WorkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/WorkController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/DBConnection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/Session.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/model/SessionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/SessionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/model/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/Session.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/model/SessionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/SessionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/BreakController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/BreakController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/project/pomodoro/Pomodoro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/pomodoro/Pomodoro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/project.desktoppet302/pet-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project.desktoppet302/pet-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/project.trivia/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project.trivia/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/project/pomodoro/break-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project/pomodoro/break-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/project/pomodoro/datab-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project/pomodoro/datab-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/project/pomodoro/work-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project/pomodoro/work-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/Pomodoro/ScoreDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/Pomodoro/ScoreDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/Pomodoro/ScoreDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/Trivia/ScoreDAOTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/test/Pomodoro/SessionDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/Pomodoro/SessionDAOTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/test/Pomodoro/SessionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/Pomodoro/SessionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/Trivia/DatabaseConnectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/Trivia/DatabaseConnectionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/Trivia/DatabaseInitialiserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/Trivia/DatabaseInitialiserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/Trivia/QuestionSeederTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/Trivia/QuestionSeederTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trivia.db" beforeDir="false" afterPath="$PROJECT_DIR$/userData.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/UserAuthenticationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/Authentication/UserAuthenticationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +49,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="testing-pet" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -121,6 +97,7 @@
   "keyToString": {
     "Application.AnimationTestWindow.executor": "Run",
     "Application.DesktopPet.executor": "Run",
+    "Application.Login.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.MainApplication.executor": "Run",
     "Application.PomodoroTest.executor": "Run",
@@ -135,6 +112,7 @@
     "JUnit.ScoreDAOTest.executor": "Coverage",
     "JUnit.SessionDAOTest.executor": "Run",
     "JUnit.SessionTest.executor": "Run",
+    "JUnit.UserAuthenticationTest.executor": "Run",
     "Maven.DesktopPet302 [org.apache.maven.plugins:maven-javadoc-plugin:3.4.0:javadoc].executor": "Run",
     "Maven.DesktopPet302 [package].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
@@ -146,8 +124,9 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "Merging master",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "last_directory_selection": "/home/daniel/Documents/ExcelSheetsUnitedProject/src/main/test/Authentication",
     "last_opened_file_path": "/home/daniel/IdeaProjects/ESU/ExcelSheetsUnitedProject",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
@@ -172,6 +151,10 @@
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\target\classes\project.pomodoro" />
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\target\classes" />
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\target\classes\project" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Authentication" />
+      <recent name="Trivia" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="project.pomodoro.controller" />
@@ -280,7 +263,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.25134.95" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.25134.95" />
       </set>
     </attachedChunks>
   </component>
@@ -392,6 +376,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/project/Trivia/dao/LocalAIQuestionGenerator.java</url>
           <line>19</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/project/model/User.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -35,11 +35,9 @@ public class Pomodoro extends Application {
         Scene scene = new Scene(root, 600, 300, Color.TRANSPARENT);
         scene.getStylesheets().add("/styles.css");
         root.setStyle("-fx-background-color: transparent;");
-        if (FXMLstring == "datab-view.fxml")
-        {
+        if (FXMLstring == "datab-view.fxml") {
             stage.setTitle(UserSingleton.getInstance().getUsername() + "'s Sessions");
-        }
-        else{
+        } else {
             stage.setTitle("Pomodoro");
             //Set up all the necessary fields to run the Pomodoro Controller if running a Pomodoro Work / Rest Session
             Label timerLabel = (Label) root.lookup("#timerLabel");
@@ -51,8 +49,8 @@ public class Pomodoro extends Application {
             PomodoroController.getPomodoroController().setPomodoro(sessionType, timerLabel, timerBar, startPauseBtn);
         }
 
-        stage.setMinWidth(760);
-        stage.setMinHeight(520);
+        //stage.setMinWidth(760);
+        //stage.setMinHeight(520);
         stage.setScene(scene);
 
     }
@@ -60,7 +58,7 @@ public class Pomodoro extends Application {
     /**
      * The main entry point for the JavaFX application.
      * Initializes the primary stage with the Pomodoro view, sets the initial time to 25:00,
-     * and displays the window.
+     * and displays the window
      *
      * @param stage The primary stage provided by the JavaFX runtime
      * @throws Exception if there is an error loading the FXML or initializing the scene

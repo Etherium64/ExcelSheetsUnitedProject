@@ -15,21 +15,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class SessionTest {
-    private Session session;
     LocalDateTime nowSession = LocalDateTime.now();
-    private Timestamp Now = Timestamp.valueOf(nowSession);
     LocalDateTime laterSession = nowSession.plusHours(1);
     private Timestamp Later = Timestamp.valueOf(laterSession);
+    private Session session;
+    private Timestamp Now = Timestamp.valueOf(nowSession);
 
     @BeforeEach
     public void setUp() {
-        session = new Session(Now, "work", "Test Driven Development", "60:00", true);
+        session = new Session(302, Now, "work", "Test Driven Development", "60:00", true, 17);
     }
 
     @Test
-    public void testGetId() {
-        session.setId(302);
-        assertEquals(302, session.getId());
+    public void testGetSessionId() {
+        assertEquals(302, session.getSession_Id());
     }
 
     @Test
@@ -55,6 +54,11 @@ public class SessionTest {
     @Test
     public void testGetCompletion() {
         assertEquals(true, session.getCompletion());
+    }
+
+    @Test
+    public void testGetUserID() {
+        assertEquals(17, session.getUser_id());
     }
 
     @Test

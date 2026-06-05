@@ -2,12 +2,12 @@ package project.authentication;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import project.desktoppet302.DesktopPet;
 import project.model.User;
 import project.model.UserDAO;
-import javafx.scene.control.Alert.AlertType;
+
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 import java.util.Base64;
@@ -31,13 +31,12 @@ public class AuthController {
     /**
      * Public Constructor for Auth Controller
      * Starts with an instantiation of UserDAO
-     * If there are no User rows, creates the first 15, inclluding sample users AI and Human
+     * If there are no User rows, creates the first 15, including sample users AI and Human
      * new User(); are blank slots for you to register in
      */
     public AuthController() throws Exception {
         userDAO = new UserDAO();
-        if (userDAO.getAll().isEmpty())
-        {
+        if (userDAO.getAll().isEmpty()) {
             byte[] AISalt = generateSalt();
             byte[] humanSalt = generateSalt();
             String AIPassword = hashPassword("AI", AISalt);
@@ -60,6 +59,27 @@ public class AuthController {
         }
     }
 
+    /**
+     * Hashes Password using SHA-512.
+     * After password is hashed, it is then stored in the database
+     */
+    public static String hashPassword(String password, byte[] salt) throws Exception {
+        MessageDigest messageDigest = MessageDigest.getInstance("SHA-512");
+        messageDigest.update(salt);
+        byte[] hashedPassword = messageDigest.digest(password.getBytes());
+        return Base64.getEncoder().encodeToString(hashedPassword);
+    }
+
+    /**
+     * Generates Salt for Hashing the Password
+     * A unique Salt is generated and assigned as a field to the User Data Model
+     */
+    public static byte[] generateSalt() {
+        SecureRandom random = new SecureRandom();
+        byte[] salt = new byte[32];
+        random.nextBytes(salt);
+        return salt;
+    }
 
     /**
      * Handles the selection of the User row in a ListView of Users
@@ -111,7 +131,7 @@ public class AuthController {
 
     /**
      * Refresh the user ListView with the List of Users stored in the DAO
-     *  Select the first user row
+     * Select the first user row
      */
     private void refreshList() {
         usersListView.getItems().clear();
@@ -134,30 +154,6 @@ public class AuthController {
     }
 
     /**
-     * Generates Salt for Hashing the Password
-     * A unique Salt is generated and assigned as a field to the User Data Model
-     */
-    byte[] generateSalt()
-    {
-        SecureRandom random = new SecureRandom();
-        byte[] salt = new byte[32];
-        random.nextBytes(salt);
-        return salt;
-    }
-
-    /**
-     * Hashes Password using SHA-512.
-     * After password is hashed, it is then stored in the database
-     */
-    static String hashPassword(String password, byte[] salt) throws Exception
-    {
-        MessageDigest messageDigest = MessageDigest.getInstance("SHA-512");
-        messageDigest.update(salt);
-        byte[] hashedPassword = messageDigest.digest(password.getBytes());
-        return Base64.getEncoder().encodeToString(hashedPassword);
-    }
-
-    /**
      * Handles what happens if you click the Register / Login Button
      * Eiher calls the Register function if it is a blank ListView row
      * Or calls the Login function if there is already q registered User
@@ -173,32 +169,33 @@ public class AuthController {
     }
 
     /**
-     *  To 'Register' insert a Username, Salt, Password, and set Registered as True to an empty User class
+     * To 'Register' insert a Username, Salt, Password, and set Registered as True to an empty User class
      */
     private void register(User selectedUser) throws Exception {
         selectedUser.setUsername(usernameTextField.getText());
         selectedUser.setSalt(generateSalt());
-        selectedUser.setPassword(hashPassword(passwordField.getText(),selectedUser.getSalt()));
+        selectedUser.setPassword(hashPassword(passwordField.getText(), selectedUser.getSalt()));
         selectedUser.setRegistered(true);
         userDAO.update(selectedUser);
         refreshList();
     }
 
     /**
-     *  Check if input password maches the User registration details after hashing
-     *  If it matches, allow entry into Desktop Pet application
-     *  If it doesn't match, do an Incorrect password alert
+     * Check if input password maches the User registration details after hashing
+     * If it matches, allow entry into Desktop Pet application
+     * If it doesn't match, do an Incorrect password alert
      */
     protected void login(User selectedUser) throws Exception {
-        String inputPassword = hashPassword(passwordField.getText(),selectedUser.getSalt());
-        if (Objects.equals(inputPassword, selectedUser.getPassword()) )
-        {
+        String inputPassword = hashPassword(passwordField.getText(), selectedUser.getSalt());
+        if (Objects.equals(inputPassword, selectedUser.getPassword())) {
             //Stores the Username and User_ID for access across other controller in a UserSingleton Class
             //Simulates an Active User
             UserSingleton.getInstance().setup(selectedUser.getUser_id(), selectedUser.getUsername());
-            Stage petStage = (Stage) registerBtn.getScene().getWindow();
-            DesktopPet newDesktopPet = new DesktopPet();
-            newDesktopPet.start(petStage);
+
+            Stage loginStage = (Stage) registerBtn.getScene().getWindow();
+            Stage petStage = new Stage();
+            new project.desktoppet302.DesktopPet().start(petStage);
+            loginStage.close();
         } else {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Incorrect Password");

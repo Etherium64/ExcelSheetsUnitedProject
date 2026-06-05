@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import project.model.DatabaseInitialiser;
 
 import java.util.Objects;
@@ -51,6 +52,8 @@ public class Main extends Application {
         stage.setMinWidth(520);
         stage.setMinHeight(420);
         stage.setScene(scene);
+        stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
+
     }
 }

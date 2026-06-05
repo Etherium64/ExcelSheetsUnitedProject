@@ -2,7 +2,6 @@ package project.pomodoro;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Background;
@@ -79,6 +78,13 @@ public class BreakController {
         Stage newStage = (Stage) button.getScene().getWindow();
         Pomodoro newPomodoro = new Pomodoro();
         newPomodoro.launch(newStage, FXMLstring);
+
+        /*
+                Stage primaryStage = (Stage) textField.getScene().getWindow();
+                Stage pomodoroStage = new Stage();
+                pomodoroStage.initOwner(primaryStage); //Inheritance
+                new project.pomodoro.Pomodoro().start(pomodoroStage);
+         */
     }
 
     /**

@@ -1,4 +1,4 @@
-
+package Trivia;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 import project.model.DatabaseConnection;
 import project.model.DatabaseInitialiser;
 import project.model.ScoreDAO;
+
 import java.sql.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -41,18 +43,18 @@ public class ScoreDAOTest {
 
     @Test
     void testUpdateScore() throws SQLException {
-        int previousScore = scoreDAO.getScore(1);
+        int previousScore = scoreDAO.get(1);
         int nextScore = 3;
-        int totalScore = newScore + previousScore;
+        int totalScore = nextScore + previousScore;
 
         assertEquals(5, previousScore);
 
-        scoreDAO.updateScore(1, totalScore);
+        scoreDAO.update(1, totalScore);
 
-        assertNotEquals(scoreDAO.getScore(1), previousScore);
-        assertNotEquals(scoreDAO.getScore(1), nextScore);
-        assertEquals(scoreDAO.getScoe(1), totalScore);
+        assertNotEquals(scoreDAO.get(1), previousScore);
+        assertNotEquals(scoreDAO.get(1), nextScore);
+        assertEquals(scoreDAO.get(1), totalScore);
     }
 
-    @
+
 }

@@ -1,0 +1,22 @@
+name: Ollama AI Test
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  ollama-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Ollama
+        uses: ai-action/setup-ollama@v2
+
+      - name: Pull Model
+        run: ollama pull llama3.2

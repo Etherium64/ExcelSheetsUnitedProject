@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import project.Trivia.dao.DatabaseInitialiser;
 import project.Trivia.dao.LocalAIQuestionGenerator;
 
 import java.io.IOException;
@@ -69,6 +70,9 @@ public class DesktopPet extends Application {
 
         // show the window
         stage.show();
+
+        // initialises database
+        DatabaseInitialiser.init();
 
         // generate AI questions once at app startup instead of when trivia is opened
         generateStartupAiTriviaQuestions();

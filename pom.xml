@@ -118,7 +118,7 @@
                 </executions>
                 <configuration>
                     <outputDirectory>${project.build.directory}/site</outputDirectory>
-                    <source>9</source>
+                    <source>17</source>
                     <additionalOptions>
                         <additionalOption>-Xdoclint:none</additionalOption>
                     </additionalOptions>

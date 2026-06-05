@@ -1,4 +1,4 @@
-package project.Trivia.dao;
+package project.model;
 
 import java.net.ConnectException;
 import java.net.URI;

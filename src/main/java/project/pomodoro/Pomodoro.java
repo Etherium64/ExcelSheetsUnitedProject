@@ -10,7 +10,9 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import project.pomodoro.controller.PomodoroController;
+import javafx.stage.StageStyle;
+import project.authentication.UserSingleton;
+
 
 import java.util.Objects;
 
@@ -20,46 +22,45 @@ import java.util.Objects;
  *
  * @author Minhman Do
  */
-public class MainApplication extends Application {
-
+public class Pomodoro extends Application {
     /**
      * Loads and displays a specified FXML view within a stage, applying styling and initializing the timer display.
      *
      * @param stage The primary stage to set the scene on
      * @throws Exception if the FXML file cannot be loaded or the timer label cannot be found
      */
+
     public void launch(Stage stage, String FXMLstring) throws Exception {
-
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(FXMLstring)));
-
-        // larger scene prevents the pomodoro and database layouts from being cut off
-        Scene scene = new Scene(root, 760, 520, Color.TRANSPARENT);
+        Scene scene = new Scene(root, 600, 300, Color.TRANSPARENT);
         scene.getStylesheets().add("/styles.css");
-
-        if (FXMLstring.equals("datab-view.fxml")) {
-            stage.setTitle("Sessions Database");
-        } else {
+        root.setStyle("-fx-background-color: transparent;");
+        if (FXMLstring == "datab-view.fxml")
+        {
+            stage.setTitle(UserSingleton.getInstance().getUsername() + "'s Sessions");
+        }
+        else{
             stage.setTitle("Pomodoro");
-
-            // set up all the necessary fields to run the Pomodoro Controller
+            //Set up all the necessary fields to run the Pomodoro Controller if running a Pomodoro Work / Rest Session
             Label timerLabel = (Label) root.lookup("#timerLabel");
             ProgressBar timerBar = (ProgressBar) root.lookup("#timerBar");
             timerBar.setProgress(1);
-
             Button startPauseBtn = (Button) root.lookup("#startPauseBtn");
             startPauseBtn.setBackground(Background.fill(Color.LIGHTGREEN));
-
             String sessionType = FXMLstring.substring(0, 5).replace("-", "");
-            PomodoroController.getPomodoro().setPomodoro(sessionType, timerLabel, timerBar, startPauseBtn);
+            PomodoroController.getPomodoroController().setPomodoro(sessionType, timerLabel, timerBar, startPauseBtn);
         }
 
         stage.setMinWidth(760);
         stage.setMinHeight(520);
         stage.setScene(scene);
+
     }
 
     /**
      * The main entry point for the JavaFX application.
+     * Initializes the primary stage with the Pomodoro view, sets the initial time to 25:00,
+     * and displays the window.
      *
      * @param stage The primary stage provided by the JavaFX runtime
      * @throws Exception if there is an error loading the FXML or initializing the scene
@@ -67,6 +68,8 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         launch(stage, "work-view.fxml");
+        stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
     }
 }
+

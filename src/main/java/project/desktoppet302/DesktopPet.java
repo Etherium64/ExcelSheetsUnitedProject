@@ -8,14 +8,17 @@ import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import project.Trivia.dao.DatabaseInitialiser;
-import project.Trivia.dao.LocalAIQuestionGenerator;
+import project.model.DatabaseInitialiser;
+import project.model.LocalAIQuestionGenerator;
 
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 
 /**
  * A JavaFX application that displays a draggable desktop pet on the screen.
+ * The pet appears as a transparent window containing an image, locked to the bottom
+ * of the primary display. Users can drag the pet horizontally across the screen,
+ * but its movement is constrained to stay within the screen bounds.
  */
 public class DesktopPet extends Application {
 
@@ -32,6 +35,9 @@ public class DesktopPet extends Application {
 
     /**
      * Initializes and displays the desktop pet window when the application starts.
+     * Sets up the pet image from the resources, configures the transparent window,
+     * positions it at the bottom of the screen, and enables horizontal dragging
+     * with screen edge constraints.
      *
      * @param stage The primary stage for this application, onto which the scene is set.
      * @throws IOException If the pet FXML resource cannot be loaded.

@@ -1,4 +1,4 @@
-package project.pomodoro.controller;
+package project.pomodoro;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -10,9 +10,9 @@ import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
-import project.pomodoro.MainApplication;
-import project.pomodoro.model.Session;
-import project.pomodoro.model.SessionDAO;
+import project.authentication.UserSingleton;
+import project.model.Session;
+import project.model.SessionDAO;
 
 import java.net.URL;
 import java.sql.Timestamp;
@@ -34,112 +34,64 @@ import java.util.TimerTask;
  */
 
 public class PomodoroController implements Initializable {
-    /**
-     * Singleton instance of the Pomodoro controller.
-     */
-    static private PomodoroController pomodoro;
+    //Singleton instance of the Pomodoro controller.
+    static private PomodoroController pomodoroController;
 
-    /**
-     * Data Access Object for Session Class.
-     * Session is a Custom class for Pomodoro Session and interacted with via CRUD.
-     *  */
+    //Data Access Object for Session Data Model
     private static SessionDAO sessionDAO;
-    /**
-     * List of Session classes allowing for Listeners. Required to populate the TableView rows. .
-     */
+
+    //List of Session classes, requied to populate TableView
     private ObservableList<Session> sessionsObservableList;
 
-    /**
-     * Timestamp created the moment Pomodoro Timer starts. Stored as a private field heree to set to Session.
-     */
-    private Timestamp timestamp;
-    /**
-     * Type of Session: Work vs Rest.  Stored as a private field heree to set to Session.
-     */
-    private String sessionType;
-    /**
-     * Remaining time in seconds.
-     */
-    private static int timeElapsed;
-    /**
-     * Initial time set for the timer (used for reset).
-     */
-    private static int timeBegins;
-    /**
-     * The background timer task that drives the countdown.
-     */
+    //The background timer task that drives the countdown.
     private Timer timer;
-    /**
-     * The label displaying the timer value in the UI.
-     */
-    private Label timerLabel;
 
-    /**
-     * ProgressBar UI element synced to the Timer
-     */
-    private ProgressBar timerBar;
-    /**
-     * Progress value assigned to ProgressBar. Decrements in sync with Timer.
-     */
+    //Timestamp created the moment Pomodoro Timer starts and assigned to Session class
+    private Timestamp timestamp;
+
+    //Type of session work vs rest and assigned to Session class
+    private String sessionType;
+
+    //Remaining time in seconds.
+    private static int timeElapsed;
+
+    //Initial time set for the timer (used for reset).
+    private static int timeBegins;
+
+    //Progress value assigned to ProgressBar. Decrements in sync with Timer.
     private static double progress;
-    /**
-     * 1 / Number of total seconds. Ensures progress is decremented accurately.
-     */
+
+    // 1/ Number of total seconds. Ensures progress is decremented accurately.
     private static double progressIncrements;
-    /**
-     * Start Pause Button UI element. Switches from Start and Pause Text.
-     */
-    private Button startPauseBtn;
-    /**
-     * Indicates whether the timer is currently paused.
-     */
+
+    //Indicates whether the timer is currently paused.
     volatile boolean isPaused = true;
-    /**
-     * Flag to determine if this is the first time the timer is being started.
-     */
+
+    //Flags if this is the first time the timer is being started
     private boolean firstCount = true;
-    /**
-     * Instantiation of MainApplication for Scene transition
-     */
-    private MainApplication newScene = new MainApplication();
-    /**
-     * Returns to Pomodoro Button UI elemnent for TableView
-     */
+
+    //TableView GUI elements
+    // timerLabel and timerBar dynamically changes to match timer
+    // Buttons return and startPause
+    // TableColumns
+    @FXML
+    private Label timerLabel;
+    @FXML
+    private ProgressBar timerBar;
     @FXML
     private Button returnBtn;
-    /**
-     * TableView FXML UI element
-     */
+    @FXML
+    private Button startPauseBtn;
     @FXML
     private TableView<Session> tableView;
-    /**
-     * TableColumn id for TableView
-     */
-    @FXML
-    private TableColumn<Session, Integer> idCol;
-    /**
-     * TableColumn timestamp for TableView
-     */
     @FXML
     private TableColumn<Session, Timestamp> timestampCol;
-    /**
-     * TableColumn type for TableView
-     */
     @FXML
     private TableColumn<Session, String> typeCol;
-    /**
-     * TableColumn string task for TableView
-     */
     @FXML
     private TableColumn<Session, String> taskCol;
-    /**
-     * TableColumn string timespent for TableView
-     */
     @FXML
     private TableColumn<Session, String> timespentCol;
-    /**
-     * TableColumn completion for TableView
-     */
     @FXML
     private TableColumn<Session, Boolean> completionCol;
 
@@ -150,24 +102,12 @@ public class PomodoroController implements Initializable {
      *
      * @return The single instance of PomodoroController
      */
-    static public PomodoroController getPomodoro() {
-        if (pomodoro == null) {
-            pomodoro = new PomodoroController();
+    static public PomodoroController getPomodoroController() {
+        if (pomodoroController == null) {
+            pomodoroController = new PomodoroController();
             sessionDAO = new SessionDAO();
-            sessionDAO.createTable();
         }
-        return pomodoro;
-    }
-
-    /**
-     * Formats the remaining time into MM:SS string format.
-     *
-     * @return A string representation of the time in "mm:ss" format with leading zeros.
-     */
-    private String formatTimer(int timeValue) {
-        int minutes = timeValue / 60;
-        int seconds = timeValue % 60;
-        return String.format("%02d:%02d", minutes, seconds);
+        return pomodoroController;
     }
 
     /**
@@ -198,6 +138,37 @@ public class PomodoroController implements Initializable {
 
         //Assign Start Pause Button. Needs to disable once Timer is finishe.
         this.startPauseBtn = startPauseBtn;
+    }
+    /**
+     * Formats the remaining time into MM:SS string format.
+     *
+     * @return A string representation of the time in "mm:ss" format with leading zeros.
+     */
+    private String formatTimer(int timeValue) {
+        int minutes = timeValue / 60;
+        int seconds = timeValue % 60;
+        return String.format("%02d:%02d", minutes, seconds);
+    }
+
+    /**
+     * @return A curent timestamp t be assigned to a Session
+     */
+    private Timestamp captureTimestamp()
+    {
+        LocalDateTime now = LocalDateTime.now();
+        return Timestamp.valueOf(now);
+    }
+
+    /**
+     * Record the initial Pomodoro session.
+     * Function is called the moment user first clicks the Start Button.
+     * Insert session via DAO. CRUD - Create Operation
+     */
+    public void recordSession(String sessionTask) {
+        //Session timestamp is created the moment Start button is clicked
+        timestamp = captureTimestamp();
+        int user_id = UserSingleton.getInstance().getUser_id();
+        sessionDAO.insert(new Session(timestamp, sessionType, sessionTask, "00:00", false, user_id));
     }
 
     /**
@@ -234,17 +205,6 @@ public class PomodoroController implements Initializable {
         sessionDAO.update(session);
     }
 
-    /**
-     * Record the initial Pomodoro session.
-     * Function is called the moment user first clicks the Start Button.
-     * Insert session via DAO. CRUD - Create Operation
-     */
-    public void recordSession(String sessionTask) {
-        //Session timestamp is created the moment Start button is clicked
-        LocalDateTime now = LocalDateTime.now();
-        timestamp = Timestamp.valueOf(now);
-        sessionDAO.insert(new Session(timestamp, sessionType, sessionTask, "00:00", false));
-    }
 
     /**
      * Starts or resumes the timer.
@@ -305,8 +265,6 @@ public class PomodoroController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Initialise the obserable list. Used later to populate the TableView cells.
         this.sessionsObservableList = FXCollections.observableArrayList();
-
-        idCol.setCellValueFactory((new PropertyValueFactory<>("id")));
         timestampCol.setCellValueFactory((new PropertyValueFactory<>("timestamp")));
 
         //Bind the TableColumn typeCol to the sessionType field in the Session class (Data Model)
@@ -353,7 +311,8 @@ public class PomodoroController implements Initializable {
         // Clear the items from Tableview first for a refresh
         tableView.getItems().clear();
         //Add all session data to the ObservableList using DAO getAll method. CRUD - Read operation.
-        sessionsObservableList.addAll(sessionDAO.getAll());
+        int user_id = UserSingleton.getInstance().getUser_id();
+        sessionsObservableList.addAll(sessionDAO.getAll(user_id));
         //Populate the Tableview using this Observable List
         tableView.setItems(sessionsObservableList);
     }
@@ -363,9 +322,23 @@ public class PomodoroController implements Initializable {
      * Belongs to TableView FXML
      */
     @FXML
-    public void returnBtnClick() throws Exception {
+    protected void returnBtnClick() throws Exception {
         Stage newStage = (Stage) returnBtn.getScene().getWindow();
+        Pomodoro newScene = new Pomodoro();
         newScene.launch(newStage, "work-view.fxml");
+    }
+
+    /**
+     * Refreshes the tableview with the User's sessions after a CRUD operation or when the tableview first initialises
+     * Then selects the next row
+     */
+    private void refreshTable()
+    {
+        tableView.getItems().clear();
+        int user_id = UserSingleton.getInstance().getUser_id();
+        sessionsObservableList.addAll(sessionDAO.getAll(user_id));
+        tableView.setItems(sessionsObservableList);
+        tableView.getSelectionModel().selectNext();
     }
 
     /**
@@ -374,13 +347,9 @@ public class PomodoroController implements Initializable {
      *  Handles CRUD create and read operations
      */
     @FXML
-    public void createBtnClick() {
-        LocalDateTime now = LocalDateTime.now();
-        timestamp = Timestamp.valueOf(now);
-        sessionDAO.insert(new Session(timestamp, "", "", "00:00", false));
-        tableView.getItems().clear();
-        sessionsObservableList.addAll(sessionDAO.getAll());
-        tableView.setItems(sessionsObservableList);
+    private void createBtnClick() {
+        sessionDAO.insert(new Session(captureTimestamp(), "", "", "00:00", false, UserSingleton.getInstance().getUser_id()));
+        refreshTable();
     }
 
     /**
@@ -389,15 +358,12 @@ public class PomodoroController implements Initializable {
      *  Handles CRUD delete and read operations
      */
     @FXML
-    public void deleteBtnClick() {
+    private void deleteBtnClick() {
         Session selectedSession = tableView.getSelectionModel().getSelectedItem();
         if (selectedSession != null)
         {
             sessionDAO.delete(selectedSession);
-            tableView.getItems().clear();
-            sessionsObservableList.addAll(sessionDAO.getAll());
-            tableView.setItems(sessionsObservableList);
-            tableView.getSelectionModel().selectNext();
+            refreshTable();
         }
     }
 

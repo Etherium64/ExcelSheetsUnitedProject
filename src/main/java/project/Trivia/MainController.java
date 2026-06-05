@@ -1,4 +1,4 @@
-package project.Trivia.view;
+package project.Trivia;
 
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
@@ -7,14 +7,14 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import project.Trivia.dao.DatabaseConnection;
-import project.Trivia.dao.LocalAIQuestionGenerator;
-import project.Trivia.dao.ScoreDAO;
+import project.authentication.UserSingleton;
+import project.model.DatabaseConnection;
+import project.model.LocalAIQuestionGenerator;
+import project.model.ScoreDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,65 +26,44 @@ import java.util.List;
 
 /**
  * Controller for the main Trivia Game interface.
+ * <p>
+ * Manages user interaction with the quiz UI, including question display,
+ * answer handling, score tracking, and saving user scores to the database.
+ * Uses FXML injection to bind UI components and coordinates game flow.
+ * </p>
+ *
+ * @author Ethan B
  */
 public class MainController {
-
-    @FXML private TextField usernameField;
-    @FXML public Label scoreLabel;
-    @FXML private Label statusLabel;
-    @FXML private Label questionLabel;
-    @FXML public Button buttonA, buttonB, buttonC, buttonD;
-    @FXML public Button EndButton;
-
-    @FXML private GridPane triviaSection;
-    @FXML private VBox usernameSection;
-
-    private int score = 0;
-    public String correctAnswer;
-    private int questionCount = 0;
-
     private static final int MAX_QUESTIONS = 5;
-
     private final ScoreDAO dao = new ScoreDAO();
-
     private final List<Question> questions = new ArrayList<>();
+    @FXML
+    public Label scoreLabel;
+    @FXML
+    public Button buttonA, buttonB, buttonC, buttonD;
+    @FXML
+    public Button EndButton;
+    public String correctAnswer;
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private Label statusLabel;
+    @FXML
+    private Label questionLabel;
+    @FXML
+    private GridPane triviaSection;
+    @FXML
+    private VBox usernameSection;
+    private int score = 0;
+    private int questionCount = 0;
     private int currentQuestionIndex = 0;
     private boolean usingHardcodedQuestions = false;
-
-    public class Question {
-
-        int id;
-        String question;
-        String a;
-        String b;
-        String c;
-        String d;
-        String correct;
-        boolean hardcoded;
-
-        public Question(int id,
-                        String q,
-                        String a,
-                        String b,
-                        String c,
-                        String d,
-                        String correct,
-                        boolean hardcoded) {
-
-            this.id = id;
-            this.question = q;
-            this.a = a;
-            this.b = b;
-            this.c = c;
-            this.d = d;
-            this.correct = correct;
-            this.hardcoded = hardcoded;
-        }
-    }
 
     @FXML
     private void initialize() {
         LocalAIQuestionGenerator.ensureAskedColumnExists();
+        usernameLabel.setText(UserSingleton.getInstance().getUsername());
         resetTriviaState();
 
         if (LocalAIQuestionGenerator.countAiQuestionsInDatabase() >= MAX_QUESTIONS) {
@@ -154,7 +133,6 @@ public class MainController {
         }
 
         Button selected = (Button) event.getSource();
-
         if (selected.getText().equals(correctAnswer)) {
             score++;
             scoreLabel.setText(String.valueOf(score));
@@ -164,7 +142,6 @@ public class MainController {
         }
 
         questionCount++;
-
         if (questionCount >= MAX_QUESTIONS) {
             statusLabel.setText("Quiz complete! Final score: " + score);
             disableButtons();
@@ -174,7 +151,6 @@ public class MainController {
 
             triviaSection.setVisible(false);
             triviaSection.setManaged(false);
-
             usernameSection.setVisible(true);
             usernameSection.setManaged(true);
         } else {
@@ -182,6 +158,9 @@ public class MainController {
         }
     }
 
+    /**
+     * Disables all answer buttons to prevent further input after quiz completion.
+     */
     private void disableButtons() {
         buttonA.setDisable(true);
         buttonB.setDisable(true);
@@ -265,7 +244,7 @@ public class MainController {
                     }
 
                     questions.add(new Question(
-                            rs.getInt("id"),
+                            rs.getInt("question_id"),
                             questionText,
                             rs.getString("option_a"),
                             rs.getString("option_b"),
@@ -306,7 +285,7 @@ public class MainController {
                     }
 
                     questions.add(new Question(
-                            rs.getInt("id"),
+                            rs.getInt("question_id"),
                             questionText,
                             rs.getString("option_a"),
                             rs.getString("option_b"),
@@ -323,11 +302,11 @@ public class MainController {
         }
     }
 
-    private void markQuestionAsAsked(int questionId) {
+    private void markQuestionAsAsked(int question_id) {
         String sql = """
                 UPDATE questions
                 SET asked = 1
-                WHERE id = ?
+                WHERE question_id = ?
                 """;
 
         try (Connection conn = DatabaseConnection.getConnection()) {
@@ -336,7 +315,7 @@ public class MainController {
             }
 
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                ps.setInt(1, questionId);
+                ps.setInt(1, question_id);
                 ps.executeUpdate();
             }
 
@@ -368,7 +347,7 @@ public class MainController {
         }
 
         Question q = questions.get(currentQuestionIndex++);
-        markQuestionAsAsked(q.id);
+        markQuestionAsAsked(q.question_id);
 
         if (q.hardcoded) {
             questionLabel.setText("* " + q.question);
@@ -380,10 +359,13 @@ public class MainController {
         buttonB.setText(q.b);
         buttonC.setText(q.c);
         buttonD.setText(q.d);
-
         correctAnswer = q.correct;
     }
 
+    /**
+     * Displays a popup showing the top 5 scores from the database.
+     * The popup automatically closes after 10 seconds.
+     */
     private void showTopScores() {
         VBox popup = new VBox(10);
 
@@ -438,6 +420,7 @@ public class MainController {
 
         popupStage.show();
 
+        // Close after 10 seconds
         new Thread(() -> {
             try {
                 Thread.sleep(10_000);
@@ -448,29 +431,49 @@ public class MainController {
         }).start();
     }
 
+    /**
+     * Handles saving the user's score to the database.
+     * <p>
+     * Validates username input, saves the score via DAO, and displays top scores.
+     * Shows an error message if username is empty.
+     * </p>
+     */
     @FXML
     private void onSaveClick() {
-        String username = usernameField.getText().trim();
+        String username = usernameLabel.getText().trim();
 
         if (username.isEmpty()) {
             statusLabel.setText("Enter username");
             return;
         }
+        try {
+            int user_id = UserSingleton.getInstance().getUser_id();
+            int storedScore = dao.get(user_id);
+            if (storedScore == -1) {
+                dao.insert(user_id, score);
+            } else {
+                storedScore += score;
+                dao.update(user_id, storedScore);
+            }
 
-        dao.saveScore(username, score);
 
-        statusLabel.setText("Score saved!");
+            statusLabel.setText("Score saved!");
+            showTopScores();
 
-        showTopScores();
+            // Close the trivia stage after 3 seconds
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
 
-        PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            delay.setOnFinished(event -> {
+                Stage stage = (Stage) statusLabel.getScene().getWindow();
+                stage.close();
+            });
 
-        delay.setOnFinished(event -> {
-            Stage stage = (Stage) statusLabel.getScene().getWindow();
-            stage.close();
-        });
+            delay.play();
+        } catch (Exception e) {
+            statusLabel.setText("Saving error");
+            e.printStackTrace();
+        }
 
-        delay.play();
     }
 
     @FXML
@@ -484,4 +487,36 @@ public class MainController {
         Stage stage = (Stage) statusLabel.getScene().getWindow();
         stage.close();
     }
+
+    public class Question {
+
+        int question_id;
+        String question;
+        String a;
+        String b;
+        String c;
+        String d;
+        String correct;
+        boolean hardcoded;
+
+        public Question(int question_id,
+                        String q,
+                        String a,
+                        String b,
+                        String c,
+                        String d,
+                        String correct,
+                        boolean hardcoded) {
+
+            this.question_id = question_id;
+            this.question = q;
+            this.a = a;
+            this.b = b;
+            this.c = c;
+            this.d = d;
+            this.correct = correct;
+            this.hardcoded = hardcoded;
+        }
+    }
+
 }

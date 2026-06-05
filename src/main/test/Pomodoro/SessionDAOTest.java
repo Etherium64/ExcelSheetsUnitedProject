@@ -3,8 +3,8 @@ package Pomodoro;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import project.pomodoro.model.Session;
-import project.pomodoro.model.SessionDAO;
+import project.model.Session;
+import project.model.SessionDAO;
 
 import java.sql.*;
 import java.time.LocalDateTime;

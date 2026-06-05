@@ -3,9 +3,9 @@ package Trivia;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import project.Trivia.dao.DatabaseConnection;
-import project.Trivia.dao.DatabaseInitialiser;
-import project.Trivia.dao.QuestionsSeeder;
+import project.model.DatabaseConnection;
+import project.model.DatabaseInitialiser;
+import project.model.QuestionsSeeder;
 
 import java.sql.*;
 

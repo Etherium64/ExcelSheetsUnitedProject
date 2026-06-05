@@ -1,4 +1,6 @@
-package project.Trivia.dao;
+package project.model;
+
+import org.sqlite.SQLiteConfig;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,8 +24,8 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
     // Create database in user's home directory
-    private static final String DB_DIR = System.getProperty("user.home") + "/.trivia";
-    private static String URL = "JDBC:sqlite:" + System.getProperty("user.home") + "/.trivia/trivia.db";
+    private static final String DB_DIR = System.getProperty("user.home") + "/.userData";
+    private static String URL = "JDBC:sqlite:" + System.getProperty("user.home") + "/.userData/userData.db";
 
     /**
      * Initializer that ensures the database directory exists and loads the SQLite JDBC driver.
@@ -58,6 +60,8 @@ public class DatabaseConnection {
      */
     public static Connection getConnection() {
         try {
+            SQLiteConfig config = new SQLiteConfig(); //Enable Foreign Key support for SQLite - Daniel
+            config.enforceForeignKeys(true);
             return DriverManager.getConnection(URL);
         } catch (SQLException e) {
             System.out.println("Connection failed: " + e.getMessage());

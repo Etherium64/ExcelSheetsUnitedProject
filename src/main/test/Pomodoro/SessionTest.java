@@ -2,7 +2,7 @@ package Pomodoro;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import project.pomodoro.model.Session;
+import project.model.Session;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;

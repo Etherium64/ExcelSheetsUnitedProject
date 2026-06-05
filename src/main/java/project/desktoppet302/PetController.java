@@ -18,6 +18,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import project.authentication.Login;
+import project.authentication.UserSingleton;
 
 /**
  * Controller class for all interactions for the menu and the companion pet.
@@ -28,111 +30,104 @@ import javafx.util.Duration;
  */
 public class PetController {
 
-    @FXML public Button trivia;
-    @FXML public Button timer;
-
-    /**
-     * Image of the pet displayed in fxml.
-     */
-    @FXML public Image pet;
-
-    /**
-     * Box for the pet and menu in the application in fxml.
-     */
-    @FXML private HBox hbox;
-
-    /**
-     * Box for the pet and an associated text box and buttons in fxml.
-     */
-    @FXML private VBox imageBox;
-
-    @FXML private HBox optionsBox;
-
-    @FXML private HBox promptButtons;
-
-    /**
-     * Text displayed above the pet in fxml.
-     */
-    @FXML private Text petText;
-
-    /**
-     * Text field displayed above the pet in fxml.
-     */
-    @FXML private TextField textField;
-
-    /**
-     * Yes button in fxml for answering the pet.
-     */
-    @FXML private Button yesbutton;
-
-    /**
-     * No button in fxml for answering the pet.
-     */
-    @FXML private Button nobutton;
-
-    /**
-     * ImageView of the pet in fxml.
-     */
-    @FXML private ImageView petImage;
-
+    private static final double DRAG_THRESHOLD = 5;
+    private static final double SCREEN_PADDING = 10;
     /**
      * Visual bounds of the screen.
      * getVisualBounds excludes the taskbar.
      */
     private final Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
-
     /**
      * Translation transition for the pet for movement.
      */
     private final TranslateTransition movePet = new TranslateTransition();
-
-    /**
-     * Animation timer for pet when idle.
-     */
-    private AnimationTimer idlePet;
-
-    /**
-     * Long number for recording time between pet movement.
-     */
-    private long then;
-
     /**
      * Animation state for the pet.
      */
     private final animStates petStates = new animStates();
-
+    @FXML
+    public Button trivia;
+    @FXML
+    public Button timer;
+    @FXML
+    public Button logout;
+    /**
+     * Image of the pet displayed in fxml.
+     */
+    @FXML
+    public Image pet;
+    /**
+     * Box for the pet and menu in the application in fxml.
+     */
+    @FXML
+    private HBox hbox;
+    /**
+     * Box for the pet and an associated text box and buttons in fxml.
+     */
+    @FXML
+    private VBox imageBox;
+    @FXML
+    private HBox optionsBox;
+    @FXML
+    private HBox promptButtons;
+    /**
+     * Text displayed above the pet in fxml.
+     */
+    @FXML
+    private Text petText;
+    /**
+     * Text field displayed above the pet in fxml.
+     */
+    @FXML
+    private TextField textField;
+    /**
+     * Yes button in fxml for answering the pet.
+     */
+    @FXML
+    private Button yesbutton;
+    /**
+     * No button in fxml for answering the pet.
+     */
+    @FXML
+    private Button nobutton;
+    /**
+     * ImageView of the pet in fxml.
+     */
+    @FXML
+    private ImageView petImage;
+    /**
+     * Animation timer for pet when idle.
+     */
+    private AnimationTimer idlePet;
+    /**
+     * Long number for recording time between pet movement.
+     */
+    private long then;
     /**
      * Pet object representing the pet in the application.
      */
     private Pet desktopPet;
-
     /**
      * Boolean to determine if the trivia button was clicked.
      */
     private boolean isTriviaPrompt = false;
-
+    private boolean islogoutPrompt = false;
     /**
      * Boolean to determine the pomodoro button was clicked.
      */
     private boolean isPomodoroPrompt = false;
-
     /**
      * Double representing the change in position from the start of a mouse drag to present.
      */
     private double mouseX;
-
     /**
      * Long number for recording time between a message for a break.
      */
     private long breakTimer;
-
     private double dragStartSceneX;
     private double dragStartTranslateX;
     private double lastDragTranslateX;
     private boolean wasDragged = false;
-
-    private static final double DRAG_THRESHOLD = 5;
-    private static final double SCREEN_PADDING = 10;
 
     /**
      * Handles initialisation actions for variables walkPet, desktopPet, then, breakTimer,
@@ -316,11 +311,20 @@ public class PetController {
         isTriviaPrompt = false;
     }
 
+    @FXML
+    protected void logoutButton() {
+        textField.setText("Want to log out?");
+        textField.setVisible(true);
+        yesbutton.setVisible(true);
+        nobutton.setVisible(true);
+        islogoutPrompt = true;
+    }
+
     /**
      * Handles when the user selects yes to launch the trivia or pomodoro application.
      */
     @FXML
-    private void goButton() {
+    private void goButton() throws Exception {
         if (isTriviaPrompt) {
             try {
                 Stage primaryStage = (Stage) textField.getScene().getWindow();
@@ -342,7 +346,7 @@ public class PetController {
                 Stage primaryStage = (Stage) textField.getScene().getWindow();
 
                 Stage pomodoroStage = new Stage();
-                new project.pomodoro.MainApplication().start(pomodoroStage);
+                new project.pomodoro.Pomodoro().start(pomodoroStage);
 
                 pomodoroStage.setAlwaysOnTop(true);
                 clampChildStageToUsableScreen(primaryStage, pomodoroStage);
@@ -353,6 +357,12 @@ public class PetController {
 
             isPomodoroPrompt = false;
             hideAllPopups();
+        } else if (islogoutPrompt) {
+            desktopPet.stopMoving();
+            UserSingleton.getInstance().setup(0, ""); //Dummy information ensure User information doesn't remain
+            Stage loginStage = (Stage) logout.getScene().getWindow();
+            Login newLogin = new Login();
+            newLogin.start(loginStage);
         }
     }
 
@@ -360,7 +370,7 @@ public class PetController {
      * Positions a launched trivia or pomodoro window inside the usable screen area.
      *
      * @param primaryStage the desktop pet stage
-     * @param childStage the launched trivia or pomodoro stage
+     * @param childStage   the launched trivia or pomodoro stage
      */
     private void clampChildStageToUsableScreen(Stage primaryStage, Stage childStage) {
         Rectangle2D usableScreen = Screen.getPrimary().getVisualBounds();
@@ -396,8 +406,8 @@ public class PetController {
      * Keeps a value between a minimum and maximum amount.
      *
      * @param value the value to clamp
-     * @param min the lowest allowed value
-     * @param max the highest allowed value
+     * @param min   the lowest allowed value
+     * @param max   the highest allowed value
      * @return the clamped value
      */
     private double clamp(double value, double min, double max) {

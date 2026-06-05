@@ -1,7 +1,4 @@
-package Trivia;
-
-import project.Trivia.dao.DatabaseConnection;
-
+import project.model.DatabaseConnection;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.nio.file.*;

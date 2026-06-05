@@ -1,9 +1,7 @@
 module:project
 AnimationStates
+project.authentication
 project.desktoppet302
+project.model
 project.pomodoro
-project.pomodoro.controller
-project.pomodoro.model
 project.Trivia
-project.Trivia.dao
-project.Trivia.view

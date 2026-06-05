@@ -1,9 +1,6 @@
 package project.model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Data Access Object for managing user scores in the database.
@@ -18,6 +15,7 @@ public class ScoreDAO {
     /**
      * Inserts user_id and scoreValue into a new SQL row if this is the first time playing Trivia
      */
+
     public void insert(int user_id, int scoreValue) {
         String insertScore = "INSERT INTO scores (scoreValue, user_id) VALUES (?, ?)";
         try (Connection conn = DatabaseConnection.getConnection()) {
@@ -33,6 +31,7 @@ public class ScoreDAO {
             throw new RuntimeException(e);
         }
     }
+
 
     /**
      * Selects the scoreValue based on the user_id
@@ -76,10 +75,30 @@ public class ScoreDAO {
         }
     }
 
+    public void createTable() throws SQLException {
+        Connection conn = DriverManager.getConnection("jdbc:sqlite:file:userData.db?busytimeout=5000");
+        String createTableScores = "CREATE TABLE IF NOT EXISTS scores " +
+                "(score_id INTEGER PRIMARY KEY," +
+                "scoreValue INTEGER, " +
+                "user_id INTEGER," +
+                "FOREIGN KEY(user_id) REFERENCES users(user_id)" +
+                ")";
+        try (conn) {
+            assert conn != null;
+            conn.setAutoCommit(false);
+            try (PreparedStatement ps = conn.prepareStatement(createTableScores)) {
+                ps.execute();
+            }
+            conn.commit();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-    public void dropTable() {
+    public void dropTable() throws SQLException {
+        Connection conn = DriverManager.getConnection("jdbc:sqlite:file:userData.db?busytimeout=5000");
         String dropTableScores = "DROP TABLE scores";
-        try (Connection conn = DatabaseConnection.getConnection()) {
+        try (conn) {
             assert conn != null;
             conn.setAutoCommit(false);
             try (PreparedStatement ps = conn.prepareStatement(dropTableScores)) {

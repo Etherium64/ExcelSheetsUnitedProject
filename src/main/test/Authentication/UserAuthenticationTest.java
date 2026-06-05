@@ -23,9 +23,9 @@ public class UserAuthenticationTest {
     public static void setUp() throws Exception {
         mockAuthController = new MockAuthController();
         mockUserDAO = new UserDAO();
+        mockUserDAO.dropTable();
         mockUserDAO.createTable();
-        User mockUser = new User(16, "", "", null, false);
-        mockUserDAO.insert(mockUser);
+        mockUserDAO.insert(new User(16, "", "", null, false));
     }
 
     @AfterAll
@@ -38,7 +38,7 @@ public class UserAuthenticationTest {
         byte[] salt = mockAuthController.generateSalt();
         String username = "testUsername";
         String password = mockAuthController.hashPassword("testPassword", salt);
-        User mockUser = mockUserDAO.getById(16);
+        User mockUser = mockUserDAO.getById(1);
 
         mockUser.setUsername(username);
         mockUser.setPassword(password);

@@ -458,6 +458,8 @@ public class MainController {
      */
     @FXML
     private void onSaveClick() {
+
+        /*
         String username = usernameLabel.getText().trim();
 
         if (username.isEmpty()) {
@@ -491,6 +493,26 @@ public class MainController {
             statusLabel.setText("Saving error");
             e.printStackTrace();
         }
+
+         */
+        int user_id = UserSingleton.getInstance().getUser_id();
+        int storedScore = dao.get(user_id);
+        if (storedScore == -1) {
+            dao.insert(user_id, score);
+        } else {
+            storedScore += score;
+            dao.update(user_id, storedScore);
+        }
+        statusLabel.setText("Score saved!");
+        showTopScores();
+
+        // Close the trivia stage after 3 seconds
+        PauseTransition delay = new PauseTransition(Duration.seconds(3));
+        delay.setOnFinished(event -> {
+            Stage stage = (Stage) statusLabel.getScene().getWindow();
+            stage.close();
+        });
+        delay.play();
 
     }
 

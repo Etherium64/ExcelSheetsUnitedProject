@@ -53,7 +53,7 @@ public class DatabaseInitialiser {
                         "FOREIGN KEY(user_id) REFERENCES users(user_id)" +
                         ")";
 
-        String createUsers = "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT UNIQUE)";
+        //String createUsers = "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT UNIQUE)";
 
 
         String createQuestions = """
@@ -72,7 +72,7 @@ public class DatabaseInitialiser {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement()) {
 
-            stmt.execute(createUsers);
+            //stmt.execute(createUsers);
             stmt.execute(createScores);
             stmt.execute(createQuestions);
 

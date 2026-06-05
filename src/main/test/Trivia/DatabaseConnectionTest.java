@@ -1,14 +1,18 @@
-import project.model.DatabaseConnection;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import java.nio.file.*;
+import project.model.DatabaseConnection;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.SQLException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DatabaseConnectionTest {
 
-    private static final String DB_DIR_PATH = System.getProperty("user.home") + "/.trivia";
+    private static final String DB_DIR_PATH = System.getProperty("user.home") + "/.userData";
     private static final Path DB_DIR = Paths.get(DB_DIR_PATH);
 
     @BeforeAll

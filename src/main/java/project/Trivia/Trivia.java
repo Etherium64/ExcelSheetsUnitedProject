@@ -13,7 +13,7 @@ import java.util.Scanner;
  * performance-based message depending on the final score.
  * </p>
  * <p>
- *     Note this file is now redundant and an old iteration of the trivia module.
+ * Note this file is now redundant and an old iteration of the trivia module.
  * </p>
  *
  * @author Ethan B
@@ -36,7 +36,7 @@ public class Trivia {
          * ArrayList
          */
         int numQuestions = Integer.parseInt(scan.nextLine());
-        for(int i = 0; i < numQuestions; i++) {
+        for (int i = 0; i < numQuestions; i++) {
             questions.add(new Question(scan.nextLine(), scan.nextLine(),
                     scan.nextLine(), scan.nextLine(), scan.nextLine(),
                     scan.nextLine()));
@@ -58,7 +58,7 @@ public class Trivia {
         }
 
         //end text
-        if(playerPoints > numQuestions/2) {
+        if (playerPoints > numQuestions / 2) {
             System.out.print("Well done! You scored "
                     + playerPoints + " points.\n");
         } else {
@@ -76,3 +76,5 @@ public class Trivia {
         System.out.println(question.answerFour);
     }
 }
+
+// adding lines to push for video purposes.

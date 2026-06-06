@@ -6,14 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6743a443-950e-4c2f-9725-810ae562dd12" name="Changes" comment="Merge branch 'SCA-3.0'&#10;&#10;# Conflicts:&#10;#&#9;.idea/compiler.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;Documents/githubCommits.txt&#10;#&#9;src/main/java/AnimationStates/animController.java&#10;#&#9;src/main/java/AnimationStates/animStates.java&#10;#&#9;src/main/java/project/desktoppet302/PetController.java&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0000.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0001.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0002.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0003.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0004.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0005.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0006.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0007.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0008.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0009.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0010.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0011.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0012.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0013.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0014.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0015.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0016.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0017.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0018.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0004png0019.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0020.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0021.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0022.png&#10;#&#9;src/main/resources/ImageSequences/walkLeft/walkLeft0023.png&#10;#&#9;src/main/resources/ImageSequences/walkRight/walkRight0021.png&#10;#&#9;src/main/resources/ImageSequences/walkRight/walkRight0022.png&#10;#&#9;src/main/resources/ImageSequences/walkRight/walkRight0023.png&#10;#&#9;src/main/resources/ImageSequences/walkRight/walkRight0024.png">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/Trivia/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Trivia/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/model/DatabaseInitialiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/DatabaseInitialiser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/project/model/ScoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/model/ScoreDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/Authentication/UserAuthenticationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/Authentication/UserAuthenticationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/test/Trivia/DatabaseConnectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/Trivia/DatabaseConnectionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/Trivia/QuestionSeederTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/Trivia/QuestionSeederTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/Trivia/ScoreDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/Trivia/ScoreDAOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userData.db" beforeDir="false" afterPath="$PROJECT_DIR$/userData.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,12 +42,12 @@
     &quot;assignee&quot;: &quot;Etherium64&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Etherium64/ExcelSheetsUnitedProject.git&quot;,
-    &quot;accountId&quot;: &quot;37cf2976-10f4-4878-bbb5-c96407d7ebad&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Etherium64/ExcelSheetsUnitedProject.git",
+    "accountId": "80ff2d5a-7e8f-4772-a30e-3552355cb4f9"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" root0="SKIP_INSPECTION" />
   </component>
@@ -104,6 +97,7 @@
     "JUnit.SessionDAOTest.executor": "Run",
     "JUnit.SessionTest.executor": "Run",
     "JUnit.UserAuthenticationTest.executor": "Run",
+    "JUnit.test in Project302.executor": "Run",
     "Maven.DesktopPet302 [org.apache.maven.plugins:maven-javadoc-plugin:3.4.0:javadoc].executor": "Run",
     "Maven.DesktopPet302 [package].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
@@ -115,6 +109,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
+    "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/home/daniel/Documents/ExcelSheetsUnitedProject/src/main/test/Authentication",
@@ -151,79 +146,20 @@
       <recent name="project.pomodoro.controller" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.DatabaseConnectionTest">
     <configuration name="DatabaseConnectionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project302" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Trivia.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Trivia" />
-      <option name="MAIN_CLASS_NAME" value="Trivia.DatabaseConnectionTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="DatabaseConnectionTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DatabaseInitialiserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="test in Project302" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project302" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Trivia.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Trivia" />
-      <option name="MAIN_CLASS_NAME" value="Trivia.DatabaseInitialiserTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PetTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DesktopPet302" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Pet.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Pet" />
-      <option name="MAIN_CLASS_NAME" value="Pet.PetTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PetTest.testPetSetup" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DesktopPet302" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Pet.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Pet" />
-      <option name="MAIN_CLASS_NAME" value="Pet.PetTest" />
-      <option name="METHOD_NAME" value="testPetSetup" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ScoreDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project302" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Pomodoro.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Pomodoro" />
-      <option name="MAIN_CLASS_NAME" value="Pomodoro.ScoreDAOTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/main/test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -235,27 +171,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.test in Project302" />
       <item itemvalue="JUnit.DatabaseConnectionTest" />
-      <item itemvalue="JUnit.DatabaseInitialiserTest" />
-      <item itemvalue="JUnit.ScoreDAOTest" />
-      <item itemvalue="JUnit.PetTest" />
-      <item itemvalue="JUnit.PetTest.testPetSetup" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DatabaseInitialiserTest" />
-        <item itemvalue="JUnit.ScoreDAOTest" />
         <item itemvalue="JUnit.DatabaseConnectionTest" />
-        <item itemvalue="JUnit.PetTest" />
-        <item itemvalue="JUnit.PetTest.testPetSetup" />
+        <item itemvalue="JUnit.test in Project302" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.25134.95" />
-        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.25134.95" />
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
       </set>
     </attachedChunks>
   </component>

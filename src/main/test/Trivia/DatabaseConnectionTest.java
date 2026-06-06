@@ -10,6 +10,10 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Testing whether the userData.db is saved in the correct directory and can be connected to
+ */
+
 public class DatabaseConnectionTest {
 
     private static final String DB_DIR_PATH = System.getProperty("user.home") + "/.userData";

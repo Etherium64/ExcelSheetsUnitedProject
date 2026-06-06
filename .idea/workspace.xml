@@ -39,12 +39,12 @@
     &quot;assignee&quot;: &quot;Etherium64&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Etherium64/ExcelSheetsUnitedProject.git",
-    "accountId": "80ff2d5a-7e8f-4772-a30e-3552355cb4f9"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Etherium64/ExcelSheetsUnitedProject.git&quot;,
+    &quot;accountId&quot;: &quot;80ff2d5a-7e8f-4772-a30e-3552355cb4f9&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/project/pomodoro/MainApplication.java" root0="SKIP_INSPECTION" />
   </component>
@@ -72,54 +72,54 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AnimationTestWindow.executor": "Run",
-    "Application.DesktopPet.executor": "Run",
-    "Application.Login.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.MainApplication.executor": "Run",
-    "Application.PomodoroTest.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "Application.animation test.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "JUnit.DatabaseConnectionTest.executor": "Coverage",
-    "JUnit.DatabaseInitialiserTest.executor": "Run",
-    "JUnit.ForeignKeyTest.executor": "Run",
-    "JUnit.PetTest.executor": "Run",
-    "JUnit.PetTest.testPetSetup.executor": "Run",
-    "JUnit.PomodoroTest.executor": "Debug",
-    "JUnit.QuestionSeederTest.executor": "Run",
-    "JUnit.ScoreDAOTest.executor": "Run",
-    "JUnit.SessionDAOTest.executor": "Run",
-    "JUnit.SessionTest.executor": "Run",
-    "JUnit.UserAuthenticationTest.executor": "Run",
-    "JUnit.test in Project302.executor": "Run",
-    "Maven.DesktopPet302 [org.apache.maven.plugins:maven-javadoc-plugin:3.4.0:javadoc].executor": "Run",
-    "Maven.DesktopPet302 [package].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "/home/daniel/Documents/ExcelSheetsUnitedProject/src/main/test/Authentication",
-    "last_opened_file_path": "/home/daniel/IdeaProjects/ESU/ExcelSheetsUnitedProject",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "rearrange.code.on.save": "true",
-    "settings.editor.selected.configurable": "SQL Dialects",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AnimationTestWindow.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DesktopPet.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Login.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PomodoroTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;Application.animation test.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;JUnit.DatabaseConnectionTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.DatabaseInitialiserTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ForeignKeyTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PetTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PetTest.testPetSetup.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PomodoroTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.QuestionSeederTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ScoreDAOTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SessionDAOTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SessionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserAuthenticationTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.test in Project302.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.DesktopPet302 [org.apache.maven.plugins:maven-javadoc-plugin:3.4.0:javadoc].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.DesktopPet302 [package].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;/home/daniel/Documents/ExcelSheetsUnitedProject/src/main/test/Authentication&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/daniel/IdeaProjects/ESU/ExcelSheetsUnitedProject&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;SQL Dialects&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ddo14\Documents\GitHub\ExcelSheetsUnitedProject\src\main\test" />

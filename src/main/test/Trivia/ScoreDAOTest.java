@@ -9,6 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
+/**
+ * Testing if UserDAO and ScoreDAO work together.
+ * Specifically, if a Foreign key connects the users and scores SQLIte tables.
+ */
+
 public class ScoreDAOTest {
     private Connection connection;
     private ScoreDAO scoreDAO;

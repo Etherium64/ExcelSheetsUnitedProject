@@ -1,12 +1,16 @@
-import project.model.DatabaseConnection;
-import project.model.DatabaseInitialiser;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import project.model.DatabaseConnection;
+import project.model.DatabaseInitialiser;
+
 import java.sql.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+/**
+ * Testing set up of userData.db for Trivia module, incl. creation of Questions table
+ */
 
 public class DatabaseInitialiserTest {
 

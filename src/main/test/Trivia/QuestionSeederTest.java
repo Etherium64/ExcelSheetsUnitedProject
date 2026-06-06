@@ -12,6 +12,10 @@ import java.sql.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Testing hardcoded Questions seeds and selection of Questions from SQL table
+ */
+
 public class QuestionSeederTest {
 
     private Connection connection;

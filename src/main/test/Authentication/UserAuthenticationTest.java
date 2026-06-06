@@ -12,7 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 /**
- * Testing UserDAO and AuthController
+ * Testing UserDAO and AuthController.
+ * Testing whether a User can register and login at will.
  */
 
 public class UserAuthenticationTest {

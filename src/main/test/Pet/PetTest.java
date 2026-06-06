@@ -5,15 +5,21 @@ import javafx.scene.image.ImageView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import project.desktoppet302.Pet;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+/**
+ * Testing Desktop Pet animation code, including idle, expressions and walking.
+ */
 
 public class PetTest {
 
-    private Pet pet;
     private final animStates aState1 = new animStates();
     private final ImageView pImage1 = new ImageView();
     private final animStates aState2 = new animStates();
     private final ImageView pImage2 = new ImageView();
+    private Pet pet;
 
     @BeforeEach
     void setUp() {
